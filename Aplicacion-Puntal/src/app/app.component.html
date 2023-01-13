@@ -1,5 +1,5 @@
-<!-- <app-root> -->
-  
-<app-home></app-home>
-<br>
-<app-login></app-login>
+<p>**A que componente del dashboard desea ir**</p>
+
+<input type="button" value="PANTALLA LOGIN" [routerLink]="['login']">
+<input type="button" value="PANTALLA HOME" [routerLink]="['home']">
+<router-outlet></router-outlet>

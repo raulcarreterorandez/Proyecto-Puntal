@@ -1,24 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ListaComponent } from './lista/lista.component';
-import { FormularioAltaComponent } from './formulario-alta/formulario-alta.component';
-import { VistaDetalladaComponent } from './vista-detallada/vista-detallada.component';
+import { ListaInstalacionComponent } from './lista-instalacion/lista-instalacion.component';
+import { FormularioAltaInstalacionComponent } from './formulario-alta-instalacion/formulario-alta-instalacion.component';
+import { VistaDetalladaInstalacionComponent } from './vista-detallada-instalacion/vista-detallada-instalacion.component';
 
 
 
 @NgModule({
   declarations: [
-    ListaComponent,
-    FormularioAltaComponent,
-    VistaDetalladaComponent
+    ListaInstalacionComponent,
+    FormularioAltaInstalacionComponent,
+    VistaDetalladaInstalacionComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    ListaComponent,
-    FormularioAltaComponent,
-    VistaDetalladaComponent
+    ListaInstalacionComponent,
+    FormularioAltaInstalacionComponent,
+    VistaDetalladaInstalacionComponent
   ]
 })
 export class InstalacionesModule { }
