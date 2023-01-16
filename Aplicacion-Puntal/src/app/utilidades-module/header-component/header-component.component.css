@@ -1,0 +1,36 @@
+#cabecera { 
+    /*  width: 100vw; */
+     height: 75px;
+     left: 0px;
+     top: 0px;
+     margin: 0px 0px;
+     background: #007BC4; 
+   }
+   
+   #pagina{
+     font-family: 'Open Sans';  
+     font-weight: 700;
+     font-size: 2.5rem;
+     line-height: 25px;
+     color: #F2F9FB;
+   }
+   
+   #pagina button{
+     background-color: #007BC4;
+     color: #F2F9FB;
+     border: none;
+   }
+   
+   #usuario{
+     font-family: 'Open Sans';  
+     font-weight: 700;
+     font-size: 2.5rem;
+     line-height: 25px;
+     color: #F2F9FB;
+   }
+   
+   #usuario button{
+     background-color: #007BC4;
+     color: #F2F9FB;
+     border: none;
+   }

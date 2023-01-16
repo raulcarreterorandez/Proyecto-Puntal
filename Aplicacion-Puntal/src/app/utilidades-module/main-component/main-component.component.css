@@ -1,0 +1,9 @@
+.table-dark{
+    --bs-table-color: #000000 !important;
+    --bs-table-bg: #F2F9FB !important;
+}
+.table-success{
+    --bs-table-color: #000;
+    --bs-table-bg: #F2F9FB;
+    --bs-table-striped-bg: #D9EBFF;
+}
