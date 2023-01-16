@@ -5,7 +5,8 @@ import { LoginComponent } from './login/login.component';
 import { InstalacionesModule } from '../instalaciones/instalaciones.module';
 import { UtilidadesModuleModule } from '../utilidades-module/utilidades-module.module';
 
-
+// import { AppRoutingModule } from './app-routing.module';
+import { Routes, RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { UtilidadesModuleModule } from '../utilidades-module/utilidades-module.m
   imports: [
     CommonModule,
     InstalacionesModule,
-    UtilidadesModuleModule
+    UtilidadesModuleModule,
+    RouterModule
   ],
   exports : [
     HomeComponent,
