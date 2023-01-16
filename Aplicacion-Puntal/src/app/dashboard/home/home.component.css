@@ -1,0 +1,14 @@
+.container{
+    height: 100vh;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+#dashboard{
+    width: 100%;
+}
+
+#vistaCentral{
+    background-color: #F2F9FB;
+}

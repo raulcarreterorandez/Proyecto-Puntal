@@ -1,8 +1,45 @@
 
-<app-header-component></app-header-component>
-<app-aside-component></app-aside-component>
-<app-main-component></app-main-component>
-<app-user-settings-component></app-user-settings-component>
+<div id="dashBoard" class="container-fluid">
+
+    <div class="row">
+        <app-header-component></app-header-component>
+    </div>
+    
+    <div id="vistaCentral" class="row">
+
+        <div class="col-1">
+            <app-aside-component></app-aside-component>
+        </div>
+
+        <div class="col-10">
+
+            <div class="row">
+                <h1>HOLA MUNDO</h1>
+                <!-- AQUI VAN LOS BOTONES DE BUSQUEDA, FILTRADO Y AÑADIR -->
+            </div>
+
+            <div class="row">
+                <app-main-component></app-main-component>
+            </div>
+            
+            
+        </div>
+
+        <div class="col-1">
+            <app-user-settings-component></app-user-settings-component>
+            <!-- AQUI VA EL MENU DE USER SETTINGS -->
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
 
 <!-- <p>Componente - INSTALACIONES</p> -->
 <!-- <app-lista-instalacion></app-lista-instalacion>
