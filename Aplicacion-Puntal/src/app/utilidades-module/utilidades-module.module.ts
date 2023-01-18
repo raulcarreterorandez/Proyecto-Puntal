@@ -4,6 +4,7 @@ import { HeaderComponentComponent } from './header-component/header-component.co
 import { AsideComponentComponent } from './aside-component/aside-component.component';
 import { MainComponentComponent } from './main-component/main-component.component';
 import { UserSettingsComponentComponent } from './user-settings-component/user-settings-component.component';
+import { InstalacionesModule } from '../instalaciones/instalaciones.module';
 
 
 
@@ -15,7 +16,8 @@ import { UserSettingsComponentComponent } from './user-settings-component/user-s
     UserSettingsComponentComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    InstalacionesModule
   ],
   exports: [
     HeaderComponentComponent,

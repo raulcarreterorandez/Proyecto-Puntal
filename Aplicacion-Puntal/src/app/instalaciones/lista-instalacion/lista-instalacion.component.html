@@ -1,1 +1,44 @@
-<p>lista-instalacion works!</p>
+
+  <div class="container">
+
+    <div class="row">
+
+        <div class="col table-responsive">
+            <!-- table-responsive. Añade scroll horizontal en el pie de la tabla -->
+            <!-- table-responsive{-sm|-md|-lg|-xl|-xxl}. Para crear tablas receptivas hasta 
+                un punto de interrupción particular. A partir de ese punto de interrupción, la 
+                tabla se comportará normalmente y no se desplazará horizontalmente. -->
+
+            <table datatable id="tabla" class="table table-striped table-hover caption-top">
+
+                <!-- table-success. Para el color de la tabla. -->
+                <!-- table-bordered border-dark. Para bordear la tabla. -->
+                <!-- table-striped. Para hacerla estilo zebra.  -->
+                <!-- caption-top. Si lo quitamos lo pone al pie de la tabla. -->
+
+                <caption>Tabla de prueba</caption>
+                <thead class="table-dark">
+                    <tr>
+                        <th>UserID</th>
+                        <th>ID</th>
+                        <th>Title</th>                      
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let instalacion of instalaciones">
+                        <td>{{instalacion.userId}}</td>
+                        <td>{{instalacion.id}}</td>
+                        <td>{{instalacion.title}}</td>                    
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>UserID</th>
+                        <th>ID</th>
+                        <th>Title</th>                       
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

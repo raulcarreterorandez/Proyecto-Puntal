@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "angular-datatables-schematic-angular-datatables",
+  "title": "Angular DataTables angular-datatables schematic",
+  "type": "object",
+  "properties": {
+    "project": {
+      "title": "angular-datatables",
+      "type": "string",
+      "description": "The name of the project.",
+      "$default": {
+        "$source": "projectName"
+      }
+    },
+    "style": {
+      "description": "The styling library to use for Datatables.",
+      "type": "string",
+      "default": "dt",
+      "enum": ["dt", "bs3", "bs4", "bs5"],
+      "x-prompt": {
+        "message": "Which styling library would you like to use for DataTables?",
+        "type": "list",
+        "items": [
+          { "value": "dt", "label": "DataTables (Default)" },
+          {
+            "value": "bs3",
+            "label": "Bootstrap 3"
+          },
+          {
+            "value": "bs4",
+            "label": "Bootstrap 4"
+          },
+          {
+            "value": "bs5",
+            "label": "Bootstrap 5"
+          }
+        ]
+      }
+    }
+  }
+}
