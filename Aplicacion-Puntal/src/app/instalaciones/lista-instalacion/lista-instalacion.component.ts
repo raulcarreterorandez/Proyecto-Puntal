@@ -1,19 +1,15 @@
-import { Component,OnInit } from '@angular/core';
-import { InstalacionesService } from '../instalaciones.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-lista-instalacion',
-  templateUrl: './lista-instalacion.component.html',
-  styleUrls: ['./lista-instalacion.component.css']
+  selector: 'with-options',
+  templateUrl: 'with-options.component.html'
 })
-export class ListaInstalacionComponent implements OnInit{
+export class WithOptionsComponent implements OnInit {
+  dtOptions: DataTables.Settings = {};
 
-  instalaciones: any;
-
-  constructor(private instalacionesService: InstalacionesService) {}
-
-  ngOnInit() {
-    this.instalacionesService.retornar()
-      .subscribe( result =>  this.instalaciones = result)
+  ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers'
+    };
   }
 }
