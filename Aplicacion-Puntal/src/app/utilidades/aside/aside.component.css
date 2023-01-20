@@ -1,0 +1,10 @@
+#tools {
+  height: 91.5vh;
+  background-color: #0E72AD;
+}
+
+button {
+  background: none;
+  border: none;
+  padding-top: 30%;
+}
