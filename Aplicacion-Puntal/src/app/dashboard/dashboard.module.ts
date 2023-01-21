@@ -2,11 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { InstalacionesModule } from '../instalaciones/instalaciones.module';
-import { UtilidadesModuleModule } from '../utilidades-module/utilidades-module.module';
-
-// import { AppRoutingModule } from './app-routing.module';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { UtilidadesModule } from '../utilidades/utilidades.module';
 
 @NgModule({
   declarations: [
@@ -15,11 +12,10 @@ import { Routes, RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    InstalacionesModule,
-    UtilidadesModuleModule,
+    UtilidadesModule,
     RouterModule
   ],
-  exports : [
+  exports: [
     HomeComponent,
     LoginComponent
   ]
