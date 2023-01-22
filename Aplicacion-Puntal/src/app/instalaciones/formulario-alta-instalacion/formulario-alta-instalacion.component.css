@@ -1,0 +1,39 @@
+#contenedor{
+    margin-top: 10vh;
+    border-radius: 10px;
+    background-color: #D9EBFF;
+    height: 70vh;
+    width: 70%;
+}
+
+#cabecera{
+    color: white;
+    font-size: 30px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: #007BC4;
+}
+#titulo{  
+   
+   padding-bottom: 0px;
+   padding-top: 10px;
+}
+
+#centro{
+
+    margin-top: 40px;
+}
+
+#descripcion{
+
+    margin-top: 40px;
+}
+
+#boton{
+    margin-top: 10vh;
+    border-radius: 5px;
+    border: none;
+    background-color:  #007BC4;
+    width: 25%;
+}
+
