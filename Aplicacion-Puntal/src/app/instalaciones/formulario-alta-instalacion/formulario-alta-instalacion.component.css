@@ -1,4 +1,4 @@
-#contenedor{
+#contenedor {
     margin-top: 10vh;
     border-radius: 10px;
     background-color: #D9EBFF;
@@ -6,34 +6,34 @@
     width: 70%;
 }
 
-#cabecera{
+#cabecera {
     color: white;
     font-size: 30px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     background-color: #007BC4;
 }
-#titulo{  
-   
-   padding-bottom: 0px;
-   padding-top: 10px;
+
+#titulo {
+
+    padding-bottom: 0px;
+    padding-top: 10px;
 }
 
-#centro{
+#centro {
 
     margin-top: 40px;
 }
 
-#descripcion{
+#descripcion {
 
     margin-top: 40px;
 }
 
-#boton{
+#boton {
     margin-top: 10vh;
     border-radius: 5px;
     border: none;
-    background-color:  #007BC4;
+    background-color: #007BC4;
     width: 25%;
 }
-

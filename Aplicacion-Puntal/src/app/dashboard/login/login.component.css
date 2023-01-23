@@ -1,17 +1,29 @@
 #loginBoard{  
     width: 100%;
-    height: 100vh; 
+    height: 98vh; 
     background-size: 100% 100%;
     background-image: url(/assets/fondoLogin.jpg);
+    padding: 0px;
 }
 #login{
-    height: 85vh;
+    height: 88vh;
     background: rgba(0, 134, 214, 0.9);
     border-radius: 13px;
     font-weight: bolder;
     font-family: sans-serif;
     color: white;    
 }
+
+#logo img{
+    width: 55%;
+    height: 20%;
+}
+
+#titulo{
+    font-size: 65px;
+    font-weight: lighter;
+}
+
 #usuario{
     display: flex;
     justify-content: center;
@@ -65,16 +77,29 @@
     height: 10vh;
 }
 
-#recuerdaSesion{
-    margin-top: 30px;
+#session{
+    margin-top: 2vh;
+}
+
+#checkSession input{
+    margin-top: 25px;
     margin-left: 20px;
-
-}
-#enlace{
-    margin-top: 20px;
-    
 }
 
-#enlace a{
+#checkSession label{
+    margin-left: 5px;
+}
+
+#enlaceSession{
+    margin-top: 20px;    
+}
+
+#enlaceSession a{
     color: white;
 }
+
+#cuenta a{
+    color: white; 
+    margin-top: 20px;
+}
+
