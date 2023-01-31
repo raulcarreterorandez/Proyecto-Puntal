@@ -8,12 +8,12 @@ import { InstalacionesService } from '../instalaciones.service';
 })
 export class VistaDetalladaInstalacionComponent implements OnInit{
 
-  articulos: any;
+  instalacion: any;
 
   constructor(private instalacionesService: InstalacionesService) {}
 
   ngOnInit() {
-    this.instalacionesService.retornar()
-      .subscribe( result =>  this.articulos = result)
+    this.instalacionesService.retornarUno()
+      .subscribe( result =>  this.instalacion = result)
   }
 }
