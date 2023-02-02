@@ -30,7 +30,8 @@ import { DataTablesModule } from "angular-datatables";
     AppRoutingModule,
     DashboardModule,
     DataTablesModule,
-    HttpClientModule //Importando en la raíz soluciono el problema de que se quedaba colgada la vista. Mensaje de error abajo.
+    HttpClientModule, //Importando en la raíz soluciono el problema de que se quedaba colgada la vista. Mensaje de error abajo.
+    DataTablesModule
     /*
     ERROR Error: Uncaught (in promise): NullInjectorError: R3InjectorError(AppModule)
     [InstalacionesService -> HttpClient -> HttpClient -> HttpClient]: NullInjectorError: No provider for HttpClient!  

@@ -13,7 +13,7 @@ export class VistaDetalladaInstalacionComponent implements OnInit{
   constructor(private instalacionesService: InstalacionesService) {}
 
   ngOnInit() {
-    this.instalacionesService.retornarUno()
-      .subscribe( result =>  this.instalacion = result)
+    /* this.instalacionesService.retornarUno(id)
+      .subscribe( result =>  this.instalacion = result) */
   }
 }

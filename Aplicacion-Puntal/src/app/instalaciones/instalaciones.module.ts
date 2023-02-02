@@ -27,4 +27,6 @@ import { ListaInstalacionesComponent } from './lista-instalaciones/lista-instala
     VistaDetalladaInstalacionComponent
   ]
 })
-export class InstalacionesModule { }
+export class InstalacionesModule { 
+
+}
