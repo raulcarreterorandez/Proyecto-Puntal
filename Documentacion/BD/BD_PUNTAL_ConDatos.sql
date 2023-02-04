@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: mysql
--- Tiempo de generación: 19-01-2023 a las 19:13:04
+-- Tiempo de generación: 04-02-2023 a las 16:36:56
 -- Versión del servidor: 8.0.31
 -- Versión de PHP: 8.0.27
 
@@ -18,26 +18,26 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `pruebas_puntal`
+-- Base de datos: `aplicacion_puntal_backend`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `base`
+-- Estructura de tabla para la tabla `bases`
 --
 
-CREATE TABLE `base` (
+CREATE TABLE `bases` (
   `idPlaza` int NOT NULL,
   `fechaEntrada` timestamp NOT NULL,
   `fechaSalida` timestamp NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Volcado de datos para la tabla `base`
+-- Volcado de datos para la tabla `bases`
 --
 
-INSERT INTO `base` (`idPlaza`, `fechaEntrada`, `fechaSalida`) VALUES
+INSERT INTO `bases` (`idPlaza`, `fechaEntrada`, `fechaSalida`) VALUES
 (1, '2019-09-23 14:43:17', '2022-12-16 03:22:18'),
 (3, '2019-05-23 13:16:27', '2022-03-04 02:11:04'),
 (5, '2019-04-13 10:24:29', '2021-04-05 19:38:02'),
@@ -1008,7 +1008,7 @@ INSERT INTO `base` (`idPlaza`, `fechaEntrada`, `fechaSalida`) VALUES
 (1935, '2019-08-15 04:31:18', '2021-06-10 07:56:12'),
 (1937, '2019-07-03 05:24:00', '2022-03-15 14:51:52'),
 (1939, '2019-02-17 23:21:57', '2021-07-06 03:59:32');
-INSERT INTO `base` (`idPlaza`, `fechaEntrada`, `fechaSalida`) VALUES
+INSERT INTO `bases` (`idPlaza`, `fechaEntrada`, `fechaSalida`) VALUES
 (1941, '2019-07-05 23:08:35', '2021-11-10 05:21:42'),
 (1943, '2019-10-17 16:23:54', '2022-12-18 12:56:33'),
 (1945, '2019-01-19 01:16:43', '2021-06-06 04:46:13'),
@@ -1043,10 +1043,10 @@ INSERT INTO `base` (`idPlaza`, `fechaEntrada`, `fechaSalida`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cliente`
+-- Estructura de tabla para la tabla `clientes`
 --
 
-CREATE TABLE `cliente` (
+CREATE TABLE `clientes` (
   `numDocumento` varchar(20) NOT NULL,
   `nombre` varchar(20) NOT NULL,
   `apellidos` varchar(50) NOT NULL,
@@ -1058,10 +1058,10 @@ CREATE TABLE `cliente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Volcado de datos para la tabla `cliente`
+-- Volcado de datos para la tabla `clientes`
 --
 
-INSERT INTO `cliente` (`numDocumento`, `nombre`, `apellidos`, `email`, `direccion`, `tipoDocumento`, `observaciones`, `visto`) VALUES
+INSERT INTO `clientes` (`numDocumento`, `nombre`, `apellidos`, `email`, `direccion`, `tipoDocumento`, `observaciones`, `visto`) VALUES
 ('documento-1', 'Horacio', 'Saundercock', 'hsaundercock0@joomla.org', '52223 Forest Pass', 'Pasaporte', NULL, 0),
 ('documento-10', 'Camille', 'Meadowcraft', 'cmeadowcraft9@dailymail.co.uk', '25 Petterle Alley', 'Pasaporte', 'Pide plazas en muelles poco concurridos', 1),
 ('documento-100', 'Karin', 'Jonathon', 'kjonathon2r@msn.com', '6 Canary Place', 'NIE', 'Pide plazas en muelles poco concurridos', 0),
@@ -1430,7 +1430,7 @@ INSERT INTO `cliente` (`numDocumento`, `nombre`, `apellidos`, `email`, `direccio
 ('documento-427', 'Jamesy', 'Pinn', 'jpinnbu@wordpress.com', '3 Lakewood Road', 'NIE', 'Pide plazas en muelles poco concurridos', 0),
 ('documento-428', 'Amy', 'Chadney', 'achadneybv@wired.com', '7 Walton Court', 'Pasaporte', 'Llamar para cumplimientos de pagos', 1),
 ('documento-429', 'Rhoda', 'Guys', 'rguysbw@examiner.com', '1 Cottonwood Lane', 'DNI', 'Quiere plazas cercanas a las salidas del puerto', 0);
-INSERT INTO `cliente` (`numDocumento`, `nombre`, `apellidos`, `email`, `direccion`, `tipoDocumento`, `observaciones`, `visto`) VALUES
+INSERT INTO `clientes` (`numDocumento`, `nombre`, `apellidos`, `email`, `direccion`, `tipoDocumento`, `observaciones`, `visto`) VALUES
 ('documento-43', 'Laurette', 'Radbourne', 'lradbourne16@wikispaces.com', '3660 Independence Drive', 'NIE', 'Pide plazas en muelles poco concurridos', 0),
 ('documento-430', 'Jarrod', 'Klazenga', 'jklazengabx@constantcontact.com', '819 Golf Course Hill', 'Pasaporte', 'Quiere plazas cercanas a las salidas del puerto', 0),
 ('documento-431', 'Diandra', 'Struys', 'dstruysby@cbsnews.com', '85 Colorado Place', 'NIE', 'Pide plazas lo mas alejado de las salidas', 0),
@@ -1800,7 +1800,7 @@ INSERT INTO `cliente` (`numDocumento`, `nombre`, `apellidos`, `email`, `direccio
 ('documento-76', 'Clarice', 'Mirfin', 'cmirfin23@flavors.me', '70246 Union Alley', 'NIE', 'Quiere plazas cercanas a las salidas del puerto', 0),
 ('documento-760', 'Phylis', 'Albion', 'palbionl3@arstechnica.com', '53 Clemons Court', 'Pasaporte', NULL, 1),
 ('documento-761', 'Kingsley', 'Loch', 'klochl4@liveinternet.ru', '3 Kipling Circle', 'NIE', NULL, 0);
-INSERT INTO `cliente` (`numDocumento`, `nombre`, `apellidos`, `email`, `direccion`, `tipoDocumento`, `observaciones`, `visto`) VALUES
+INSERT INTO `clientes` (`numDocumento`, `nombre`, `apellidos`, `email`, `direccion`, `tipoDocumento`, `observaciones`, `visto`) VALUES
 ('documento-762', 'Ian', 'Fernando', 'ifernandol5@networkadvertising.org', '247 Fairview Avenue', 'DNI', 'Quiere plazas cercanas a las salidas del puerto', 0),
 ('documento-763', 'Gary', 'Whitcomb', 'gwhitcombl6@hibu.com', '79856 Randy Park', 'DNI', 'Quiere plazas cercanas a las salidas del puerto', 0),
 ('documento-764', 'Tera', 'Iffe', 'tiffel7@buzzfeed.com', '34 Moulton Point', 'DNI', 'Quiere plazas cercanas a las salidas del puerto', 0),
@@ -2068,10 +2068,10 @@ INSERT INTO `cliente` (`numDocumento`, `nombre`, `apellidos`, `email`, `direccio
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `embarcacion`
+-- Estructura de tabla para la tabla `embarcaciones`
 --
 
-CREATE TABLE `embarcacion` (
+CREATE TABLE `embarcaciones` (
   `matricula` varchar(20) NOT NULL,
   `nombre` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `eslora` varchar(10) NOT NULL,
@@ -2084,10 +2084,10 @@ CREATE TABLE `embarcacion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Volcado de datos para la tabla `embarcacion`
+-- Volcado de datos para la tabla `embarcaciones`
 --
 
-INSERT INTO `embarcacion` (`matricula`, `nombre`, `eslora`, `manga`, `calado`, `propulsion`, `id_cliente`, `id_plaza`, `visto`) VALUES
+INSERT INTO `embarcaciones` (`matricula`, `nombre`, `eslora`, `manga`, `calado`, `propulsion`, `id_cliente`, `id_plaza`, `visto`) VALUES
 ('matricula-1', 'Elegant Silverpuffs', '24.7m', '2.13m', '8.42m', 'Vela/Motor', 'documento-1', 1, 1),
 ('matricula-10', 'Siberian Oatgrass', '15.26m', '3.91m', '11.45m', 'Vela/Motor', 'documento-10', 19, 0),
 ('matricula-100', 'Siberian Crab Apple', '21.72m', '4.31m', '17.11m', 'Motor', 'documento-100', 199, 1),
@@ -2580,7 +2580,7 @@ INSERT INTO `embarcacion` (`matricula`, `nombre`, `eslora`, `manga`, `calado`, `
 ('matricula-539', 'Autumn Coralroot', '12.89m', '6.82m', '16.76m', 'Vela', 'documento-539', 78, 0),
 ('matricula-54', 'Dyebush', '18.29m', '5.49m', '10.11m', 'Vela', 'documento-54', 107, 1),
 ('matricula-540', 'Delicate Brachythecium Moss', '18.28m', '4.99m', '17.84m', 'Vela', 'documento-540', 80, 0);
-INSERT INTO `embarcacion` (`matricula`, `nombre`, `eslora`, `manga`, `calado`, `propulsion`, `id_cliente`, `id_plaza`, `visto`) VALUES
+INSERT INTO `embarcaciones` (`matricula`, `nombre`, `eslora`, `manga`, `calado`, `propulsion`, `id_cliente`, `id_plaza`, `visto`) VALUES
 ('matricula-541', 'Wild Cineraria', '12.94m', '7.43m', '8.52m', 'Vela', 'documento-541', 82, 0),
 ('matricula-542', 'Gisekia', '14.13m', '4.02m', '11.45m', 'Vela/Motor', 'documento-542', 84, 1),
 ('matricula-543', 'Sessileflower False Goldenaster', '21.31m', '3.03m', '17.43m', 'Vela/Motor', 'documento-543', 86, 0),
@@ -3075,7 +3075,7 @@ INSERT INTO `embarcacion` (`matricula`, `nombre`, `eslora`, `manga`, `calado`, `
 ('matricula-984', 'Sneed\'s Pincushion Cactus', '22.7m', '6.5m', '10.28m', 'Motor', 'documento-984', 968, 1),
 ('matricula-985', 'Coccinia', '20.74m', '2.9m', '13.39m', 'Vela', 'documento-985', 970, 0),
 ('matricula-986', 'Desert Candle', '20.63m', '3.52m', '15.69m', 'Vela/Motor', 'documento-986', 972, 0);
-INSERT INTO `embarcacion` (`matricula`, `nombre`, `eslora`, `manga`, `calado`, `propulsion`, `id_cliente`, `id_plaza`, `visto`) VALUES
+INSERT INTO `embarcaciones` (`matricula`, `nombre`, `eslora`, `manga`, `calado`, `propulsion`, `id_cliente`, `id_plaza`, `visto`) VALUES
 ('matricula-987', 'Fewflower Nutrush', '12.31m', '3.21m', '11.79m', 'Vela/Motor', 'documento-987', 974, 0),
 ('matricula-988', 'Rush Pussytoes', '17.29m', '2.13m', '10.01m', 'Motor', 'documento-988', 976, 0),
 ('matricula-989', 'Scouler\'s Popcornflower', '12.69m', '4.97m', '17.51m', 'Vela', 'documento-989', 978, 0),
@@ -3094,10 +3094,10 @@ INSERT INTO `embarcacion` (`matricula`, `nombre`, `eslora`, `manga`, `calado`, `
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `instalacion`
+-- Estructura de tabla para la tabla `instalaciones`
 --
 
-CREATE TABLE `instalacion` (
+CREATE TABLE `instalaciones` (
   `id` tinyint NOT NULL,
   `codigo` varchar(20) NOT NULL,
   `nombrePuerto` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
@@ -3108,10 +3108,11 @@ CREATE TABLE `instalacion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Volcado de datos para la tabla `instalacion`
+-- Volcado de datos para la tabla `instalaciones`
 --
 
-INSERT INTO `instalacion` (`id`, `codigo`, `nombrePuerto`, `descripcion`, `estado`, `visto`, `fechaDisposicion`) VALUES
+INSERT INTO `instalaciones` (`id`, `codigo`, `nombrePuerto`, `descripcion`, `estado`, `visto`, `fechaDisposicion`) VALUES
+(0, 'AA-00', '**Todos**', 'Acceso a todos los puertos disponibles', 'ADMIN', 0, '2023-02-04 16:15:00'),
 (1, 'GL-37', 'Adana', 'Consultar horario de apertura', 'Bueno', 1, '2009-10-16 16:26:42'),
 (2, 'UE-80', 'Antofagasta', 'Abierto de 8:00 a 20:00', 'Mantenimiento', 0, '2012-04-10 14:58:18'),
 (3, 'BY-53', 'Bragança', 'Abierto 24 horas', 'Mantenimiento', 1, '2002-12-17 04:52:34'),
@@ -3529,15 +3530,19 @@ INSERT INTO `instalacionesUsuarios` (`id`, `idInstalacion`, `idUsuario`) VALUES
 (297, 97, 'email_prueba_297@gmail.com'),
 (298, 98, 'email_prueba_298@gmail.com'),
 (299, 99, 'email_prueba_299@gmail.com'),
-(300, 100, 'email_prueba_300@gmail.com');
+(300, 100, 'email_prueba_300@gmail.com'),
+(301, 1, 'raucarran@alu.edu.gva.es'),
+(302, 1, 'ejemplo@gmail.com'),
+(303, 0, 'luicorizq@alu.edu.gva.es'),
+(304, 0, 'juasaebar@alu.edu.gva.es');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `mensaje`
+-- Estructura de tabla para la tabla `mensajes`
 --
 
-CREATE TABLE `mensaje` (
+CREATE TABLE `mensajes` (
   `id` bigint NOT NULL,
   `texto` varchar(535) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `fecha_hora` timestamp NOT NULL,
@@ -3547,11 +3552,11 @@ CREATE TABLE `mensaje` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Volcado de datos para la tabla `mensaje`
+-- Volcado de datos para la tabla `mensajes`
 --
 
-INSERT INTO `mensaje` (`id`, `texto`, `fecha_hora`, `leido`, `idUsuarioOrigen`, `idUsuarioDestino`) VALUES
-(1, 'Hoy hay previstos 1 entradas de embarcaciones al puerto', '2022-07-04 14:41:31', 0, 'email_prueba_1@gmail.com', 'email_prueba_151@gmail.com'),
+INSERT INTO `mensajes` (`id`, `texto`, `fecha_hora`, `leido`, `idUsuarioOrigen`, `idUsuarioDestino`) VALUES
+(1, 'Hoy hay previstos 1 entradas de embarcaciones al puerto', '2022-07-04 14:41:31', 1, 'email_prueba_1@gmail.com', 'email_prueba_151@gmail.com'),
 (2, 'Hoy no hay ninguna prevision de entrada y/o salida de ninguna embarcacion', '2022-05-05 21:00:44', 0, 'email_prueba_2@gmail.com', 'email_prueba_152@gmail.com'),
 (3, 'Hoy no hay ninguna prevision de entrada y/o salida de ninguna embarcacion', '2022-09-07 19:11:32', 0, 'email_prueba_3@gmail.com', 'email_prueba_153@gmail.com'),
 (4, 'Hoy hay previstos 1 entradas de embarcaciones al puerto', '2022-07-03 07:30:39', 0, 'email_prueba_4@gmail.com', 'email_prueba_154@gmail.com'),
@@ -3880,7 +3885,7 @@ INSERT INTO `mensaje` (`id`, `texto`, `fecha_hora`, `leido`, `idUsuarioOrigen`, 
 (327, 'Hoy hay previstos 4 entradas de embarcaciones al puerto', '2022-06-04 22:41:21', 1, 'email_prueba_27@gmail.com', 'email_prueba_177@gmail.com'),
 (328, 'Hoy hay previstos 3 salidas de embarcaciones del puerto', '2022-11-03 16:16:52', 1, 'email_prueba_28@gmail.com', 'email_prueba_178@gmail.com'),
 (329, 'Hoy hay previstos 2 salidas de embarcaciones del puerto', '2022-06-26 09:38:58', 1, 'email_prueba_29@gmail.com', 'email_prueba_179@gmail.com');
-INSERT INTO `mensaje` (`id`, `texto`, `fecha_hora`, `leido`, `idUsuarioOrigen`, `idUsuarioDestino`) VALUES
+INSERT INTO `mensajes` (`id`, `texto`, `fecha_hora`, `leido`, `idUsuarioOrigen`, `idUsuarioDestino`) VALUES
 (330, 'Hoy hay previstos 4 entradas de embarcaciones al puerto', '2022-10-25 11:58:21', 0, 'email_prueba_30@gmail.com', 'email_prueba_180@gmail.com'),
 (331, 'Hoy hay previstos 2 salidas de embarcaciones del puerto', '2022-12-07 04:03:23', 1, 'email_prueba_31@gmail.com', 'email_prueba_181@gmail.com'),
 (332, 'Hoy hay previstos 3 salidas de embarcaciones del puerto', '2022-04-06 20:15:02', 0, 'email_prueba_32@gmail.com', 'email_prueba_182@gmail.com'),
@@ -4211,7 +4216,7 @@ INSERT INTO `mensaje` (`id`, `texto`, `fecha_hora`, `leido`, `idUsuarioOrigen`, 
 (657, 'Hoy hay previstos 1 entradas de embarcaciones al puerto', '2022-08-27 19:17:05', 0, 'email_prueba_57@gmail.com', 'email_prueba_207@gmail.com'),
 (658, 'Hoy hay previstos 1 salidas de embarcaciones del puerto', '2022-06-13 22:20:27', 1, 'email_prueba_58@gmail.com', 'email_prueba_208@gmail.com'),
 (659, 'Hoy hay previstos 1 salidas de embarcaciones del puerto', '2022-03-15 17:41:03', 1, 'email_prueba_59@gmail.com', 'email_prueba_209@gmail.com');
-INSERT INTO `mensaje` (`id`, `texto`, `fecha_hora`, `leido`, `idUsuarioOrigen`, `idUsuarioDestino`) VALUES
+INSERT INTO `mensajes` (`id`, `texto`, `fecha_hora`, `leido`, `idUsuarioOrigen`, `idUsuarioDestino`) VALUES
 (660, 'Hoy no hay ninguna prevision de entrada y/o salida de ninguna embarcacion', '2022-04-11 08:18:02', 0, 'email_prueba_60@gmail.com', 'email_prueba_210@gmail.com'),
 (661, 'Hoy hay previstos 3 entradas de embarcaciones al puerto', '2022-09-03 04:25:50', 1, 'email_prueba_61@gmail.com', 'email_prueba_211@gmail.com'),
 (662, 'Hoy hay previstos 1 entradas de embarcaciones al puerto', '2022-08-25 02:51:32', 0, 'email_prueba_62@gmail.com', 'email_prueba_212@gmail.com'),
@@ -4541,7 +4546,7 @@ INSERT INTO `mensaje` (`id`, `texto`, `fecha_hora`, `leido`, `idUsuarioOrigen`, 
 (986, 'Hoy hay previstos 4 entradas de embarcaciones al puerto', '2022-02-14 10:11:29', 0, 'email_prueba_86@gmail.com', 'email_prueba_236@gmail.com'),
 (987, 'Hoy no hay ninguna prevision de entrada y/o salida de ninguna embarcacion', '2022-07-28 09:46:55', 1, 'email_prueba_87@gmail.com', 'email_prueba_237@gmail.com'),
 (988, 'Hoy hay previstos 1 salidas de embarcaciones del puerto', '2022-11-16 16:11:58', 0, 'email_prueba_88@gmail.com', 'email_prueba_238@gmail.com');
-INSERT INTO `mensaje` (`id`, `texto`, `fecha_hora`, `leido`, `idUsuarioOrigen`, `idUsuarioDestino`) VALUES
+INSERT INTO `mensajes` (`id`, `texto`, `fecha_hora`, `leido`, `idUsuarioOrigen`, `idUsuarioDestino`) VALUES
 (989, 'Hoy hay previstos 2 salidas de embarcaciones del puerto', '2022-05-06 23:36:59', 1, 'email_prueba_89@gmail.com', 'email_prueba_239@gmail.com'),
 (990, 'Hoy hay previstos 4 entradas de embarcaciones al puerto', '2022-11-03 00:56:34', 0, 'email_prueba_90@gmail.com', 'email_prueba_240@gmail.com'),
 (991, 'Hoy hay previstos 3 entradas de embarcaciones al puerto', '2022-06-25 09:57:19', 1, 'email_prueba_91@gmail.com', 'email_prueba_241@gmail.com'),
@@ -4869,7 +4874,7 @@ INSERT INTO `mensaje` (`id`, `texto`, `fecha_hora`, `leido`, `idUsuarioOrigen`, 
 (1313, 'Hoy hay previstos 4 salidas de embarcaciones del puerto', '2022-01-21 04:35:24', 1, 'email_prueba_163@gmail.com', 'email_prueba_13@gmail.com'),
 (1314, 'Hoy hay previstos 2 entradas de embarcaciones al puerto', '2022-08-17 04:06:08', 0, 'email_prueba_164@gmail.com', 'email_prueba_14@gmail.com'),
 (1315, 'Hoy hay previstos 2 entradas de embarcaciones al puerto', '2022-12-23 00:20:33', 1, 'email_prueba_165@gmail.com', 'email_prueba_15@gmail.com');
-INSERT INTO `mensaje` (`id`, `texto`, `fecha_hora`, `leido`, `idUsuarioOrigen`, `idUsuarioDestino`) VALUES
+INSERT INTO `mensajes` (`id`, `texto`, `fecha_hora`, `leido`, `idUsuarioOrigen`, `idUsuarioDestino`) VALUES
 (1316, 'Hoy hay previstos 1 salidas de embarcaciones del puerto', '2022-02-24 05:40:48', 0, 'email_prueba_166@gmail.com', 'email_prueba_16@gmail.com'),
 (1317, 'Hoy hay previstos 3 entradas de embarcaciones al puerto', '2022-08-09 06:12:40', 1, 'email_prueba_167@gmail.com', 'email_prueba_17@gmail.com'),
 (1318, 'Hoy no hay ninguna prevision de entrada y/o salida de ninguna embarcacion', '2022-04-22 03:42:53', 1, 'email_prueba_168@gmail.com', 'email_prueba_18@gmail.com'),
@@ -5196,7 +5201,7 @@ INSERT INTO `mensaje` (`id`, `texto`, `fecha_hora`, `leido`, `idUsuarioOrigen`, 
 (1639, 'Hoy no hay ninguna prevision de entrada y/o salida de ninguna embarcacion', '2022-12-23 17:04:16', 1, 'email_prueba_189@gmail.com', 'email_prueba_39@gmail.com'),
 (1640, 'Hoy hay previstos 4 entradas de embarcaciones al puerto', '2022-02-12 12:17:27', 1, 'email_prueba_190@gmail.com', 'email_prueba_40@gmail.com'),
 (1641, 'Hoy hay previstos 1 entradas de embarcaciones al puerto', '2022-07-10 02:58:27', 0, 'email_prueba_191@gmail.com', 'email_prueba_41@gmail.com');
-INSERT INTO `mensaje` (`id`, `texto`, `fecha_hora`, `leido`, `idUsuarioOrigen`, `idUsuarioDestino`) VALUES
+INSERT INTO `mensajes` (`id`, `texto`, `fecha_hora`, `leido`, `idUsuarioOrigen`, `idUsuarioDestino`) VALUES
 (1642, 'Hoy hay previstos 2 entradas de embarcaciones al puerto', '2022-07-21 10:36:48', 1, 'email_prueba_192@gmail.com', 'email_prueba_42@gmail.com'),
 (1643, 'Hoy hay previstos 3 salidas de embarcaciones del puerto', '2022-06-01 05:50:07', 1, 'email_prueba_193@gmail.com', 'email_prueba_43@gmail.com'),
 (1644, 'Hoy hay previstos 4 salidas de embarcaciones del puerto', '2022-09-30 07:13:15', 1, 'email_prueba_194@gmail.com', 'email_prueba_44@gmail.com'),
@@ -5521,7 +5526,7 @@ INSERT INTO `mensaje` (`id`, `texto`, `fecha_hora`, `leido`, `idUsuarioOrigen`, 
 (1963, 'Hoy no hay ninguna prevision de entrada y/o salida de ninguna embarcacion', '2022-03-21 11:35:08', 0, 'email_prueba_213@gmail.com', 'email_prueba_63@gmail.com'),
 (1964, 'Hoy hay previstos 1 salidas de embarcaciones del puerto', '2022-10-23 01:44:59', 1, 'email_prueba_214@gmail.com', 'email_prueba_64@gmail.com'),
 (1965, 'Hoy hay previstos 1 salidas de embarcaciones del puerto', '2022-08-29 05:52:46', 0, 'email_prueba_215@gmail.com', 'email_prueba_65@gmail.com');
-INSERT INTO `mensaje` (`id`, `texto`, `fecha_hora`, `leido`, `idUsuarioOrigen`, `idUsuarioDestino`) VALUES
+INSERT INTO `mensajes` (`id`, `texto`, `fecha_hora`, `leido`, `idUsuarioOrigen`, `idUsuarioDestino`) VALUES
 (1966, 'Hoy hay previstos 2 entradas de embarcaciones al puerto', '2022-12-15 18:27:08', 0, 'email_prueba_216@gmail.com', 'email_prueba_66@gmail.com'),
 (1967, 'Hoy hay previstos 1 salidas de embarcaciones del puerto', '2022-08-09 15:19:40', 0, 'email_prueba_217@gmail.com', 'email_prueba_67@gmail.com'),
 (1968, 'Hoy hay previstos 2 entradas de embarcaciones al puerto', '2022-05-30 16:35:04', 1, 'email_prueba_218@gmail.com', 'email_prueba_68@gmail.com'),
@@ -5556,25 +5561,37 @@ INSERT INTO `mensaje` (`id`, `texto`, `fecha_hora`, `leido`, `idUsuarioOrigen`, 
 (1997, 'Hoy hay previstos 4 entradas de embarcaciones al puerto', '2022-06-27 05:03:16', 1, 'email_prueba_247@gmail.com', 'email_prueba_97@gmail.com'),
 (1998, 'Hoy hay previstos 2 salidas de embarcaciones del puerto', '2022-02-02 16:04:04', 1, 'email_prueba_248@gmail.com', 'email_prueba_98@gmail.com'),
 (1999, 'Hoy hay previstos 1 entradas de embarcaciones al puerto', '2022-05-19 00:57:20', 0, 'email_prueba_249@gmail.com', 'email_prueba_99@gmail.com'),
-(2000, 'Hoy hay previstos 2 salidas de embarcaciones del puerto', '2022-04-14 16:54:24', 1, 'email_prueba_250@gmail.com', 'email_prueba_100@gmail.com');
+(2000, 'Hoy hay previstos 2 salidas de embarcaciones del puerto', '2022-04-14 16:54:24', 1, 'email_prueba_250@gmail.com', 'email_prueba_100@gmail.com'),
+(2001, 'MENSAJE DE EJEMPLO 1', '2023-02-04 17:23:01', 0, 'juasaebar@alu.edu.gva.es', 'raucarran@alu.edu.gva.es'),
+(2002, 'MENSAJE D EJEMPLO 2', '2023-02-04 17:23:16', 0, 'juasaebar@alu.edu.gva.es', 'raucarran@alu.edu.gva.es'),
+(2003, 'MENSAJE DE EJEMPLO 1', '2023-02-04 17:23:35', 0, 'juasaebar@alu.edu.gva.es', 'luicorizq@alu.edu.gva.es'),
+(2004, 'MENSAJE D EJEMPLO 2', '2023-02-04 17:23:46', 0, 'juasaebar@alu.edu.gva.es', 'luicorizq@alu.edu.gva.es'),
+(2005, 'MENSAJE DE EJEMPLO 1', '2023-02-04 17:26:12', 0, 'luicorizq@alu.edu.gva.es', 'juasaebar@alu.edu.gva.es'),
+(2006, 'MENSAJE D EJEMPLO 2', '2023-02-04 17:26:22', 0, 'luicorizq@alu.edu.gva.es', 'juasaebar@alu.edu.gva.es'),
+(2007, 'MENSAJE DE EJEMPLO 1', '2023-02-04 17:26:50', 0, 'luicorizq@alu.edu.gva.es', 'raucarran@alu.edu.gva.es'),
+(2008, 'MENSAJE D EJEMPLO 2', '2023-02-04 17:27:10', 0, 'luicorizq@alu.edu.gva.es', 'raucarran@alu.edu.gva.es'),
+(2009, 'MENSAJE DE EJEMPLO 1', '2023-02-04 17:28:32', 0, 'raucarran@alu.edu.gva.es', 'juasaebar@alu.edu.gva.es'),
+(2010, 'MENSAJE D EJEMPLO 2', '2023-02-04 17:28:42', 0, 'raucarran@alu.edu.gva.es', 'juasaebar@alu.edu.gva.es'),
+(2011, 'MENSAJE DE EJEMPLO 1', '2023-02-04 17:28:51', 0, 'raucarran@alu.edu.gva.es', 'luicorizq@alu.edu.gva.es'),
+(2012, 'MENSAJE D EJEMPLO 2', '2023-02-04 17:29:00', 0, 'raucarran@alu.edu.gva.es', 'luicorizq@alu.edu.gva.es');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `muelle`
+-- Estructura de tabla para la tabla `muelles`
 --
 
-CREATE TABLE `muelle` (
+CREATE TABLE `muelles` (
   `id` int NOT NULL,
   `idInstalacion` tinyint NOT NULL,
   `visto` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Volcado de datos para la tabla `muelle`
+-- Volcado de datos para la tabla `muelles`
 --
 
-INSERT INTO `muelle` (`id`, `idInstalacion`, `visto`) VALUES
+INSERT INTO `muelles` (`id`, `idInstalacion`, `visto`) VALUES
 (1, 55, 0),
 (2, 86, 1),
 (3, 48, 1),
@@ -6079,10 +6096,10 @@ INSERT INTO `muelle` (`id`, `idInstalacion`, `visto`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `plaza`
+-- Estructura de tabla para la tabla `plazas`
 --
 
-CREATE TABLE `plaza` (
+CREATE TABLE `plazas` (
   `id` int NOT NULL,
   `disponible` tinyint(1) NOT NULL,
   `visto` tinyint(1) NOT NULL,
@@ -6093,10 +6110,10 @@ CREATE TABLE `plaza` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Volcado de datos para la tabla `plaza`
+-- Volcado de datos para la tabla `plazas`
 --
 
-INSERT INTO `plaza` (`id`, `disponible`, `visto`, `puertoOrigen`, `puertoDestino`, `año`, `idMuelle`) VALUES
+INSERT INTO `plazas` (`id`, `disponible`, `visto`, `puertoOrigen`, `puertoDestino`, `año`, `idMuelle`) VALUES
 (1, 0, 0, 'Shungnak', 'Chutes-des-Passes', 2002, 1),
 (2, 0, 1, 'Santana Ramos', NULL, 2003, 2),
 (3, 0, 1, 'Taba', 'Attu', 2012, 3),
@@ -7159,7 +7176,7 @@ INSERT INTO `plaza` (`id`, `disponible`, `visto`, `puertoOrigen`, `puertoDestino
 (1060, 0, 1, 'Salerno', 'Trapani (TP)', 2004, 60),
 (1061, 0, 1, 'Cutral-Co', 'Joliet', 2007, 61),
 (1062, 0, 1, 'Alamogordo', NULL, 2005, 62);
-INSERT INTO `plaza` (`id`, `disponible`, `visto`, `puertoOrigen`, `puertoDestino`, `año`, `idMuelle`) VALUES
+INSERT INTO `plazas` (`id`, `disponible`, `visto`, `puertoOrigen`, `puertoDestino`, `año`, `idMuelle`) VALUES
 (1063, 0, 0, NULL, 'Stony Rapids', 2001, 63),
 (1064, 0, 0, NULL, 'Mbatiri', 2010, 64),
 (1065, 0, 1, NULL, 'St Paul Island', 2009, 65),
@@ -8237,7 +8254,7 @@ INSERT INTO `plaza` (`id`, `disponible`, `visto`, `puertoOrigen`, `puertoDestino
 (2137, 1, 1, NULL, NULL, 2012, 137),
 (2138, 1, 0, NULL, NULL, 2006, 138),
 (2139, 1, 1, NULL, NULL, 1992, 139);
-INSERT INTO `plaza` (`id`, `disponible`, `visto`, `puertoOrigen`, `puertoDestino`, `año`, `idMuelle`) VALUES
+INSERT INTO `plazas` (`id`, `disponible`, `visto`, `puertoOrigen`, `puertoDestino`, `año`, `idMuelle`) VALUES
 (2140, 1, 1, NULL, NULL, 1993, 140),
 (2141, 1, 0, NULL, NULL, 1989, 141),
 (2142, 1, 0, NULL, NULL, 1995, 142),
@@ -9103,19 +9120,19 @@ INSERT INTO `plaza` (`id`, `disponible`, `visto`, `puertoOrigen`, `puertoDestino
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `telefono`
+-- Estructura de tabla para la tabla `telefonos`
 --
 
-CREATE TABLE `telefono` (
+CREATE TABLE `telefonos` (
   `numero` varchar(20) NOT NULL,
   `idCliente` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Volcado de datos para la tabla `telefono`
+-- Volcado de datos para la tabla `telefonos`
 --
 
-INSERT INTO `telefono` (`numero`, `idCliente`) VALUES
+INSERT INTO `telefonos` (`numero`, `idCliente`) VALUES
 ('+374-682-754-3122', 'documento-1'),
 ('+374-763-505-6934', 'documento-10'),
 ('+973-298-196-8325', 'documento-100'),
@@ -10120,20 +10137,20 @@ INSERT INTO `telefono` (`numero`, `idCliente`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `transito`
+-- Estructura de tabla para la tabla `transitos`
 --
 
-CREATE TABLE `transito` (
+CREATE TABLE `transitos` (
   `idPlaza` int NOT NULL,
   `fechaEntrada` timestamp NOT NULL,
   `fechaSalida` timestamp NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Volcado de datos para la tabla `transito`
+-- Volcado de datos para la tabla `transitos`
 --
 
-INSERT INTO `transito` (`idPlaza`, `fechaEntrada`, `fechaSalida`) VALUES
+INSERT INTO `transitos` (`idPlaza`, `fechaEntrada`, `fechaSalida`) VALUES
 (2, '2021-11-16 20:14:55', '2022-09-30 02:17:42'),
 (4, '2021-12-21 01:59:24', '2022-10-09 16:21:37'),
 (6, '2021-12-06 01:15:42', '2022-07-11 10:03:54'),
@@ -11104,7 +11121,7 @@ INSERT INTO `transito` (`idPlaza`, `fechaEntrada`, `fechaSalida`) VALUES
 (1936, '2021-12-11 16:47:35', '2022-02-20 09:44:01'),
 (1938, '2021-11-28 06:50:54', '2022-11-12 20:14:06'),
 (1940, '2021-12-20 23:25:56', '2022-09-22 19:20:15');
-INSERT INTO `transito` (`idPlaza`, `fechaEntrada`, `fechaSalida`) VALUES
+INSERT INTO `transitos` (`idPlaza`, `fechaEntrada`, `fechaSalida`) VALUES
 (1942, '2021-12-13 15:25:20', '2022-12-04 05:03:50'),
 (1944, '2021-11-19 15:56:03', '2022-03-14 23:58:55'),
 (1946, '2021-10-19 12:54:42', '2022-02-01 13:34:58'),
@@ -11139,10 +11156,10 @@ INSERT INTO `transito` (`idPlaza`, `fechaEntrada`, `fechaSalida`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tripulante`
+-- Estructura de tabla para la tabla `tripulantes`
 --
 
-CREATE TABLE `tripulante` (
+CREATE TABLE `tripulantes` (
   `numDocumento` varchar(20) NOT NULL,
   `nombre` varchar(30) NOT NULL,
   `apellidos` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
@@ -11159,10 +11176,10 @@ CREATE TABLE `tripulante` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Volcado de datos para la tabla `tripulante`
+-- Volcado de datos para la tabla `tripulantes`
 --
 
-INSERT INTO `tripulante` (`numDocumento`, `nombre`, `apellidos`, `nacionalidad`, `fechaNacimiento`, `lugarNacimiento`, `paisNacimiento`, `tipoDocumento`, `fechaExpedicionDocumento`, `fechaCaducidadDocumento`, `id_plaza`, `id_embarcacion`, `visto`) VALUES
+INSERT INTO `tripulantes` (`numDocumento`, `nombre`, `apellidos`, `nacionalidad`, `fechaNacimiento`, `lugarNacimiento`, `paisNacimiento`, `tipoDocumento`, `fechaExpedicionDocumento`, `fechaCaducidadDocumento`, `id_plaza`, `id_embarcacion`, `visto`) VALUES
 ('documento-1', 'Marley', 'Kennion', 'Peru', '1980-10-18', 'Andahuaylillas', 'Indonesia', 'DNI', '2017-02-04', '2028-01-19', 2, 'matricula-501', 1),
 ('documento-10', 'Merrie', 'Wiffen', 'Bulgaria', '1984-07-05', 'Perushtitsa', 'Malawi', 'Pasaporte', '2015-06-12', '2028-06-29', 20, 'matricula-510', 0),
 ('documento-100', 'Deonne', 'Springett', 'China', '1978-02-03', 'Sanyi', 'France', 'DNI', '2016-05-28', '2028-10-23', 200, 'matricula-600', 0),
@@ -11495,7 +11512,7 @@ INSERT INTO `tripulante` (`numDocumento`, `nombre`, `apellidos`, `nacionalidad`,
 ('documento-395', 'Robin', 'Lee', 'China', '1990-03-07', 'Lugang', 'China', 'NIE', '2017-11-10', '2028-12-22', 790, 'matricula-895', 1),
 ('documento-396', 'Willyt', 'Boothroyd', 'Peru', '2003-09-20', 'Aniso', 'Ukraine', 'DNI', '2015-02-23', '2029-01-11', 792, 'matricula-896', 0),
 ('documento-397', 'Kelvin', 'Mobley', 'Democratic Republic of the Congo', '1987-12-29', 'Bongandanga', 'Greece', 'Pasaporte', '2016-08-25', '2028-06-12', 794, 'matricula-897', 0);
-INSERT INTO `tripulante` (`numDocumento`, `nombre`, `apellidos`, `nacionalidad`, `fechaNacimiento`, `lugarNacimiento`, `paisNacimiento`, `tipoDocumento`, `fechaExpedicionDocumento`, `fechaCaducidadDocumento`, `id_plaza`, `id_embarcacion`, `visto`) VALUES
+INSERT INTO `tripulantes` (`numDocumento`, `nombre`, `apellidos`, `nacionalidad`, `fechaNacimiento`, `lugarNacimiento`, `paisNacimiento`, `tipoDocumento`, `fechaExpedicionDocumento`, `fechaCaducidadDocumento`, `id_plaza`, `id_embarcacion`, `visto`) VALUES
 ('documento-398', 'Gino', 'Ribeiro', 'Czech Republic', '1999-06-10', 'Police nad Metují', 'Japan', 'DNI', '2017-04-21', '2028-04-18', 796, 'matricula-898', 1),
 ('documento-399', 'Mechelle', 'Dybbe', 'China', '1996-05-08', 'Shiquanhe', 'Indonesia', 'DNI', '2017-04-20', '2028-07-31', 798, 'matricula-899', 1),
 ('documento-4', 'Winfield', 'Hardaway', 'France', '1994-07-08', 'Lacroix-Saint-Ouen', 'France', 'DNI', '2015-10-05', '2028-08-30', 8, 'matricula-504', 0),
@@ -11829,7 +11846,7 @@ INSERT INTO `tripulante` (`numDocumento`, `nombre`, `apellidos`, `nacionalidad`,
 ('documento-695', 'Jonathon', 'Josovich', 'France', '1977-07-28', 'Épernay', 'Egypt', 'DNI', '2017-10-13', '2028-01-23', 390, 'matricula-695', 0),
 ('documento-696', 'Astrix', 'Oughton', 'Sweden', '1988-09-09', 'Ängelholm', 'China', 'NIE', '2015-10-25', '2028-03-02', 392, 'matricula-696', 1),
 ('documento-697', 'Courtney', 'Paulson', 'Sweden', '1982-10-13', 'Luleå', 'China', 'Pasaporte', '2015-11-11', '2028-12-11', 394, 'matricula-697', 0);
-INSERT INTO `tripulante` (`numDocumento`, `nombre`, `apellidos`, `nacionalidad`, `fechaNacimiento`, `lugarNacimiento`, `paisNacimiento`, `tipoDocumento`, `fechaExpedicionDocumento`, `fechaCaducidadDocumento`, `id_plaza`, `id_embarcacion`, `visto`) VALUES
+INSERT INTO `tripulantes` (`numDocumento`, `nombre`, `apellidos`, `nacionalidad`, `fechaNacimiento`, `lugarNacimiento`, `paisNacimiento`, `tipoDocumento`, `fechaExpedicionDocumento`, `fechaCaducidadDocumento`, `id_plaza`, `id_embarcacion`, `visto`) VALUES
 ('documento-698', 'Dolley', 'Antill', 'Nigeria', '1982-10-13', 'Omu Aran', 'Thailand', 'NIE', '2017-01-02', '2028-08-12', 396, 'matricula-698', 1),
 ('documento-699', 'Vonnie', 'Burstow', 'Brazil', '2002-12-15', 'Jataí', 'Brazil', 'Pasaporte', '2016-09-17', '2028-02-05', 398, 'matricula-699', 0),
 ('documento-7', 'Phil', 'Carrivick', 'Azerbaijan', '1981-01-21', 'Geoktschai', 'China', 'DNI', '2016-03-03', '2028-02-05', 14, 'matricula-507', 0),
@@ -12163,17 +12180,17 @@ INSERT INTO `tripulante` (`numDocumento`, `nombre`, `apellidos`, `nacionalidad`,
 ('documento-995', 'L;urette', 'Sambedge', 'China', '1989-03-20', 'Wuda', 'Finland', 'Pasaporte', '2015-03-08', '2028-11-19', 990, 'matricula-995', 0),
 ('documento-996', 'Rodney', 'Sandall', 'Philippines', '2001-12-23', 'Agdangan', 'China', 'NIE', '2017-01-23', '2028-07-19', 992, 'matricula-996', 1),
 ('documento-997', 'Maisey', 'Diboll', 'United States', '2003-08-01', 'Merrifield', 'China', 'Pasaporte', '2017-02-23', '2028-09-04', 994, 'matricula-997', 1);
-INSERT INTO `tripulante` (`numDocumento`, `nombre`, `apellidos`, `nacionalidad`, `fechaNacimiento`, `lugarNacimiento`, `paisNacimiento`, `tipoDocumento`, `fechaExpedicionDocumento`, `fechaCaducidadDocumento`, `id_plaza`, `id_embarcacion`, `visto`) VALUES
+INSERT INTO `tripulantes` (`numDocumento`, `nombre`, `apellidos`, `nacionalidad`, `fechaNacimiento`, `lugarNacimiento`, `paisNacimiento`, `tipoDocumento`, `fechaExpedicionDocumento`, `fechaCaducidadDocumento`, `id_plaza`, `id_embarcacion`, `visto`) VALUES
 ('documento-998', 'Delila', 'Rubinsky', 'Russia', '1993-06-24', 'Nevinnomyssk', 'Armenia', 'DNI', '2015-02-28', '2028-09-15', 996, 'matricula-998', 0),
 ('documento-999', 'Gabbie', 'Purchase', 'Japan', '1982-02-13', 'Kushikino', 'Poland', 'DNI', '2015-12-22', '2028-02-15', 998, 'matricula-999', 0);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE `usuario` (
+CREATE TABLE `usuarios` (
   `nombreUsuario` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `password` varchar(535) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `nombreCompleto` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
@@ -12185,11 +12202,12 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Volcado de datos para la tabla `usuario`
+-- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuario` (`nombreUsuario`, `password`, `nombreCompleto`, `email`, `habilitado`, `perfil`, `idioma`, `visto`) VALUES
-('esidney0', 'VtXnLY1', 'Elnar Sidney', 'email_prueba_1@gmail.com', 1, 'CUERPO-SEGURIDAD', 'Español/Aleman', 1),
+INSERT INTO `usuarios` (`nombreUsuario`, `password`, `nombreCompleto`, `email`, `habilitado`, `perfil`, `idioma`, `visto`) VALUES
+('ejemplo', '$2y$10$IFjIkh9BHPvQlON1Em3mJuj0VGz7I3GHYwIoifDui1NGNvS8/InfG', 'ejemplo', 'ejemplo@gmail.com', 1, 'GUARDA-MUELLES', 'Español', 0),
+('esidney0', 'VtXnLY1', 'Elnar Sidney', 'email_prueba_1@gmail.com', 0, 'CUERPO-SEGURIDAD', 'Español/Aleman', 1),
 ('dfairlem9', 'mDZAa9f2SmL', 'Dominica Fairlem', 'email_prueba_10@gmail.com', 1, 'GERENCIA-PUERTO', 'Español', 1),
 ('ashardlow2r', 'GtIDSpEjnt', 'Angelina Shardlow', 'email_prueba_100@gmail.com', 1, 'GUARDA-MUELLES', 'Español/Aleman', 0),
 ('aravenshear2s', '6Tz5ZuB4', 'Abigale Ravenshear', 'email_prueba_101@gmail.com', 1, 'GUARDA-MUELLES', 'Español/Aleman', 1),
@@ -12488,37 +12506,40 @@ INSERT INTO `usuario` (`nombreUsuario`, `password`, `nombreCompleto`, `email`, `
 ('mmccaughran2n', 'SsMXlHkVzHaC', 'Mitzi McCaughran', 'email_prueba_96@gmail.com', 1, 'CUERPO-SEGURIDAD', 'Español/Ingles', 0),
 ('mkuna2o', 'OzW2e5xx8782', 'Manda Kuna', 'email_prueba_97@gmail.com', 1, 'CUERPO-SEGURIDAD', 'Ingles', 1),
 ('mgullefant2p', 'NMRP00ycfm2t', 'Melantha Gullefant', 'email_prueba_98@gmail.com', 1, 'CUERPO-SEGURIDAD', 'Español/Aleman', 1),
-('ahatley2q', 'ki2zVUfEeMy', 'Antoinette Hatley', 'email_prueba_99@gmail.com', 1, 'GERENCIA-PUERTO', 'Español', 0);
+('ahatley2q', 'ki2zVUfEeMy', 'Antoinette Hatley', 'email_prueba_99@gmail.com', 1, 'GERENCIA-PUERTO', 'Español', 0),
+('jsaez', '$2y$10$YeY8iM8e3QBa.3V1jXCfbuuEhFNIVoBTjugQ5ODnPyfhur5aEPVna', 'Juan Antonio Saez Barcelo', 'juasaebar@alu.edu.gva.es', 1, 'XUNTA-GALICIA', 'Español', 0),
+('lcorberan', '$2y$10$O2LYOryeweMAxU8O3yk7auoUkFwQy.Pq4thw/N3XkL3GoOJ8FjEzu', 'Luis Corberan Izquierdo', 'luicorizq@alu.edu.gva.es', 1, 'XUNTA-GALICIA', 'Español', 0),
+('rcarretero', '$2y$10$ZrH0W/icwEdt8jOsen7xquHIoT3jrcb40AAR4IViCF/MWzmW4AMoa', 'Raul Carretero Randez', 'raucarran@alu.edu.gva.es', 1, 'XUNTA-GALICIA', 'Español', 0);
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `base`
+-- Indices de la tabla `bases`
 --
-ALTER TABLE `base`
+ALTER TABLE `bases`
   ADD PRIMARY KEY (`idPlaza`);
 
 --
--- Indices de la tabla `cliente`
+-- Indices de la tabla `clientes`
 --
-ALTER TABLE `cliente`
+ALTER TABLE `clientes`
   ADD PRIMARY KEY (`numDocumento`);
 
 --
--- Indices de la tabla `embarcacion`
+-- Indices de la tabla `embarcaciones`
 --
-ALTER TABLE `embarcacion`
+ALTER TABLE `embarcaciones`
   ADD PRIMARY KEY (`matricula`),
   ADD UNIQUE KEY `id_plaza` (`id_plaza`),
   ADD KEY `R7` (`id_plaza`),
   ADD KEY `R8` (`id_cliente`);
 
 --
--- Indices de la tabla `instalacion`
+-- Indices de la tabla `instalaciones`
 --
-ALTER TABLE `instalacion`
+ALTER TABLE `instalaciones`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -12530,52 +12551,52 @@ ALTER TABLE `instalacionesUsuarios`
   ADD KEY `RelacionUsuario` (`idUsuario`);
 
 --
--- Indices de la tabla `mensaje`
+-- Indices de la tabla `mensajes`
 --
-ALTER TABLE `mensaje`
+ALTER TABLE `mensajes`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R1` (`idUsuarioDestino`),
   ADD KEY `R2` (`idUsuarioOrigen`);
 
 --
--- Indices de la tabla `muelle`
+-- Indices de la tabla `muelles`
 --
-ALTER TABLE `muelle`
+ALTER TABLE `muelles`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R3` (`idInstalacion`);
 
 --
--- Indices de la tabla `plaza`
+-- Indices de la tabla `plazas`
 --
-ALTER TABLE `plaza`
+ALTER TABLE `plazas`
   ADD PRIMARY KEY (`id`),
   ADD KEY `R4` (`idMuelle`);
 
 --
--- Indices de la tabla `telefono`
+-- Indices de la tabla `telefonos`
 --
-ALTER TABLE `telefono`
+ALTER TABLE `telefonos`
   ADD PRIMARY KEY (`numero`),
   ADD KEY `R9` (`idCliente`);
 
 --
--- Indices de la tabla `transito`
+-- Indices de la tabla `transitos`
 --
-ALTER TABLE `transito`
+ALTER TABLE `transitos`
   ADD PRIMARY KEY (`idPlaza`);
 
 --
--- Indices de la tabla `tripulante`
+-- Indices de la tabla `tripulantes`
 --
-ALTER TABLE `tripulante`
+ALTER TABLE `tripulantes`
   ADD PRIMARY KEY (`numDocumento`),
   ADD KEY `R5` (`id_embarcacion`),
   ADD KEY `R6` (`id_plaza`);
 
 --
--- Indices de la tabla `usuario`
+-- Indices de la tabla `usuarios`
 --
-ALTER TABLE `usuario`
+ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`email`);
 
 --
@@ -12583,45 +12604,45 @@ ALTER TABLE `usuario`
 --
 
 --
--- AUTO_INCREMENT de la tabla `base`
+-- AUTO_INCREMENT de la tabla `bases`
 --
-ALTER TABLE `base`
+ALTER TABLE `bases`
   MODIFY `idPlaza` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2000;
 
 --
--- AUTO_INCREMENT de la tabla `instalacion`
+-- AUTO_INCREMENT de la tabla `instalaciones`
 --
-ALTER TABLE `instalacion`
+ALTER TABLE `instalaciones`
   MODIFY `id` tinyint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
 
 --
 -- AUTO_INCREMENT de la tabla `instalacionesUsuarios`
 --
 ALTER TABLE `instalacionesUsuarios`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=301;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=305;
 
 --
--- AUTO_INCREMENT de la tabla `mensaje`
+-- AUTO_INCREMENT de la tabla `mensajes`
 --
-ALTER TABLE `mensaje`
-  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2001;
+ALTER TABLE `mensajes`
+  MODIFY `id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2013;
 
 --
--- AUTO_INCREMENT de la tabla `muelle`
+-- AUTO_INCREMENT de la tabla `muelles`
 --
-ALTER TABLE `muelle`
+ALTER TABLE `muelles`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=501;
 
 --
--- AUTO_INCREMENT de la tabla `plaza`
+-- AUTO_INCREMENT de la tabla `plazas`
 --
-ALTER TABLE `plaza`
+ALTER TABLE `plazas`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3001;
 
 --
--- AUTO_INCREMENT de la tabla `transito`
+-- AUTO_INCREMENT de la tabla `transitos`
 --
-ALTER TABLE `transito`
+ALTER TABLE `transitos`
   MODIFY `idPlaza` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2001;
 
 --
@@ -12629,62 +12650,62 @@ ALTER TABLE `transito`
 --
 
 --
--- Filtros para la tabla `base`
+-- Filtros para la tabla `bases`
 --
-ALTER TABLE `base`
-  ADD CONSTRAINT `Plaza Base-Plaza` FOREIGN KEY (`idPlaza`) REFERENCES `plaza` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `bases`
+  ADD CONSTRAINT `Plaza Base-Plaza` FOREIGN KEY (`idPlaza`) REFERENCES `plazas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `embarcacion`
+-- Filtros para la tabla `embarcaciones`
 --
-ALTER TABLE `embarcacion`
-  ADD CONSTRAINT `Embarcacion-Cliente` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`numDocumento`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `Embarcacion-Plaza` FOREIGN KEY (`id_plaza`) REFERENCES `plaza` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE `embarcaciones`
+  ADD CONSTRAINT `Embarcacion-Cliente` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`numDocumento`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `Embarcacion-Plaza` FOREIGN KEY (`id_plaza`) REFERENCES `plazas` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Filtros para la tabla `instalacionesUsuarios`
 --
 ALTER TABLE `instalacionesUsuarios`
-  ADD CONSTRAINT `Relacion-Instalacion` FOREIGN KEY (`idInstalacion`) REFERENCES `instalacion` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `Relacion-Usuario` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `Relacion-Instalacion` FOREIGN KEY (`idInstalacion`) REFERENCES `instalaciones` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `Relacion-Usuario` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `mensaje`
+-- Filtros para la tabla `mensajes`
 --
-ALTER TABLE `mensaje`
-  ADD CONSTRAINT `Usuario-Destino` FOREIGN KEY (`idUsuarioDestino`) REFERENCES `usuario` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `Usuario-Origen` FOREIGN KEY (`idUsuarioOrigen`) REFERENCES `usuario` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `mensajes`
+  ADD CONSTRAINT `Usuario-Destino` FOREIGN KEY (`idUsuarioDestino`) REFERENCES `usuarios` (`email`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `Usuario-Origen` FOREIGN KEY (`idUsuarioOrigen`) REFERENCES `usuarios` (`email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `muelle`
+-- Filtros para la tabla `muelles`
 --
-ALTER TABLE `muelle`
-  ADD CONSTRAINT `Muelle-Instalacion` FOREIGN KEY (`idInstalacion`) REFERENCES `instalacion` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE `muelles`
+  ADD CONSTRAINT `Muelle-Instalacion` FOREIGN KEY (`idInstalacion`) REFERENCES `instalaciones` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
--- Filtros para la tabla `plaza`
+-- Filtros para la tabla `plazas`
 --
-ALTER TABLE `plaza`
-  ADD CONSTRAINT `Plaza-Muelle` FOREIGN KEY (`idMuelle`) REFERENCES `muelle` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `plazas`
+  ADD CONSTRAINT `Plaza-Muelle` FOREIGN KEY (`idMuelle`) REFERENCES `muelles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `telefono`
+-- Filtros para la tabla `telefonos`
 --
-ALTER TABLE `telefono`
-  ADD CONSTRAINT `Telefono-Cliente` FOREIGN KEY (`idCliente`) REFERENCES `cliente` (`numDocumento`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `telefonos`
+  ADD CONSTRAINT `Telefono-Cliente` FOREIGN KEY (`idCliente`) REFERENCES `clientes` (`numDocumento`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `transito`
+-- Filtros para la tabla `transitos`
 --
-ALTER TABLE `transito`
-  ADD CONSTRAINT `Plaza Transito-Plaza` FOREIGN KEY (`idPlaza`) REFERENCES `plaza` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `transitos`
+  ADD CONSTRAINT `Plaza Transito-Plaza` FOREIGN KEY (`idPlaza`) REFERENCES `plazas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `tripulante`
+-- Filtros para la tabla `tripulantes`
 --
-ALTER TABLE `tripulante`
-  ADD CONSTRAINT `Tripulante-Embarcacion` FOREIGN KEY (`id_embarcacion`) REFERENCES `embarcacion` (`matricula`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `Tripulante-PlazaTransito` FOREIGN KEY (`id_plaza`) REFERENCES `transito` (`idPlaza`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `tripulantes`
+  ADD CONSTRAINT `Tripulante-Embarcacion` FOREIGN KEY (`id_embarcacion`) REFERENCES `embarcaciones` (`matricula`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `Tripulante-PlazaTransito` FOREIGN KEY (`id_plaza`) REFERENCES `transitos` (`idPlaza`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
