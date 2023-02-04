@@ -10,6 +10,7 @@ use App\Models\Usuario;
 class UsuarioController extends Controller
 {
     public function index(){
+
         $usuarios = Usuario::with('instalacionesUsuario')->get();
         return $usuarios;
     }

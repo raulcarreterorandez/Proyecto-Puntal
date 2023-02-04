@@ -26,6 +26,18 @@
                         <a class="nav-item active nav-link text-white" href="{{ route('mensajes.index') }}">Mensajes</a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-item active nav-link text-white" href="{{ route('instalaciones.index') }}">Instalaciones</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-item active nav-link text-white" href="{{ route('muelles.index') }}">Muelles</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-item active nav-link text-white" href="{{ route('plazas.index') }}">Plazas</a>
+                    </li>
+
                     {{--**************** AÑADIR AQUI LAS RUTAS A LOS INDEX DE LOS CONTROLADORES **********************--}}
                     {{-- <li class="nav-item">
                         <a class="nav-item active nav-link text-white" href="{{ route('mensajes.index') }}">Mensajes</a>

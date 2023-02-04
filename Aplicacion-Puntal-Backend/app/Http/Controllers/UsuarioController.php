@@ -16,7 +16,7 @@ class UsuarioController extends Controller
     public function index()
     {
         $usuarios = Usuario::all()->except(auth()->user()->email); // Login Laravel
-        $usuarios = Usuario::all(); // Sin Login Laravel
+        // $usuarios = Usuario::all(); // Sin Login Laravel
 
 
         $instalaciones = Instalacion::all();
