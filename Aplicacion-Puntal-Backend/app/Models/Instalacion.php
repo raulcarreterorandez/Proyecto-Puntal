@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Instalacion extends Model
 {
-    
+    public $timestamps = false;
+    protected $table = 'instalaciones';
+
+
     static $rules = [
 		'codigo' => 'required',
 		'nombrePuerto' => 'required',
@@ -32,7 +35,7 @@ class Instalacion extends Model
     {
         return $this->hasMany('App\Models\InstalacionesUsuario', 'idInstalacion', 'id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -40,6 +43,6 @@ class Instalacion extends Model
     {
         return $this->hasMany('App\Models\Muelle', 'idInstalacion', 'id');
     }
-    
+
 
 }
