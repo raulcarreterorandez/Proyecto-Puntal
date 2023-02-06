@@ -95,7 +95,7 @@ class UsuarioController extends Controller
             'idioma' => 'required',
             'visto' => 'required',
         ]);
-        dd($request);
+        // dd($request);
 
 
         // SI CAMBIAMOS LA CONTRASEÑA
