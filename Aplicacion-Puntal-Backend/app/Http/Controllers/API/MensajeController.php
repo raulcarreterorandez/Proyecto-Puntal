@@ -9,24 +9,22 @@ use Illuminate\Support\Facades\Auth;
 
 
 
-class MensajeController extends Controller
-{
-    public function index()
-    {
+class MensajeController extends Controller {
+    
+    public function index() {
         $user = Auth::user();
-        $mensajes = Mensaje::where('idUsuarioDestino',$user->email)->get();
+        $mensajes = Mensaje::where('idUsuarioDestino', $user->email)->get();
 
         return $mensajes;
     }
 
-    public function show($id)
-    {
+    public function show($id) {
         $mensaje = Mensaje::find($id);
 
         // Dejamos el mensaje como visto y lo actualizamos en la base de datos
         $ensajeVisto = clone $mensaje;
-        $ensajeVisto ->leido = 1;
-        $mensaje -> update($ensajeVisto->toArray());
+        $ensajeVisto->leido = 1;
+        $mensaje->update($ensajeVisto->toArray());
 
         return $mensaje;
     }

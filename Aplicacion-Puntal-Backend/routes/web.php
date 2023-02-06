@@ -29,18 +29,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/user', [AuthController::class, 'infoUser'])->name('info');
 });
 
-// Route::get('/', [HomeController::class, 'index'])->name('home');
-
-// Route::resource('instalaciones', InstalacionController::class);
-
-// Route::resource('muelles', MuelleController::class);
-
-// Route::resource('plazas', PlazaController::class);
-
-// Route::resource('transitos', TransitoController::class);
-
-// Route::resource('bases', TransitoController::class);
-
 
 Route::group(['middleware' => 'xunta'], function () {
 
