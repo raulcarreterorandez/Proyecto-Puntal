@@ -30,13 +30,13 @@ Route::group(['middleware' => 'auth'], function () {
 
 // Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::resource('instalaciones', InstalacionController::class);
+// Route::resource('instalaciones', InstalacionController::class);
 
-Route::resource('muelles', MuelleController::class);
+// Route::resource('muelles', MuelleController::class);
 
-Route::resource('plazas', PlazaController::class);
+// Route::resource('plazas', PlazaController::class);
 
-Route::resource('transitos', TransitoController::class);
+// Route::resource('transitos', TransitoController::class);
 
 
 Route::group(['middleware' => 'xunta'], function () {
