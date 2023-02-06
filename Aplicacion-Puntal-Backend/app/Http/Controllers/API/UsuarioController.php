@@ -10,8 +10,12 @@ use App\Models\Usuario;
 class UsuarioController extends Controller
 {
     public function index(){
+        // Todos los usuarios incluyendo usuario logeado
+        // $usuarios = Usuario::with('instalacionesUsuario')->get();
 
-        $usuarios = Usuario::with('instalacionesUsuario')->get();
+        // Todos los usuarios sin el usuario logeado
+        $usuarios = Usuario::with('instalacionesUsuario')->where('email','!=',auth()->user()->email)->get();
+
         return $usuarios;
     }
 

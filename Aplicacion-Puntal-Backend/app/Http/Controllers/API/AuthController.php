@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Usuario;
+
 
 
 class AuthController extends Controller
@@ -33,7 +35,11 @@ class AuthController extends Controller
 
     public function details()
     {
-        $user = Auth::user();
+        // $user = Auth::user();
+
+        // Toda la informacion del usuario con los puertos asociados
+        $user = Usuario::where("email",Auth::user()->email)->with('instalacionesUsuario')->get();
+
         return response()->json(['success' => $user], $this->successStatus);
     }
 
