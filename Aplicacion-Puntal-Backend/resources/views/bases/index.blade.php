@@ -32,7 +32,7 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover">
+                            <table id="example" class="table table-striped table-hover" style="width: 100%">
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $bases->links() !!}
+                {{-- {!! $bases->links() !!} --}}
             </div>
         </div>
     </div>

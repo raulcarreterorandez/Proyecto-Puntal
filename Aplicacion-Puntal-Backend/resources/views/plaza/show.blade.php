@@ -14,7 +14,7 @@
                         <span class="card-title">Show Plaza</span>
                     </div>
                     <div class="float-right">
-                        <a class="btn btn-primary" href="{{ route('plazas.index') }}"> Back</a>
+                        <a class="btn btn-info btn-sm float-right m-3" href="{{ route('plazas.index') }}"> Back</a>
                     </div>
                 </div>
 

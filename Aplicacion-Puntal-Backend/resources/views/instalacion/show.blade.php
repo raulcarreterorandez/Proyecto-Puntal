@@ -11,10 +11,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show Instalacione</span>
+                            <span class="card-title">Show Instalaciones</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('instalaciones.index') }}"> Back</a>
+                            <a class="btn btn-info btn-sm float-right m-3" href="{{ route('instalaciones.index') }}"> Back</a>
                         </div>
                     </div>
 
@@ -22,27 +22,27 @@
                         
                         <div class="form-group">
                             <strong>Codigo:</strong>
-                            {{ $instalacione->codigo }}
+                            {{ $instalacion->codigo }}
                         </div>
                         <div class="form-group">
                             <strong>Nombrepuerto:</strong>
-                            {{ $instalacione->nombrePuerto }}
+                            {{ $instalacion->nombrePuerto }}
                         </div>
                         <div class="form-group">
                             <strong>Descripcion:</strong>
-                            {{ $instalacione->descripcion }}
+                            {{ $instalacion->descripcion }}
                         </div>
                         <div class="form-group">
                             <strong>Estado:</strong>
-                            {{ $instalacione->estado }}
+                            {{ $instalacion->estado }}
                         </div>
                         <div class="form-group">
                             <strong>Visto:</strong>
-                            {{ $instalacione->visto }}
+                            {{ $instalacion->visto }}
                         </div>
                         <div class="form-group">
                             <strong>Fechadisposicion:</strong>
-                            {{ $instalacione->fechaDisposicion }}
+                            {{ $instalacion->fechaDisposicion }}
                         </div>
 
                     </div>

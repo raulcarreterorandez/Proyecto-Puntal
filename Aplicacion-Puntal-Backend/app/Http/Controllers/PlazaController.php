@@ -10,10 +10,10 @@ use Illuminate\Http\Request;
 class PlazaController extends Controller {
     public function index() {
 
-        $plazas = Plaza::paginate();
+        $plazas = Plaza::all();
 
         return view('plaza.index', compact('plazas'))
-            ->with('i', (request()->input('page', 1) - 1) * $plazas->perPage());
+            ->with('i',0);
     }
 
     public function create() {

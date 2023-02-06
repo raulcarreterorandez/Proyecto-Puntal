@@ -11,10 +11,10 @@ class MuelleController extends Controller {
 
     public function index() {
 
-        $muelles = Muelle::paginate();
+        $muelles = Muelle::all();/* paginate() */
 
         return view('muelle.index', compact('muelles'))
-            ->with('i', (request()->input('page', 1) - 1) * $muelles->perPage());
+            ->with('i', 0 /* (request()->input('page', 1) - 1) * $muelles->perPage() */);
     }
 
     public function create() {
@@ -53,6 +53,7 @@ class MuelleController extends Controller {
     }
 
     public function update(Request $request, Muelle $muelle) {
+
         request()->validate(Muelle::$rules);
 
         $muelle->update($request->all());
@@ -62,6 +63,7 @@ class MuelleController extends Controller {
     }
 
     public function destroy($id) {
+        
         $muelle = Muelle::find($id)->delete();
 
         return redirect()->route('muelles.index')

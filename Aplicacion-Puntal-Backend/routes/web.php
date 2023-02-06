@@ -21,6 +21,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('muelles', MuelleController::class);
     Route::resource('plazas', PlazaController::class);
     Route::resource('transitos', TransitoController::class);
+    Route::resource('bases', TransitoController::class);
     Route::resource('mensajes', MensajeController::class);
     Route::get("mensajes/{id}/responder",[MensajeController::class,'responder'])->name('mensajes.responder');
 
@@ -37,6 +38,8 @@ Route::group(['middleware' => 'auth'], function () {
 // Route::resource('plazas', PlazaController::class);
 
 // Route::resource('transitos', TransitoController::class);
+
+// Route::resource('bases', TransitoController::class);
 
 
 Route::group(['middleware' => 'xunta'], function () {

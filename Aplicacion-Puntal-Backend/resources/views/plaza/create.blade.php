@@ -14,7 +14,7 @@
                 <div class="card card-default">
                     <div class="card-header">
                         <span class="card-title">Create Plaza</span>
-                         <a class="btn btn-info btn-sm float-right m-3" href="{{ route('plaza.index') }}"> Back</a>
+                         <a class="btn btn-info btn-sm float-right m-3" href="{{ route('plazas.index') }}"> Back</a>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('plazas.store') }}"  role="form" enctype="multipart/form-data">

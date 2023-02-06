@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Instalacione
+    Instalacion
 @endsection
 
 @section('content')
@@ -13,11 +13,11 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Instalacione') }}
+                                {{ __('Instalacion') }}
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('instalaciones.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('instalaciones.create') }}" class="btn btn-secondary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
                               </div>
@@ -31,11 +31,11 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover">
+                            <table id="example" class="table table-striped table-hover" style="width: 100%">
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
+                                        <th>Id</th>
 										<th>Codigo</th>
 										<th>Nombrepuerto</th>
 										<th>Descripcion</th>
@@ -50,7 +50,7 @@
                                     @foreach ($instalaciones as $instalacione)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
+                                            <td>{{ $instalacione->id }}</td>
 											<td>{{ $instalacione->codigo }}</td>
 											<td>{{ $instalacione->nombrePuerto }}</td>
 											<td>{{ $instalacione->descripcion }}</td>
@@ -74,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $instalaciones->links() !!}
+                {{-- {!! $instalaciones->links() !!} --}}
             </div>
         </div>
     </div>

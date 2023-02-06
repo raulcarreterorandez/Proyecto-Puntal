@@ -14,7 +14,7 @@
                 <div class="card card-default">
                     <div class="card-header">
                         <span class="card-title">Create Muelle</span>
-                        <a href="{{ route('muelle.index') }}" class="btn btn-info btn-sm float-right m-3" data-placement="left">
+                        <a href="{{ route('muelles.index') }}" class="btn btn-info btn-sm float-right m-3" data-placement="left">
                                 {{ __('Back') }}
                             </a>
                     </div>

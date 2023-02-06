@@ -6,14 +6,14 @@ use App\Models\Instalacion;
 use Illuminate\Http\Request;
 
 
-class InstalacionController extends Controller {
+class InstalacionController extends Controller { 
 
     public function index() {
 
-        $instalaciones = Instalacion::paginate();
+        $instalaciones = Instalacion::all(); //Modificar para datables a un all(), no paginate();
 
-        return view('instalacione.index', compact('instalaciones'))
-            ->with('i', (request()->input('page', 1) - 1) * $instalaciones->perPage());
+        return view('instalacion.index', compact('instalaciones'))
+            ->with('i', 0 /* (request()->input('page', 1) - 1) * $instalaciones->perPage() */);
     }
 
     public function create() {
@@ -46,11 +46,16 @@ class InstalacionController extends Controller {
         return view('instalacion.edit', compact('instalacion'));
     }
 
-    public function update(Request $request, Instalacion $instalacion  ) {
+    public function update(Request $request, $instalacion ) {
 
         request()->validate(Instalacion::$rules);
-
+       
+        $instalacion=Instalacion::find($instalacion);
+        
         $instalacion->update($request->all());
+        //dump($instalacion);        
+        //dd($request->all());
+        //dd($request->id, $request->codigo);
 
         return redirect()->route('instalaciones.index')
             ->with('success', 'Instalacione updated successfully');
