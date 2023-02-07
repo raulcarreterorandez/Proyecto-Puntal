@@ -6,10 +6,10 @@ use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\MensajeController;
 use App\Http\Controllers\API\UsuarioController;
 use App\Http\Controllers\API\InstalacionController;
-use App\Http\Controllers\API\MuellesController;
-use App\Http\Controllers\API\PlazasController;
-use App\Http\Controllers\API\BasesController;
-use App\Http\Controllers\API\TransitosController;
+use App\Http\Controllers\API\MuelleController;
+use App\Http\Controllers\API\PlazaController;
+use App\Http\Controllers\API\BaseController;
+use App\Http\Controllers\API\TransitoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,20 +46,20 @@ Route::group(['middleware' => 'auth:api'], function () {
         Route::get('/instalaciones/{id}', [InstalacionController::class, 'show']);
 
         // RUTAS API - MUELLES
-        Route::get('/muelles', [MuellesController::class, 'index']);
-        Route::get('/muelles/{id}', [MuellesController::class, 'show']);
+        Route::get('/muelles', [MuelleController::class, 'index']);
+        Route::get('/muelles/{id}', [MuelleController::class, 'show']);
 
         // RUTAS API - PLAZAS
-        Route::get('/plazas', [PlazasController::class, 'index']);
-        Route::get('/plazas/{id}', [PlazasController::class, 'show']);
+        Route::get('/plazas', [PlazaController::class, 'index']);
+        Route::get('/plazas/{id}', [PlazaController::class, 'show']);
 
         // RUTAS API - BASES
-        Route::get('/bases', [BasesController::class, 'index']);
-        Route::get('/bases/{id}', [BasesController::class, 'show']);
+        Route::get('/bases', [BaseController::class, 'index']);
+        Route::get('/bases/{id}', [BaseController::class, 'show']);
 
         // RUTAS API - TRÁNSITOS
-        Route::get('/transitos', [TransitosController::class, 'index']);
-        Route::get('/transitos/{id}', [TransitosController::class, 'show']);
+        Route::get('/transitos', [TransitoController::class, 'index']);
+        Route::get('/transitos/{id}', [TransitoController::class, 'show']);
 
         // *** PONER LAS RRUTAS API ***
 

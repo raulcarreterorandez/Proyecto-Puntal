@@ -20,7 +20,7 @@
                                 <a href="{{ route('bases.create') }}" class="btn btn-secondary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
-                                <a class="btn btn-info btn-sm float-right" href="{{ route('plaza.index') }}"> Back</a>
+                                <a class="btn btn-info btn-sm float-right" href="{{ route('plazas.index') }}"> Back</a>
                               </div>
                         </div>
                     </div>

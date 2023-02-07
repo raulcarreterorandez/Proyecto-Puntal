@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bases extends Model {
   
+  protected $primaryKey = "idPlaza";
+  protected $table = 'bases';
   public $timestamps = false;
 
   static $rules = [
@@ -21,6 +23,7 @@ class Bases extends Model {
 
 
   public function plaza() {
+    
     return $this->hasOne('App\Models\Plaza', 'id', 'idPlaza');
   }
 }

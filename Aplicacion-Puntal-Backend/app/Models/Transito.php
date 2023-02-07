@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Transito extends Model {
 
     protected $primaryKey = "idPlaza";
+    protected $table = 'transitos';
     public $timestamps = false;
 
     static $rules = [

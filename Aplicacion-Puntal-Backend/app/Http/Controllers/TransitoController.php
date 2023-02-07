@@ -75,7 +75,7 @@ class TransitoController extends Controller {
         $plazas->disponible = 1; //Cambiamos el valor del campo disponible de la plaza.
         $plazas->update(); //Actualizamos la plaza para hacer permanentes los cambios.
 
-        return redirect()->route('bases.index')
+        return redirect()->route('transitos.index')
             ->with('success', 'Transito deleted successfully');
     }
 }

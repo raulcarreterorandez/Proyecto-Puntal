@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Muelle extends Model
 {
+
+    public $timestamps = false;
     
     static $rules = [
 		'idInstalacion' => 'required',

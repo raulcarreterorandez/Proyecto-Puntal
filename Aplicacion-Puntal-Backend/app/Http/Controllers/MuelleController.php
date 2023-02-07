@@ -56,6 +56,8 @@ class MuelleController extends Controller {
 
         request()->validate(Muelle::$rules);
 
+         /* $muelle = Muelle::find($muelle); */
+
         $muelle->update($request->all());
 
         return redirect()->route('muelles.index')

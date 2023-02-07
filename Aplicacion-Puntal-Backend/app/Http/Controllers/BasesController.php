@@ -39,7 +39,7 @@ class BasesController extends Controller {
         //    dd($plazas);
 
         return redirect()->route('bases.index')
-            ->with('success', 'Basis created successfully.');
+            ->with('success', 'Bases created successfully.');
     }
 
     public function show($id) {

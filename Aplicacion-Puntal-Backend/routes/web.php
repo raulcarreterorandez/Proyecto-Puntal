@@ -4,6 +4,7 @@ use App\Http\Controllers\InstalacionController;
 use App\Http\Controllers\MuelleController;
 use App\Http\Controllers\PlazaController;
 use App\Http\Controllers\TransitoController;
+use App\Http\Controllers\BasesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AuthController;
@@ -21,7 +22,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('muelles', MuelleController::class);
     Route::resource('plazas', PlazaController::class);
     Route::resource('transitos', TransitoController::class);
-    Route::resource('bases', TransitoController::class);
+    Route::resource('bases', BasesController::class);
     Route::resource('mensajes', MensajeController::class);
     Route::get("mensajes/{id}/responder",[MensajeController::class,'responder'])->name('mensajes.responder');
 
