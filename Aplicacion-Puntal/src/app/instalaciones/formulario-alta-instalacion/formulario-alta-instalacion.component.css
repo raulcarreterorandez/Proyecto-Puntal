@@ -2,8 +2,10 @@
     margin-top: 10vh;
     border-radius: 10px;
     background-color: #D9EBFF;
-    height: 70vh;
-    width: 70%;
+    height: 60vh;
+    max-width: 50%;
+    /* box-shadow: 7px 7px 15px #592A08;  */
+    box-shadow: 7px 7px 15px #291201; 
 }
 
 #cabecera {
@@ -15,25 +17,29 @@
 }
 
 #titulo {
-
     padding-bottom: 0px;
     padding-top: 10px;
 }
 
-#centro {
+/* #inText{
+    outline: none;
+    background-color: white;
+    border: 0;
+} */
 
+#centro {
     margin-top: 40px;
 }
 
 #descripcion {
-
     margin-top: 40px;
 }
 
 #boton {
-    margin-top: 10vh;
+    margin-top: 5vh;
     border-radius: 5px;
     border: none;
     background-color: #007BC4;
     width: 25%;
+    box-shadow: 7px 7px 15px #222121; 
 }

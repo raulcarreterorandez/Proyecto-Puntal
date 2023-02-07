@@ -1,8 +1,8 @@
 <div id="contenedor" class="container-fluid">
 
     <div id="cabecera" class="row d-flex">
-        <div id="flecha" class="col-1 d-flex justify-content-start mt-3">
-            <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+        <div class="col-1 d-flex justify-content-start mt-3">
+            <i id="flecha" class="fa fa-arrow-circle-left" aria-hidden="true"></i>
         </div>
 
         <div id="titulo" class="col-11 d-flex justify-content-center align-items-center">
@@ -12,33 +12,36 @@
 
     <div id="centro" class="row d-flex">
 
-        <div class="col-6"> 
-            <p>Código Instalación:</p> 
-            <input type="text" placeholder="Codigo Instalación">
-            <p>Nombre:</p> 
-            <input type="text" placeholder="Nombre">        
+        <div class="col-6">
+            <p class="mb-1">Código Instalación:</p>
+            <input id="inText" type="text" placeholder="Codigo Instalación">
+            <p class="mt-4 mb-1">Nombre:</p>
+            <input type="text" placeholder="Nombre">
         </div>
 
         <div class="col-6">
-            <p>Fecha Disposición:</p> 
-            <input type="text" placeholder="Fecha Disposición">
-            <p>Estado:</p> 
-            <input type="text" placeholder="Estado"> 
+            <p class="mb-1">Fecha Disposición:</p>
+            <input type="datetime-local" id="meeting-time"
+                min="2023-01-01T00:00" max="2100-06-14T00:00">            
+            <p class="mt-4 mb-1">Estado:</p>
+            <input type="text" placeholder="Estado">
         </div>
 
     </div>
 
-    <div id="descripcion" class="row d-flex">       
+    <div id="descripcion" class="row d-flex">
 
-        <p>Descripción:</p> 
-        <textarea id="textArea" rows="6" cols="100"></textarea>       
+        <div class="col">
+            <p>Descripción:</p>
+            <textarea class="w-100" id="textArea" rows="6"></textarea>
+        </div>
+
 
     </div>
 
-    <div id="espacioBoton" class="row d-flex justify-content-center align-items-center">      
+    <div id="espacioBoton" class="row d-flex justify-content-center align-items-center">
 
         <button id="boton">Guardar</button>
 
     </div>
 </div>
-
