@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Lafravel'),
 
     /*
     |--------------------------------------------------------------------------
@@ -195,6 +195,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // LINKS NUEVOS PARA EL PROYECTO
+        Yajra\DataTables\DataTablesServiceProvider::class,
+        Laravel\Passport\PassportServiceProvider::class,
+
     ],
 
     /*
@@ -210,6 +214,9 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+
+        // LINKS NUEVOS PARA EL PROYECTO
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
     ])->toArray(),
 
 ];

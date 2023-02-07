@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* #contenedor {
     margin-top: 10vh;
     border-radius: 10px;
@@ -36,3 +37,47 @@
     width: 25%;
     box-shadow: 7px 7px 15px #222121; 
 } */
+=======
+#botones{
+    margin-top: 8vh;
+    margin-bottom: 1vh;
+}
+button{
+    background-color: white;
+    border: none;
+}
+
+i{
+    color: #007BC4;
+    /* width: 100%; */
+}
+#titulo{
+    font-size: 30px;
+    font-weight: bolder;
+    color: #007BC4;
+}
+
+#cabecera{
+    width: 90%;
+    height: 7vh;
+    background-color: #C1D1E3;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+#cuerpo{
+    width: 90%;
+    height: 55vh;
+    background-color: #D9EBFF;
+    border: 1px solid;
+    border-color: #007BC4;
+    border-radius: 5px;
+}
+
+.texto{
+    /* margin: 5%; */
+    margin-top: 70px;
+    font-size: 20px;
+}
+>>>>>>> d46a32f640f10be541c19b852f904b6074bd7e33

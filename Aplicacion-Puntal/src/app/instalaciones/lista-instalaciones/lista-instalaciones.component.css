@@ -1,0 +1,7 @@
+#espacioTabla{
+    overflow: scroll;
+    /* height: 5%!important; */
+}
+table{
+    overflow: hidden;
+}
