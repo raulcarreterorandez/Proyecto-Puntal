@@ -10,6 +10,11 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MensajeController;
+use App\Http\Controllers\TripulanteController;
+use App\Http\Controllers\EmbarcacioneController;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\TelefonoController;
+
 
 Route::view('/login', 'login')->name('login');
 Route::post('/login-usuario', [AuthController::class, 'login'])->name('logear');
@@ -24,7 +29,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('transitos', TransitoController::class);
     Route::resource('bases', BasesController::class);
     Route::resource('mensajes', MensajeController::class);
-    Route::get("mensajes/{id}/responder",[MensajeController::class,'responder'])->name('mensajes.responder');
+    Route::get("mensajes/{id}/responder", [MensajeController::class, 'responder'])->name('mensajes.responder');
+    Route::resource('tripulantes', TripulanteController::class);
+    Route::resource('embarcaciones', EmbarcacioneController::class);
+    Route::resource('clientes', ClienteController::class);
+    Route::resource('telefonos', TelefonoController::class);
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/user', [AuthController::class, 'infoUser'])->name('info');
@@ -34,6 +43,5 @@ Route::group(['middleware' => 'auth'], function () {
 Route::group(['middleware' => 'xunta'], function () {
 
     Route::resource('usuarios', UsuarioController::class);
-    Route::get('/usuario/{id}/confirm',[UsuarioController::class, 'confirm'] )->name('usuarios.confirm');
-
+    Route::get('/usuario/{id}/confirm', [UsuarioController::class, 'confirm'])->name('usuarios.confirm');
 });
