@@ -20,7 +20,7 @@
                                 <a href="{{ route('bases.create') }}" class="btn btn-secondary btn-sm float-right"  data-placement="left">
                                   {{ __('Create New') }}
                                 </a>
-                                <a class="btn btn-info btn-sm float-right" href="{{ route('plaza.index') }}"> Back</a>
+                                <a class="btn btn-info btn-sm float-right" href="{{ route('plazas.index') }}"> Back</a>
                               </div>
                         </div>
                     </div>
@@ -32,7 +32,7 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover">
+                            <table id="example" class="table table-striped table-hover" style="width: 100%">
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
@@ -73,7 +73,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $bases->links() !!}
+                {{-- {!! $bases->links() !!} --}}
             </div>
         </div>
     </div>

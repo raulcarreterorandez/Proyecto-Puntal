@@ -14,7 +14,7 @@
                             <span class="card-title">Show Muelle</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-info btn-sm float-right m-3" href="{{ route('muelle.index') }}"> Back</a>
+                            <a class="btn btn-info btn-sm float-right m-3" href="{{ route('muelles.index') }}"> Back</a>
                         </div>
                     </div>
 

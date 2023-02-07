@@ -10,10 +10,10 @@ class BasesController extends Controller {
 
     public function index() {
 
-        $bases = Bases::paginate();
+        $bases = Bases::all();/* paginate() */
 
         return view('bases.index', compact('bases'))
-            ->with('i', (request()->input('page', 1) - 1) * $bases->perPage());
+            ->with('i', 0 /* (request()->input('page', 1) - 1) * $bases->perPage() */);
     }
 
     public function create() {
@@ -39,7 +39,7 @@ class BasesController extends Controller {
         //    dd($plazas);
 
         return redirect()->route('bases.index')
-            ->with('success', 'Basis created successfully.');
+            ->with('success', 'Bases created successfully.');
     }
 
     public function show($id) {

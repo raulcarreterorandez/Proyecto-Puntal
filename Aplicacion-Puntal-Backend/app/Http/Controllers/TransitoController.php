@@ -10,10 +10,10 @@ use Illuminate\Http\Request;
 class TransitoController extends Controller {
 
     public function index() {
-        $transitos = Transito::paginate();
+        $transitos = Transito::all();/* paginate() */
 
         return view('transito.index', compact('transitos'))
-            ->with('i', (request()->input('page', 1) - 1) * $transitos->perPage());
+            ->with('i', 0 /* (request()->input('page', 1) - 1) * $transitos->perPage() */);
     }
 
     public function create() {

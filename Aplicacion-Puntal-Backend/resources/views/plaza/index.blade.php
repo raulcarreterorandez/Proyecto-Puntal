@@ -20,9 +20,9 @@ Plaza
                             <a href="{{ route('plazas.create') }}" class="btn btn-secondary btn-sm float-right" data-placement="left">
                                 {{ __('Create New') }}
                             </a>
-                            <a class="btn btn-primary btn-sm float-right" href="{{ route('transito.index') }}"> Visualizar Tránsitos</a>
+                {{--             <a class="btn btn-primary btn-sm float-right" href="{{ route('transito.index') }}"> Visualizar Tránsitos</a>
                             <a class="btn btn-primary btn-sm float-right" href="{{ route('base.index') }}"> Visualizar Bases</a>
-                            <a class="btn btn-info btn-sm float-right" href="{{ route('muelle.index') }}"> Back</a>
+                            <a class="btn btn-info btn-sm float-right" href="{{ route('muelle.index') }}"> Back</a> --}}
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@ Plaza
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-striped table-hover">
+                        <table id="example" class="table table-striped table-hover" style="width: 100%">
                             <thead class="thead">
                                 <tr>
                                     <th>No</th>
@@ -79,7 +79,7 @@ Plaza
                     </div>
                 </div>
             </div>
-            {!! $plazas->links() !!}
+            {{-- {!! $plazas->links() !!} --}}
         </div>
     </div>
 </div>

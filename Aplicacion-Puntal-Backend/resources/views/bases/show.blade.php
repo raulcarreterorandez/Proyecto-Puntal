@@ -22,27 +22,27 @@
 
                     <div class="form-group">
                         <strong>Idplaza:</strong>
-                        {{ $base->idPlaza }}
+                        {{ $bases->idPlaza }}
                     </div>
                     <div class="form-group">
                         <strong>Fechaentrada:</strong>
-                        {{ $base->fechaEntrada }}
+                        {{ $bases->fechaEntrada }}
                     </div>
                     <div class="form-group">
                         <strong>Fechasalida:</strong>
-                        {{ $base->fechaSalida }}
+                        {{ $bases->fechaSalida }}
                     </div>
                     <div class="form-group">
                         <strong>Idmuelle:</strong>
-                        {{ $base->plaza->idMuelle }}
+                        {{ $bases->plaza->idMuelle }}
                     </div>
                     <div class="form-group">
                         <strong>IdInstalación:</strong>
-                        {{ $base->plaza->muelle->instalacion->id }}
+                        {{ $bases->plaza->muelle->instalacion->id }}
                     </div>
                     <div class="form-group">
                         <strong>Nombre Instalación:</strong>
-                        {{ $base->plaza->muelle->instalacion->nombrePuerto }}
+                        {{ $bases->plaza->muelle->instalacion->nombrePuerto }}
                     </div>
                 </div>
             </div>
