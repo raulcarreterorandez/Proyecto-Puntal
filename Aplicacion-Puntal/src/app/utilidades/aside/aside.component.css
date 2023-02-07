@@ -1,10 +1,10 @@
-#tools {
+#aside {
   height: 91.5vh;
   background-color: #0E72AD;
 }
 
 button {
-  background: none;
+  /* background: none;
   border: none;
-  padding-top: 30%;
+  padding-top: 30%; */
 }
