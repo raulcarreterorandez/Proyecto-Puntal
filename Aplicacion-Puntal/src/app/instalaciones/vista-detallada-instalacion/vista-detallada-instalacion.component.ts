@@ -1,19 +1,52 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { InstalacionesService } from '../instalaciones.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Instalacion } from '../instalacion';
 
 @Component({
   selector: 'app-vista-detallada-instalacion',
   templateUrl: './vista-detallada-instalacion.component.html',
   styleUrls: ['./vista-detallada-instalacion.component.css']
 })
-export class VistaDetalladaInstalacionComponent implements OnInit{
+export class VistaDetalladaInstalacionComponent implements OnInit {
 
   instalacion: any;
 
-  constructor(private instalacionesService: InstalacionesService) {}
+  /*  constructor(private instalacionesService: InstalacionesService) { } */
+  message = '';
 
-  ngOnInit() {
-    /* this.instalacionesService.retornarUno(id)
-      .subscribe( result =>  this.instalacion = result) */
+  constructor(
+    private instalacionesService: InstalacionesService,
+    private route: ActivatedRoute,
+    private router: Router) { }
+
+
+  @Input() viewMode = false;
+
+  @Input() currentInstalacion: Instalacion = {
+
+    userId: '',
+    id: '',
+    title: '',
+    completed: false
+  };
+
+  ngOnInit(): void {
+    if (!this.viewMode) {
+      this.message = '';
+      this.getInstalacion(this.route.snapshot.params["id"]);
+    }
+  }
+
+  getInstalacion(id: string): void {
+    this.instalacionesService.retornarUno(id)
+      .subscribe({
+        next: (data) => {
+          this.currentInstalacion = data;
+          console.log(data);
+        },
+        error: (e) => console.error(e)
+      });
   }
 }
+

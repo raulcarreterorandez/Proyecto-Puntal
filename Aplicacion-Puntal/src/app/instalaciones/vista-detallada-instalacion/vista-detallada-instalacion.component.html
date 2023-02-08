@@ -9,10 +9,10 @@
             <div class="col-8">
                 <div id="titulo">Detalle Instalación</div>
             </div>
-            <div class="col-3">                
+           <!--  <div class="col-3">                
                 <button><i class="fa-sharp fa-solid fa-pen mx-3" style='font-size:30px'></i></button>
                 <button><i class="fa-sharp fa-solid fa-trash-can mx-4" style='font-size:30px'></i></button>
-            </div>           
+            </div> -->           
         </div>
 
         <div id="cabecera" class="row d-flex align-items-center ">
@@ -22,14 +22,14 @@
         <div id="cuerpo" class="row container-fluid d-flex">
             <div class="col-6">
                 <div class="row d-flex justify-content-center">
-                    <div class="texto">Código: <strong>{{ instalacion.userId }}</strong></div>
-                    <div class="texto">Estado: <strong>{{ instalacion.id }}</strong></div>
-                    <div class="texto">Descripción: <strong>{{ instalacion.title }}</strong></div>
+                    <div class="texto">Código: <strong>{{ currentInstalacion.userId }}</strong></div>
+                    <div class="texto">Estado: <strong>{{ currentInstalacion.id }}</strong></div>
+                    <div class="texto">Descripción: <strong>{{ currentInstalacion.title }}</strong></div>
                 </div>
             </div>
             <div class="col-6">
                 <div class="row">
-                    <div class="texto">Nombre de Instalación: <strong>{{ instalacion.completed }}</strong></div>
+                    <div class="texto">Nombre de Instalación: <strong>{{ currentInstalacion.completed }}</strong></div>
                     <div class="texto">Fecha Disposición: <strong> 01/04/1996</strong></div>
                 </div>
             </div>
