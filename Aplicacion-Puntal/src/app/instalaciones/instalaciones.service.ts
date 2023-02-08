@@ -7,6 +7,7 @@ import { Instalacion } from './instalacion';
 @Injectable({
   providedIn: 'root'
 })
+
 export class InstalacionesService {
 
   constructor(private http: HttpClient) { }
@@ -18,8 +19,8 @@ export class InstalacionesService {
     return this.http.get("https://jsonplaceholder.typicode.com/todos/1");
   }  */
 
-  retornar(): Observable<Instalacion[]> {
-    return this.http.get<Instalacion[]>("https://jsonplaceholder.typicode.com/todos");
+  retornar(): Observable<Instalacion[]> { /* Observable<any>  */
+    return this.http.get<Instalacion[]>("https://jsonplaceholder.typicode.com/todos");/* ("https://localhost/api/instalaciones") */
   }
 
   retornarUno(id: any): Observable<Instalacion> {

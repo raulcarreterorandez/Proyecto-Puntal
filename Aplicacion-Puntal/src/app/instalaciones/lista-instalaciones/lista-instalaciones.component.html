@@ -9,7 +9,7 @@
           <th scope="col">Id</th>
           <th scope="col">Title</th>
           <th scope="col">Completed</th>
-          <th scope="col">Completed</th>
+          <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -19,12 +19,10 @@
           <td>{{inst.title}}</td>
           <td>{{inst.completed}}</td>
           <td>
-            <a class="btn btn-sm btn-info" data-bs-toggle="tooltip" title="Ver registro {{ inst.userId }}"><i class="bi bi-eye"></i></a><!-- data-bs-toggle="tooltip" title="Ver registro {{ elemento.id }}" [routerLink]="['/verEmpleado/0/', elemento.id]" -->
-            <a class="btn btn-sm btn-warning ms-1" ><i class="bi bi-pencil"></i></a><!-- data-bs-toggle="tooltip" title="Modificar registro {{ elemento.id }}" [routerLink]="['/editarEmpleado/', elemento.id]" -->
-            <!-- <a class="btn btn-sm btn-danger ms-1" data-bs-toggle="tooltip" title="Eliminar registro {{ elemento.id }}" (click)="eliminarEmpleado(elemento.id)"><i class="bi bi-trash3"></i></a> -->
-            <a class="btn btn-sm btn-danger ms-1"><i class="bi bi-trash3"></i></a><!-- data-bs-toggle="tooltip" title="Eliminar registro {{ elemento.id }}" [routerLink]="['/verEmpleado/1/', elemento.id]" -->
+            <a class="btn btn-sm btn-info" data-bs-toggle="tooltip" title="Ver registro {{ inst.userId }}" 
+            [routerLink]="['/vistaDetalladaInst']"><i class="bi bi-eye"></i></a>
           </td>
-        </tr>
+        </tr>      
       </tbody>
     </table>
 
@@ -32,23 +30,3 @@
 
 </div>
 <ng-template #espera>Esperando datos...</ng-template>
-
-
-<!-- 
-<div class="list row">
-  
-  <div class="col-md-6">
-    <h4>Lista Instalaciones</h4>
-    <ul class="list-group">
-      <li
-        class="list-group-item"
-        *ngFor="let inst of instalaciones; let i = index"
-        [class.active]="i == currentIndex" >
-        {{inst.userId}}
-        {{inst.id}}
-        {{inst.title}}
-        {{inst.completed}}
-      </li>
-    </ul>
-  </div>
-</div> -->

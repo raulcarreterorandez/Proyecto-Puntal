@@ -17,7 +17,8 @@
                         <a class="btn btn-info btn-sm float-right m-3" href="{{ route('bases.index') }}"> Back</a>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('bases.update', $bases->id) }}"  role="form" enctype="multipart/form-data">
+                    {{-- {{dd($bases)}} --}}
+                        <form method="POST" action="{{ route('bases.update', $bases->idPlaza) }}"  role="form" enctype="multipart/form-data">
                             {{ method_field('PATCH') }}
                             @csrf
 

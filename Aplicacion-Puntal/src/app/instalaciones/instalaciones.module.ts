@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {HttpClientModule} from '@angular/common/http';
 import { DataTablesModule } from 'angular-datatables';
+import { RouterModule } from '@angular/router';
 
 import { FormularioAltaInstalacionComponent } from './formulario-alta-instalacion/formulario-alta-instalacion.component';
 import { VistaDetalladaInstalacionComponent } from './vista-detallada-instalacion/vista-detallada-instalacion.component';
@@ -11,15 +12,15 @@ import { ListaInstalacionesComponent } from './lista-instalaciones/lista-instala
 
 @NgModule({
   declarations: [
-    /* ListaInstalacionComponent, */
+    ListaInstalacionesComponent,
     FormularioAltaInstalacionComponent,
-    VistaDetalladaInstalacionComponent,
-    ListaInstalacionesComponent
+    VistaDetalladaInstalacionComponent
   ],
   imports: [
     CommonModule,
     HttpClientModule,
-    DataTablesModule
+    DataTablesModule,
+    RouterModule
   ],
   exports: [
     ListaInstalacionesComponent,

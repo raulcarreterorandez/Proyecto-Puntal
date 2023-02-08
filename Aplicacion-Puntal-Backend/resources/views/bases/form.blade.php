@@ -3,17 +3,17 @@
         
         <div class="form-group">
             {{ Form::label('idPlaza') }}
-            {{ Form::select('idPlaza',$plazas, $base->idPlaza, ['class' => 'form-control' . ($errors->has('idPlaza') ? ' is-invalid' : ''), 'placeholder' => 'Idplaza']) }}
+            {{ Form::select('idPlaza',$plazas, $bases->idPlaza, ['class' => 'form-control' . ($errors->has('idPlaza') ? ' is-invalid' : ''), 'placeholder' => 'Idplaza']) }}
             {!! $errors->first('idPlaza', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('fechaEntrada') }}
-            {{ Form::date('fechaEntrada', $base->fechaEntrada, ['class' => 'form-control' . ($errors->has('fechaEntrada') ? ' is-invalid' : ''), 'placeholder' => 'Fechaentrada']) }}
+            {{ Form::date('fechaEntrada', $bases->fechaEntrada, ['class' => 'form-control' . ($errors->has('fechaEntrada') ? ' is-invalid' : ''), 'placeholder' => 'Fechaentrada']) }}
             {!! $errors->first('fechaEntrada', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('fechaSalida') }}
-            {{ Form::date('fechaSalida', $base->fechaSalida, ['class' => 'form-control' . ($errors->has('fechaSalida') ? ' is-invalid' : ''), 'placeholder' => 'Fechasalida']) }}
+            {{ Form::date('fechaSalida', $bases->fechaSalida, ['class' => 'form-control' . ($errors->has('fechaSalida') ? ' is-invalid' : ''), 'placeholder' => 'Fechasalida']) }}
             {!! $errors->first('fechaSalida', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
