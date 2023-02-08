@@ -5,14 +5,16 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DashboardModule } from './dashboard/dashboard.module'; /* Aquí nuestro home y login */
-
-
-/* import { authInterceptorProviders } from './_helpers/auth.interceptor'; */
-
-import { DataTablesModule } from "angular-datatables";
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+
+// import { AuthInterceptor } from './_helpers/auth.interceptor';
+import { authInterceptorProviders } from './_helpers/auth.interceptor';
+
+import { DataTablesModule } from "angular-datatables";
+import { UtilidadesModule } from './utilidades/utilidades.module';
+import { InstalacionesModule } from './instalaciones/instalaciones.module';
+
 
 @NgModule({
   declarations: [
@@ -24,16 +26,13 @@ import { HomeComponent } from './home/home.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DashboardModule,
     DataTablesModule,
-    HttpClientModule //Importando en la raíz soluciono el problema de que se quedaba colgada la vista. Mensaje de error abajo.
-   
-    /*
-    ERROR Error: Uncaught (in promise): NullInjectorError: R3InjectorError(AppModule)
-    [InstalacionesService -> HttpClient -> HttpClient -> HttpClient]: NullInjectorError: No provider for HttpClient!  
-    */
+    HttpClientModule,
+    FormsModule,
+    UtilidadesModule,
+    InstalacionesModule
   ],
-  providers: [/* authInterceptorProviders */],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

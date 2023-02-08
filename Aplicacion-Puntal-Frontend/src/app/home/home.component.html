@@ -1,1 +1,29 @@
-<p>home works!</p>
+<div id="dashBoard" class="container-fluid">
+  <div class="row">
+    <app-header></app-header>
+  </div>
+  <div id="vistaCentral" class="row">
+    <div class="col-1">
+      <app-aside></app-aside>
+    </div>
+    <div class="col-10">
+      <div class="row">
+        <!-- <app-navbar></app-navbar> -->
+      </div>
+      <div class="row">
+        <app-lista-instalaciones></app-lista-instalaciones>
+
+        <!-- <div class="container">
+          <header class="jumbotron">
+            <p>{{ content }}</p>
+          </header>
+        </div> -->
+
+      </div>
+    </div>
+    <div class="col-1">
+      <!-- AQUI VA EL MENU DE USER SETTINGS -->
+      <app-user-settings></app-user-settings>
+    </div>
+  </div>
+</div>

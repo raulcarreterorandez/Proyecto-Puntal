@@ -5,10 +5,10 @@ import { AsideComponent } from './aside/aside.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule, Routes } from '@angular/router';
-import { FormularioAltaInstalacionComponent } from '../instalaciones/formulario-alta-instalacion/formulario-alta-instalacion.component';
+// import { FormularioAltaInstalacionComponent } from '../instalaciones/formulario-alta-instalacion/formulario-alta-instalacion.component';
 
 const routes: Routes = [
-  { path: 'añadirInst', component: FormularioAltaInstalacionComponent },
+  // { path: 'añadirInst', component: FormularioAltaInstalacionComponent },
 ];
 
 @NgModule({
