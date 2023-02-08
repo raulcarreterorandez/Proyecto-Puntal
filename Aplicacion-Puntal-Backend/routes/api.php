@@ -52,6 +52,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     // RUTAS API - PLAZAS
     Route::get('/plazas', [PlazaController::class, 'index']);
     Route::get('/plazas/{id}', [PlazaController::class, 'show']);
+    Route::get('/historial', [PlazaController::class, 'historialPlazas']);
+    Route::get('/historial/{id}', [PlazaController::class, 'historialPlaza']);
 
     // RUTAS API - BASES
     Route::get('/bases', [BaseController::class, 'index']);
@@ -79,6 +81,6 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('logout', [AuthController::class, 'logout']);
 });
 
-/*    // RUTAS API - INSTALACIONES
-   Route::get('/instalaciones', [InstalacionController::class, 'index']);
-   Route::get('/instalaciones/{id}', [InstalacionController::class, 'show']); */
+
+
+
