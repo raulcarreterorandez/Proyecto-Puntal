@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { FormularioAltaInstalacionComponent } from './formulario-alta-instalacion/formulario-alta-instalacion.component';
 import { VistaDetalladaInstalacionComponent } from './vista-detallada-instalacion/vista-detallada-instalacion.component';
 import { ListaInstalacionesComponent } from './lista-instalaciones/lista-instalaciones.component';
+import { UtilidadesModule } from '../utilidades/utilidades.module';
 
 
 
@@ -20,7 +21,8 @@ import { ListaInstalacionesComponent } from './lista-instalaciones/lista-instala
     CommonModule,
     HttpClientModule,
     DataTablesModule,
-    RouterModule
+    RouterModule,
+    UtilidadesModule
   ],
   exports: [
     ListaInstalacionesComponent,
