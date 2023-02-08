@@ -10,7 +10,12 @@ import { Instalacion } from './instalacion';
 
 export class InstalacionesService {
 
-  constructor(private http: HttpClient) { }
+  public url: string;
+
+  constructor(private http: HttpClient) {
+
+    this.url = "https://jsonplaceholder.typicode.com/todos";
+   }
 
 /*   retornar() {
     return this.http.get("https://jsonplaceholder.typicode.com/todos");
@@ -23,8 +28,14 @@ export class InstalacionesService {
     return this.http.get<Instalacion[]>("https://jsonplaceholder.typicode.com/todos");/* ("https://localhost/api/instalaciones") */
   }
 
+  //MÍO:
+
   retornarUno(id: any): Observable<Instalacion> {
     return this.http.get(`${"https://jsonplaceholder.typicode.com/todos"}/${id}`);
   }
+
+ /*  retornarUno(id: any) {
+    return this.http.get(this.url+"/"+id);
+  } */
 }
 

@@ -10,9 +10,8 @@ import { Instalacion } from '../instalacion';
 })
 export class VistaDetalladaInstalacionComponent implements OnInit {
 
+  /* id: string; */
   instalacion: any;
-
-  /*  constructor(private instalacionesService: InstalacionesService) { } */
   message = '';
 
   constructor(
@@ -35,6 +34,7 @@ export class VistaDetalladaInstalacionComponent implements OnInit {
     if (!this.viewMode) {
       this.message = '';
       this.getInstalacion(this.route.snapshot.params["id"]);
+      
     }
   }
 

@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-/* #contenedor {
+#contenedor {
     margin-top: 10vh;
     border-radius: 10px;
     background-color: #D9EBFF;
@@ -36,8 +35,8 @@
     background-color: #007BC4;
     width: 25%;
     box-shadow: 7px 7px 15px #222121; 
-} */
-=======
+}
+
 #botones{
     margin-top: 8vh;
     margin-bottom: 1vh;
@@ -80,4 +79,4 @@ i{
     margin-top: 70px;
     font-size: 20px;
 }
->>>>>>> d46a32f640f10be541c19b852f904b6074bd7e33
+
