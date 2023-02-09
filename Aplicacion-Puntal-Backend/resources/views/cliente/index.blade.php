@@ -30,7 +30,7 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover">
+                            <table id="example" class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
                                         <th>Documento</th>
@@ -40,6 +40,7 @@
                                         <th>Dirección</th>
                                         <th>Tipo de documento</th>
                                         <th>Observaciones</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -53,19 +54,18 @@
                                             <td>{{ $cliente->tipoDocumento }}</td>
                                             <td>{{ $cliente->observaciones }}</td>
                                             <td>
-                                                <form action="{{ route('clientes.destroy', $cliente->numDocumento) }}"
-                                                    method="POST">
-                                                    <a class="btn btn-sm btn-primary "
-                                                        href="{{ route('clientes.show', $cliente->numDocumento) }}"><i
-                                                            class="fa fa-fw fa-eye"></i>Detalles</a>
-                                                    <a class="btn btn-sm btn-success"
-                                                        href="{{ route('clientes.edit', $cliente->numDocumento) }}"><i
-                                                            class="fa fa-fw fa-edit"></i>Editar</a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i
-                                                            class="fa fa-fw fa-trash"></i>Borrar</button>
-                                                </form>
+                                                <a class="btn btn-sm btn-primary "
+                                                    href="{{ route('clientes.show', $cliente->numDocumento) }}"
+                                                    data-bs-toggle="tooltip"> <i class="bi bi-eye"></i>
+                                                </a>
+                                                <a class="btn btn-sm btn-success"
+                                                    href="{{ route('clientes.edit', $cliente->numDocumento) }}"><i
+                                                        class="bi bi-pencil"></i>
+                                                </a>
+                                                <a class="btn btn-sm btn-danger "
+                                                    href="{{ route('clientes.destroy', $cliente->numDocumento) }}"><i
+                                                        class="bi bi-trash3-fill"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -74,7 +74,6 @@
                         </div>
                     </div>
                 </div>
-                {!! $clientes->links() !!}
             </div>
         </div>
     </div>

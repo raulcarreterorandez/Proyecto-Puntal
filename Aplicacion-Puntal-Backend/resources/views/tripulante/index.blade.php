@@ -27,7 +27,7 @@
                     @endif
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover">
+                            <table id="example" class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
                                         <th>Documento</th>
@@ -48,7 +48,7 @@
                                     @foreach ($tripulantes as $tripulante)
                                         <tr>
                                             <td>{{ $tripulante->numDocumento }}</td>
-                                            <td>{{ $tripulante->nombre." ".$tripulante->apellidos }}</td>
+                                            <td>{{ $tripulante->nombre . ' ' . $tripulante->apellidos }}</td>
                                             <td>{{ $tripulante->nacionalidad }}</td>
                                             <td>{{ $tripulante->fechaNacimiento }}</td>
                                             <td>{{ $tripulante->lugarNacimiento }}</td>
@@ -59,19 +59,18 @@
                                             <td>{{ $tripulante->id_plaza }}</td>
                                             <td>{{ $tripulante->id_embarcacion }}</td>
                                             <td>
-                                                <form action="{{ route('tripulantes.destroy', $tripulante->numDocumento) }}"
-                                                    method="POST">
-                                                    <a class="btn btn-sm btn-primary "
-                                                        href="{{ route('tripulantes.show', $tripulante->numDocumento) }}"><i
-                                                            class="fa fa-fw fa-eye"></i>Detalles</a>
-                                                    <a class="btn btn-sm btn-success"
-                                                        href="{{ route('tripulantes.edit', $tripulante->numDocumento) }}"><i
-                                                            class="fa fa-fw fa-edit"></i>Editar</a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i
-                                                            class="fa fa-fw fa-trash"></i>Borrar</button>
-                                                </form>
+                                                <a class="btn btn-sm btn-primary "
+                                                    href="{{ route('tripulantes.show', $tripulante->numDocumento) }}"
+                                                    data-bs-toggle="tooltip"> <i class="bi bi-eye"></i>
+                                                </a>
+                                                <a class="btn btn-sm btn-success"
+                                                    href="{{ route('tripulantes.edit', $tripulante->numDocumento) }}"><i
+                                                        class="bi bi-pencil"></i>
+                                                </a>
+                                                <a class="btn btn-sm btn-danger "
+                                                    href="{{ route('tripulantes.destroy', $tripulante->numDocumento) }}"><i
+                                                        class="bi bi-trash3-fill"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -80,7 +79,6 @@
                         </div>
                     </div>
                 </div>
-                {!! $tripulantes->links() !!}
             </div>
         </div>
     </div>

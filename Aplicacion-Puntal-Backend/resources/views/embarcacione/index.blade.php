@@ -27,9 +27,10 @@
                             <p>{{ $message }}</p>
                         </div>
                     @endif
+
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover">
+                            <table id="example" class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
                                         <th>Matrícula</th>
@@ -40,7 +41,6 @@
                                         <th>Propulsion</th>
                                         <th>Cliente</th>
                                         <th>Plaza</th>
-                                        {{-- <th>Visto</th> --}}
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -55,21 +55,19 @@
                                             <td>{{ $embarcacione->propulsion }}</td>
                                             <td>{{ $embarcacione->id_cliente }}</td>
                                             <td>{{ $embarcacione->id_plaza }}</td>
-                                            {{-- <td>{{ $embarcacione->visto }}</td> --}}
                                             <td>
-                                                <form action="{{ route('embarcaciones.destroy', $embarcacione->matricula) }}"
-                                                    method="POST">
-                                                    <a class="btn btn-sm btn-primary "
-                                                        href="{{ route('embarcaciones.show', $embarcacione->matricula) }}"><i
-                                                            class="fa fa-fw fa-eye"></i>Detalles</a>
-                                                    <a class="btn btn-sm btn-success"
-                                                        href="{{ route('embarcaciones.edit', $embarcacione->matricula) }}"><i
-                                                            class="fa fa-fw fa-edit"></i>Editar</a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i
-                                                            class="fa fa-fw fa-trash"></i>Borrar</button>
-                                                </form>
+                                                <a class="btn btn-sm btn-primary "
+                                                    href="{{ route('embarcaciones.show', $embarcacione->matricula) }}"
+                                                    data-bs-toggle="tooltip"> <i class="bi bi-eye"></i>
+                                                </a>
+                                                <a class="btn btn-sm btn-success"
+                                                    href="{{ route('embarcaciones.edit', $embarcacione->matricula) }}"><i
+                                                        class="bi bi-pencil"></i>
+                                                </a>
+                                                <a class="btn btn-sm btn-danger "
+                                                    href="{{ route('embarcaciones.destroy', $embarcacione->matricula) }}"><i
+                                                        class="bi bi-trash3-fill"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -78,7 +76,6 @@
                         </div>
                     </div>
                 </div>
-                {!! $embarcaciones->links() !!}
             </div>
         </div>
     </div>

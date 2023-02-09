@@ -1,27 +1,32 @@
 #cabecera {
-  position: relative;
-  height: 9vh;
+  height: 10vh;
   background: #007BC4;
 }
 
-#pagina {
+#hamburger {
   font-family: 'Open Sans';
-  font-weight: 700;
-  font-size: 2.5rem;
+  font-weight: 500;
+  font-size: 2.0rem;
   line-height: 25px;
   color: #F2F9FB;
 }
 
-#pagina button {
+#hamburger button {
   background-color: #007BC4;
+  margin-left: 20px;
   color: #F2F9FB;
   border: none;
 }
 
+#hamburger p {
+  margin-top: 12px;
+  margin-left: 20px;
+}
+
 #usuario {
   font-family: 'Open Sans';
-  font-weight: 700;
-  font-size: 2.5rem;
+  font-weight: 500;
+  font-size: 2.0rem;
   line-height: 25px;
   color: #F2F9FB;
 }
@@ -30,4 +35,9 @@
   background-color: #007BC4;
   color: #F2F9FB;
   border: none;
+}
+
+#usuario p {
+  margin-top: 12px;
+  margin-right: 20px;
 }

@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -17,9 +16,10 @@
                                 <h1>{{ __('Listado de Usuarios') }}</h1>
                             </span>
 
-                             <div class="float-right">
-                                <a href="{{ route('usuarios.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                            <div class="float-right">
+                                <a href="{{ route('usuarios.create') }}" class="btn btn-primary btn-sm float-right"
+                                    data-placement="left">
+                                    {{ __('Create New') }}
                                 </a>
                             </div>
                         </div>
@@ -37,12 +37,12 @@
                                     <tr>
                                         <th>No</th>
 
-										<th>Nombreusuario</th>
-										<th>Nombrecompleto</th>
-										<th>Email</th>
-										<th>Habilitado</th>
-										<th>Perfil</th>
-										<th>Idioma</th>
+                                        <th>Nombreusuario</th>
+                                        <th>Nombrecompleto</th>
+                                        <th>Email</th>
+                                        <th>Habilitado</th>
+                                        <th>Perfil</th>
+                                        <th>Idioma</th>
                                         <th>Instalaciones</th>
 
                                         <th>Acciones</th>
@@ -53,21 +53,23 @@
                                         <tr>
                                             <td>{{ ++$i }}</td>
 
-											<td>{{ $usuario->nombreUsuario }}</td>
+                                            <td>{{ $usuario->nombreUsuario }}</td>
                                             {{-- <td>{{ $usuario->password }}</td> --}}
-											<td>{{ $usuario->nombreCompleto }}</td>
-											<td>{{ $usuario->email }}</td>
+                                            <td>{{ $usuario->nombreCompleto }}</td>
+                                            <td>{{ $usuario->email }}</td>
                                             @if ($usuario->habilitado === 1)
-                                                <td><i class="bi bi-check-square-fill" style="color: green"><a style="visibility: hidden">0</a></td>
+                                                <td><i class="bi bi-check-square-fill" style="color: green"><a
+                                                            style="visibility: hidden">0</a></td>
                                             @else
-                                                <td><i class="bi bi-x-square-fill" style="color: red"> <a style="visibility: hidden">1</a> </td>
-                                                @endif
-											<td>{{ $usuario->perfil }}</td>
-											<td>{{ $usuario->idioma }}</td>
+                                                <td><i class="bi bi-x-square-fill" style="color: red"> <a
+                                                            style="visibility: hidden">1</a> </td>
+                                            @endif
+                                            <td>{{ $usuario->perfil }}</td>
+                                            <td>{{ $usuario->idioma }}</td>
 
                                             <td>
                                                 @foreach ($usuario->instalacionesUsuario as $instalacionUsuario)
-                                                    /{{$instalaciones->find($instalacionUsuario->pivot->idInstalacion)->nombrePuerto}}/
+                                                    /{{ $instalaciones->find($instalacionUsuario->pivot->idInstalacion)->nombrePuerto }}/
                                                 @endforeach
                                             </td>
 
@@ -80,9 +82,18 @@
                                                     <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash3-fill"></i></button>
                                                 </form> --}}
 
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('usuarios.show',$usuario->email) }}" data-bs-toggle="tooltip"> <i class="bi bi-eye"></i> </a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('usuarios.edit',$usuario->email) }}"><i class="bi bi-pencil"></i> </a>
-                                                    <a class="btn btn-sm btn-danger " href="{{ route('usuarios.confirm',$usuario->email) }}"><i class="bi bi-trash3-fill"></i> </a>
+                                                <a class="btn btn-sm btn-primary "
+                                                    href="{{ route('usuarios.show', $usuario->email) }}"
+                                                    data-bs-toggle="tooltip"> <i class="bi bi-eye"></i>
+                                                </a>
+                                                <a class="btn btn-sm btn-success"
+                                                    href="{{ route('usuarios.edit', $usuario->email) }}"><i
+                                                        class="bi bi-pencil"></i>
+                                                </a>
+                                                <a class="btn btn-sm btn-danger "
+                                                    href="{{ route('usuarios.confirm', $usuario->email) }}"><i
+                                                        class="bi bi-trash3-fill"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -90,14 +101,14 @@
                                 <tfoot>
                                     <tr>
                                         <th>No</th>
-										<th>Nombreusuario</th>
+                                        <th>Nombreusuario</th>
                                         {{-- <th>Password</th> --}}
-										<th>Nombrecompleto</th>
-										<th>Email</th>
-										<th>Habilitado</th>
-										<th>Perfil</th>
-										<th>Idioma</th>
-										{{-- <th>Visto</th> --}}
+                                        <th>Nombrecompleto</th>
+                                        <th>Email</th>
+                                        <th>Habilitado</th>
+                                        <th>Perfil</th>
+                                        <th>Idioma</th>
+                                        {{-- <th>Visto</th> --}}
                                         <th>Instalacion</th>
                                     </tr>
                                 </tfoot>

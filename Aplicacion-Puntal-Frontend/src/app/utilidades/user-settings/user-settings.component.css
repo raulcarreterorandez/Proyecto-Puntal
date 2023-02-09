@@ -1,20 +1,13 @@
-div {
-  height: 30vh;
+#usersettings {
+  height: 25vh;
+  width: 6vw;
   background-color: #0E72AD;
+  margin: 0px;
+  padding: 0px;
 }
 
 button {
   background: none;
   border: none;
-  padding: 0%;
-  margin: 0%;
-  padding-top: 30%;
-}
-
-#user {
-  padding-left: 10%;
-}
-
-#logout {
-  padding-left: 10%;
+  padding-top: 20%;
 }
