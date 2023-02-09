@@ -35,7 +35,7 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     // RUTAS API - MENSAJES
     Route::get('/mensajes', [MensajeController::class, 'index']);
-    Route::get('/mensaje/{id}', [MensajeController::class, 'show']);
+    Route::get('/mensajes/{id}', [MensajeController::class, 'show']);
 
     // RUTAS API - USUARIOS
     Route::get('/usuarios', [UsuarioController::class, 'index']);
