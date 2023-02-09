@@ -24,10 +24,13 @@ export class VistaDetalladaInstalacionComponent implements OnInit {
 
   @Input() currentInstalacion: Instalacion = {
 
-    userId: '',
     id: '',
-    title: '',
-    completed: false
+    codigo: '',
+    nombrePuerto: '',
+    descripcion: '',
+    estado: '',
+    visto: false,    
+    fechaDisposicion: ''
   };
 
   ngOnInit(): void {

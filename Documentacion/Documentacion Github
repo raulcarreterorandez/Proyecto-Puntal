@@ -6,102 +6,113 @@ Necesario si da problemas al clonar el proyecto al repositorio:
 git clone https://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@github.com/raulcarreterorandez/Proyecto-Puntal.git
 
 
-Configuración Básica
-Configurar Nombre que salen en los commits
+Configuración Básica.
+
+ - Configurar Nombre que salen en los commits:
 
 	git config --global user.name "dasdo"
 	
-Configurar Email
+ - Configurar Email:
 
 	git config --global user.email dasdo1@gmail.com
 	
-Marco de colores para los comando
+ - Marco de colores para los comando:
 
 	git config --global color.ui true
 	
 	
 	
-Iniciando repositorio
-Iniciamos GIT en la carpeta donde esta el proyecto
+Iniciando repositorio.
+
+ - Iniciamos GIT en la carpeta donde esta el proyecto:
 
 	git init
 	
-Clonamos el repositorio de github o bitbucket
+ - Clonamos el repositorio de github o bitbucket:
 
 	git clone <url>
 	
-Añadimos todos los archivos para el commit
+ - Añadimos todos los archivos para el commit:
 
 	git add .
 	
-Hacemos el primer commit
+ - Hacemos el primer commit:
 
 	git commit -m "Texto que identifique por que se hizo el commit"
 	
-subimos al repositorio
+ - Subimos al repositorio
 
 	git push origin master
 	
 	
-GIT CLONE
-Clonamos el repositorio de github o bitbucket
+	
+GIT CLONE.
+
+ - Clonamos el repositorio de github o bitbucket:
 
 	git clone <url>
 	
-Clonamos el repositorio de github o bitbucket ?????
+ - Clonamos el repositorio de github o bitbucket ?????
 
 	git clone <url> git-demo
 	
-GIT ADD
-Añadimos todos los archivos para el commit
+	
+	
+GIT ADD.
+
+ - Añadimos todos los archivos para el commit.
 
 	git add .
 	
-Añadimos el archivo para el commit
+ - Añadimos el archivo para el commit.
 
 	git add <archivo>
 	
-Añadimos todos los archivos para el commit omitiendo los nuevos
+ - Añadimos todos los archivos para el commit omitiendo los nuevos.
 
 	git add --all 
 	
-Añadimos todos los archivos con la extensión especificada
+ - Añadimos todos los archivos con la extensión especificada.
 
 	git add *.txt
 	
-Añadimos todos los archivos dentro de un directorio y de una extensión especifica
+ - Añadimos todos los archivos dentro de un directorio y de una extensión especifica
 
 	git add docs/*.txt
 	
-Añadimos todos los archivos dentro de un directorios
+ - Añadimos todos los archivos dentro de un directorios
 
 	git add docs/
 	
 	
-GIT COMMIT
-Cargar en el HEAD los cambios realizados
+	
+GIT COMMIT.
+
+ - Cargar en el HEAD los cambios realizados
 
 	git commit -m "Texto que identifique por que se hizo el commit"
 	
-Agregar y Cargar en el HEAD los cambios realizados
+ - Agregar y Cargar en el HEAD los cambios realizados
 
 	git commit -a -m "Texto que identifique por que se hizo el commit"
 	
-De haber conflictos los muestra
+ - De haber conflictos los muestra
 
 	git commit -a 
 	
-Agregar al ultimo commit, este no se muestra como un nuevo commit en los logs. Se puede especificar un nuevo mensaje
+ - Agregar al ultimo commit, este no se muestra como un nuevo commit en los logs. Se puede especificar un nuevo mensaje
 
 	git commit --amend -m "Texto que identifique por que se hizo el commit"
 	
 	
-GIT PUSH
-Subimos al repositorio
+	
+GIT PUSH.
+
+ - Subimos al repositorio
 
 	git push <origien> <branch>
 	
-Subimos un tag
+ - Subimos un tag
 
 	git push --tags
 

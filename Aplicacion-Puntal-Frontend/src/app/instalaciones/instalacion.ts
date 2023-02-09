@@ -1,9 +1,21 @@
 export interface Instalacion {
+
+  id?:any;
+  codigo?:string;
+  nombrePuerto?:string;
+  descripcion?:string;
+  estado?:string;
+  visto?:boolean;
+  fechaDisposicion?:any;
+
+
+
+
   //CAMBIAR A CAMPOS DE INSTALACIÓN CUANDO LA API SEA FUNCIONAL    
-  userId?: any;
+/*   userId?: any;
   id?: any;
   title?: string;
-  completed?: boolean;
+  completed?: boolean; */
 }
 
 

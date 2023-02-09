@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_services/user.service';
 import { Router } from '@angular/router';
+import { TokenStorageService } from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-home',
@@ -10,12 +11,13 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   content?: string;
 
-  constructor(private userService: UserService, private router:Router) { }
+  constructor(private userService: UserService, private router:Router, private token:TokenStorageService) { }
 
   ngOnInit(): void {
     this.userService.getPublicContent().subscribe(
       data => {
         this.content = data;
+        // console.log(this.token.getToken());
       },
       err => {
         this.router.navigate(['login']);

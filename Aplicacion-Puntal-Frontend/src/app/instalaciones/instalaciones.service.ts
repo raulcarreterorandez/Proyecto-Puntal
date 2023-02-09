@@ -14,7 +14,8 @@ export class InstalacionesService {
 
   constructor(private http: HttpClient) {
 
-    this.url = "https://jsonplaceholder.typicode.com/todos";
+    this.url = "http://localhost/api/instalaciones";
+    /* this.url = "https://jsonplaceholder.typicode.com/todos"; */
    }
 
 /*   retornar() {
@@ -25,13 +26,13 @@ export class InstalacionesService {
   }  */
 
   retornar(): Observable<Instalacion[]> { /* Observable<any>  */
-    return this.http.get<Instalacion[]>("https://jsonplaceholder.typicode.com/todos");/* ("https://localhost/api/instalaciones") */
+    return this.http.get<Instalacion[]>(this.url);/* ("https://localhost/api/instalaciones") */
   }
 
   //MÍO:
 
   retornarUno(id: any): Observable<Instalacion> {
-    return this.http.get(`${"https://jsonplaceholder.typicode.com/todos"}/${id}`);
+    return this.http.get(`${this.url}/${id}`);
   }
 
  /*  retornarUno(id: any) {

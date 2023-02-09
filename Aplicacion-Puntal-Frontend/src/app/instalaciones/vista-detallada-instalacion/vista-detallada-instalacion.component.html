@@ -23,21 +23,21 @@
                         </div>
                 
                         <div id="cabecera" class="row d-flex align-items-center ">
-                            <div>Puerto:<strong> {{ currentInstalacion.title }}</strong></div>
+                            <div>Puerto:<strong> {{ currentInstalacion.nombrePuerto }}</strong></div>
                         </div>
                 
                         <div id="cuerpo" class="row container-fluid d-flex">
                             <div class="col-6">
                                 <div class="row d-flex justify-content-center">
-                                    <div class="texto">Código: <strong>{{ currentInstalacion.userId }}</strong></div>
-                                    <div class="texto">Estado: <strong>{{ currentInstalacion.id }}</strong></div>
-                                    <div class="texto">Descripción: <strong>{{ currentInstalacion.title }}</strong></div>
+                                    <div class="texto">Código: <strong>{{ currentInstalacion.codigo }}</strong></div>
+                                    <div class="texto">Estado: <strong>{{ currentInstalacion.estado }}</strong></div>
+                                    <div class="texto">Descripción: <strong>{{ currentInstalacion.descripcion }}</strong></div>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="row">
-                                    <div class="texto">Nombre de Instalación: <strong>{{ currentInstalacion.completed }}</strong></div>
-                                    <div class="texto">Fecha Disposición: <strong> 01/04/1996</strong></div>
+                                    <div class="texto">Nombre de Instalación: <strong>{{ currentInstalacion.nombrePuerto }}</strong></div>
+                                    <div class="texto">Fecha Disposición: <strong> {{ currentInstalacion.fechaDisposicion | date:'dd/MM/yyyy'}}</strong></div>
                                 </div>
                             </div>
                 
