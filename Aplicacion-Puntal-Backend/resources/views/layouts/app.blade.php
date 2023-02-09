@@ -47,6 +47,18 @@
                         <a class="nav-item active nav-link text-white" href="{{ route('transitos.index') }}">Tránsitos</a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-item active nav-link text-white" href="{{ route('clientes.index') }}">Clientes</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-item active nav-link text-white" href="{{ route('embarcaciones.index') }}">Embarcaciones</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-item active nav-link text-white" href="{{ route('tripulantes.index') }}">Tripulantes</a>
+                    </li>
+
                     {{--**************** AÑADIR AQUI LAS RUTAS A LOS INDEX DE LOS CONTROLADORES **********************--}}
                     {{-- <li class="nav-item">
                         <a class="nav-item active nav-link text-white" href="{{ route('mensajes.index') }}">Mensajes</a>
