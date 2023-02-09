@@ -1,21 +1,4 @@
 #espacioTabla{
     margin-top: 10vh;
     height: auto;
-    /* overflow: scroll; */
-    /* height: 5%!important; */
-    
-}
-
-#resize_wrapper {
-    
-   /*  position: absolute;
-    top: 5em;
-    left: 1em;
-    right: 1em;
-    bottom: 1em; */
-}
-#table{
-    
-   /*  overflow: hidden!important; */
-   /* height: 5vh; */
 }
