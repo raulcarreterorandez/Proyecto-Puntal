@@ -1,21 +1,30 @@
-#espacioTabla{
-    margin-top: 10vh;
-    height: auto;
-    /* overflow: scroll; */
-    /* height: 5%!important; */
+#espacioTabla {
+  margin-top: 5vh;
+  margin-right: 5vh;
+  margin-left: 5vh;
+  height: auto;
+  /* overflow: scroll; */
+  /* height: 5%!important; */
 
 }
 
 #resize_wrapper {
 
-   /*  position: absolute;
+  /*  position: absolute;
     top: 5em;
     left: 1em;
     right: 1em;
     bottom: 1em; */
 }
-#table{
 
-   /*  overflow: hidden!important; */
-   /* height: 5vh; */
+#table {
+
+  /*  overflow: hidden!important; */
+  /* height: 5vh; */
+}
+
+.btn-info {
+  background-color: #007BC4;
+  color: white;
+  border: none;
 }
