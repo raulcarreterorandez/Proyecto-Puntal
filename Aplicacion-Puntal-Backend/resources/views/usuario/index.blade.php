@@ -68,43 +68,15 @@
                                             <td>{{ $usuario->idioma }}</td>
 
                                             <td>
-<<<<<<< HEAD
-                                                @foreach ($usuario->instalacionesUsuario as $instalacionUsuario)
-                                                    /{{ $instalaciones->find($instalacionUsuario->pivot->idInstalacion)->nombrePuerto }}/
-=======
                                                 @foreach ($usuario->instalacionesUsuario as $instalacion_usuario)
                                                     /{{ $instalacion_usuario->nombrePuerto }}/
->>>>>>> d00dc35c3cfe101732ae66530d907f2f92fccec5
                                                 @endforeach
                                             </td>
 
                                             <td>
-<<<<<<< HEAD
-                                                {{-- <form action="{{ route('usuarios.destroy',$usuario->email) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('usuarios.show',$usuario->email) }}" data-bs-toggle="tooltip"> <i class="bi bi-eye"></i> </a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('usuarios.edit',$usuario->email) }}"><i class="bi bi-pencil"></i> </a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash3-fill"></i></button>
-                                                </form> --}}
-
-                                                <a class="btn btn-sm btn-primary "
-                                                    href="{{ route('usuarios.show', $usuario->email) }}"
-                                                    data-bs-toggle="tooltip"> <i class="bi bi-eye"></i>
-                                                </a>
-                                                <a class="btn btn-sm btn-success"
-                                                    href="{{ route('usuarios.edit', $usuario->email) }}"><i
-                                                        class="bi bi-pencil"></i>
-                                                </a>
-                                                <a class="btn btn-sm btn-danger "
-                                                    href="{{ route('usuarios.confirm', $usuario->email) }}"><i
-                                                        class="bi bi-trash3-fill"></i>
-                                                </a>
-=======
                                                     <a class="btn btn-sm btn-primary " href="{{ route('usuarios.show',$usuario->email) }}" data-bs-toggle="tooltip"> <i class="bi bi-eye"></i> </a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('usuarios.edit',$usuario->email) }}"><i class="bi bi-pencil"></i> </a>
                                                     <a class="btn btn-sm btn-danger " href="{{ route('usuarios.confirm',$usuario->email) }}"><i class="bi bi-trash3-fill"></i> </a>
->>>>>>> d00dc35c3cfe101732ae66530d907f2f92fccec5
                                             </td>
                                         </tr>
                                     @endforeach

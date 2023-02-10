@@ -16,35 +16,26 @@ class UsuarioController extends Controller
 
     public function index()
     {
-        $UsuarioLogeado = Usuario::where("email",auth()->user()->email)->with('instalacionesUsuario')->get();
 
-        // dd($UsuarioLogeado[0]->instalacionesUsuario[0]->nombrePuerto);
+        // Traemos a todos los usuarios (con las relaciones a Instalaciones) menos el usuario logueado
+        $usuarios = Usuario::with('instalacionesUsuario')->where('email','!=',auth()->user()->email);
 
-        // $condicion[0] ="";
-        // $i=0;
-        // foreach ($UsuarioLogeado[0]->instalacionesUsuario as $instalacion) {
-            // dd($instalacion->id);
-            // array_push($condicion,["idInstalacion",$instalacion->id]);
-            // $condicion[0]+="idInstalcion"=>$instalacion->id;
-            // $i++;
-        // }
-        // dd($condicion);
+        // Filtramos los usuarios, para traer los que tengan los mismos puertos relacionados que el usuario logeado
+        $usuarios= $usuarios->whereHas('instalacionesUsuario',function ($query) {
 
+            // Traemos todos los datos del usuario logueado y sus relaciones con los puertos
+            $usuarioLogeado = Usuario::where("email",auth()->user()->email)->with('instalacionesUsuario')->get();
 
+            // Filtramos para que el idInstalacion sea el mismo que el puerto relacionado con el usuario logueado (tantas veces como puertos tenga)
+            $query->where(function($query) use ($usuarioLogeado){
+                foreach ($usuarioLogeado[0]->instalacionesUsuario as $instalacion) {
+                    $query->orWhere('idInstalacion',$instalacion->id);
+                }
+            });
 
-        $usuarios = Usuario::with('instalacionesUsuario')->where('email','!=',auth()->user()->email)->get();
-
-        // $usuarios = Usuario::with('instalacionesUsuario');
-        // $usuarios->where('id',1)->get();
-
-        // $usuarios = Usuario::with('instalacionesUsuario')->where('email','!=',auth()->user()->email)
-        // ->whereHas('instalacionesUsuario',function (Builder $query) {
-        //     $query->where('idInstalacion',0);
-        // })->get();
-        // dd($usuarios);
+        })->get();
 
 
-        // dd($usuarios[1]->instalacionesUsuario[0]->nombrePuerto);
 
         return view('usuario.index', compact('usuarios') )->with('i',0);
     }
