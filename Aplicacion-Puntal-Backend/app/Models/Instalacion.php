@@ -25,6 +25,8 @@ class Instalacion extends Model {
 
     public function instalacionesUsuarios() {
         return $this->hasMany('App\Models\InstalacionesUsuario', 'idInstalacion', 'id');
+        // return $this->belongsToMany(Usuario::class, 'instalacionesUsuarios',"idUsuario", "idInstalacion");
+
     }
 
     public function muelles() {
