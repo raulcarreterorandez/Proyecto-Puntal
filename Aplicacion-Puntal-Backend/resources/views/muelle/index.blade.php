@@ -58,11 +58,11 @@ Muelle
 
                                     <td>
                                         <form action="{{ route('muelles.destroy',$muelle->id) }}" method="POST">
-                                            <a class="btn btn-sm btn-primary " href="{{ route('muelles.show',$muelle->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                            <a class="btn btn-sm btn-success" href="{{ route('muelles.edit',$muelle->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                            <a class="btn btn-sm btn-primary " href="{{ route('muelles.show',$muelle->id) }}"><i class="bi bi-eye"></i></a>
+                                            <a class="btn btn-sm btn-success" href="{{ route('muelles.edit',$muelle->id) }}"><i class="bi bi-pencil"></i></a>
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                            <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash3-fill"></i></button>
                                         </form>
                                     </td>
                                 </tr>

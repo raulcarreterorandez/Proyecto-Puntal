@@ -21,7 +21,7 @@
                                     data-placement="left">
                                     {{ __('Create New') }}
                                 </a>
-                                <a class="btn btn-info btn-sm float-right" href="{{ route('plazas.index') }}"> Back</a>
+                                {{-- <a class="btn btn-info btn-sm float-right" href="{{ route('plazas.index') }}"> Back</a> --}}
                             </div>
                         </div>
                     </div>
@@ -61,15 +61,12 @@
                                             <td>
                                                 <form action="{{ route('bases.destroy', $base->idPlaza) }}" method="POST">
                                                     <a class="btn btn-sm btn-primary "
-                                                        href="{{ route('bases.show', $base->idPlaza) }}"><i
-                                                            class="fa fa-fw fa-eye"></i> Show</a>
+                                                        href="{{ route('bases.show', $base->idPlaza) }}"><i class="bi bi-eye"></i></a>
                                                     <a class="btn btn-sm btn-success"
-                                                        href="{{ route('bases.edit', $base->idPlaza) }}"><i
-                                                            class="fa fa-fw fa-edit"></i> Edit</a>
+                                                        href="{{ route('bases.edit', $base->idPlaza) }}"><i class="bi bi-pencil"></i></a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i
-                                                            class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash3-fill"></i></button>
                                                 </form>
                                             </td>
                                         </tr>

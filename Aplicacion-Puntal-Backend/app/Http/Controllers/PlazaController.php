@@ -2,18 +2,51 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Plaza;
-use App\Models\Muelle;
 use Illuminate\Http\Request;
 
+use App\Models\Usuario;
+use App\Models\Instalacion;
+use App\Models\Muelle;
+use App\Models\Plaza;
 
 class PlazaController extends Controller {
+
     public function index() {
 
-        $plazas = Plaza::all();
+        //Necesitamos mostrar únicamente las plazas de los muelles pertenecientes a las instalaciones en las que esté habilitado en usuario.
+
+        // $plazas = Plaza::where('id',1)->with('muelle')->get();
+        // dd($plazas[0]->muelle->idInstalacion);
+
+        //Obtengo el usuario logeado.
+        $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get();
+        // Where() devuelve siempre una colección de tipo Array. Aunque solo devuelva un elemento.
+
+        // Accedemos al elemento que nos interesa dentro del Array obtenido, en este caso solo hay uno, y a su "colección" de instalaciones. 
+        if ($usuarioLogeado[0]->instalacionesUsuario[0]->id == 0) { // Si el usuario tiene acceso a todos los puertos lo tiene a los muelles creados en dichas instalaciones y por tanto a todas las plazas. 
+            $plazas = Plaza::all(); // Recogemos todas las plazas disponibles.
+
+        } else { // Si no, mostramos unicamente las plazas de los muelles pertenecientes a las instalaciones relacionadas con el usuario.
+                 // Es decir, las instalaciones donde esté habilitado el usuario logeado.
+                 
+            // Traemos todas las plazas y su relacion con muelles.
+            $plazas = Plaza::with('muelle');
+
+            // Filtramos las plazas, para traer las que tengan los mismos puertos relacionados que el usuario logeado.
+            $plazas = $plazas->whereHas('muelle',function ($query) use ($usuarioLogeado) {             
+
+                // Filtramos para que el idInstalacion sea el mismo que el puerto relacionado con el usuario logueado (tantas veces como puertos tenga).  
+                $query->where(function($query) use ($usuarioLogeado){
+                    foreach ($usuarioLogeado[0]->instalacionesUsuario as $instalacion) {
+                        $query->orWhere('idInstalacion',$instalacion->id);
+                    }
+                });
+
+            })->get();
+        }
 
         return view('plaza.index', compact('plazas'))
-            ->with('i',0);
+            ->with('i', 0);
     }
 
     public function create() {
@@ -46,7 +79,7 @@ class PlazaController extends Controller {
 
         // Cuando modificamos una plaza debemos poder cambiar el muelle al que pertenece. Mostraremos los muelles existentes.
         $plaza = Plaza::find($id);
-        $muelles = Muelle::all()->pluck('id', 'id'); //El pluck devuelve un array de clave valor. primero clave y luego valor.
+        $muelles = Muelle::all()->pluck('id', 'id'); //El pluck devuelve un array de clave valor. Primero clave y luego valor.
 
         return view('plaza.edit', compact('plaza', 'muelles'));
     }

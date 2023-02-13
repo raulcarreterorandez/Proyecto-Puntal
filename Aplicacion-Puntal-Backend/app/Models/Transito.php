@@ -30,4 +30,10 @@ class Transito extends Model {
 
         return $this->hasMany('App\Models\Tripulante', 'id_plaza', 'idPlaza');
     }
+
+    public function muelle(){
+
+        return $this->hasOneThrough(Muelle::class, Plaza::class,'idMuelle','id');
+       
+    }
 }

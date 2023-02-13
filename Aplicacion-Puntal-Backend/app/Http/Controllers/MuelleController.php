@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Usuario;
 use App\Models\Instalacion;
 use App\Models\Muelle;
 use Illuminate\Http\Request;
@@ -10,8 +11,27 @@ use Illuminate\Http\Request;
 class MuelleController extends Controller {
 
     public function index() {
+        //Necesitamos mostrar únicamente los muelles de las instalaciones en las que esté habilitado en usuario.
 
-        $muelles = Muelle::all();/* paginate() */
+        //Obtengo el usuario logeado.
+        $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get();
+        // Where() devuelve siempre una colección de tipo Array. Aunque solo devuelva un elemento.
+
+        // Accedemos al elemento que nos interesa dentro del Array obtenido, en este caso solo hay uno, y a su "colección" de instalaciones. 
+        if ($usuarioLogeado[0]->instalacionesUsuario[0]->id == 0) { // Si el usuario tiene acceso a todos los puertos lo tiene a los muelles creados en dichas instalaciones. 
+            $muelles = Muelle::all(); // Recogemos todos los muelles disponibles.
+
+        } else { //Si no mostramos unicamente los muelles pertenecientes a las instalaciones relacionadas con el usuario.
+                // Es decir, las instalaciones donde esté habilitado el usuario logeado.
+
+            $muelles = Muelle::where(function ($query) use ($usuarioLogeado) {
+
+                foreach ($usuarioLogeado[0]->instalacionesUsuario as $instalacion) { //Recorremos la coleccion de instalaciones del usuario.
+                    // dd($instalacion->id);
+                    $query->orWhere("idInstalacion", $instalacion->id); // Los muelles pertenecientes a las instalaciones relacionadas con el usuario a través de la tabla instalacionesUsuarios.
+                }
+            })->get();
+        }
 
         return view('muelle.index', compact('muelles'))
             ->with('i', 0 /* (request()->input('page', 1) - 1) * $muelles->perPage() */);
@@ -47,7 +67,7 @@ class MuelleController extends Controller {
     public function edit($id) {
 
         $muelle = Muelle::find($id);
-        $instalaciones = Instalacion::all()->pluck('nombrePuerto','id');
+        $instalaciones = Instalacion::all()->pluck('nombrePuerto', 'id');
 
         return view('muelle.edit', compact('muelle', 'instalaciones'));
     }
@@ -56,7 +76,7 @@ class MuelleController extends Controller {
 
         request()->validate(Muelle::$rules);
 
-         /* $muelle = Muelle::find($muelle); */
+        /* $muelle = Muelle::find($muelle); */
 
         $muelle->update($request->all());
 
@@ -65,7 +85,7 @@ class MuelleController extends Controller {
     }
 
     public function destroy($id) {
-        
+
         $muelle = Muelle::find($id)->delete();
 
         return redirect()->route('muelles.index')
