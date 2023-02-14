@@ -18,7 +18,7 @@ class UsuarioController extends Controller
     {
         // Traemos todos los datos del usuario logueado y sus relaciones con los puertos.
         $usuarioLogeado = Usuario::where("email",auth()->user()->email)->with('instalacionesUsuario')->get();
-        
+
         // En caso de que no tenga acceso a todos los puertos, filtraremos la busqueda de usuarios.
         if($usuarioLogeado[0]->instalacionesUsuario[0]->id != 0){ //Si la primera instalacion del usuario es id != 0 (todos los puertos)...
             // Traemos a todos los usuarios (con las relaciones a Instalaciones) menos el usuario logueado.
@@ -26,9 +26,9 @@ class UsuarioController extends Controller
 
             // dd("Filtramos usuarios por puerto");
             // Filtramos los usuarios, para traer los que tengan los mismos puertos relacionados que el usuario logeado.
-            $usuarios= $usuarios->whereHas('instalacionesUsuario',function ($query) use ($usuarioLogeado) {             
+            $usuarios= $usuarios->whereHas('instalacionesUsuario',function ($query) use ($usuarioLogeado) {
 
-                // Filtramos para que el idInstalacion sea el mismo que el puerto relacionado con el usuario logueado (tantas veces como puertos tenga)   
+                // Filtramos para que el idInstalacion sea el mismo que el puerto relacionado con el usuario logueado (tantas veces como puertos tenga)
                 $query->where(function($query) use ($usuarioLogeado){
                     foreach ($usuarioLogeado[0]->instalacionesUsuario as $instalacion) {
                         $query->orWhere('idInstalacion',$instalacion->id);
@@ -38,11 +38,13 @@ class UsuarioController extends Controller
             })->get();
         }
         else{
-        // Traemos a todos los usuarios (con las relaciones a Instalaciones) menos el usuario logueado
-        $usuarios = Usuario::with('instalacionesUsuario')->where('email','!=',auth()->user()->email)->get();
-    }
+            // Traemos a todos los usuarios (con las relaciones a Instalaciones) menos el usuario logueado
+            $usuarios = Usuario::with('instalacionesUsuario')->where('email','!=',auth()->user()->email)->get();
+        }
 
-        return view('usuario.index', compact('usuarios') )->with('i',0);
+        $roleAcceso = auth()->user()->perfil;
+
+        return view('usuario.index', compact('usuarios', 'roleAcceso') )->with('i',0);
     }
 
     public function create()

@@ -6,7 +6,8 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class XuntaMiddleware
+
+class GuardaMuellesMiddleware
 {
     /**
      * Handle an incoming request.
@@ -18,11 +19,11 @@ class XuntaMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()) {    //si está autentificado
-            if (auth()->user()->perfil == "XUNTA-GALICIA") {   //si es role es admin
+            if (auth()->user()->perfil == "GERENCIA-PUERTO") {   //si es role es admin
 
                 return $next($request);    //significa continua
             }
         }
-        return redirect()->route('home')->with('access', 'XUNTA-GALICIA // Disabled access');
+        return redirect()->route('home')->with('access', 'GERENCIA-PUERTO // Disabled access');
     }
 }

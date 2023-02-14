@@ -66,5 +66,9 @@ class Kernel extends HttpKernel
 
         // MIDDLEWARE NUEVOS PARA EL PROYECTO //
         'xunta' => \App\Http\Middleware\XuntaMiddleware::class,
+        'gerencia' => \App\Http\Middleware\GerenciaMiddleware::class,
+        'policia' => \App\Http\Middleware\CuerpoSeguridadMiddleware::class,
+        'guarda-muelle' => \App\Http\Middleware\GuardaMuellesMiddleware::class,
+
     ];
 }

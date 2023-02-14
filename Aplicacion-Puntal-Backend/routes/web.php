@@ -39,6 +39,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/user', [AuthController::class, 'infoUser'])->name('info');
 });
 
+Route::group(['middleware' => 'gerencia'], function () {
+
+    Route::get('usuarios', [UsuarioController::class, 'index']);
+    Route::view('/usuarios','usuario.index');
+});
 
 Route::group(['middleware' => 'xunta'], function () {
 
