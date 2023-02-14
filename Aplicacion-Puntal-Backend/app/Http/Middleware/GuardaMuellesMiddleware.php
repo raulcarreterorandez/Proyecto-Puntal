@@ -19,11 +19,11 @@ class GuardaMuellesMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()) {    //si está autentificado
-            if (auth()->user()->perfil == "GERENCIA-PUERTO") {   //si es role es admin
+            if (auth()->user()->perfil == "GUARDA-MUELLES") {   //si es role es admin
 
                 return $next($request);    //significa continua
             }
         }
-        return redirect()->route('home')->with('access', 'GERENCIA-PUERTO // Disabled access');
+        return redirect()->route('home')->with('access', 'Disabled access - Solo pueden acceder los usuarios con role GUARDA-MUELLES');
     }
 }

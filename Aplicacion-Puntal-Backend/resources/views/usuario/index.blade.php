@@ -17,10 +17,12 @@
                             </span>
 
                             <div class="float-right">
-                                <a href="{{ route('usuarios.create') }}" class="btn btn-secondary btn-sm float-right"
-                                    data-placement="left">
-                                    {{ __('Create New') }}
-                                </a>
+                                @if ($roleAcceso == "XUNTA-GALICIA")
+                                    <a href="{{ route('usuarios.create') }}" class="btn btn-secondary btn-sm float-right"
+                                        data-placement="left">
+                                        {{ __('Create New') }}
+                                    </a>
+                                @endif
                             </div>
                         </div>
                     </div>

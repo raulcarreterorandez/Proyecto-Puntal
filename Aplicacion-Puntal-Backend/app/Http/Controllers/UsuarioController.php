@@ -13,9 +13,17 @@ use Illuminate\Http\Request;
  */
 class UsuarioController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('gerencia')->only(['index','show']);
+        $this->middleware('xunta')->except(['index','show']);
+    }
 
     public function index()
     {
+        // dd('Funcion INDEX');
+
         // Traemos todos los datos del usuario logueado y sus relaciones con los puertos.
         $usuarioLogeado = Usuario::where("email",auth()->user()->email)->with('instalacionesUsuario')->get();
 
@@ -49,18 +57,21 @@ class UsuarioController extends Controller
 
     public function create()
     {
+        // dd('Funcion CREATE');
+
         $usuario = new Usuario();
         $instalaciones = Instalacion::all();
         $instalacionesChecked = [0];
         $usuario->perfil =0;
         $usuario->idioma =0;
-        // dd($usuario->perfil);
 
         return view('usuario.create', compact('usuario', 'instalaciones', 'instalacionesChecked'));
     }
 
     public function store(Request $request)
     {
+        // dd('Funcion STORE');
+
         // dd($request);
         // CREAMOS AL USUARIO
         $usuario = $request->validate([
@@ -88,11 +99,13 @@ class UsuarioController extends Controller
 
     public function show($id)
     {
+        dd('Funcion SHOQ');
 
         $usuario = Usuario::find($id);
         $instalaciones = Usuario::find($id)->instalacionesUsuario() -> get() -> pluck("nombrePuerto");
+        $roleAcceso = auth()->user()->perfil;
 
-        return view('usuario.show', compact('usuario','instalaciones'));
+        return view('usuario.show', compact('usuario','instalaciones','roleAcceso'));
     }
 
     public function edit($id)
@@ -107,6 +120,8 @@ class UsuarioController extends Controller
     public function update(Request $request, Usuario $usuario)
     {
         // dd($request);
+        // dd($usuario);
+
 
         $nuevoUsuario = $request->validate([
             'nombreUsuario' => 'required|max:50',
@@ -125,6 +140,8 @@ class UsuarioController extends Controller
         if($nuevoUsuario['password'] != $usuario->password){
             $nuevoUsuario['password'] = bcrypt($request->password); // Encriptamos la nueva contraseña contraseña
         }
+        // dd($nuevoUsuario);
+        // dd(Usuario::find($usuario->email));
 
         Usuario::find($usuario->email) -> update($nuevoUsuario);
         Usuario::find($request->email)->instalacionesUsuario() -> sync($request->instalaciones);

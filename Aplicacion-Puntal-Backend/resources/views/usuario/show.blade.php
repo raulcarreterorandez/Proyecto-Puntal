@@ -15,8 +15,13 @@
                             <span class="card-title h1">Show Usuario</span>
                             <div class="float-right">
                                 @if (auth()->user()->email != $usuario->email)
-                                    <a class="btn btn-lg btn-success" href="{{ route('usuarios.edit',$usuario->email) }}"><i class="bi bi-pencil"></i> </a>
-                                    <a class="btn btn-danger btn-lg" href="{{ route('usuarios.confirm',$usuario->email) }}"><i class="bi bi-trash3-fill"></i> </a>
+                                    @if ($roleAcceso == "XUNTA-GALICIA")
+                                        <a class="btn btn-sm btn-success" href="{{ route('usuarios.edit',$usuario->email) }}"><i class="bi bi-pencil"></i> </a>
+
+                                        @if ($usuario->habilitado === 1)
+                                            <a class="btn btn-sm btn-danger " href="{{ route('usuarios.confirm',$usuario->email) }}"><i class="bi bi-trash3-fill"></i> </a>
+                                        @endif
+                                    @endif
                                 @endif
                             </div>
                         </div>
