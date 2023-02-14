@@ -14,6 +14,8 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { DataTablesModule } from "angular-datatables";
 import { UtilidadesModule } from './utilidades/utilidades.module';
 import { InstalacionesModule } from './instalaciones/instalaciones.module';
+import { UsuariosModule } from './usuarios/usuarios.module';
+
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { InstalacionesModule } from './instalaciones/instalaciones.module';
     HttpClientModule,
     FormsModule,
     UtilidadesModule,
-    InstalacionesModule
+    InstalacionesModule,
+    UsuariosModule,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
