@@ -68,9 +68,9 @@
                 </div><br>
                 <div class="float-right">
                     @if (auth()->user()->email == $usuario->email)
-                        <a class="btn btn-primary" href="{{ route('home') }}"> Back</a>
+                        <a class="btn btn-info" href="{{ route('home') }}"> Back</a>
                     @else
-                        <a class="btn btn-primary" href="{{ route('usuarios.index') }}"> Back</a>
+                        <a class="btn btn-info" href="{{ route('usuarios.index') }}"> Back</a>
                     @endif
                 </div>
             </div>

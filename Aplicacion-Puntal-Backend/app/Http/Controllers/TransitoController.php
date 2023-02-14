@@ -13,10 +13,10 @@ use Illuminate\Http\Request;
 class TransitoController extends Controller {
 
     public function index() {
-        $transito = Transito::with('muelle');
-        dd($transito->muelle->idInstalacion);
-
         //Necesitamos mostrar únicamente los tránsitos(plazas) de los muelles pertenecientes a las instalaciones en las que esté habilitado en usuario.
+
+        $transito = Transito::with('muelle');
+        //dd($transito->muelle->idInstalacion);
 
         //Obtengo el usuario logeado.
         $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get();
@@ -40,9 +40,6 @@ class TransitoController extends Controller {
                 });
             })->get();
         }
-
-
-
 
         return view('transito.index', compact('transitos'))
             ->with('i', 0 /* (request()->input('page', 1) - 1) * $transitos->perPage() */);
