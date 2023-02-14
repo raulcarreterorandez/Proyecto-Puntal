@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { DataTablesModule } from 'angular-datatables';
 import { RouterModule } from '@angular/router';
 
@@ -30,6 +30,6 @@ import { UtilidadesModule } from '../utilidades/utilidades.module';
     VistaDetalladaInstalacionComponent
   ]
 })
-export class InstalacionesModule { 
+export class InstalacionesModule {
 
 }

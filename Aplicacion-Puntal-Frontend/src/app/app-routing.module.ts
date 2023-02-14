@@ -9,6 +9,9 @@ import { VistaDetalladaInstalacionComponent } from './instalaciones/vista-detall
 // MUELLES
 import { ListaMuellesComponent } from './muelles/lista-muelles/lista-muelles.component';
 import { VistaDetalladaMuelleComponent } from './muelles/vista-detallada-muelle/vista-detallada-muelle.component';
+// Usuarios
+import { ListaUsuariosComponent } from './usuarios/lista-usuarios/lista-usuarios.component';
+import { VistaDetalladaUsuarioComponent } from './usuarios/vista-detallada-usuario/vista-detallada-usuario.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -23,7 +26,9 @@ const routes: Routes = [
   { path: 'lista-muelles', component: ListaMuellesComponent },
   { path: 'vistaDetalleMuelle/:id', component: VistaDetalladaMuelleComponent },
 
-
+  // RUTAS - USUARIOS
+  { path: 'lista-usuarios', component: ListaUsuariosComponent },
+  { path: 'vistaDetalleUsuario/:email', component: VistaDetalladaUsuarioComponent },
 ];
 
 @NgModule({

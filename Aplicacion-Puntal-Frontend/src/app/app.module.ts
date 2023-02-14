@@ -15,6 +15,7 @@ import { DataTablesModule } from "angular-datatables";
 import { UtilidadesModule } from './utilidades/utilidades.module';
 import { InstalacionesModule } from './instalaciones/instalaciones.module';
 import { MuellesModule } from './muelles/muelles.module';
+import { UsuariosModule } from './usuarios/usuarios.module';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { MuellesModule } from './muelles/muelles.module';
     FormsModule,
     UtilidadesModule,
     InstalacionesModule,
-    MuellesModule
+    MuellesModule,
+    UsuariosModule,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

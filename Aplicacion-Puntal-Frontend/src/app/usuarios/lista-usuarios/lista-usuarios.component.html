@@ -1,0 +1,64 @@
+<div id="dashBoard" class="container-fluid">
+  <div class="row">
+    <app-header></app-header>
+  </div>
+  <div id="vistaCentral" class="row">
+    <div class="col-1">
+      <app-aside></app-aside>
+    </div>
+    <div class="col-10">
+      <div class="row">
+        <!-- <app-navbar></app-navbar> -->
+      </div>
+      <div class="row">
+                        <!-- CONTENIDO DE LA PANTALLA -->
+
+                        <div *ngIf="usuarios!=null; else espera">
+                          <div id="espacioTabla">
+                            <div id="resize_wrapper">
+                              <table id="tabla" datatable [dtOptions]="dtOptions" class="table table-striped table-hover">
+                                <thead class="">
+                                  <tr>
+                                    <th scope="col">Nombre Usuario</th>
+                                    <th scope="col">Nombre Completo</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Habilitado</th>
+                                    <th scope="col">Perfil</th>
+                                    <th scope="col">Idioma</th>
+                                    <th scope="col">Instalaciones</th>
+                                    <th scope="col">Acciones</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let usuario of usuarios">
+                                    <td>{{usuario.nombreUsuario}}</td>
+                                    <td>{{usuario.nombreUsuario}}</td>
+                                    <td>{{usuario.email}}</td>
+                                    <td>{{usuario.habilitado}}</td>
+                                    <td>{{usuario.perfil}}</td>
+                                    <td>{{usuario.idioma}}</td>
+
+                                    <td>
+                                      <li *ngFor="let instalacion of usuario.instalaciones_usuario" class="lista-instalaciones">
+                                        /{{instalacion.nombrePuerto}}/
+                                      </li>
+                                    </td>
+                                    <td>
+                                      <a class="btn btn-sm btn-info" data-bs-toggle="tooltip" title="Ver registro {{ usuario.email }}"
+                                        [routerLink]="['/vistaDetalleUsuario/',usuario.email]"><i class="bi bi-eye"></i></a>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                        <ng-template #espera>Esperando datos...</ng-template>
+
+      </div>
+    </div>
+    <div id="usersettings" class="col-1 d-flex flex-row-reverse">
+      <app-user-settings></app-user-settings>
+    </div>
+  </div>
+</div>

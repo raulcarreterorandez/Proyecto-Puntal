@@ -39,7 +39,7 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     // RUTAS API - USUARIOS
     Route::get('/usuarios', [UsuarioController::class, 'index']);
-    Route::get('/usuario/{id}', [UsuarioController::class, 'show']);
+    Route::get('/usuarios/{id}', [UsuarioController::class, 'show']);
 
     // RUTAS API - INSTALACIONES
     Route::get('/instalaciones', [InstalacionController::class, 'index']);
