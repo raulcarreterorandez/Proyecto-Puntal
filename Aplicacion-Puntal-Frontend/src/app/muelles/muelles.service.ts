@@ -1,20 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Instalacion } from './instalacion';
-
+import { Muelle } from './muelle';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class InstalacionesService {
+export class MuellesService {
 
   public url: string;
 
   constructor(private http: HttpClient) {
 
-    this.url = "http://localhost/api/instalaciones";    
+    this.url = "http://localhost/api/muelles";    
    }
 
 /*   retornar() {
@@ -24,14 +23,12 @@ export class InstalacionesService {
     return this.http.get("https://jsonplaceholder.typicode.com/todos/1"); API DE PRUEBA
   }  */
 
-  retornar(): Observable<Instalacion[]> { /* Observable<any>  */
-    return this.http.get<Instalacion[]>(this.url);
-    /* return this.http.get<Instalacion[]>("https://localhost/api/instalaciones") */
+  retornar(): Observable<Muelle[]> { /* Observable<any>  */
+    return this.http.get<Muelle[]>(this.url);
+    /* return this.http.get<Muelle[]>("https://localhost/api/muelles") */
   }  
 
-  retornarUno(id: any): Observable<Instalacion> {
+  retornarUno(id: any): Observable<Muelle> {
     return this.http.get(`${this.url}/${id}`);
   }
-
 }
-
