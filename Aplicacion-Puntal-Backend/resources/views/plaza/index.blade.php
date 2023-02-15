@@ -59,17 +59,17 @@ Plaza
                                     <td>{{ $plaza->visto }}</td>
                                     <td>{{ $plaza->puertoOrigen }}</td>
                                     <td>{{ $plaza->puertoDestino }}</td>
-                                    <td>{{ $plaza->año }}</td>
+                                    <td>{{ $plaza->anyo }}</td>
                                     <td>{{ $plaza->idMuelle }}</td>
                                     <td>{{ $plaza->muelle->instalacion->nombrePuerto }}</td>
 
                                     <td>
                                         <form action="{{ route('plazas.destroy',$plaza->id) }}" method="POST">
-                                            <a class="btn btn-sm btn-primary " href="{{ route('plazas.show',$plaza->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                            <a class="btn btn-sm btn-success" href="{{ route('plazas.edit',$plaza->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                            <a class="btn btn-sm btn-primary " href="{{ route('plazas.show',$plaza->id) }}"> <i class="bi bi-eye"></i> </a>
+                                            <a class="btn btn-sm btn-success" href="{{ route('plazas.edit',$plaza->id) }}"><i class="bi bi-pencil"></i></a>
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                            <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash3-fill"></i></button>
                                         </form>
                                     </td>
                                 </tr>

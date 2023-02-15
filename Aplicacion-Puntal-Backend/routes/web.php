@@ -14,11 +14,12 @@ use App\Http\Controllers\TripulanteController;
 use App\Http\Controllers\EmbarcacioneController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\TelefonoController;
-
+use App\Models\Usuario;
 
 Route::view('/login', 'login')->name('login');
 Route::post('/login-usuario', [AuthController::class, 'login'])->name('logear');
 
+// TODO EL MUNDO PUEDE ACCEDER, SOLO NECESITA ESTAR LOGEADO (GUARDA-MUELLES Y SUPERIORES)
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -39,9 +40,32 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/user', [AuthController::class, 'infoUser'])->name('info');
 });
 
+// SOLO PUEDE ACCEDER LOS USUARIOS CON ROLE CUERPO-SEGURIDAD Y SUPERIORES
+Route::group(['middleware' => 'policia'], function () {
 
+});
+
+// SOLO PUEDE ACCEDER LOS USUARIOS CON ROLE GERENCIA Y SUPERIORES
+Route::group(['middleware' => 'gerencia'], function () {
+
+    // Route::resource('usuarios', UsuarioController::class)->only([
+    //     'index','show'
+    // ]); -- DA PROBLEMAS
+
+
+});
+
+// SOLO PUEDE ACCEDER LOS USUARIOS CON ROLE XUNTA
 Route::group(['middleware' => 'xunta'], function () {
 
-    Route::resource('usuarios', UsuarioController::class);
-    Route::get('/usuario/{id}/confirm', [UsuarioController::class, 'confirm'])->name('usuarios.confirm');
+    // Route::resource('usuarios', UsuarioController::class)->except([
+    //     'index','show'
+    // ]); -- DA PROBLEMAS
+
+    Route::get('/usuarios/{id}/confirm', [UsuarioController::class, 'confirm'])->name('usuarios.confirm');
 });
+
+
+
+// LOS PERMISOS DE ACCESO (MIDDLEWARE) ESTAN EN EL CONSTRUCTOR DEL CONTROLLER
+Route::resource('usuarios', UsuarioController::class);

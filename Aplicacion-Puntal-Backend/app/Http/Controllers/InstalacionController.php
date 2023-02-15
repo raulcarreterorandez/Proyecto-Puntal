@@ -10,23 +10,25 @@ use Illuminate\Http\Request;
 class InstalacionController extends Controller
 {
 
-    public function index()
-    {
+    public function index() {
 
         //Necesitamos mostrar únicamente las instalaciones en las que esté habilitado en usuario.
 
-        $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get(); //Obtengo el usuario logeado.
+        //Obtengo el usuario logeado.
+        $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get();
+        // Where() devuelve siempre una colección de tipo Array. Aunque solo devuelva un elemento.
 
         // Si el usuario tiene acceso a todos los puertos, le pasamos todos los puertos disponibles
         if ($usuarioLogeado[0]->instalacionesUsuario[0]->id == 0) {
-            $instalaciones = Instalacion::all();
-        } else { //Si no mostramos unicamente los puertos relacionados con el usuario
+           $instalaciones = Instalacion::all();
+        }
+        else{ //Si no mostramos unicamente los puertos relacionados con el usuario
 
-            $instalaciones = Instalacion::where(function ($query) {
+            $instalaciones = Instalacion::where(function ($query){
 
                 $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get(); //Obtengo el usuario logeado.
 
-                $query->where(function ($query) use ($usuarioLogeado) {
+                $query ->where(function ($query) use ($usuarioLogeado){
                     foreach ($usuarioLogeado[0]->instalacionesUsuario as $instalacion) {
                         // dd($instalacion->id);
                         $query->orWhere("id", $instalacion->id);
@@ -41,7 +43,7 @@ class InstalacionController extends Controller
         return view('instalacion.index', compact('instalaciones'))
             ->with('i', 0 /* (request()->input('page', 1) - 1) * $instalaciones->perPage() (Cambios por dataTables)*/);
     }
-    /*          Index Raul
+/*          Index Raul
     public function index() {
 
         // Traemos a todos los usuarios (con las relaciones a Instalaciones) menos el usuario logueado
@@ -64,8 +66,7 @@ class InstalacionController extends Controller
         return view('usuario.index', compact('usuarios'))->with('i', 0);
     } */
 
-    public function create()
-    {
+    public function create() {
 
         $instalacion = new Instalacion();
         return view('instalacion.create', compact('instalacion'));
@@ -82,8 +83,7 @@ class InstalacionController extends Controller
             ->with('success', 'Instalacion created successfully.');
     }
 
-    public function show($id)
-    {
+    public function show($id) {
 
         $instalacion = Instalacion::find($id);
 

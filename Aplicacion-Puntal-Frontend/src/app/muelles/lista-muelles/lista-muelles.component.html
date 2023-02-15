@@ -1,0 +1,65 @@
+<div id="dashBoard" class="container-fluid">
+  <div class="row">
+    <app-header></app-header>
+  </div>
+  <div id="vistaCentral" class="row">
+    <div class="col-1">
+      <app-aside></app-aside>
+    </div>
+    <div class="col-10">
+      <div class="row">
+        <!-- <app-navbar></app-navbar> -->
+      </div>
+      <div class="row">
+        <!-- CONTENIDO DE LA PANTALLA -->
+
+        <div *ngIf="muelles!=null; else espera">
+          <div id="espacioTabla">
+            <div id="resize_wrapper">
+              <table id="tabla" datatable [dtOptions]="dtOptions" class="table table-striped table-hover">
+                <thead class="">
+                  <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Id Instalacion</th>
+                    <th scope="col">Nombre Instalación</th>
+                    <th scope="col">Visto</th>
+                    <th scope="col">Plazas Totales</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let muelle of muelles">
+                    <td>{{muelle.id}}</td>
+                    <td>{{muelle.idInstalacion}}</td>
+                    <td>{{muelle.instalacion.nombrePuerto}}</td>
+                    <!-- Mirar como traemos la info. en API/MuelleController del backend. -->
+                    <td>{{muelle.visto}}</td>
+                    <!-- <td>{{muelle.plazas[0].id}}</td> -->
+                    <td>   
+                       <!-- <script>
+                          muelle.plazas.length;
+                        </script> -->                      
+                      <li *ngFor="let plaza of muelle.plazas; let indice=index">
+                        {{indice+1}} --> {{plaza.id}}
+                                                                   
+                      </li>
+                    </td>
+                    <td>
+                      <a class="btn btn-sm btn-info" data-bs-toggle="tooltip" title="Ver registro {{ muelle.id }}"
+                        [routerLink]="['/vistaDetalleMuelle/',muelle.id]"><i class="bi bi-eye"></i></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <ng-template #espera>Esperando datos...</ng-template>
+
+      </div>
+    </div>
+    <div id="usersettings" class="col-1 d-flex flex-row-reverse">
+      <app-user-settings></app-user-settings>
+    </div>
+  </div>
+</div>

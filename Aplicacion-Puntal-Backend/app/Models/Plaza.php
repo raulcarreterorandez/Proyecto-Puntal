@@ -12,13 +12,13 @@ class Plaza extends Model {
     static $rules = [
         'disponible' => 'required',
         'visto' => 'required',
-        'año' => 'required',
+        'anyo' => 'required',
         'idMuelle' => 'required',
     ];
 
     protected $perPage = 20;
 
-    protected $fillable = ['disponible', 'visto', 'puertoOrigen', 'puertoDestino', 'año', 'idMuelle'];
+    protected $fillable = ['disponible', 'visto', 'puertoOrigen', 'puertoDestino', 'anyo', 'idMuelle'];
 
     public function bases() {
         return $this->hasOne('App\Models\Bases', 'idPlaza', 'id');

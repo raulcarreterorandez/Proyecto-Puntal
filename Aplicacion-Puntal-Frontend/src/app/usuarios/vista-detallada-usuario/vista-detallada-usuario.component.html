@@ -1,0 +1,64 @@
+<div id="dashBoard" class="container-fluid">
+  <div class="row">
+      <app-header></app-header>
+  </div>
+  <div id="vistaCentral" class="row">
+      <div class="col-1">
+          <app-aside></app-aside>
+      </div>
+      <div class="col-10">
+          <div class="row">
+              <div class="container-fluid d-flex justify-content-center">
+
+                  <div class="col-9">
+
+                      <div id="botones" class="row d-flex justify-content-space-between align-items-center">
+                          <div class="col-1">
+                              <button><i class="far fa-arrow-alt-circle-left mx-1" style='font-size:50px' data-bs-toggle="tooltip"
+                                      title="Volver" [routerLink]="['/lista-usuarios']"></i></button>
+                          </div>
+                          <div class="col-11">
+                              <div id="titulo">Detalle Instalación</div>
+                          </div>
+                      </div>
+
+                      <div id="cabecera" class="row d-flex align-items-center ">
+                          <div class="col" id="cabecera">
+                            Puertos Encargados:
+                              <strong *ngFor="let instalacion of currentUsuario.instalaciones_usuario">
+                                /{{ instalacion.codigo }}-{{ instalacion.nombrePuerto }}/
+                              </strong>
+                          </div>
+                      </div>
+
+                      <div id="cuerpo" class="row container-fluid d-flex">
+                          <div class="col-6">
+                              <div class="row d-flex justify-content-center">
+                                  <div class="texto">Nombre Usuario: <strong>{{ currentUsuario.nombreUsuario }}</strong></div>
+                                  <div class="texto">Nombre Completo: <strong>{{ currentUsuario.nombreCompleto }}</strong></div>
+                                  <div class="texto">Email: <strong>{{ currentUsuario.email }}</strong></div>
+                              </div>
+                          </div>
+                          <div class="col-6">
+                              <div class="row">
+                                  <div class="texto">Habilitado: <strong>{{ currentUsuario.habilitado }}</strong></div>
+                                  <div class="texto">Perfil: <strong> {{ currentUsuario.perfil }}</strong></div>
+                                  <div class="texto">Idioma: <strong> {{ currentUsuario.idioma }}</strong></div>
+
+                              </div>
+                          </div>
+
+                      </div>
+
+                  </div>
+
+              </div>
+
+
+          </div>
+      </div>
+      <div class="col-1">
+          <app-user-settings></app-user-settings>
+      </div>
+  </div>
+</div>

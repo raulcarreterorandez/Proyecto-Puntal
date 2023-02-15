@@ -20,9 +20,9 @@ class XuntaMiddleware
         if (Auth::check()) {    //si está autentificado
             if (auth()->user()->perfil == "XUNTA-GALICIA") {   //si es role es admin
 
-                return $next($request);    //significa continua
+                return $next($request);
             }
         }
-        return redirect()->route('home')->with('access', 'Disabled access');
+        return redirect()->route('home')->with('access', 'Disabled access - Solo pueden acceder los usuarios con role XUNTA-GALICIA');
     }
 }

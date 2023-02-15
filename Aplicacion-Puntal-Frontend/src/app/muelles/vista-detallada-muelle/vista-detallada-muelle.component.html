@@ -1,0 +1,67 @@
+<div id="dashBoard" class="container-fluid">
+    <div class="row">
+        <app-header></app-header>
+    </div>
+    <div id="vistaCentral" class="row">
+        <div class="col-1">
+            <app-aside></app-aside>
+        </div>
+        <div class="col-10">
+            <div class="row">
+                <div class="container-fluid d-flex justify-content-center">
+
+                    <div class="col-8">
+
+                        <div id="botones" class="row d-flex justify-content-space-between align-items-center">
+                            <div class="col-1">
+                                <button><i class="far fa-arrow-alt-circle-left mx-1" style='font-size:50px'
+                                        data-bs-toggle="tooltip" title="Volver"
+                                        [routerLink]="['/lista-muelles']"></i></button>
+                            </div>
+                            <div class="col-11">
+                                <div id="titulo">Detalle Instalación</div>
+                            </div>
+                        </div>
+
+                        <div id="cabecera" class="row d-flex align-items-center ">
+                            <div class="col-4">
+                                <div>Id Instalacion: <strong>{{ currentMuelle.idInstalacion }}</strong></div>
+                            </div>
+                            <div class="col-4">
+                                <div>Código Instalacion: <strong>{{ currentMuelle.instalacion.codigo }}</strong></div>
+                            </div>
+                            <div class="col-4">
+                                <div>Nombre Instalación: <strong>{{ currentMuelle.instalacion.nombrePuerto }}</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="cuerpo" class="row container-fluid d-flex">
+                            <div class="col-6">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="texto">Id Muelle:<strong> {{ currentMuelle.id }}</strong></div>
+                                    <div class="texto">Visto: <strong>{{ currentMuelle.visto }}</strong></div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="texto">Nº Plazas Total: <strong>{{
+                                            currentMuelle.plazasTotales}}</strong></div>
+                                    <div class="texto">Nº Plazas Dsiponibles: <strong>{{ currentMuelle.plazasDisponibles
+                                            }}</strong></div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="col-1">
+            <app-user-settings></app-user-settings>
+        </div>
+    </div>
+</div>

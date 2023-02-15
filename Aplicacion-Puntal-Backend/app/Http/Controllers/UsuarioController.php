@@ -13,22 +13,28 @@ use Illuminate\Http\Request;
  */
 class UsuarioController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('gerencia')->only(['index','show']);
+        $this->middleware('xunta')->except(['index','show']);
+    }
 
     public function index()
     {
-        // En caso de que no tenga acceso a todos los puertos, filtraremos la busqueda de usuarios
+        // dd('Funcion INDEX');
+
+        // Traemos todos los datos del usuario logueado y sus relaciones con los puertos.
         $usuarioLogeado = Usuario::where("email",auth()->user()->email)->with('instalacionesUsuario')->get();
 
-        if($usuarioLogeado[0]->instalacionesUsuario[0]->id != 0){
-            // Traemos a todos los usuarios (con las relaciones a Instalaciones) menos el usuario logueado
+        // En caso de que no tenga acceso a todos los puertos, filtraremos la busqueda de usuarios.
+        if($usuarioLogeado[0]->instalacionesUsuario[0]->id != 0){ //Si la primera instalacion del usuario es id != 0 (todos los puertos)...
+            // Traemos a todos los usuarios (con las relaciones a Instalaciones) menos el usuario logueado.
             $usuarios = Usuario::with('instalacionesUsuario')->where('email','!=',auth()->user()->email);
 
             // dd("Filtramos usuarios por puerto");
-            // Filtramos los usuarios, para traer los que tengan los mismos puertos relacionados que el usuario logeado
-            $usuarios= $usuarios->whereHas('instalacionesUsuario',function ($query) {
-
-                // Traemos todos los datos del usuario logueado y sus relaciones con los puertos
-                $usuarioLogeado = Usuario::where("email",auth()->user()->email)->with('instalacionesUsuario')->get();
+            // Filtramos los usuarios, para traer los que tengan los mismos puertos relacionados que el usuario logeado.
+            $usuarios= $usuarios->whereHas('instalacionesUsuario',function ($query) use ($usuarioLogeado) {
 
                 // Filtramos para que el idInstalacion sea el mismo que el puerto relacionado con el usuario logueado (tantas veces como puertos tenga)
                 $query->where(function($query) use ($usuarioLogeado){
@@ -40,27 +46,32 @@ class UsuarioController extends Controller
             })->get();
         }
         else{
-        // Traemos a todos los usuarios (con las relaciones a Instalaciones) menos el usuario logueado
-        $usuarios = Usuario::with('instalacionesUsuario')->where('email','!=',auth()->user()->email)->get();
-    }
+            // Traemos a todos los usuarios (con las relaciones a Instalaciones) menos el usuario logueado
+            $usuarios = Usuario::with('instalacionesUsuario')->where('email','!=',auth()->user()->email)->get();
+        }
 
-        return view('usuario.index', compact('usuarios') )->with('i',0);
+        $roleAcceso = auth()->user()->perfil;
+
+        return view('usuario.index', compact('usuarios', 'roleAcceso') )->with('i',0);
     }
 
     public function create()
     {
+        // dd('Funcion CREATE');
+
         $usuario = new Usuario();
         $instalaciones = Instalacion::all();
         $instalacionesChecked = [0];
         $usuario->perfil =0;
         $usuario->idioma =0;
-        // dd($usuario->perfil);
 
         return view('usuario.create', compact('usuario', 'instalaciones', 'instalacionesChecked'));
     }
 
     public function store(Request $request)
     {
+        // dd('Funcion STORE');
+
         // dd($request);
         // CREAMOS AL USUARIO
         $usuario = $request->validate([
@@ -88,11 +99,13 @@ class UsuarioController extends Controller
 
     public function show($id)
     {
+        dd('Funcion SHOQ');
 
         $usuario = Usuario::find($id);
         $instalaciones = Usuario::find($id)->instalacionesUsuario() -> get() -> pluck("nombrePuerto");
+        $roleAcceso = auth()->user()->perfil;
 
-        return view('usuario.show', compact('usuario','instalaciones'));
+        return view('usuario.show', compact('usuario','instalaciones','roleAcceso'));
     }
 
     public function edit($id)
@@ -107,6 +120,8 @@ class UsuarioController extends Controller
     public function update(Request $request, Usuario $usuario)
     {
         // dd($request);
+        // dd($usuario);
+
 
         $nuevoUsuario = $request->validate([
             'nombreUsuario' => 'required|max:50',
@@ -125,6 +140,8 @@ class UsuarioController extends Controller
         if($nuevoUsuario['password'] != $usuario->password){
             $nuevoUsuario['password'] = bcrypt($request->password); // Encriptamos la nueva contraseña contraseña
         }
+        // dd($nuevoUsuario);
+        // dd(Usuario::find($usuario->email));
 
         Usuario::find($usuario->email) -> update($nuevoUsuario);
         Usuario::find($request->email)->instalacionesUsuario() -> sync($request->instalaciones);

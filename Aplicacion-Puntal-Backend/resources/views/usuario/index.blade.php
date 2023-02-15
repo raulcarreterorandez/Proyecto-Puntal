@@ -17,10 +17,12 @@
                             </span>
 
                             <div class="float-right">
-                                <a href="{{ route('usuarios.create') }}" class="btn btn-primary btn-sm float-right"
-                                    data-placement="left">
-                                    {{ __('Create New') }}
-                                </a>
+                                @if ($roleAcceso == "XUNTA-GALICIA")
+                                    <a href="{{ route('usuarios.create') }}" class="btn btn-secondary btn-sm float-right"
+                                        data-placement="left">
+                                        {{ __('Create New') }}
+                                    </a>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -75,11 +77,19 @@
 
                                             <td>
                                                     <a class="btn btn-sm btn-primary " href="{{ route('usuarios.show',$usuario->email) }}" data-bs-toggle="tooltip"> <i class="bi bi-eye"></i> </a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('usuarios.edit',$usuario->email) }}"><i class="bi bi-pencil"></i> </a>
+
+                                                    @if ($roleAcceso == "XUNTA-GALICIA")
+                                                        <a class="btn btn-sm btn-success" href="{{ route('usuarios.edit',$usuario->email) }}"><i class="bi bi-pencil"></i> </a>
+
+                                                        @if ($usuario->habilitado === 1)
+                                                            <a class="btn btn-sm btn-danger " href="{{ route('usuarios.confirm',$usuario->email) }}"><i class="bi bi-trash3-fill"></i> </a>
+                                                        @endif
+                                                    @endif
+                                                    {{-- <a class="btn btn-sm btn-success" href="{{ route('usuarios.edit',$usuario->email) }}"><i class="bi bi-pencil"></i> </a>
 
                                                     @if ($usuario->habilitado === 1)
                                                         <a class="btn btn-sm btn-danger " href="{{ route('usuarios.confirm',$usuario->email) }}"><i class="bi bi-trash3-fill"></i> </a>
-                                                    @endif
+                                                    @endif --}}
                                             </td>
                                         </tr>
                                     @endforeach

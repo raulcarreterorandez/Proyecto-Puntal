@@ -42,8 +42,7 @@
 										<th>Estado</th>
 										<th>Visto</th>
 										<th>Fechadisposicion</th>
-
-                                        <th></th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -60,11 +59,11 @@
 
                                             <td>
                                                 <form action="{{ route('instalaciones.destroy',$instalacione->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('instalaciones.show',$instalacione->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('instalaciones.edit',$instalacione->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('instalaciones.show',$instalacione->id) }}"><i class="bi bi-eye"></i></a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('instalaciones.edit',$instalacione->id) }}"><i class="bi bi-pencil"></i></a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="bi bi-trash3-fill"></i></button>
                                                 </form>
                                             </td>
                                         </tr>

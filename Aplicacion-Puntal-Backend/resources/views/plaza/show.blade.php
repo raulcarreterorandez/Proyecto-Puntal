@@ -37,8 +37,8 @@
                         {{ $plaza->puertoDestino }}
                     </div>
                     <div class="form-group">
-                        <strong>Año:</strong>
-                        {{ $plaza->año }}
+                        <strong>anyo:</strong>
+                        {{ $plaza->anyo }}
                     </div>
                     <div class="form-group">
                         <strong>Idmuelle:</strong>
