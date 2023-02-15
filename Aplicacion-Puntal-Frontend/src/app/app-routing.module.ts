@@ -9,7 +9,10 @@ import { VistaDetalladaInstalacionComponent } from './instalaciones/vista-detall
 // MUELLES
 import { ListaMuellesComponent } from './muelles/lista-muelles/lista-muelles.component';
 import { VistaDetalladaMuelleComponent } from './muelles/vista-detallada-muelle/vista-detallada-muelle.component';
-// Usuarios
+// PLAZAS
+import { ListaPlazasComponent } from './plazas/lista-plazas/lista-plazas.component';
+import { VistaDetalladaPlazaComponent } from './plazas/vista-detallada-plaza/vista-detallada-plaza.component';
+// USUARIOS
 import { ListaUsuariosComponent } from './usuarios/lista-usuarios/lista-usuarios.component';
 import { VistaDetalladaUsuarioComponent } from './usuarios/vista-detallada-usuario/vista-detallada-usuario.component';
 
@@ -25,6 +28,10 @@ const routes: Routes = [
   // RUTAS - MUELLES
   { path: 'lista-muelles', component: ListaMuellesComponent },
   { path: 'vistaDetalleMuelle/:id', component: VistaDetalladaMuelleComponent },
+
+  // RUTAS - PLAZAS
+  { path: 'lista-plazas', component: ListaPlazasComponent },
+  { path: 'vistaDetallePlaza/:id', component: VistaDetalladaPlazaComponent },
 
   // RUTAS - USUARIOS
   { path: 'lista-usuarios', component: ListaUsuariosComponent },

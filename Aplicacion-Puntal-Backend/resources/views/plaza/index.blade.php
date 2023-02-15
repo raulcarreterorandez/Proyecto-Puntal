@@ -59,7 +59,7 @@ Plaza
                                     <td>{{ $plaza->visto }}</td>
                                     <td>{{ $plaza->puertoOrigen }}</td>
                                     <td>{{ $plaza->puertoDestino }}</td>
-                                    <td>{{ $plaza->año }}</td>
+                                    <td>{{ $plaza->anyo }}</td>
                                     <td>{{ $plaza->idMuelle }}</td>
                                     <td>{{ $plaza->muelle->instalacion->nombrePuerto }}</td>
 

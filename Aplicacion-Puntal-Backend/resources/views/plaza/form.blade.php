@@ -22,9 +22,9 @@
             {!! $errors->first('puertoDestino', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('año') }}
-            {{ Form::text('año', $plaza->año, ['class' => 'form-control' . ($errors->has('año') ? ' is-invalid' : ''), 'placeholder' => 'Año']) }}
-            {!! $errors->first('año', '<div class="invalid-feedback">:message</div>') !!}
+            {{ Form::label('anyo') }}
+            {{ Form::text('anyo', $plaza->anyo, ['class' => 'form-control' . ($errors->has('anyo') ? ' is-invalid' : ''), 'placeholder' => 'anyo']) }}
+            {!! $errors->first('anyo', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('idMuelle') }}

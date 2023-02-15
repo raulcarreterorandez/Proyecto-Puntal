@@ -23,6 +23,7 @@
                     <th scope="col">Id Instalacion</th>
                     <th scope="col">Nombre Instalación</th>
                     <th scope="col">Visto</th>
+                    <th scope="col">Plazas Totales</th>
                     <th scope="col">Acciones</th>
                   </tr>
                 </thead>
@@ -30,8 +31,19 @@
                   <tr *ngFor="let muelle of muelles">
                     <td>{{muelle.id}}</td>
                     <td>{{muelle.idInstalacion}}</td>
-                    <td>{{muelle.instalacion.nombrePuerto}}</td><!-- Mirar como traemos la info. en API/MuelleController del backend. -->                    
+                    <td>{{muelle.instalacion.nombrePuerto}}</td>
+                    <!-- Mirar como traemos la info. en API/MuelleController del backend. -->
                     <td>{{muelle.visto}}</td>
+                    <!-- <td>{{muelle.plazas[0].id}}</td> -->
+                    <td>   
+                       <!-- <script>
+                          muelle.plazas.length;
+                        </script> -->                      
+                      <li *ngFor="let plaza of muelle.plazas; let indice=index">
+                        {{indice+1}} --> {{plaza.id}}
+                                                                   
+                      </li>
+                    </td>
                     <td>
                       <a class="btn btn-sm btn-info" data-bs-toggle="tooltip" title="Ver registro {{ muelle.id }}"
                         [routerLink]="['/vistaDetalleMuelle/',muelle.id]"><i class="bi bi-eye"></i></a>

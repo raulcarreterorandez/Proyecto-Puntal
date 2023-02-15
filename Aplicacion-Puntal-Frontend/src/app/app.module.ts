@@ -15,6 +15,7 @@ import { DataTablesModule } from "angular-datatables";
 import { UtilidadesModule } from './utilidades/utilidades.module';
 import { InstalacionesModule } from './instalaciones/instalaciones.module';
 import { MuellesModule } from './muelles/muelles.module';
+import { PlazasModule } from './plazas/plazas.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
 
 
@@ -34,6 +35,7 @@ import { UsuariosModule } from './usuarios/usuarios.module';
     UtilidadesModule,
     InstalacionesModule,
     MuellesModule,
+    PlazasModule,
     UsuariosModule,
   ],
   providers: [authInterceptorProviders],
