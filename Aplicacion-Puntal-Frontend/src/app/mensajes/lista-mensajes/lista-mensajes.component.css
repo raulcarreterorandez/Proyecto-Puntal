@@ -1,0 +1,18 @@
+#espacioTabla {
+  margin-top: 5vh;
+  margin-right: 5vh;
+  margin-left: 5vh;
+  height: auto;
+}
+
+.btn-info {
+  background-color: #007BC4;
+  color: white;
+  border: none;
+}
+
+
+.lista-instalaciones{
+  list-style: none;
+  display: inline;
+}
