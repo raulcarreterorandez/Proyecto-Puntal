@@ -21,7 +21,8 @@ class MuelleController extends Controller {
 
         // Accedemos al elemento que nos interesa dentro del Array obtenido, en este caso solo hay uno, y a su "colección" de instalaciones. 
         if ($usuarioLogeado[0]->instalacionesUsuario[0]->id == 0) { // Si el usuario tiene acceso a todos los puertos lo tiene a los muelles creados en dichas instalaciones. 
-            $muelles = Muelle::all(); // Recogemos todos los muelles disponibles.
+            // $muelles = Muelle::all(); // Recogemos todos los muelles disponibles.
+            return Muelle::with('instalacion','plazas')->get(); // Pasamos la relación con Instalaciones y con Plazas para poder hacer uso de sus propiedades 
 
         } else { //Si no, mostramos unicamente los muelles pertenecientes a las instalaciones relacionadas con el usuario.
             // Es decir, las instalaciones donde esté habilitado el usuario logeado.
@@ -33,10 +34,9 @@ class MuelleController extends Controller {
                     $query->orWhere("idInstalacion", $instalacion->id); // Los muelles pertenecientes a las instalaciones relacionadas con el usuario a través de la tabla instalacionesUsuarios.
                 }
             });
-        }  
-
-        return $muelles->with('instalacion','plazas')->get(); // Pasamos la relación con Instalaciones y con Plazas para poder hacer uso de sus propiedades 
-        // en el frontend de Angular. En este caso queremos visualizar datos de las Instalaciones o las Plazas en las vistas de Muelles. Lo devuelve en formato colección.
+              return $muelles->with('instalacion','plazas')->get(); // Pasamos la relación con Instalaciones y con Plazas para poder hacer uso de sus propiedades 
+                // en el frontend de Angular. En este caso queremos visualizar datos de las Instalaciones o las Plazas en las vistas de Muelles. Lo devuelve en formato colección.
+        }         
     }
 
     public function show($id) {
@@ -50,8 +50,9 @@ class MuelleController extends Controller {
             "idInstalacion"=>$muelle->idInstalacion,
             "visto"=>$muelle->visto,
             "instalacion"=>$muelle->instalacion,
+            "plazas"=>$plazas->get(),
             "plazasTotales"=>count($plazas->get()), // Nº total de plazas del muelle.
-            "plazasDisponibles"=>count($plazas->where('disponible',1)->get()), // Solo las plazas disponibles.
+            "plazasDisponibles"=>count($plazas->where('disponible',1)->get()) // Solo las plazas disponibles.
         ];
     }
 

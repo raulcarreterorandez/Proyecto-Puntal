@@ -52,7 +52,7 @@ class PlazaController extends Controller {
     }
 
     public function show($id) {
-     /*    $muelle = Muelle::with('instalacion')->find($id);
+    /*     $muelle = Muelle::with('instalacion')->find($id);
         // Recogemos las plazas que correspondan del muelle. Es decir, las que su campo idMuelle coincida con el Id del muelle que estamos visualizando.
         $plazas = Plaza::where('idMuelle', $id);
         
@@ -64,8 +64,10 @@ class PlazaController extends Controller {
             "plazasTotales"=>count($plazas->get()), // Nº total de plazas del muelle.
             "plazasDisponibles"=>count($plazas->where('disponible',1)->get()), // Solo las plazas disponibles.
         ]; */
-        
-       /*  return $plazas; */
+
+        $plazas = Plaza::find($id);
+
+        return $plazas;
     }
 
     public function historialPlazas(){
