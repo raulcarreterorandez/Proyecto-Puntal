@@ -46,24 +46,24 @@
                                 <tbody>
                                     @foreach ($clientes as $cliente)
                                         <tr>
-                                            <td>{{ $cliente->numDocumento }}</td>
-                                            <td>{{ $cliente->nombre }}</td>
-                                            <td>{{ $cliente->apellidos }}</td>
-                                            <td>{{ $cliente->email }}</td>
-                                            <td>{{ $cliente->direccion }}</td>
-                                            <td>{{ $cliente->tipoDocumento }}</td>
-                                            <td>{{ $cliente->observaciones }}</td>
+                                            <td>{{ $cliente[0]['numDocumento'] }}</td>
+                                            <td>{{ $cliente[0]['nombre'] }}</td>
+                                            <td>{{ $cliente[0]['apellidos'] }}</td>
+                                            <td>{{ $cliente[0]['email'] }}</td>
+                                            <td>{{ $cliente[0]['direccion'] }}</td>
+                                            <td>{{ $cliente[0]['tipoDocumento'] }}</td>
+                                            <td>{{ $cliente[0]['observaciones'] }}</td>
                                             <td>
                                                 <a class="btn btn-sm btn-primary "
-                                                    href="{{ route('clientes.show', $cliente->numDocumento) }}"
+                                                    href="{{ route('clientes.show', $cliente[0]["numDocumento"]) }}"
                                                     data-bs-toggle="tooltip"> <i class="bi bi-eye"></i>
                                                 </a>
                                                 <a class="btn btn-sm btn-success"
-                                                    href="{{ route('clientes.edit', $cliente->numDocumento) }}"><i
+                                                    href="{{ route('clientes.edit', $cliente[0]["numDocumento"]) }}"><i
                                                         class="bi bi-pencil"></i>
                                                 </a>
                                                 <a class="btn btn-sm btn-danger "
-                                                    href="{{ route('clientes.destroy', $cliente->numDocumento) }}"><i
+                                                    href="{{ route('clientes.destroy', $cliente[0]["numDocumento"]) }}"><i
                                                         class="bi bi-trash3-fill"></i>
                                                 </a>
                                             </td>

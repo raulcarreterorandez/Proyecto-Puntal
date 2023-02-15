@@ -5,16 +5,61 @@ namespace App\Http\Controllers;
 use App\Models\Embarcacione;
 use Illuminate\Http\Request;
 use App\Models\Plaza;
+use App\Models\Muelle;
+use App\Models\Usuario;
 use App\Models\Cliente;
 
 class EmbarcacioneController extends Controller
 {
     public function index()
     {
-        $embarcaciones = Embarcacione::paginate();
 
-        return view('embarcacione.index', compact('embarcaciones'))
-            ->with('i', (request()->input('página', 1) - 1) * $embarcaciones->perPage());
+        /////////////////////////////////////////////////////////////////////////////////////////////////
+        /////Necesitamos mostrar únicamente las instalaciones en las que esté habilitado en usuario./////
+        /////////////////////////////////////////////////////////////////////////////////////////////////
+
+        //Obtengo el usuario logeado.
+        $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get();
+
+        //Si el usuario tiene acceso a todos los puertos, le pasamos todos los puertos disponibles
+        if ($usuarioLogeado[0]->instalacionesUsuario[0]->id == 0) {
+            $clientes = Cliente::all();
+        } else { //Si no mostramos unicamente los puertos relacionados con el usuario
+
+            //$muelles = $usuarioLogeado[0]->instalacionesUsuario[0]->id;
+
+            //Obtengo el usuario logeado.
+            $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get();
+
+            //Obtengo la instalacion a la que pertenece el usuario logeado.
+            $instalaciones = $usuarioLogeado[0]->instalacionesUsuario->toArray();
+
+            //Obtengo los muelles a los que pertenece el usuario logeado.
+            $muelles = Muelle::where('idInstalacion', $instalaciones)->get()->toArray();
+
+            //Obtengo las plazas a las que pertenece el usuario logeado.
+            $plazas = [];
+            for ($i = 0; $i < count($muelles); $i++) {
+                $plaza = Plaza::where('idMuelle', $muelles[$i])->get()->toArray();
+                array_push($plazas, $plaza);
+            }
+
+            //Obtengo las embarcaciones a las que pertenece el usuario logeado.
+            $embarcaciones = [];
+            for ($a = 0; $a < count($plazas); $a++) {
+                for ($i = 0; $i < count($plazas[$a]); $i++) {
+                    $embarcacione = Embarcacione::where('id_plaza', $plazas[$a][$i])->get()->toArray();
+                    if (isset($embarcacione[0]["matricula"])) {
+                        array_push($embarcaciones, $embarcacione);
+                    }
+                }
+            }
+        }
+
+        return view('embarcacione.index', compact('embarcaciones'))->with('i', 0);
+
+        // return view('embarcacione.index', compact('embarcaciones'))
+        //     ->with('i', (request()->input('página', 1) - 1) * $embarcaciones->perPage());
     }
 
     public function create()

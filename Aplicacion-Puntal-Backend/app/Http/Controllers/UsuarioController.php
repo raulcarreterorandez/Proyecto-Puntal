@@ -15,8 +15,8 @@ class UsuarioController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->middleware('gerencia')->only(['index','show']);
+        $this->middleware('auth'); // SE PUEDE QUITAR
+        $this->middleware('policia')->only(['index','show']);
         $this->middleware('xunta')->except(['index','show']);
     }
 
@@ -99,7 +99,7 @@ class UsuarioController extends Controller
 
     public function show($id)
     {
-        dd('Funcion SHOQ');
+        // dd('Funcion SHOQ');
 
         $usuario = Usuario::find($id);
         $instalaciones = Usuario::find($id)->instalacionesUsuario() -> get() -> pluck("nombrePuerto");
