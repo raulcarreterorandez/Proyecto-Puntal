@@ -19,8 +19,9 @@ export class ListaMensajesComponent implements OnInit{
     this.recuperaInstalaciones();
 
     this.dtOptions = {
+      order:[],
       pagingType: 'full_numbers',
-      scrollY: '600px',
+      scrollY: '500px',
       scrollCollapse:true,
       language: {
         processing: "Procesando...",
@@ -39,6 +40,13 @@ export class ListaMensajesComponent implements OnInit{
         },
         info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
       },
+      columnDefs: [{
+        width: "70px",
+        targets: 0
+      }],
+      // columns:[
+      //   {data:'Acciones', name:'Acciones', orderable:false, searchable:false}
+      // ],
     };
   }
 

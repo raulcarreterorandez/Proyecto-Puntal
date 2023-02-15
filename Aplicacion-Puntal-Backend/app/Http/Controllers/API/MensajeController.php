@@ -10,10 +10,12 @@ use Illuminate\Support\Facades\Auth;
 
 
 class MensajeController extends Controller {
-    
+
     public function index() {
         $user = Auth::user();
-        $mensajes = Mensaje::where('idUsuarioDestino', $user->email)->get();
+
+        // Ordenados de mas nuevo a mas viejo
+        $mensajes = Mensaje::where('idUsuarioDestino',$user->email)->orderBy('fecha_hora','desc')->get();
 
         return $mensajes;
     }
