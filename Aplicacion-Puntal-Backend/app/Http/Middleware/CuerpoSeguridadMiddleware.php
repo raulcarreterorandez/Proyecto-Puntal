@@ -23,7 +23,7 @@ class CuerpoSeguridadMiddleware
                 auth()->user()->perfil == "GERENCIA-PUERTO" ||
                 auth()->user()->perfil == "XUNTA-GALICIA") {
 
-                return $next($request);    //significa continua
+                return $next($request);
             }
         }
         return redirect()->route('home')->with('access', 'Disabled access - Solo pueden acceder los usuarios con role CUERPO-SEGURIDAD');
