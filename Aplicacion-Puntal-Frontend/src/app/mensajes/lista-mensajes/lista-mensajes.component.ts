@@ -9,14 +9,14 @@ import { MensajesService } from '../mensajes.service';
 })
 export class ListaMensajesComponent implements OnInit{
   mensajes?: Mensaje[];
-  currentInstalacion: Mensaje = {};
+  // currentInstalacion: Mensaje = {};
 
   dtOptions: DataTables.Settings = {};
 
   constructor(private mensajesService: MensajesService) { }
 
   ngOnInit(): void {
-    this.recuperaInstalaciones();
+    this.recuperaMensajes();
 
     this.dtOptions = {
       order:[],
@@ -50,7 +50,7 @@ export class ListaMensajesComponent implements OnInit{
     };
   }
 
-  recuperaInstalaciones(): void {
+  recuperaMensajes(): void {
     this.mensajesService.retornar()
       .subscribe({
         next: (data) => {

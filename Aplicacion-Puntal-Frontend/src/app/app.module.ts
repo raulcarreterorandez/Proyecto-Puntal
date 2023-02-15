@@ -18,6 +18,7 @@ import { MuellesModule } from './muelles/muelles.module';
 import { PlazasModule } from './plazas/plazas.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
 import { MensajesModule } from './mensajes/mensajes.module';
+import { HistoricosModule } from './historicos/historicos.module';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { MensajesModule } from './mensajes/mensajes.module';
     PlazasModule,
     UsuariosModule,
     MensajesModule,
+    HistoricosModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

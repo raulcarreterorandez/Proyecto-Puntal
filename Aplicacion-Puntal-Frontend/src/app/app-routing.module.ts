@@ -18,6 +18,8 @@ import { VistaDetalladaUsuarioComponent } from './usuarios/vista-detallada-usuar
 //Mensajes
 import { ListaMensajesComponent } from './mensajes/lista-mensajes/lista-mensajes.component';
 import { VistaDetalladaMensajeComponent } from './mensajes/vista-detallada-mensaje/vista-detallada-mensaje.component';
+import { ListaHistoricosComponent } from './historicos/lista-historicos/lista-historicos.component';
+import { VistaDetalladaHistoricoComponent } from './historicos/vista-detallada-historico/vista-detallada-historico.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -44,6 +46,9 @@ const routes: Routes = [
   { path: 'lista-mensajes', component: ListaMensajesComponent },
   { path: 'vistaDetalleMensaje/:id', component: VistaDetalladaMensajeComponent },
 
+  // RUTAS - HISTORICOS PLAZAS
+  { path: 'lista-historicos', component: ListaHistoricosComponent },
+  { path: 'vistaDetalleHistorico/:id', component: VistaDetalladaHistoricoComponent },
 ];
 
 @NgModule({

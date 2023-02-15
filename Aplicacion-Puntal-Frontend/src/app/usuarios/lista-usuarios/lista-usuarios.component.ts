@@ -10,14 +10,14 @@ import { UsuariosService } from '../usuarios.service';
 export class ListaUsuariosComponent implements OnInit{
 
   usuarios?: Usuario[];
-  currentInstalacion: Usuario = {};
+  // currentUsuario: Usuario = {};
 
   dtOptions: DataTables.Settings = {};
 
   constructor(private usuariosService: UsuariosService) { }
 
   ngOnInit(): void {
-    this.recuperaInstalaciones();
+    this.recuperaUsuarios();
 
     this.dtOptions = {
       pagingType: 'full_numbers',
@@ -43,7 +43,7 @@ export class ListaUsuariosComponent implements OnInit{
     };
   }
 
-  recuperaInstalaciones(): void {
+  recuperaUsuarios(): void {
     this.usuariosService.retornar()
       .subscribe({
         next: (data) => {
