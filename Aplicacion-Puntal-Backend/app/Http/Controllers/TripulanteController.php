@@ -6,15 +6,76 @@ use App\Models\Tripulante;
 use Illuminate\Http\Request;
 use App\Models\Transito;
 use App\Models\Embarcacione;
+use App\Models\Usuario;
+use App\Models\Cliente;
+use App\Models\Muelle;
+use App\Models\Plaza;
 
 class TripulanteController extends Controller
 {
     public function index()
     {
-        $tripulantes = Tripulante::paginate();
+        /////////////////////////////////////////////////////////////////////////////////////////////////
+        /////Necesitamos mostrar únicamente las instalaciones en las que esté habilitado en usuario./////
+        /////////////////////////////////////////////////////////////////////////////////////////////////
 
-        return view('tripulante.index', compact('tripulantes'))
-            ->with('i', (request()->input('page', 1) - 1) * $tripulantes->perPage());
+        //Obtengo el usuario logeado.
+        $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get();
+
+        //Si el usuario tiene acceso a todos los puertos, le pasamos todos los puertos disponibles
+        if ($usuarioLogeado[0]->instalacionesUsuario[0]->id == 0) {
+            $clientes = Cliente::all();
+        } else { //Si no mostramos unicamente los puertos relacionados con el usuario
+
+            //$muelles = $usuarioLogeado[0]->instalacionesUsuario[0]->id;
+
+            //Obtengo el usuario logeado.
+            $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get();
+
+            //Obtengo la instalacion a la que pertenece el usuario logeado.
+            $instalaciones = $usuarioLogeado[0]->instalacionesUsuario->toArray();
+
+            //Obtengo los muelles a los que pertenece el usuario logeado.
+            $muelles = Muelle::where('idInstalacion', $instalaciones)->get()->toArray();
+
+            //Obtengo las plazas a las que pertenece el usuario logeado.
+            $plazas = [];
+            for ($i = 0; $i < count($muelles); $i++) {
+                $plaza = Plaza::where('idMuelle', $muelles[$i])->get()->toArray();
+                array_push($plazas, $plaza);
+            }
+
+            //Obtengo los transitos a los que pertenece el usuario logeado.
+            $transitos = [];
+            for ($a = 0; $a < count($plazas); $a++) {
+                for ($i = 0; $i < count($plazas[$a]); $i++) {
+                    $transito = Transito::where('idPlaza', $plazas[$a][$i])->get()->toArray();
+                    if (isset($transito[0]["idPlaza"])) {
+                        array_push($transitos, $transito);
+                    }
+                }
+            }
+
+            //Obtengo los tripulantes que pertenecen el usuario logeado.
+            $tripulantes = [];
+            for ($a = 0; $a < count($transitos); $a++) {
+                for ($i = 0; $i < count($transitos[$a]); $i++) {
+                    $tripulante = Tripulante::where('id_plaza', $transitos[$a][$i])->get()->toArray();
+                    if (isset($tripulante[0]["numDocumento"])) {
+                        array_push($tripulantes, $tripulante);
+                    }
+                }
+            }
+        }
+
+        $tripulantesOrdenado = [];
+        for ($a = 0; $a < count($tripulantes); $a++) {
+            for ($i = 0; $i < count($tripulantes[$a]); $i++) {
+                array_push($tripulantesOrdenado, $tripulantes[$a][$i]);
+            }
+        }
+
+        return view('tripulante.index', compact('tripulantesOrdenado'))->with('i', 0);
     }
 
     public function create()
