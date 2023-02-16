@@ -8,11 +8,11 @@ use App\Models\Embarcacione;
 use App\Models\Instalacion;
 use App\Models\Muelle;
 use App\Models\Plaza;
+use App\Models\Tripulante;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 class PlazaController extends Controller {
-
 
     public function index() {
 
@@ -52,24 +52,44 @@ class PlazaController extends Controller {
     }
 
     public function show($id) {
-    /*     $muelle = Muelle::with('instalacion')->find($id);
-        // Recogemos las plazas que correspondan del muelle. Es decir, las que su campo idMuelle coincida con el Id del muelle que estamos visualizando.
-        $plazas = Plaza::where('idMuelle', $id);
+
+        $muelle = Muelle::with('instalacion')->find($id); // Recogemos los muelles con su relación a instalaciones. Queremos mostrar el código y alguna cosa más de ahí. 
+
+        $plaza = Plaza::with('transito', 'bases')->find($id); // Recogemos las plazas con su relación a tránsitos y bases. Queremos mostrar de que tipo són(bases o tránsitos).
+
+        $tripulantes = Tripulante::where('id_plaza',$id)->get();
+
+        if ($plaza->transito == null && $plaza->bases == null) { // Si los dos campos están en null...
+
+            // La plaza está vacía.
+            $plaza->tipo = "Disponible"; // Creamos un nuevo campo en la colección(tipo) que manejaremos a nuestro antojo.
+
+        } else if ($plaza->transito == null) { // Si tránsito es null...
+
+            $plaza->tipo = "Base"; // La plaza es de tipo base.
+            $plaza->fechaEntrada = $plaza->bases->fechaEntrada;
+        } else {  // Si base es null...
+
+            $plaza->tipo = "Tránsito"; // La plaza es de tipo tránsito.
+            $plaza->fechaEntrada = $plaza->transito->fechaSalida;
+        }
 
         return [ //Especificamos la forma en la que recibimos los datos.
-            "id"=>$muelle->id,
-            "idInstalacion"=>$muelle->idInstalacion,
-            "visto"=>$muelle->visto,
-            "instalacion"=>$muelle->instalacion,
-            "plazasTotales"=>count($plazas->get()), // Nº total de plazas del muelle.
-            "plazasDisponibles"=>count($plazas->where('disponible',1)->get()), // Solo las plazas disponibles.
-        ]; */
-
-        $plazas = Plaza::find($id);
-
-        return $plazas;
+            "id" => $plaza->id,
+            "disponible" => $plaza->disponible,
+            "visto" => $plaza->visto,
+            "puertoOrigen" => $plaza->puertoOrigen,
+            "puertoDestino" => $plaza->puertoDestino,
+            "anyo" => $plaza->anyo,
+            "idMuelle" => $plaza->idMuelle,
+            "tipo" => $plaza->tipo,
+            "instalacion" => $muelle->instalacion, // Colección con la info de la instalación a la que pertenece el muelle.
+            "bases" => $plaza->bases,
+            "transitos" => $plaza->transitos,
+            "tripulantes" => $tripulantes,
+        ];
     }
-
+    
     public function historialPlazas(){
 
 
