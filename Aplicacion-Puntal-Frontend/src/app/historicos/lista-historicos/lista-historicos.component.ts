@@ -20,6 +20,7 @@ export class ListaHistoricosComponent {
     this.recuperaHistoricos();
 
     this.dtOptions = {
+      order:[[1,'desc']], //Ordenamos por las fechas (columna 2) de mas actual a mas vieja
       pagingType: 'full_numbers',
       scrollY: '600px',
       scrollCollapse:true,
@@ -48,35 +49,9 @@ export class ListaHistoricosComponent {
       .subscribe({
         next: (data) => {
           this.historicos = data;
-
-          this.organizacionDatos(this.historicos);
-
           console.log(data);
         },
         error: (e) => console.error(e)
       });
-  }
-
-  // TRATAMOS LOS DATOS QUE RECIBIMOS DE LA API
-  organizacionDatos(historicos:any):void{
-    for (const historico of historicos) {
-
-      //EJEMPLO PARA TRATAR LOS DATOS DE LA TABLA
-      if (historico.bases != null && historico.transito == null) {
-        historico.bases = "SI";
-        historico.transito = "NO";
-        historico.tipo="BASE";
-      }
-      else if (historico.transito != null && historico.bases == null) {
-        historico.transito = "SI";
-        historico.bases = "NO";
-        historico.tipo="TRANSITO";
-      }
-      else{
-        historico.transito = "NO";
-        historico.bases = "NO";
-        historico.tipo="VACIO";
-      }
-    }
   }
 }

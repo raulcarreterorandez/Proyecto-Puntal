@@ -11,6 +11,8 @@ use App\Models\Plaza;
 use App\Models\Tripulante;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use DateTime;
+use DateTimeZone;
 
 class PlazaController extends Controller {
 
@@ -92,56 +94,140 @@ class PlazaController extends Controller {
     
     public function historialPlazas(){
 
-
-        // Obtengo el usuario logeado.
         $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get();
+        $plazas = Plaza::with('transito', 'bases')->where('disponible',0);
 
-        // Accedemos al elemento que nos interesa dentro del Array obtenido, en este caso solo hay uno, y a su "colección" de instalaciones.
-        if ($usuarioLogeado[0]->instalacionesUsuario[0]->id == 0) { // Si el usuario tiene acceso a todos los puertos lo tiene a los muelles creados en dichas instalaciones y por tanto a todas las plazas.
-            $plazas = Plaza::with('transito', 'bases')->get(); // Recogemos todas las plazas disponibles con la informacion de bases o transito.
-            return $plazas;
+        if ($usuarioLogeado[0]->instalacionesUsuario[0]->id != 0) {
 
-        } else { // Si no, mostramos unicamente las plazas de los muelles pertenecientes a las instalaciones relacionadas con el usuario.
-                 // Es decir, las instalaciones donde esté habilitado el usuario logeado.
-
-            // Traemos todas las plazas y su relacion con muelles. Para comparar el valor idInstalcion con las instalaciones del usuario
-            $plazas = Plaza::with('muelle','transito','bases');
-
-            // Filtramos las plazas, para traer las que tengan los mismos puertos relacionados que el usuario logeado.
+            $plazas->with('muelle');
             $plazas = $plazas->whereHas('muelle',function ($query) use ($usuarioLogeado) {
 
-                // Filtramos para que el idInstalacion sea el mismo que el puerto relacionado con el usuario logueado (tantas veces como puertos tenga).
+                // $query-> where('disponible',0);
                 $query->where(function($query) use ($usuarioLogeado){
+
                     foreach ($usuarioLogeado[0]->instalacionesUsuario as $instalacion) {
+
                         $query->orWhere('idInstalacion',$instalacion->id);
                     }
                 });
+            })->without('muelle');
+        }
 
-                // Condiciones para el historial de movimientos
-                // $query-> where('disponible',0); // Ejemplo
+        $plazas=$plazas->get();
 
-            })-> without('muelle')->get();
-            // return count( $plazas ); //Comprobar la cantidad de plazas que nos mandan
-            // foreach ($plazas as $plaza) {
-            //     $plaza
-            // }
-            $valor=collect([[ 'ejemplo'=>0 ]]);
+        // return $plazas;
 
+        // LA FECHA DE HOY **ENTERO Y STRING**
+        $now = new DateTime('now', new DateTimeZone("Europe/Madrid"));
+        $hoyNum = strtotime( $now->format('Y-m-d H:i:s') );
 
-            return $plazas->concat($valor);
+        foreach ($plazas as $plaza) {
+            // SALE ERROR DE UNDEFINED, PERO FUNCIONA
+
+            // TIPO DE EMBARCACION (BASE o TRANSITO)
+            if ($plaza->transito == null) {
+                $plaza->tipo = "Base";
+            }
+            else{
+                $plaza->tipo = "Transito";
+            }
+
+            // FECHA (Salida de la embarcacion o entrada de la embarcacion)
+            // ACCION (si es salida o entrada a la plaza)
+            //dependiendo de la fecha que cojamos previamente
+
+            // Almacenamos en formato entero y string de las fechas de entrada y salida **PLAZA BASE O TRANSITO**
+            if($plaza->tipo == "Transito"){
+                // ENTERO
+                $fechaEntradaNum = strtotime( $plaza->transito->fechaEntrada );
+                $fechaSalidaNum = strtotime( $plaza->transito->fechaSalida );
+                // STRING
+                $fechaEntrada = $plaza->transito->fechaEntrada;
+                $fechaSalida = $plaza->transito->fechaSalida;
+
+                // return $hoyNum." \n entrada - ".$fechaEntradaNum." // \n salida -".$fechaSalidaNum ." ".$plaza->transito->fechaSalida;
+                // return $fechaEntradaNum." // ".$hoyNum;
+            }
+            else{
+                // ENTERO
+                $fechaEntradaNum = strtotime( $plaza->bases->fechaEntrada );
+                $fechaSalidaNum = strtotime( $plaza->bases->fechaSalida );
+                //STRING
+                $fechaEntrada = $plaza->bases->fechaEntrada;
+                $fechaSalida = $plaza->bases->fechaSalida;
+
+                // return $hoyNum." \n entrada - ".$fechaEntradaNum." // \n salida -".$fechaSalidaNum ." ".$plaza->transito->fechaSalida;
+                // return $fechaEntradaNum." // ".$hoyNum;
+            }
+
+            // Comprobamos la diferencia de dias con la fecha de entrada con la de hoy
+            if($fechaEntradaNum < $hoyNum){
+                $diferenciaDiasEntrada = $hoyNum - $fechaEntradaNum;
+            }
+            else{
+                $diferenciaDiasEntrada = $fechaEntradaNum - $hoyNum;
+            }
+
+            // Comprobamos la diferencia de dias con la fecha de salida con la de hoy
+            if($fechaSalidaNum < $hoyNum){
+                $diferenciaDiasSalida = $hoyNum - $fechaSalidaNum;
+            }
+            else{
+                $diferenciaDiasSalida = $fechaSalidaNum - $hoyNum;
+            }
+
+            // return "la diferencia de dias con la fecha de entrada con hoy es ". $diferenciaDiasEntrada;
+            // return "la diferencia de dias con la fecha de salida con hoy es ". $diferenciaDiasSalida;
+            // return $diferenciaDiasEntrada ." // ". $diferenciaDiasSalida;
+
+            // Quien tenga la diferencia de dias mas pequeña, sera la fecha y la accion del historico
+            if($diferenciaDiasEntrada < $diferenciaDiasSalida){
+                $plaza->fecha = $fechaEntrada;
+                $plaza->accion = "REGISTRO DE ENTRADA";
+
+            }
+            else{
+                $plaza->fecha = $fechaSalida;
+                $plaza->accion = "REGISTRO DE SALIDA";
+
+            }
+
+            // $plaza->fecha = "fecha"; // ORDENAREMOS LAS CONSULTAS POR ESTE CAMPO
+
+            // EMBARCACION QUE ESTA EN LA PLAZA
+            $embarcacion = Embarcacione::orWhere('id_plaza',$plaza->id)->get();
+            $plaza->embarcacionId = $embarcacion[0]->matricula;
+
+            // CLIENTE QUE ESTA EN LA PLAZA
+            $cliente = Cliente::find($embarcacion[0]->id_cliente);
+            $plaza->clienteId = $cliente->nombre." ".$cliente->nombre;
+
+            // INSTALACION EN LA QUE ESTA LA PLAZA
+            $muelle = Muelle::find($plaza->idMuelle);
+            $instalacion = Instalacion::find($muelle->idInstalacion);
+            $plaza->instalacionId = $instalacion->nombrePuerto;
+
 
         }
 
+        return $plazas;
 
     }
 
     public function historialPlaza($id){
-        $plaza = Plaza::with('transito','bases')->where('id',$id)->get();
+        // $plaza = Plaza::with('transito','bases')->where('id',$id)->get();
+        $plaza = Plaza::with('transito','bases')->find($id);
+
         $embarcacion = Embarcacione::where('id_plaza', $id)->get();
         $cliente = Cliente::find($embarcacion[0]->id_cliente);
 
-        $muelle = Muelle::find($plaza[0]->idMuelle);
+        $muelle = Muelle::find($plaza->idMuelle);
         $instalacion = Instalacion::find($muelle->idInstalacion);
+
+        //Dejamos el campo visto y lo actualizamos en la base de da
+        $historicoVisto= clone $plaza;
+        $historicoVisto->visto=1;
+        $plaza->update($historicoVisto->toArray());
 
         return [
             'plaza'=>$plaza,
