@@ -1,1 +1,140 @@
-<p>vista-detallada-historico works!</p>
+<div id="dashBoard" class="container-fluid">
+  <div class="row">
+      <app-header></app-header>
+  </div>
+  <div id="vistaCentral" class="row">
+      <div class="col-1">
+          <app-aside></app-aside>
+      </div>
+      <div class="col-10">
+          <div class="row">
+              <div class="container-fluid d-flex justify-content-center">
+
+                  <div class="col-8">
+
+                      <div id="botones" class="row d-flex justify-content-space-between align-items-center">
+                          <div class="col-1">
+                              <button><i class="far fa-arrow-alt-circle-left mx-1" style='font-size:50px' data-bs-toggle="tooltip"
+                                      title="Volver" [routerLink]="['/lista-historicos']"></i></button>
+                          </div>
+                          <div class="col-11">
+                              <div id="titulo">Detalle Historico</div>
+                          </div>
+                      </div>
+
+                      <div id="cabecera" class="row d-flex align-items-center ">
+                          <div class="col">
+                            <div>ACCION DEL HISTORICO<strong>{{ currentHistorico.accion }}</strong></div>
+                          </div>
+                        <div class="col">
+                          <div>Puerto: <strong>{{ currentHistorico.puerto.nombrePuerto }}</strong></div>
+                        </div>
+                        <div class="col">
+                          <div>Id Instalacion: <strong>{{ currentHistorico.puerto.id }}</strong></div>
+                        </div>
+                        <div class="col">
+                            <div>Código: <strong>{{ currentHistorico.puerto.codigo }}</strong></div>
+                        </div>
+                        <div class="col">
+                            <div>Fecha Disposicion: <strong>{{ currentHistorico.puerto.fechaDisposicion | date:'dd/MM/yyyy' }}</strong></div>
+                        </div>
+                        <div class="col">
+                          <div>Estado: <strong>{{ currentHistorico.puerto.estado }}</strong></div>
+                        </div>
+                      </div>
+
+                      <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+
+                        <mat-tab label="Cliente">
+                          <div id="cuerpo" class="row container-fluid d-flex">
+                            <div class="col-6">
+                              <div class="row d-flex justify-content-center">
+                                <div class="texto">Tipo Documento: <strong>{{ currentHistorico.cliente.tipoDocumento }}</strong></div>
+                                <div class="texto">Numero Documentacion: <strong>{{ currentHistorico.cliente.tipoDocumento }}</strong></div>
+                                <div class="texto">Nombre: <strong>{{ currentHistorico.cliente.nombre }}</strong></div>
+                                <div class="texto">Apellidos: <strong>{{ currentHistorico.cliente.apellidos }}</strong></div>
+                                <div class="texto">Email: <strong>{{ currentHistorico.cliente.email }}</strong></div>
+                                <div class="texto">Direccion: <strong>{{ currentHistorico.cliente.direccion }}</strong></div>
+                                <div class="texto">Telefonos:
+                                  <strong *ngFor="let telefono of currentHistorico.cliente.telefonos">
+                                    <br>{{ telefono.numero }}
+                                  </strong>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-6">
+                              <div class="row">
+                                  **AQUI VA LA TABLA CON LAS EMBARCACIONES DEL CLIENTE**
+                              </div>
+                            </div>
+                          </div>
+                        </mat-tab>
+
+                        <mat-tab label="Embarcacion">
+                          <div id="cuerpo" class="row container-fluid d-flex">
+                            <div class="col-6">
+                              <div class="row d-flex justify-content-center">
+                                  <div class="texto">Matricula: <strong>{{ currentHistorico.embarcacion.matricula }}</strong></div>
+                                  <div class="texto">Nombre: <strong>{{ currentHistorico.embarcacion.nombre }}</strong></div>
+                                  <div class="texto">Eslora: <strong>{{ currentHistorico.embarcacion.eslora }}</strong></div>
+                                  <div class="texto">Manga: <strong>{{ currentHistorico.embarcacion.manga }}</strong></div>
+                                  <div class="texto">Calado: <strong>{{ currentHistorico.embarcacion.calado }}</strong></div>
+                                  <div class="texto">Propulsion: <strong>{{ currentHistorico.embarcacion.propulsion }}</strong></div>
+                              </div>
+                          </div>
+                          </div>
+                        </mat-tab>
+
+                        <mat-tab label="Plaza">
+                          <div id="cuerpo" class="row container-fluid d-flex">
+                            <div class="col-6">
+                              <div class="row d-flex justify-content-center">
+                                <div class="texto">Plaza: <strong>PL-{{ currentHistorico.plaza.id }}</strong></div>
+                                <div class="texto">Pantalan: <strong>{{ currentHistorico.plaza.idMuelle }}</strong></div>
+                                <div class="texto">Fecha Entrada: <strong>{{ currentHistorico.plaza.fechaEntrada | date:'dd/MM/yyyy' }}</strong></div>
+                                <div class="texto">Fecha Salida: <strong>{{ currentHistorico.plaza.fechaSalida | date:'dd/MM/yyyy' }}</strong></div>
+                                <div class="texto">Tipo: <strong>{{ currentHistorico.plaza.tipo }}</strong></div>
+                                <div class="texto">Puerto Origen: <strong>{{ currentHistorico.plaza.puertoOrigen }}</strong></div>
+                                <div class="texto">Puerto Destino: <strong>{{ currentHistorico.plaza.puertoDestino }}</strong></div>
+
+                              </div>
+                            </div>
+
+                            <div class="col-6">
+                              <div class="row">
+                                  **AQUI VA LA TABLA CON TRIPULANTES DE LA PLAZA --TRANSITO--**
+                              </div>
+                            </div>
+                          </div>
+                        </mat-tab>
+                      </mat-tab-group>
+
+                      <!-- <div id="cuerpo" class="row container-fluid d-flex">
+                          <div class="col-6">
+                              <div class="row d-flex justify-content-center">
+                                  <div class="texto">Código: <strong>{{ currentInstalacion.codigo }}</strong></div>
+                                  <div class="texto">Estado: <strong>{{ currentInstalacion.estado }}</strong></div>
+                                  <div class="texto">Descripción: <strong>{{ currentInstalacion.descripcion }}</strong></div>
+                              </div>
+                          </div>
+                          <div class="col-6">
+                              <div class="row">
+                                  <div class="texto">Nombre de Instalación: <strong>{{ currentInstalacion.nombrePuerto }}</strong></div>
+                                  <div class="texto">Fecha Disposición: <strong> {{ currentInstalacion.fechaDisposicion | date:'dd/MM/yyyy'}}</strong></div>
+                              </div>
+                          </div>
+                      </div> -->
+
+                  </div>
+
+              </div>
+
+
+          </div>
+      </div>
+      <div class="col-1">
+          <app-user-settings></app-user-settings>
+      </div>
+  </div>
+</div>
