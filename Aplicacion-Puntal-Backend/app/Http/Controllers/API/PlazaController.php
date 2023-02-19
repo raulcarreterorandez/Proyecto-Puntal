@@ -16,11 +16,11 @@ use DateTimeZone;
 
 class PlazaController extends Controller {
 
-    private array $acciones;
+    // private array $acciones;
 
     public function __construct()
     {
-        $this->acciones=[];
+        // $this->acciones=[];
     }
 
     public function index() {
@@ -192,14 +192,14 @@ class PlazaController extends Controller {
                 $plaza->fecha = $fechaEntrada;
                 $plaza->accion = "REGISTRO DE ENTRADA";
 
-                array_push($this->$acciones[$plaza->id],"REGISTRO DE ENTRADA");
+                // array_push($this->$acciones[$plaza->id],"REGISTRO DE ENTRADA");
 
             }
             else{
                 $plaza->fecha = $fechaSalida;
                 $plaza->accion = "REGISTRO DE SALIDA";
 
-                array_push($this->$acciones[$plaza->id],"REGISTRO DE SALIDA");
+                // array_push($this->$acciones[$plaza->id],"REGISTRO DE SALIDA");
             }
 
             $accion = $plaza->accion;
@@ -255,7 +255,7 @@ class PlazaController extends Controller {
         }
 
         return [
-            'accion' => $this->$acciones[$plaza->id],
+            // 'accion' => $this->$acciones[$plaza->id],
             'plaza'=>$plaza,
             'embarcacion' => $embarcacion[0],
             'cliente' => $cliente,
