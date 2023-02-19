@@ -9,7 +9,10 @@ use App\Http\Controllers\API\InstalacionController;
 use App\Http\Controllers\API\MuelleController;
 use App\Http\Controllers\API\PlazaController;
 use App\Http\Controllers\API\BaseController;
+use App\Http\Controllers\API\ClienteController;
+use App\Http\Controllers\API\EmbarcacioneController;
 use App\Http\Controllers\API\TransitoController;
+use App\Http\Controllers\API\TripulanteController;
 
 /*
 |--------------------------------------------------------------------------

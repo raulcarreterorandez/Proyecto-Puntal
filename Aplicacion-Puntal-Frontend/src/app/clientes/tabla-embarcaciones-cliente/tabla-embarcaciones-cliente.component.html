@@ -1,0 +1,16 @@
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th scope="col" *ngFor="let titulo of titulos">
+        {{titulo}}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let fila of filas">
+      <td *ngFor="let key of objectKeys(fila)">
+        {{fila[key]}}
+      </td>
+    </tr>
+  </tbody>
+</table>

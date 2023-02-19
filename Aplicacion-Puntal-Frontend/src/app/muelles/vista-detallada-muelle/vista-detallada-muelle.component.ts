@@ -25,7 +25,7 @@ export class VistaDetalladaMuelleComponent implements OnInit{
   @Input() currentMuelle: Muelle = {
 
     id: '',
-    idInstalacion: '',  
+    idInstalacion: '',
     visto: false
   };
 
@@ -33,7 +33,7 @@ export class VistaDetalladaMuelleComponent implements OnInit{
     if (!this.viewMode) {
       this.message = '';
       this.getMuelle(this.route.snapshot.params["id"]);
-      
+
     }
   }
 

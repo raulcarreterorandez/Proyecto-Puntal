@@ -50,9 +50,36 @@ class ClienteController extends Controller
                     array_push($clientes, $cliente);
                 }
             }
+
+            $clientesOrdenado = [];
+
+            for ($i = 0; $i < count($clientes); $i++) {
+                for ($a = 0; $a < count($clientes[$i]); $a++) {
+                    $cliente = $clientes[$i][$a];
+                    array_push($clientesOrdenado, $cliente);
+                }
+            }
+
+            $embarcacionesOrdenado = [];
+
+            for ($i = 0; $i < count($embarcaciones); $i++) {
+                for ($a = 0; $a < count($embarcaciones[$i]); $a++) {
+                    $embarcacione = $embarcaciones[$i][$a];
+                    array_push($embarcacionesOrdenado, $embarcacione);
+                }
+            }
         }
 
-        return $clientes;
+        return [
+            "tipoDocumento" => $clientesOrdenado->tipoDocumento,
+            "numDocumento" => $clientesOrdenado->numDocumento,
+            "nombre" => $clientesOrdenado->nombre,
+            "apellidos" => $clientesOrdenado->apellidos,
+            "email" => $clientesOrdenado->email,
+            "telefono" => $clientesOrdenado->email,
+            "direccion" => $clientesOrdenado->direccion,
+            "embarcaciones" => $embarcacionesOrdenado,
+        ];
     }
 
     public function show($numDocumento)
