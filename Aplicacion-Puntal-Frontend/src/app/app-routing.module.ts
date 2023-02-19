@@ -15,6 +15,8 @@ import { VistaDetalladaPlazaComponent } from './plazas/vista-detallada-plaza/vis
 // USUARIOS
 import { ListaUsuariosComponent } from './usuarios/lista-usuarios/lista-usuarios.component';
 import { VistaDetalladaUsuarioComponent } from './usuarios/vista-detallada-usuario/vista-detallada-usuario.component';
+import { ListaHistoricosComponent } from './historicos/lista-historicos/lista-historicos.component';
+import { VistaDetalladaHistoricoComponent } from './historicos/vista-detallada-historico/vista-detallada-historico.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -36,6 +38,10 @@ const routes: Routes = [
   // RUTAS - USUARIOS
   { path: 'lista-usuarios', component: ListaUsuariosComponent },
   { path: 'vistaDetalleUsuario/:email', component: VistaDetalladaUsuarioComponent },
+
+  // RUTAS - HISTORICOS
+  { path: 'lista-historicos', component: ListaHistoricosComponent },
+  { path: 'vistaDetalleHistorico/:id', component: VistaDetalladaHistoricoComponent },
 ];
 
 @NgModule({
