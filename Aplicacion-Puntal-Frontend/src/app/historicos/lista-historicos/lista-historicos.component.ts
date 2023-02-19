@@ -1,25 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { Usuario } from '../usuario';
-import { UsuariosService } from '../usuarios.service';
+import { Component } from '@angular/core';
+import { Historico } from '../historico';
+import { HistoricosService } from '../historicos.service';
 
 @Component({
-  selector: 'app-lista-usuarios',
-  templateUrl: './lista-usuarios.component.html',
-  styleUrls: ['./lista-usuarios.component.css']
+  selector: 'app-lista-historicos',
+  templateUrl: './lista-historicos.component.html',
+  styleUrls: ['./lista-historicos.component.css']
 })
-export class ListaUsuariosComponent implements OnInit{
+export class ListaHistoricosComponent {
 
-  usuarios?: Usuario[];
-  // currentUsuario: Usuario = {};
+  historicos?:Historico[];
+  currentHistorico:Historico={};
 
   dtOptions: DataTables.Settings = {};
 
-  constructor(private usuariosService: UsuariosService) { }
+  constructor(private historicosService: HistoricosService) { }
 
   ngOnInit(): void {
-    this.recuperaUsuarios();
+    this.recuperaHistoricos();
 
     this.dtOptions = {
+      order:[[1,'desc']], //Ordenamos por las fechas (columna 2) de mas actual a mas vieja
       pagingType: 'full_numbers',
       scrollY: '600px',
       scrollCollapse:true,
@@ -43,11 +44,11 @@ export class ListaUsuariosComponent implements OnInit{
     };
   }
 
-  recuperaUsuarios(): void {
-    this.usuariosService.retornar()
+  recuperaHistoricos(): void {
+    this.historicosService.retornar()
       .subscribe({
         next: (data) => {
-          this.usuarios = data;
+          this.historicos = data;
           console.log(data);
         },
         error: (e) => console.error(e)

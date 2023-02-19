@@ -35,14 +35,12 @@
                     <!-- Mirar como traemos la info. en API/MuelleController del backend. -->
                     <td>{{muelle.visto}}</td>
                     <!-- <td>{{muelle.plazas[0].id}}</td> -->
-                    <td>   
-                       <!-- <script>
-                          muelle.plazas.length;
-                        </script> -->                      
-                      <li *ngFor="let plaza of muelle.plazas; let indice=index">
-                        {{indice+1}} --> {{plaza.id}}
-                                                                   
-                      </li>
+                    <td>
+                      {{muelle.plazas.length}}
+
+                <!--  <li *ngFor="let plaza of muelle.plazas; let indice=index">
+                        {{indice+1}} --- {{plaza.id}}                                                                   
+                      </li> -->
                     </td>
                     <td>
                       <a class="btn btn-sm btn-info" data-bs-toggle="tooltip" title="Ver registro {{ muelle.id }}"

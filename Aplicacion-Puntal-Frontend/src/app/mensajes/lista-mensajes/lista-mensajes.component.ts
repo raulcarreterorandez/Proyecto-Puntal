@@ -1,27 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { Usuario } from '../usuario';
-import { UsuariosService } from '../usuarios.service';
+import { Mensaje } from '../mensaje';
+import { MensajesService } from '../mensajes.service';
 
 @Component({
-  selector: 'app-lista-usuarios',
-  templateUrl: './lista-usuarios.component.html',
-  styleUrls: ['./lista-usuarios.component.css']
+  selector: 'app-lista-mensajes',
+  templateUrl: './lista-mensajes.component.html',
+  styleUrls: ['./lista-mensajes.component.css']
 })
-export class ListaUsuariosComponent implements OnInit{
-
-  usuarios?: Usuario[];
-  // currentUsuario: Usuario = {};
+export class ListaMensajesComponent implements OnInit{
+  mensajes?: Mensaje[];
+  // currentInstalacion: Mensaje = {};
 
   dtOptions: DataTables.Settings = {};
 
-  constructor(private usuariosService: UsuariosService) { }
+  constructor(private mensajesService: MensajesService) { }
 
   ngOnInit(): void {
-    this.recuperaUsuarios();
+    this.recuperaMensajes();
 
     this.dtOptions = {
+      order:[],
       pagingType: 'full_numbers',
-      scrollY: '600px',
+      scrollY: '500px',
       scrollCollapse:true,
       language: {
         processing: "Procesando...",
@@ -40,14 +40,21 @@ export class ListaUsuariosComponent implements OnInit{
         },
         info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
       },
+      columnDefs: [{
+        width: "70px",
+        targets: 0
+      }],
+      // columns:[
+      //   {data:'Acciones', name:'Acciones', orderable:false, searchable:false}
+      // ],
     };
   }
 
-  recuperaUsuarios(): void {
-    this.usuariosService.retornar()
+  recuperaMensajes(): void {
+    this.mensajesService.retornar()
       .subscribe({
         next: (data) => {
-          this.usuarios = data;
+          this.mensajes = data;
           console.log(data);
         },
         error: (e) => console.error(e)

@@ -8,6 +8,7 @@ use DateTime;
 use DateTimeZone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class MensajeController
@@ -19,9 +20,9 @@ class MensajeController extends Controller
     {
         $user = Auth::user();
 
-        $mensajes = Mensaje::where('idUsuarioDestino',$user->email)->get(); // Login Laravel
+        // Ordenados de mas nuevo a mas viejo
+        $mensajes = Mensaje::where('idUsuarioDestino',$user->email)->orderBy('fecha_hora','desc')->get(); // Login Laravel
         // $mensajes = Mensaje::all(); // Sin Login Laravel
-
 
         return view('mensaje.index', compact('mensajes') )->with('i',0);
 

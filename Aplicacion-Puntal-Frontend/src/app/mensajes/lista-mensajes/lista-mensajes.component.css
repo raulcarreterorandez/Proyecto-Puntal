@@ -1,0 +1,51 @@
+#espacioTabla {
+  margin-top: 5vh;
+  margin-right: 5vh;
+  margin-left: 5vh;
+  height: auto;
+}
+
+
+#botones{
+  margin-top: 3vh;
+  margin-bottom: 1vh;
+}
+button{
+  background-color: white;
+  border: none;
+}
+
+i{
+  color: #007BC4;
+  /* width: 100%; */
+}
+#titulo{
+  font-size: 45px;
+  font-weight: bolder;
+  color: #007BC4;
+}
+
+#cabecera{
+  width: 100%;
+  height: 7vh;
+  background-color: #C1D1E3;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 25px;
+}
+
+#cuerpo{
+  width: 100%;
+  height: 75vh;
+  background-color: #D9EBFF;
+  border: 1px solid;
+  border-color: #007BC4;
+  border-radius: 5px;
+}
+
+.texto{
+  /* margin: 5%; */
+  margin-top: 70px;
+  font-size: 25px;
+}
+

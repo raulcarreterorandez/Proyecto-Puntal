@@ -1,1 +1,101 @@
-<p>vista-detallada-plaza works!</p>
+<div id="dashBoard" class="container-fluid">
+    <div class="row">
+        <app-header></app-header>
+    </div>
+    <div id="vistaCentral" class="row">
+        <div class="col-1">
+            <app-aside></app-aside>
+        </div>
+        <div class="col-10">
+            <div class="row">
+                <div class="container-fluid d-flex justify-content-center">
+
+                    <div class="col-8">
+
+                        <div id="botones" class="row d-flex justify-content-space-between align-items-center">
+                            <div class="col-1">
+                                <button><i class="far fa-arrow-alt-circle-left mx-1" style='font-size:50px'
+                                        data-bs-toggle="tooltip" title="Volver"
+                                        [routerLink]="['/lista-plazas']"></i></button>
+                            </div>
+                            <div class="col-11">
+                                <div id="titulo">Detalle Plaza</div>
+                            </div>
+                        </div>
+
+                        <div id="cabecera" class="row d-flex align-items-center ">
+                            <div class="col-2">
+                                <div>Id Inst: <strong>{{ currentPlaza.instalacion.id }}</strong></div>
+                            </div>
+                            <div class="col-4">
+                                <div>Nombre Inst: <strong>{{ currentPlaza.instalacion.nombrePuerto }}</strong></div>
+                            </div>
+                            <div class="col-3">
+                                <div>Código Inst: <strong>{{ currentPlaza.instalacion.codigo }}</strong></div>
+                            </div>
+                            <div class="col-3">
+                                <div>Id Muelle:<strong> {{ currentPlaza.idMuelle }}</strong></div>
+                            </div>
+                        </div>
+
+                        <div id="cuerpo" class="row container-fluid d-flex">
+                            <div class="col-6">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="texto">Id Plaza:<strong> {{ currentPlaza.id }}</strong></div>
+                                    <div class="texto">Disponible: <strong>{{ currentPlaza.disponible }}</strong></div>
+                                    <div class="texto">Fecha Entrada:<strong>
+                                            <p *ngIf="currentPlaza.tipo=='Base'">{{ currentPlaza.bases.fechaEntrada }}</p>
+                                            <p *ngIf="currentPlaza.tipo=='Transito'">{{currentPlaza.transitos.fechaEntrada }}</p>
+                                        </strong></div>
+                                    <div class="texto">Fecha Salida:<strong>
+                                            <p *ngIf="currentPlaza.tipo=='Base'">{{ currentPlaza.bases.fechaSalida }}</p>
+                                            <p *ngIf="currentPlaza.tipo=='Transito'">{{ currentPlaza.transitos.fechaSalida }}</p>
+                                        </strong></div>
+                                    </div>
+                                    <div class="texto">Tipo: <strong>{{ currentPlaza.tipo}}</strong></div>
+                                    <div class="texto">Año: <strong>{{ currentPlaza.anyo}}</strong></div>
+                                    <div class="texto">Visto: <strong>{{ currentPlaza.visto }}</strong></div>
+                            </div>
+
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="texto">Puerto Origen: <strong>{{currentPlaza.puertoOrigen}}</strong></div>
+                                    <div class="texto">Puerto Destino: <strong>{{currentPlaza.puertoDestino}}</strong></div>
+                                    <div class="row d-flex justify-content-center">
+                                        <table id="tabla" class="table">
+                                            <thead class="">
+                                              <tr>
+                                                <th scope="col">Nombre</th>
+                                                <th scope="col">Apellidos</th>
+                                                <th scope="col">Nº Documento</th>
+                                                <th scope="col">Id Embarcación</th>
+                                                <!-- <th scope="col">Teléfono</th> -->
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr *ngFor="let tripulante of currentPlaza.tripulantes">
+                                                <td>{{tripulante.nombre}}</td>                                                
+                                                <td>{{tripulante.apellidos}}</td>
+                                                <td>{{tripulante.numDocumento}}</td>
+                                                <td>{{tripulante.id_embarcacion}}</td>                                              
+                                                <!-- <td>{{tripulante.telefono}}</td>  -->                                        
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="col-1">
+            <app-user-settings></app-user-settings>
+        </div>
+    </div>
+</div>

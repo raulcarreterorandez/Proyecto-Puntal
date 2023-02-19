@@ -34,24 +34,26 @@ class MuelleController extends Controller {
                 }
             });
         }
+
         return $muelles->with('instalacion','plazas')->get(); // Pasamos la relación con Instalaciones y con Plazas para poder hacer uso de sus propiedades
         // en el frontend de Angular. En este caso queremos visualizar datos de las Instalaciones o las Plazas en las vistas de Muelles. Lo devuelve en formato colección.
     }
 
     public function show($id) {
 
-        $muelle = Muelle::with('instalacion')->find($id);
+        $muelle = Muelle::with('instalacion')->find($id); //Recogemos los muelles con su relación a instalaciones. Queremos mostrar el código y alguna cosa más de ahí.
+
         // Recogemos las plazas que correspondan del muelle. Es decir, las que su campo idMuelle coincida con el Id del muelle que estamos visualizando.
         $plazas = Plaza::where('idMuelle', $id);
 
         return [ //Especificamos la forma en la que recibimos los datos.
-            "id"=>$muelle->id,
-            "idInstalacion"=>$muelle->idInstalacion,
-            "visto"=>$muelle->visto,
-            "instalacion"=>$muelle->instalacion,
-            "plazasTotales"=>count($plazas->get()), // Nº total de plazas del muelle.
-            "plazasDisponibles"=>count($plazas->where('disponible',1)->get()), // Solo las plazas disponibles.
+            "id" => $muelle->id,
+            "idInstalacion" => $muelle->idInstalacion,
+            "visto" => $muelle->visto,
+            "instalacion" => $muelle->instalacion, // Colección con la info de la instalación a la que pertenece el muelle.
+            "plazas" => $plazas, // Colección con info de bases y transitos. Con el nuevo campo(tipo) creado.
+            "plazasTotales" => count($plazas), // Nº total de plazas del muelle.
+            "plazasDisponibles" => count($plazasDisponibles) // Solo las plazas disponibles del muelle.
         ];
     }
-
 }

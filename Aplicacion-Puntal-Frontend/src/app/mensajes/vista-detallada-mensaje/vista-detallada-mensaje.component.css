@@ -2,7 +2,6 @@
     margin-top: 8vh;
     margin-bottom: 1vh;
 }
-
 button{
     background-color: white;
     border: none;
@@ -12,9 +11,8 @@ i{
     color: #007BC4;
     /* width: 100%; */
 }
-
 #titulo{
-    font-size: 35px;
+    font-size: 45px;
     font-weight: bolder;
     color: #007BC4;
 }
@@ -40,10 +38,6 @@ i{
 .texto{
     /* margin: 5%; */
     margin-top: 30px;
-    font-size: 20px;
+    font-size: 25px;
 }
 
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-  }
