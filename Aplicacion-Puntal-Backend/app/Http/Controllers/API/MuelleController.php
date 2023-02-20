@@ -17,13 +17,11 @@ class MuelleController extends Controller {
         $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get();
         // Where() devuelve siempre una colección de tipo Array. Aunque solo devuelva un elemento.
 
-        $muelles = Muelle::with('instalacion','plazas');
+        $muelles = Muelle::with('instalacion','plazas'); // Recogemos todos los muelles disponibles con las tablas de instalacion y plazas.
         // Accedemos al elemento que nos interesa dentro del Array obtenido, en este caso solo hay uno, y a su "colección" de instalaciones.
-        if ($usuarioLogeado[0]->instalacionesUsuario[0]->id != 0) { // Si el usuario tiene acceso a todos los puertos lo tiene a los muelles creados en dichas instalaciones.
-            // $muelles = Muelle::all(); // Recogemos todos los muelles disponibles.
-
-         //Si no, mostramos unicamente los muelles pertenecientes a las instalaciones relacionadas con el usuario.
-            // Es decir, las instalaciones donde esté habilitado el usuario logeado.
+        if ($usuarioLogeado[0]->instalacionesUsuario[0]->id != 0) { // Si el usuario no tiene acceso a todos los puertos no lo tiene tampoco a los muelles creados en dichas instalaciones.            
+         // Por tanto, mostramos unicamente los muelles pertenecientes a las instalaciones relacionadas con el usuario.
+         // Es decir, las instalaciones donde esté habilitado el usuario logeado.
 
             $muelles->where(function ($query) use ($usuarioLogeado) {
 
@@ -33,7 +31,6 @@ class MuelleController extends Controller {
                 }
             });
         }
-
         return $muelles->get(); // Pasamos la relación con Instalaciones y con Plazas para poder hacer uso de sus propiedades
         // en el frontend de Angular. En este caso queremos visualizar datos de las Instalaciones o las Plazas en las vistas de Muelles. Lo devuelve en formato colección.
     }

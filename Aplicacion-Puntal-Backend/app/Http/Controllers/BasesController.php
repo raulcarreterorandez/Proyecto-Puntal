@@ -56,11 +56,12 @@ class BasesController extends Controller {
         request()->validate(Bases::$rules);
 
         $bases = Bases::create($request->all());
+
+        /*  YA NO NOS INTERESA CAMBIAR EL DISPONIBLE DE LA PLAZA AQUÍ PORQUE SI NO A LA HORA DE CREAR UNA EMBARCACIÓN Y AÑADIRLO A UNA PLAZA NO APARECE EL ID DE LA PLAZA AL NO ESTAR YA DISPONIBLE.
+            AHORA SETEAMOS EL DISPONIBLE=0 EN EL CONTROLADOR DE EMBARCACIONES.
         $plazas = Plaza::find($bases["idPlaza"]); //Buscamos la plaza asociadda a esa base.
-
         $plazas->disponible = 0; //cambiamos el valor de disponible de la plaza.
-
-        $plazas->update(); //Actualizamos la plaza para hacer permanentes los cambios.       
+        $plazas->update(); //Actualizamos la plaza para hacer permanentes los cambios.     */   
 
         //    dd($plazas);
 
