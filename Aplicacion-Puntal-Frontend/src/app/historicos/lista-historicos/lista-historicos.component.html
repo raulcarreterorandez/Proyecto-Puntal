@@ -34,7 +34,7 @@
                                   <tr *ngFor="let historico of historicos">
 
                                     <td>{{historico.accion}}</td>
-                                    <td>{{historico.fecha}}</td>
+                                    <td>{{historico.fecha | date:'dd/MM/yyyy'}}</td>
                                     <td>{{historico.instalacionId}}</td>
                                     <td>PL-{{historico.id}}</td>
                                     <td>{{historico.clienteId}}</td>
