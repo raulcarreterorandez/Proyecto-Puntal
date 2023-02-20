@@ -17,6 +17,8 @@ import { ListaUsuariosComponent } from './usuarios/lista-usuarios/lista-usuarios
 import { VistaDetalladaUsuarioComponent } from './usuarios/vista-detallada-usuario/vista-detallada-usuario.component';
 import { ListaHistoricosComponent } from './historicos/lista-historicos/lista-historicos.component';
 import { VistaDetalladaHistoricoComponent } from './historicos/vista-detallada-historico/vista-detallada-historico.component';
+import { ListaClientesComponent } from './clientes/lista-clientes/lista-clientes.component';
+import { VistaDetalladaClienteComponent } from './clientes/vista-detallada-cliente/vista-detallada-cliente.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -42,6 +44,17 @@ const routes: Routes = [
   // RUTAS - HISTORICOS
   { path: 'lista-historicos', component: ListaHistoricosComponent },
   { path: 'vistaDetalleHistorico/:id', component: VistaDetalladaHistoricoComponent },
+
+  // RUTAS - CLIENTES
+  { path: 'lista-clientes', component: ListaClientesComponent },
+  { path: 'vistaDetalleHistorico/:id', component: VistaDetalladaClienteComponent },
+
+  // RUTAS - EMBARCACIONES
+
+
+  // RUTAS - TRIPULANTES
+
+
 ];
 
 @NgModule({
