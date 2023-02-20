@@ -22,17 +22,17 @@ class TransitoController extends Controller {
         $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get();
         // Where() devuelve siempre una colección de tipo Array. Aunque solo devuelva un elemento.
 
-        // Accedemos al elemento que nos interesa dentro del Array obtenido, en este caso solo hay uno, y a su "colección" de instalaciones. 
-        if ($usuarioLogeado[0]->instalacionesUsuario[0]->id == 0) { // Si el usuario tiene acceso a todos los puertos lo tiene a los muelles creados en dichas instalaciones. 
+        // Accedemos al elemento que nos interesa dentro del Array obtenido, en este caso solo hay uno, y a su "colección" de instalaciones.
+        if ($usuarioLogeado[0]->instalacionesUsuario[0]->id == 0) { // Si el usuario tiene acceso a todos los puertos lo tiene a los muelles creados en dichas instalaciones.
             $transitos = Transito::all(); // Recogemos todos los transitos.
 
         } else { //Si no mostramos unicamente los transitos(plazas) de los muelles pertenecientes a las instalaciones relacionadas con el usuario.
-            
+
             // Traemos a todos los transito (con las relaciones a Muelles)
             // Filtramos los usuarios, para traer los que tengan los mismos puertos relacionados que el usuario logeado.
             $transitos = Transito::with('muelle')->whereHas('muelle', function ($query) use ($usuarioLogeado) {
 
-                // Filtramos para que el idInstalacion sea el mismo que el puerto relacionado con el usuario logueado (tantas veces como puertos tenga)   
+                // Filtramos para que el idInstalacion sea el mismo que el puerto relacionado con el usuario logueado (tantas veces como puertos tenga)
                 $query->where(function ($query) use ($usuarioLogeado) {
                     foreach ($usuarioLogeado[0]->instalacionesUsuario as $instalacion) {
                         $query->orWhere('idInstalacion', $instalacion->id);
@@ -60,9 +60,15 @@ class TransitoController extends Controller {
 
         $transito = Transito::create($request->all());
 
+<<<<<<< HEAD
         /* $plazas = Plaza::find($transito["idPlaza"]); //Buscamos la plaza asociadda a esa base.
         $plazas->disponible = 0; //cambiamos el valor de disponible de la plaza.
         $plazas->update(); //Actualizamos la plaza para hacer permanentes los cambios. */
+=======
+        // $plazas = Plaza::find($transito["idPlaza"]); //Buscamos la plaza asociadda a esa base.
+        // $plazas->disponible = 0; //cambiamos el valor de disponible de la plaza.
+        // $plazas->update(); //Actualizamos la plaza para hacer permanentes los cambios.
+>>>>>>> bab4a1063bb9e6ef7484939fa36c62250476841f
 
         return redirect()->route('transitos.index')
             ->with('success', 'Transito created successfully.');

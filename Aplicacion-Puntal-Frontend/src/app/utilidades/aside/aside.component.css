@@ -1,3 +1,7 @@
+*{
+  border: 0px solid black;
+}
+
 #aside {
   height: 90vh;
   background-color: #0E72AD;
@@ -11,7 +15,8 @@ button {
 
 .texticon {
   width: 100%;
-  margin-top: 12px;
+  font-size: 12px;
+  margin-top: 10px;
   color: white;
 }
 
