@@ -23,7 +23,7 @@ class ClienteController extends Controller
 
         //Si el usuario tiene acceso a todos los puertos, le pasamos todos los puertos disponibles
         if ($usuarioLogeado[0]->instalacionesUsuario[0]->id == 0) {
-            $clientes = Cliente::all();
+            $clientesOrdenado = Cliente::all();
         } else { //Si no mostramos unicamente los puertos relacionados con el usuario
 
             //$muelles = $usuarioLogeado[0]->instalacionesUsuario[0]->id;
