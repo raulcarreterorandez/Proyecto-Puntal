@@ -1,101 +1,206 @@
 <div id="dashBoard" class="container-fluid">
-    <div class="row">
-        <app-header></app-header>
+  <div class="row">
+    <app-header></app-header>
+  </div>
+  <div id="vistaCentral" class="row">
+    <div class="col-1">
+      <app-aside></app-aside>
     </div>
-    <div id="vistaCentral" class="row">
-        <div class="col-1">
-            <app-aside></app-aside>
-        </div>
-        <div class="col-10">
-            <div class="row">
-                <div class="container-fluid d-flex justify-content-center">
+    <div class="col-10">
+      <div class="row">
+        <div class="container-fluid d-flex justify-content-center">
 
-                    <div class="col-8">
+          <div class="col-8">
 
-                        <div id="botones" class="row d-flex justify-content-space-between align-items-center">
-                            <div class="col-1">
-                                <button><i class="far fa-arrow-alt-circle-left mx-1" style='font-size:50px'
-                                        data-bs-toggle="tooltip" title="Volver"
-                                        [routerLink]="['/lista-plazas']"></i></button>
-                            </div>
-                            <div class="col-11">
-                                <div id="titulo">Detalle Plaza</div>
-                            </div>
-                        </div>
-
-                        <div id="cabecera" class="row d-flex align-items-center ">
-                            <div class="col-2">
-                                <div>Id Inst: <strong>{{ currentPlaza.instalacion.id }}</strong></div>
-                            </div>
-                            <div class="col-4">
-                                <div>Nombre Inst: <strong>{{ currentPlaza.instalacion.nombrePuerto }}</strong></div>
-                            </div>
-                            <div class="col-3">
-                                <div>Código Inst: <strong>{{ currentPlaza.instalacion.codigo }}</strong></div>
-                            </div>
-                            <div class="col-3">
-                                <div>Id Muelle:<strong> {{ currentPlaza.idMuelle }}</strong></div>
-                            </div>
-                        </div>
-
-                        <div id="cuerpo" class="row container-fluid d-flex">
-                            <div class="col-6">
-                                <div class="row d-flex justify-content-center">
-                                    <div class="texto">Id Plaza:<strong> {{ currentPlaza.id }}</strong></div>
-                                    <div class="texto">Disponible: <strong>{{ currentPlaza.disponible }}</strong></div>
-                                    <div class="texto">Fecha Entrada:<strong>
-                                            <p *ngIf="currentPlaza.tipo=='Base'">{{ currentPlaza.bases.fechaEntrada }}</p>
-                                            <p *ngIf="currentPlaza.tipo=='Transito'">{{currentPlaza.transitos.fechaEntrada }}</p>
-                                        </strong></div>
-                                    <div class="texto">Fecha Salida:<strong>
-                                            <p *ngIf="currentPlaza.tipo=='Base'">{{ currentPlaza.bases.fechaSalida }}</p>
-                                            <p *ngIf="currentPlaza.tipo=='Transito'">{{ currentPlaza.transitos.fechaSalida }}</p>
-                                        </strong></div>
-                                    </div>
-                                    <div class="texto">Tipo: <strong>{{ currentPlaza.tipo}}</strong></div>
-                                    <div class="texto">Año: <strong>{{ currentPlaza.anyo}}</strong></div>
-                                    <div class="texto">Visto: <strong>{{ currentPlaza.visto }}</strong></div>
-                            </div>
-
-                            <div class="col-6">
-                                <div class="row">
-                                    <div class="texto">Puerto Origen: <strong>{{currentPlaza.puertoOrigen}}</strong></div>
-                                    <div class="texto">Puerto Destino: <strong>{{currentPlaza.puertoDestino}}</strong></div>
-                                    <div class="row d-flex justify-content-center">
-                                        <table id="tabla" class="table">
-                                            <thead class="">
-                                              <tr>
-                                                <th scope="col">Nombre</th>
-                                                <th scope="col">Apellidos</th>
-                                                <th scope="col">Nº Documento</th>
-                                                <th scope="col">Id Embarcación</th>
-                                                <!-- <th scope="col">Teléfono</th> -->
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                              <tr *ngFor="let tripulante of currentPlaza.tripulantes">
-                                                <td>{{tripulante.nombre}}</td>                                                
-                                                <td>{{tripulante.apellidos}}</td>
-                                                <td>{{tripulante.numDocumento}}</td>
-                                                <td>{{tripulante.id_embarcacion}}</td>                                              
-                                                <!-- <td>{{tripulante.telefono}}</td>  -->                                        
-                                              </tr>
-                                            </tbody>
-                                          </table>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
+            <div id="botones" class="row d-flex justify-content-space-between align-items-center">
+              <div class="col-1">
+                <button><i class="far fa-arrow-alt-circle-left mx-1" style='font-size:50px' data-bs-toggle="tooltip"
+                    title="Volver" [routerLink]="['/lista-plazas']"></i></button>
+              </div>
+              <div class="col-11">
+                <div id="titulo">Detalle Plaza</div>
+              </div>
             </div>
+
+            <div id="cabecera" class="row d-flex align-items-center ">
+              <div class="col-2">
+                <div>Id Inst: <strong>{{ currentPlaza.instalacion.id }}</strong></div>
+              </div>
+              <div class="col-4">
+                <div>Nombre Inst: <strong>{{ currentPlaza.instalacion.nombrePuerto }}</strong></div>
+              </div>
+              <div class="col-3">
+                <div>Código Inst: <strong>{{ currentPlaza.instalacion.codigo }}</strong></div>
+              </div>
+              <div class="col-3">
+                <div>Id Muelle:<strong> {{ currentPlaza.idMuelle }}</strong></div>
+              </div>
+            </div>
+
+            <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+
+              <mat-tab label="Cliente">
+                <div id="cuerpo" class="row container-fluid d-flex">
+                  <div class="col-6">
+                    <div class="row d-flex justify-content-center">
+                      <div class="texto">Tipo Documento: <strong>{{ currentPlaza.cliente.tipoDocumento }}</strong></div>
+                      <div class="texto">Numero Documentacion: <strong>{{ currentPlaza.cliente.tipoDocumento }}</strong>
+                      </div>
+                      <div class="texto">Nombre: <strong>{{ currentPlaza.cliente.nombre }}</strong></div>
+                      <div class="texto">Apellidos: <strong>{{ currentPlaza.cliente.apellidos }}</strong></div>
+                      <div class="texto">Email: <strong>{{ currentPlaza.cliente.email }}</strong></div>
+                      <div class="texto">Direccion: <strong>{{ currentPlaza.cliente.direccion }}</strong></div>
+                      <div class="texto">Telefonos:
+                        <strong *ngFor="let telefono of currentPlaza.cliente.telefonos">
+                          <br>{{ telefono.numero }}
+                        </strong>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-6">
+                    <div class="row d-flex justify-content-center">
+                      <table id="tabla" class="table">
+                        <thead class="">
+                          <tr>
+                            <th scope="col">Matricula</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Propulsión</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let embarcacion of currentPlaza.cliente.embarcaciones">
+                            <td>{{embarcacion.matricula}}</td>
+                            <td>{{embarcacion.nombre}}</td>
+                            <td>{{embarcacion.propulsion}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </mat-tab>
+
+              <mat-tab label="Embarcacion">
+                <div id="cuerpo" class="row container-fluid d-flex">
+                  <div class="col-6">
+                    <div class="row d-flex justify-content-center">
+                      <div class="texto">Matricula: <strong>{{ currentPlaza.embarcacion.matricula }}</strong></div>
+                      <div class="texto">Nombre: <strong>{{ currentPlaza.embarcacion.nombre }}</strong></div>
+                      <div class="texto">Eslora: <strong>{{ currentPlaza.embarcacion.eslora }}</strong></div>
+                      <div class="texto">Manga: <strong>{{ currentPlaza.embarcacion.manga }}</strong></div>
+                      <div class="texto">Calado: <strong>{{ currentPlaza.embarcacion.calado }}</strong></div>
+                      <div class="texto">Propulsion: <strong>{{ currentPlaza.embarcacion.propulsion }}</strong></div>
+                    </div>
+                  </div>
+                </div>
+              </mat-tab>
+
+              <mat-tab label="Plaza">
+                <div id="cuerpo" class="row container-fluid d-flex">
+                  <div class="col-6">
+                    <div class="row d-flex justify-content-center">
+                      <div class="texto">Id Plaza:<strong> {{ currentPlaza.id }}</strong></div>
+                      <div class="texto">Disponible: <strong>{{ currentPlaza.disponible }}</strong></div>
+                      <div class="texto">Fecha Entrada:<strong>
+                          <p *ngIf="currentPlaza.tipo=='Base'">{{ currentPlaza.bases.fechaEntrada }}</p>
+                          <p *ngIf="currentPlaza.tipo=='Transito'">{{currentPlaza.transitos.fechaEntrada }}</p>
+                        </strong></div>
+                      <div class="texto">Fecha Salida:<strong>
+                          <p *ngIf="currentPlaza.tipo=='Base'">{{ currentPlaza.bases.fechaSalida }}</p>
+                          <p *ngIf="currentPlaza.tipo=='Transito'">{{ currentPlaza.transitos.fechaSalida }}</p>
+                        </strong></div>
+                    </div>
+                    <div class="texto">Tipo: <strong>{{ currentPlaza.tipo}}</strong></div>
+                    <div class="texto">Año: <strong>{{ currentPlaza.anyo}}</strong></div>
+                    <div class="texto">Visto: <strong>{{ currentPlaza.visto }}</strong></div>
+                  </div>
+
+                  <div class="col-6">
+                    <div class="row">
+                      <div class="texto">Puerto Origen: <strong>{{currentPlaza.puertoOrigen}}</strong></div>
+                      <div class="texto">Puerto Destino: <strong>{{currentPlaza.puertoDestino}}</strong></div>
+                      <div class="row d-flex justify-content-center">
+                        <table id="tabla" class="table">
+                          <thead class="">
+                            <tr>
+                              <th scope="col">Nombre</th>
+                              <th scope="col">Apellidos</th>
+                              <th scope="col">Nº Documento</th>
+                             <!--  <th scope="col">Id Embarcación</th> -->
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let tripulante of currentPlaza.tripulantes">
+                              <td>{{tripulante.nombre}}</td>
+                              <td>{{tripulante.apellidos}}</td>
+                              <td>{{tripulante.numDocumento}}</td>
+                             <!--  <td>{{tripulante.id_embarcacion}}</td> -->
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </mat-tab>
+            </mat-tab-group>
+
+          </div>
         </div>
-        <div class="col-1">
-            <app-user-settings></app-user-settings>
-        </div>
+      </div>
     </div>
+    <div class="col-1">
+      <app-user-settings></app-user-settings>
+    </div>
+  </div>
 </div>
+<!--          <div id="cuerpo" class="row container-fluid d-flex">
+                      <div class="col-6">
+                          <div class="row d-flex justify-content-center">
+                              <div class="texto">Id Plaza:<strong> {{ currentPlaza.id }}</strong></div>
+                              <div class="texto">Disponible: <strong>{{ currentPlaza.disponible }}</strong></div>
+                              <div class="texto">Fecha Entrada:<strong>
+                                      <p *ngIf="currentPlaza.tipo=='Base'">{{ currentPlaza.bases.fechaEntrada }}</p>
+                                      <p *ngIf="currentPlaza.tipo=='Transito'">{{currentPlaza.transitos.fechaEntrada }}</p>
+                                  </strong></div>
+                              <div class="texto">Fecha Salida:<strong>
+                                      <p *ngIf="currentPlaza.tipo=='Base'">{{ currentPlaza.bases.fechaSalida }}</p>
+                                      <p *ngIf="currentPlaza.tipo=='Transito'">{{ currentPlaza.transitos.fechaSalida }}</p>
+                                  </strong></div>
+                              </div>
+                              <div class="texto">Tipo: <strong>{{ currentPlaza.tipo}}</strong></div>
+                              <div class="texto">Año: <strong>{{ currentPlaza.anyo}}</strong></div>
+                              <div class="texto">Visto: <strong>{{ currentPlaza.visto }}</strong></div>
+                      </div>
+
+                      <div class="col-6">
+                          <div class="row">
+                              <div class="texto">Puerto Origen: <strong>{{currentPlaza.puertoOrigen}}</strong></div>
+                              <div class="texto">Puerto Destino: <strong>{{currentPlaza.puertoDestino}}</strong></div>
+                              <div class="row d-flex justify-content-center">
+                                  <table id="tabla" class="table">
+                                      <thead class="">
+                                        <tr>
+                                          <th scope="col">Nombre</th>
+                                          <th scope="col">Apellidos</th>
+                                          <th scope="col">Nº Documento</th>
+                                          <th scope="col">Id Embarcación</th>
+                                          <th scope="col">Teléfono</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr *ngFor="let tripulante of currentPlaza.tripulantes">
+                                          <td>{{tripulante.nombre}}</td>                                                
+                                          <td>{{tripulante.apellidos}}</td>
+                                          <td>{{tripulante.numDocumento}}</td>
+                                          <td>{{tripulante.id_embarcacion}}</td>                                              
+                                          <td>{{tripulante.telefono}}</td>                                         
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                              </div>
+                          </div>
+                      </div>
+
+                  </div> -->

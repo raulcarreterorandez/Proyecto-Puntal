@@ -7,8 +7,13 @@ use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 
-class InstalacionController extends Controller
-{
+class InstalacionController extends Controller {
+
+    public function __construct() {
+        $this->middleware('auth'); // SE PUEDE QUITAR
+        $this->middleware('policia')->only(['index','show']);
+        $this->middleware('xunta')->except(['index','show']);
+    }
 
     public function index() {
 

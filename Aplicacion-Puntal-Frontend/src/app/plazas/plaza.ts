@@ -30,4 +30,6 @@ export interface Plaza { //NUEVO
     plazas?:any; //Traeremos una colección con las propiedades de las plazas. Mirar como traemos la info. en el Index() de API/MuelleController del backend. 
     tipo?:any;
     tripulantes?:any;
+    embarcacion?:any;
+    cliente?:any;
 }
