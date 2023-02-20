@@ -25,6 +25,8 @@ import { ListaEmbarcacionesComponent } from './embarcaciones/lista-embarcaciones
 // HISTORICOS
 import { ListaHistoricosComponent } from './historicos/lista-historicos/lista-historicos.component';
 import { VistaDetalladaHistoricoComponent } from './historicos/vista-detallada-historico/vista-detallada-historico.component';
+
+// MENSAJES
 import { ListaMensajesComponent } from './mensajes/lista-mensajes/lista-mensajes.component';
 import { VistaDetalladaMensajeComponent } from './mensajes/vista-detallada-mensaje/vista-detallada-mensaje.component';
 

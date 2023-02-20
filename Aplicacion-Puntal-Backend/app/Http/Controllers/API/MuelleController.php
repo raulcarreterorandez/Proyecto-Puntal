@@ -25,7 +25,7 @@ class MuelleController extends Controller {
          //Si no, mostramos unicamente los muelles pertenecientes a las instalaciones relacionadas con el usuario.
             // Es decir, las instalaciones donde esté habilitado el usuario logeado.
 
-            $muelles = Muelle::where(function ($query) use ($usuarioLogeado) {
+            $muelles->where(function ($query) use ($usuarioLogeado) {
 
                 foreach ($usuarioLogeado[0]->instalacionesUsuario as $instalacion) { //Recorremos la coleccion de instalaciones del usuario.
                     // dd($instalacion->id);
