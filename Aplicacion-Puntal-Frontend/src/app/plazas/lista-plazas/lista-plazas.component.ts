@@ -41,9 +41,7 @@ export class ListaPlazasComponent implements OnInit {
         info: "Mostrando _START_ a _END_ de _TOTAL_ registros",
       },
     };
-  }
-
-  
+  }  
 
   recuperaPlazas():void {
     this.plazasService.retornar()
