@@ -44,7 +44,24 @@ class MuelleController extends Controller {
         $muelle = Muelle::with('instalacion')->find($id); //Recogemos los muelles con su relación a instalaciones. Queremos mostrar el código y alguna cosa más de ahí.
 
         // Recogemos las plazas que correspondan del muelle. Es decir, las que su campo idMuelle coincida con el Id del muelle que estamos visualizando.
-        $plazas = Plaza::where('idMuelle', $id);
+        $plazas = Plaza::with('bases', 'transito')->where('idMuelle', $id)->get();
+
+        foreach ($plazas as $plaza) {
+            if ($plaza->transito == null && $plaza->bases == null) { // Si los dos campos están en null...
+
+                // La plaza está vacía.
+                $plaza->tipo = "Disponible"; // Creamos un nuevo campo en la colección(tipo) que manejaremos a nuestro antojo.
+    
+            } else if ($plaza->transito == null) { // Si tránsito es null...
+    
+                $plaza->tipo = "Base"; // La plaza es de tipo base.
+            } else {  // Si base es null...
+    
+                $plaza->tipo = "Tránsito"; // La plaza es de tipo tránsito.
+            }
+        }
+
+        $plazasDisponibles = Plaza::where('idMuelle', $id)->where('disponible', 1)->get();
 
         return [ //Especificamos la forma en la que recibimos los datos.
             "id" => $muelle->id,
@@ -53,7 +70,7 @@ class MuelleController extends Controller {
             "instalacion" => $muelle->instalacion, // Colección con la info de la instalación a la que pertenece el muelle.
             "plazas" => $plazas, // Colección con info de bases y transitos. Con el nuevo campo(tipo) creado.
             "plazasTotales" => count($plazas), // Nº total de plazas del muelle.
-            "plazasDisponibles" => count($plazasDisponibles) // Solo las plazas disponibles del muelle.
+            "plazasDisponibles" => count($plazasDisponibles), // Solo las plazas disponibles del muelle.        
         ];
     }
 }
