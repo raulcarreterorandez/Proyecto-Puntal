@@ -23,12 +23,17 @@ export class VistaDetalladaClienteComponent implements OnInit {
   @Input() currentCliente: Cliente = {
     numDocumento: '',
     nombre: '',
-    apellidos: ''
+    apellidos: '',
+    email: '',
+    direccion: '',
+    tipoDocumento: '',
+    observaciones: ''
   };
 
   ngOnInit(): void {
     if (!this.viewMode) {
       this.message = '';
+      console.log(this.getCliente(this.route.snapshot.params["numDocumento"]));
       this.getCliente(this.route.snapshot.params["numDocumento"]);
     }
   }
