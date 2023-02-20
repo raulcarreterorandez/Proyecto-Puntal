@@ -22,11 +22,12 @@ export class VistaDetalladaHistoricoComponent implements OnInit{
   @Input() viewMode = false;
 
   @Input() currentHistorico: Historico={
-    accion:"",
+    accionId:"",
     puerto:"",
     plaza:"",
     embarcacion:"",
     cliente:"",
+    tripulantes:""
 
   };
 
