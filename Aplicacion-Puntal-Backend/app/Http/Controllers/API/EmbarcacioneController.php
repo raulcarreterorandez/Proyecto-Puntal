@@ -17,7 +17,7 @@ class EmbarcacioneController extends Controller
         $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get();
 
         if ($usuarioLogeado[0]->instalacionesUsuario[0]->id == 0) {
-            $clientes = Cliente::all();
+            $embarcacionesOrdenado = Embarcacione::all();
         } else {
 
             $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get();
@@ -41,15 +41,26 @@ class EmbarcacioneController extends Controller
                     }
                 }
             }
+
+            $embarcacionesOrdenado = [];
+
+            for ($i = 0; $i < count($embarcaciones); $i++) {
+                for ($a = 0; $a < count($embarcaciones[$i]); $a++) {
+                    $embarcacione = $embarcaciones[$i][$a];
+                    array_push($embarcacionesOrdenado, $embarcacione);
+                }
+            }
         }
 
-        return $embarcaciones;
+        return $embarcacionesOrdenado;
     }
 
     public function show($matricula)
     {
 
-        $embarcacione = Embarcacione::find($matricula);
+        // $embarcacione = Embarcacione::with('cliente')->find($matricula);
+        // $embarcacione = Embarcacione::find($matricula);
+        $embarcacione = Embarcacione::find($matricula)->toArray();
 
         return $embarcacione;
     }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+
 // INSTALACIONES
 /* import { FormularioAltaInstalacionComponent } from './instalaciones/formulario-alta-instalacion/formulario-alta-instalacion.component'; */
 import { ListaInstalacionesComponent } from './instalaciones/lista-instalaciones/lista-instalaciones.component';
@@ -15,8 +16,17 @@ import { VistaDetalladaPlazaComponent } from './plazas/vista-detallada-plaza/vis
 // USUARIOS
 import { ListaUsuariosComponent } from './usuarios/lista-usuarios/lista-usuarios.component';
 import { VistaDetalladaUsuarioComponent } from './usuarios/vista-detallada-usuario/vista-detallada-usuario.component';
+// CLIENTES
+import { VistaDetalladaClienteComponent } from './clientes/vista-detallada-cliente/vista-detallada-cliente.component';
+import { ListaClientesComponent } from './clientes/lista-clientes/lista-clientes.component';
+// EMBARCACIONES
+import { VistaDetalladaEmbarcacioneComponent } from './embarcaciones/vista-detallada-embarcacione/vista-detallada-embarcacione.component';
+import { ListaEmbarcacionesComponent } from './embarcaciones/lista-embarcaciones/lista-embarcaciones.component';
+// HISTORICOS
 import { ListaHistoricosComponent } from './historicos/lista-historicos/lista-historicos.component';
 import { VistaDetalladaHistoricoComponent } from './historicos/vista-detallada-historico/vista-detallada-historico.component';
+import { ListaMensajesComponent } from './mensajes/lista-mensajes/lista-mensajes.component';
+import { VistaDetalladaMensajeComponent } from './mensajes/vista-detallada-mensaje/vista-detallada-mensaje.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -39,9 +49,21 @@ const routes: Routes = [
   { path: 'lista-usuarios', component: ListaUsuariosComponent },
   { path: 'vistaDetalleUsuario/:email', component: VistaDetalladaUsuarioComponent },
 
+  // RUTAS - CLIENTES
+  { path: 'lista-clientes', component: ListaClientesComponent },
+  { path: 'vistaDetalleCliente/:numDocumento', component: VistaDetalladaClienteComponent },
+
+  // RUTAS - EMBARCACIONES
+  { path: 'lista-embarcaciones', component: ListaEmbarcacionesComponent },
+  { path: 'vistaDetalleEmbarcacione/:matricula', component: VistaDetalladaEmbarcacioneComponent },
+
   // RUTAS - HISTORICOS
   { path: 'lista-historicos', component: ListaHistoricosComponent },
   { path: 'vistaDetalleHistorico/:id', component: VistaDetalladaHistoricoComponent },
+
+  // RUTAS - MENSAJES
+  { path: 'lista-mensajes', component: ListaMensajesComponent },
+  { path: 'vistaDetalleMensaje/:id', component: VistaDetalladaMensajeComponent },
 ];
 
 @NgModule({

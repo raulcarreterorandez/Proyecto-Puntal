@@ -13,19 +13,16 @@ class MuelleController extends Controller {
 
     public function index() {
         //Necesitamos mostrar únicamente los muelles de las instalaciones en las que esté habilitado el usuario.
-
         //Obtengo el usuario logeado.
         $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get();
         // Where() devuelve siempre una colección de tipo Array. Aunque solo devuelva un elemento.
 
-
         $muelles = Muelle::with('instalacion','plazas');
-
         // Accedemos al elemento que nos interesa dentro del Array obtenido, en este caso solo hay uno, y a su "colección" de instalaciones.
         if ($usuarioLogeado[0]->instalacionesUsuario[0]->id != 0) { // Si el usuario tiene acceso a todos los puertos lo tiene a los muelles creados en dichas instalaciones.
-            // Recogemos todos los muelles disponibles.
+            // $muelles = Muelle::all(); // Recogemos todos los muelles disponibles.
 
-            //Si no, mostramos unicamente los muelles pertenecientes a las instalaciones relacionadas con el usuario.
+         //Si no, mostramos unicamente los muelles pertenecientes a las instalaciones relacionadas con el usuario.
             // Es decir, las instalaciones donde esté habilitado el usuario logeado.
 
             $muelles = Muelle::where(function ($query) use ($usuarioLogeado) {
@@ -54,9 +51,9 @@ class MuelleController extends Controller {
 
                 // La plaza está vacía.
                 $plaza->tipo = "Disponible"; // Creamos un nuevo campo en la colección(tipo) que manejaremos a nuestro antojo.
-    
+
             } else if ($plaza->transito == null) { // Si tránsito es null...
-    
+
                 $plaza->tipo = "Base"; // La plaza es de tipo base.
             } else {  // Si base es null...
     
@@ -73,7 +70,7 @@ class MuelleController extends Controller {
             "instalacion" => $muelle->instalacion, // Colección con la info de la instalación a la que pertenece el muelle.
             "plazas" => $plazas, // Colección con info de bases y transitos. Con el nuevo campo(tipo) creado.
             "plazasTotales" => count($plazas), // Nº total de plazas del muelle.
-            "plazasDisponibles" => count($plazasDisponibles), // Solo las plazas disponibles del muelle.        
+            "plazasDisponibles" => count($plazasDisponibles), // Solo las plazas disponibles del muelle.
         ];
     }
 }

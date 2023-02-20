@@ -23,7 +23,7 @@ class EmbarcacioneController extends Controller
 
         //Si el usuario tiene acceso a todos los puertos, le pasamos todos los puertos disponibles
         if ($usuarioLogeado[0]->instalacionesUsuario[0]->id == 0) {
-            $clientes = Cliente::all();
+            $embarcaciones = Embarcacione::all()->toArray();
         } else { //Si no mostramos unicamente los puertos relacionados con el usuario
 
             //$muelles = $usuarioLogeado[0]->instalacionesUsuario[0]->id;
@@ -50,10 +50,11 @@ class EmbarcacioneController extends Controller
                 for ($i = 0; $i < count($plazas[$a]); $i++) {
                     $embarcacione = Embarcacione::where('id_plaza', $plazas[$a][$i])->get()->toArray();
                     if (isset($embarcacione[0]["matricula"])) {
-                        array_push($embarcaciones, $embarcacione);
+                        array_push($embarcaciones, $embarcacione[0]);
                     }
                 }
             }
+            // dd($embarcaciones);
         }
 
         return view('embarcacione.index', compact('embarcaciones'))->with('i', 0);
@@ -93,8 +94,9 @@ class EmbarcacioneController extends Controller
 
     public function show($matricula)
     {
-        $embarcacione = Embarcacione::where('matricula', $matricula)->get()->toArray()[0];
-        $embarcacione = (object) $embarcacione;
+        // $embarcacione = Embarcacione::where('matricula', $matricula)->get()->toArray()[0];
+        // $embarcacione = (object) $embarcacione;
+        $embarcacione = Embarcacione::find($matricula);
 
         return view('embarcacione.show', compact('embarcacione'));
     }

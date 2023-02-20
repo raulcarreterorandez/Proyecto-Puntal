@@ -10,11 +10,8 @@ import { ClientesService } from '../clientes.service';
 })
 export class VistaDetalladaClienteComponent implements OnInit {
 
-  muelle: any;
+  cliente: any;
   message = '';
-
-  post: any;
-  titulosColumnas = ['Nombre', 'Matrícula', 'Instalación'];
 
   constructor(
     private clienteService: ClientesService,

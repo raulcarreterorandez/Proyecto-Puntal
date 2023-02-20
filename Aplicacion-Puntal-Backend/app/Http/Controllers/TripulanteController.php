@@ -24,7 +24,7 @@ class TripulanteController extends Controller
 
         //Si el usuario tiene acceso a todos los puertos, le pasamos todos los puertos disponibles
         if ($usuarioLogeado[0]->instalacionesUsuario[0]->id == 0) {
-            $clientes = Cliente::all();
+            $tripulantesOrdenado = Tripulante::all();
         } else { //Si no mostramos unicamente los puertos relacionados con el usuario
 
             //$muelles = $usuarioLogeado[0]->instalacionesUsuario[0]->id;
@@ -66,14 +66,15 @@ class TripulanteController extends Controller
                     }
                 }
             }
-        }
 
-        $tripulantesOrdenado = [];
-        for ($a = 0; $a < count($tripulantes); $a++) {
-            for ($i = 0; $i < count($tripulantes[$a]); $i++) {
-                array_push($tripulantesOrdenado, $tripulantes[$a][$i]);
+            $tripulantesOrdenado = [];
+            for ($a = 0; $a < count($tripulantes); $a++) {
+                for ($i = 0; $i < count($tripulantes[$a]); $i++) {
+                    array_push($tripulantesOrdenado, $tripulantes[$a][$i]);
+                }
             }
-        }
+        } // fin del else
+
 
         return view('tripulante.index', compact('tripulantesOrdenado'))->with('i', 0);
     }

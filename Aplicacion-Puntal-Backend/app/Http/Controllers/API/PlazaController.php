@@ -121,8 +121,6 @@ class PlazaController extends Controller {
 
         $plazas=$plazas->get();
 
-        // return $plazas;
-
         // LA FECHA DE HOY **ENTERO Y STRING**
         $now = new DateTime('now', new DateTimeZone("Europe/Madrid"));
         $hoyNum = strtotime( $now->format('Y-m-d H:i:s') );
@@ -151,8 +149,6 @@ class PlazaController extends Controller {
                 $fechaEntrada = $plaza->transito->fechaEntrada;
                 $fechaSalida = $plaza->transito->fechaSalida;
 
-                // return $hoyNum." \n entrada - ".$fechaEntradaNum." // \n salida -".$fechaSalidaNum ." ".$plaza->transito->fechaSalida;
-                // return $fechaEntradaNum." // ".$hoyNum;
             }
             else{
                 // ENTERO
@@ -162,8 +158,6 @@ class PlazaController extends Controller {
                 $fechaEntrada = $plaza->bases->fechaEntrada;
                 $fechaSalida = $plaza->bases->fechaSalida;
 
-                // return $hoyNum." \n entrada - ".$fechaEntradaNum." // \n salida -".$fechaSalidaNum ." ".$plaza->transito->fechaSalida;
-                // return $fechaEntradaNum." // ".$hoyNum;
             }
 
             // Comprobamos la diferencia de dias con la fecha de entrada con la de hoy
@@ -182,10 +176,6 @@ class PlazaController extends Controller {
                 $diferenciaDiasSalida = $fechaSalidaNum - $hoyNum;
             }
 
-            // return "la diferencia de dias con la fecha de entrada con hoy es ". $diferenciaDiasEntrada;
-            // return "la diferencia de dias con la fecha de salida con hoy es ". $diferenciaDiasSalida;
-            // return $diferenciaDiasEntrada ." // ". $diferenciaDiasSalida;
-
             // Quien tenga la diferencia de dias mas pequeña, sera la fecha y la accion del historico
             if($diferenciaDiasEntrada < $diferenciaDiasSalida){
                 $plaza->fecha = $fechaEntrada;
@@ -200,10 +190,6 @@ class PlazaController extends Controller {
 
                 // array_push($this->$acciones[$plaza->id],"REGISTRO DE SALIDA");
             }
-
-            $accion = $plaza->accion;
-
-            // $plaza->fecha = "fecha"; // ORDENAREMOS LAS CONSULTAS POR ESTE CAMPO
 
             // EMBARCACION QUE ESTA EN LA PLAZA
             $embarcacion = Embarcacione::orWhere('id_plaza',$plaza->id)->get();
