@@ -56,7 +56,6 @@ class PlazaController extends Controller {
 
             })->get();
         }
-
         return $plazas;
     }
 
@@ -79,7 +78,7 @@ class PlazaController extends Controller {
             $plaza->fechaEntrada = $plaza->bases->fechaEntrada;
         } else {  // Si base es null...
 
-            $plaza->tipo = "Tránsito"; // La plaza es de tipo tránsito.
+            $plaza->tipo = "Transito"; // La plaza es de tipo tránsito.
             $plaza->fechaEntrada = $plaza->transito->fechaSalida;
         }
 
@@ -94,7 +93,7 @@ class PlazaController extends Controller {
             "tipo" => $plaza->tipo,
             "instalacion" => $muelle->instalacion, // Colección con la info de la instalación a la que pertenece el muelle.
             "bases" => $plaza->bases,
-            "transitos" => $plaza->transitos,
+            "transitos" => $plaza->transito,
             "tripulantes" => $tripulantes,
         ];
     }

@@ -11,10 +11,8 @@ use Illuminate\Http\Request;
 
 class MuelleController extends Controller {
 
-
     public function index() {
         //Necesitamos mostrar únicamente los muelles de las instalaciones en las que esté habilitado el usuario.
-
         //Obtengo el usuario logeado.
         $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get();
         // Where() devuelve siempre una colección de tipo Array. Aunque solo devuelva un elemento.
@@ -27,7 +25,7 @@ class MuelleController extends Controller {
          //Si no, mostramos unicamente los muelles pertenecientes a las instalaciones relacionadas con el usuario.
             // Es decir, las instalaciones donde esté habilitado el usuario logeado.
 
-            $muelles = Muelle::where(function ($query) use ($usuarioLogeado) {
+            $muelles->where(function ($query) use ($usuarioLogeado) {
 
                 foreach ($usuarioLogeado[0]->instalacionesUsuario as $instalacion) { //Recorremos la coleccion de instalaciones del usuario.
                     // dd($instalacion->id);
@@ -36,9 +34,10 @@ class MuelleController extends Controller {
             });
         }
 
-        return $muelles->with('instalacion','plazas')->get(); // Pasamos la relación con Instalaciones y con Plazas para poder hacer uso de sus propiedades
+        return $muelles->get(); // Pasamos la relación con Instalaciones y con Plazas para poder hacer uso de sus propiedades
         // en el frontend de Angular. En este caso queremos visualizar datos de las Instalaciones o las Plazas en las vistas de Muelles. Lo devuelve en formato colección.
     }
+    
 
     public function show($id) {
 
@@ -57,8 +56,8 @@ class MuelleController extends Controller {
 
                 $plaza->tipo = "Base"; // La plaza es de tipo base.
             } else {  // Si base es null...
-
-                $plaza->tipo = "Tránsito"; // La plaza es de tipo tránsito.
+    
+                $plaza->tipo = "Transito"; // La plaza es de tipo tránsito.
             }
         }
 
