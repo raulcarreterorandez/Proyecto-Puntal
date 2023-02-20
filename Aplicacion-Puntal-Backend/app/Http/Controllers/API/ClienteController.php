@@ -18,7 +18,7 @@ class ClienteController extends Controller
         $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get();
 
         if ($usuarioLogeado[0]->instalacionesUsuario[0]->id == 0) {
-            $clientes = Cliente::all();
+            $clientesOrdenado = Cliente::all();
         } else {
 
             $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get();
