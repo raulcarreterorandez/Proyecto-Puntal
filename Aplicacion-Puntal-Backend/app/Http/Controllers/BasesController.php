@@ -19,8 +19,8 @@ class BasesController extends Controller {
         $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get();
         // Where() devuelve siempre una colección de tipo Array. Aunque solo devuelva un elemento.
 
-        // Accedemos al elemento que nos interesa dentro del Array obtenido, en este caso solo hay uno, y a su "colección" de instalaciones. 
-        if ($usuarioLogeado[0]->instalacionesUsuario[0]->id == 0) { // Si el usuario tiene acceso a todos los puertos lo tiene a los muelles creados en dichas instalaciones. 
+        // Accedemos al elemento que nos interesa dentro del Array obtenido, en este caso solo hay uno, y a su "colección" de instalaciones.
+        if ($usuarioLogeado[0]->instalacionesUsuario[0]->id == 0) { // Si el usuario tiene acceso a todos los puertos lo tiene a los muelles creados en dichas instalaciones.
             $bases = Bases::all();/* paginate() */ // Recogemos todos los bases.
 
         } else { //Si no mostramos unicamente los bases(plazas) de los muelles pertenecientes a las instalaciones relacionadas con el usuario.
@@ -29,7 +29,7 @@ class BasesController extends Controller {
             // Filtramos los usuarios, para traer los que tengan los mismos puertos relacionados que el usuario logeado.
             $bases = Bases::with('muelle')->whereHas('muelle', function ($query) use ($usuarioLogeado) {
 
-                // Filtramos para que el idInstalacion sea el mismo que el puerto relacionado con el usuario logueado (tantas veces como puertos tenga)   
+                // Filtramos para que el idInstalacion sea el mismo que el puerto relacionado con el usuario logueado (tantas veces como puertos tenga)
                 $query->where(function ($query) use ($usuarioLogeado) {
                     foreach ($usuarioLogeado[0]->instalacionesUsuario as $instalacion) {
                         $query->orWhere('idInstalacion', $instalacion->id);
@@ -56,11 +56,11 @@ class BasesController extends Controller {
         request()->validate(Bases::$rules);
 
         $bases = Bases::create($request->all());
-        $plazas = Plaza::find($bases["idPlaza"]); //Buscamos la plaza asociadda a esa base.
+        // $plazas = Plaza::find($bases["idPlaza"]); //Buscamos la plaza asociadda a esa base.
 
-        $plazas->disponible = 0; //cambiamos el valor de disponible de la plaza.
+        // $plazas->disponible = 0; //cambiamos el valor de disponible de la plaza.
 
-        $plazas->update(); //Actualizamos la plaza para hacer permanentes los cambios.       
+        // $plazas->update(); //Actualizamos la plaza para hacer permanentes los cambios.
 
         //    dd($plazas);
 
