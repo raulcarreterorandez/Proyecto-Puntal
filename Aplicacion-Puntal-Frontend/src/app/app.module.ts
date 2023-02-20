@@ -17,6 +17,8 @@ import { InstalacionesModule } from './instalaciones/instalaciones.module';
 import { MuellesModule } from './muelles/muelles.module';
 import { PlazasModule } from './plazas/plazas.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
+import { ClientesModule } from './clientes/clientes.module';
+import { EmbarcacionesModule } from './embarcaciones/embarcaciones.module';
 
 
 @NgModule({
@@ -36,6 +38,8 @@ import { UsuariosModule } from './usuarios/usuarios.module';
     MuellesModule,
     PlazasModule,
     UsuariosModule,
+    ClientesModule,
+    EmbarcacionesModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

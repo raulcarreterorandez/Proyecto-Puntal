@@ -6,5 +6,4 @@ export interface Cliente {
   direccion?: any;
   tipoDocumento?: any;
   observaciones?: any;
-  embarcaciones?:any;
 }

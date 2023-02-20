@@ -15,6 +15,12 @@ import { VistaDetalladaPlazaComponent } from './plazas/vista-detallada-plaza/vis
 // USUARIOS
 import { ListaUsuariosComponent } from './usuarios/lista-usuarios/lista-usuarios.component';
 import { VistaDetalladaUsuarioComponent } from './usuarios/vista-detallada-usuario/vista-detallada-usuario.component';
+// CLIENTES
+import { VistaDetalladaClienteComponent } from './clientes/vista-detallada-cliente/vista-detallada-cliente.component';
+import { ListaClientesComponent } from './clientes/lista-clientes/lista-clientes.component';
+// EMBARCACIONES
+import { VistaDetalladaEmbarcacioneComponent } from './embarcaciones/vista-detallada-embarcacione/vista-detallada-embarcacione.component';
+import { ListaEmbarcacionesComponent } from './embarcaciones/lista-embarcaciones/lista-embarcaciones.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -36,6 +42,14 @@ const routes: Routes = [
   // RUTAS - USUARIOS
   { path: 'lista-usuarios', component: ListaUsuariosComponent },
   { path: 'vistaDetalleUsuario/:email', component: VistaDetalladaUsuarioComponent },
+
+  // RUTAS - CLIENTES
+  { path: 'lista-clientes', component: ListaClientesComponent },
+  { path: 'vistaDetalleCliente/:id', component: VistaDetalladaClienteComponent },
+
+  // RUTAS - EMBARCACIONES
+  { path: 'lista-embarcaciones', component: ListaEmbarcacionesComponent },
+  { path: 'vistaDetalleEmbarcacione/:id', component: VistaDetalladaEmbarcacioneComponent },
 ];
 
 @NgModule({

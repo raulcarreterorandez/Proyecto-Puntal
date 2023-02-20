@@ -9,38 +9,38 @@
     <div class="col-10">
       <div id="cabecera_botones" class="col-12 row d-flex justify-content-start align-items-center">
         <div class="col-6 d-flex row">
-          <img id="boton_volver" src="/assets/flechaAtras.svg" alt="Volver" [routerLink]="['/lista-clientes']">
+          <img id="boton_volver" src="/assets/flechaAtras.svg" alt="Volver" [routerLink]="['/lista-embarcaciones']">
         </div>
       </div>
 
       <div id="cabecera" class="row">
         <div class="col-6">
-          <div>Puerto: <strong>{{ currentCliente.numDocumento }}</strong></div>
+          <div>Puerto: <strong>{{ currentEmbarcacione.nombre }}</strong></div>
         </div>
         <div class="col-6">
-          <div>Codigo: <strong>{{ currentCliente.nombre }}</strong></div>
+          <div>Codigo: <strong>{{ currentEmbarcacione.nombre }}</strong></div>
         </div>
       </div>
 
       <div id="cuerpo" class="row">
         <div class="col-6">
-          <div class="texto">Tipo de documento: <strong> {{ currentCliente.tipoDocumento }}</strong></div>
-          <div class="texto">Numero de documento: <strong>{{ currentCliente.numDocumento }}</strong></div>
-          <div class="texto">Nombre: <strong> {{ currentCliente.nombre }}</strong></div>
-          <div class="texto">Apellidos: <strong>{{ currentCliente.apellidos }}</strong></div>
-          <div class="texto">Email: <strong>{{ currentCliente.email }}</strong></div>
-          <div class="texto">Teléfono: <strong>{{ currentCliente.email }}</strong></div>
-          <div class="texto">Dirección: <strong>{{ currentCliente.direccion }}</strong></div>
+          <div class="texto">Mátricula: <strong> {{ currentEmbarcacione.matricula }}</strong></div>
+          <div class="texto">Cliente: <strong>{{ currentEmbarcacione.id_cliente }}</strong></div>
+          <div class="texto">Nombre: <strong> {{ currentEmbarcacione.nombre }}</strong></div>
+          <div class="texto">Eslora: <strong>{{ currentEmbarcacione.eslora }}</strong></div>
+          <div class="texto">Manga: <strong>{{ currentEmbarcacione.manga }}</strong></div>
+          <div class="texto">Calado: <strong>{{ currentEmbarcacione.calado }}</strong></div>
+          <div class="texto">Propulsión: <strong>{{ currentEmbarcacione.propulsion }}</strong></div>
         </div>
         <div class="col-6">
-          <h5>Embarcaciones:</h5>
+          <h5>Tripulantes:</h5>
           <br>
           <table id="tabla" class="table">
             <thead class="">
               <tr>
-                <th scope="col">Matricula</th>
                 <th scope="col">Nombre</th>
-                <th scope="col">Instalacion</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Documento</th>
               </tr>
             </thead>
             <tbody>
