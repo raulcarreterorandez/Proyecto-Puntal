@@ -47,7 +47,7 @@ const routes: Routes = [
 
   // RUTAS - CLIENTES
   { path: 'lista-clientes', component: ListaClientesComponent },
-  { path: 'vistaDetalleCliente/:id', component: VistaDetalladaClienteComponent },
+  { path: 'vistaDetalleCliente/:numDocumento', component: VistaDetalladaClienteComponent },
 
   // RUTAS - EMBARCACIONES
   { path: 'lista-embarcaciones', component: ListaEmbarcacionesComponent },
