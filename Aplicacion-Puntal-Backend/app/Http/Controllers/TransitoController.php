@@ -60,15 +60,9 @@ class TransitoController extends Controller {
 
         $transito = Transito::create($request->all());
 
-<<<<<<< HEAD
         /* $plazas = Plaza::find($transito["idPlaza"]); //Buscamos la plaza asociadda a esa base.
         $plazas->disponible = 0; //cambiamos el valor de disponible de la plaza.
         $plazas->update(); //Actualizamos la plaza para hacer permanentes los cambios. */
-=======
-        // $plazas = Plaza::find($transito["idPlaza"]); //Buscamos la plaza asociadda a esa base.
-        // $plazas->disponible = 0; //cambiamos el valor de disponible de la plaza.
-        // $plazas->update(); //Actualizamos la plaza para hacer permanentes los cambios.
->>>>>>> bab4a1063bb9e6ef7484939fa36c62250476841f
 
         return redirect()->route('transitos.index')
             ->with('success', 'Transito created successfully.');
