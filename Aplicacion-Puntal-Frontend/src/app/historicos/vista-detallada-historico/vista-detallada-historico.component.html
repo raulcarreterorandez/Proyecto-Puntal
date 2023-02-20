@@ -24,7 +24,7 @@
 
                       <div id="cabecera" class="row d-flex align-items-center ">
                           <div class="col">
-                            <div>ACCION DEL HISTORICO<strong>{{ currentHistorico.accion }}</strong></div>
+                            <div><strong>{{ currentHistorico.accionId }}</strong></div>
                           </div>
                         <div class="col">
                           <div>Puerto: <strong>{{ currentHistorico.puerto.nombrePuerto }}</strong></div>
@@ -65,7 +65,24 @@
 
                             <div class="col-6">
                               <div class="row">
-                                  **AQUI VA LA TABLA CON LAS EMBARCACIONES DEL CLIENTE**
+                                <div class="texto">Embarcaciones: </div>
+                                <table id="tabla" class="table">
+                                  <thead class="">
+                                    <tr>
+                                      <th scope="col">Matricula</th>
+                                      <th scope="col">Nombre</th>
+                                      <th scope="col">Propulsion</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr *ngFor="let embarcacion of currentHistorico.cliente.embarcaciones">
+                                      <td>{{embarcacion.matricula}}</td>
+                                      <td>{{embarcacion.nombre}}</td>
+                                      <td>{{embarcacion.propulsion}}</td>
+
+                                    </tr>
+                                  </tbody>
+                                </table>
                               </div>
                             </div>
                           </div>
@@ -103,8 +120,22 @@
 
                             <div class="col-6">
                               <div class="row">
-                                  **AQUI VA LA TABLA CON TRIPULANTES DE LA PLAZA --TRANSITO--**
-                              </div>
+                                <div class="texto">Tripulantes: </div>
+                                <table id="tabla" class="table">
+                                  <thead class="">
+                                    <tr>
+                                      <th scope="col">Nombre Completo</th>
+                                      <th scope="col">Numero Documento</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr *ngFor="let tripulante of currentHistorico.tripulantes">
+                                      <td>{{tripulante.nombre}} {{tripulante.apellidos}}</td>
+                                      <td>{{tripulante.numDocumento}}</td>
+
+                                    </tr>
+                                  </tbody>
+                                </table>                              </div>
                             </div>
                           </div>
                         </mat-tab>

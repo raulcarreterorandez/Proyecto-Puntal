@@ -24,6 +24,8 @@ export interface Historico{
   embarcacion?:any;
   cliente?:any;
   puerto?:any;
+  accionId?:any;
+  tripulantes?:any;
 
 
 // Campos sin valor que modificaremos

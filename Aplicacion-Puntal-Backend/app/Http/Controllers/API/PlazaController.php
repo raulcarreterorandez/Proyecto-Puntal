@@ -16,13 +16,6 @@ use DateTimeZone;
 
 class PlazaController extends Controller {
 
-    // private array $acciones;
-
-    public function __construct()
-    {
-        // $this->acciones=[];
-    }
-
     public function index() {
 
         //Necesitamos mostrar únicamente las plazas de los muelles pertenecientes a las instalaciones en las que esté habilitado en usuario.
@@ -187,14 +180,11 @@ class PlazaController extends Controller {
                 $plaza->fecha = $fechaEntrada;
                 $plaza->accion = "REGISTRO DE ENTRADA";
 
-                // array_push($this->$acciones[$plaza->id],"REGISTRO DE ENTRADA");
-
             }
             else{
                 $plaza->fecha = $fechaSalida;
                 $plaza->accion = "REGISTRO DE SALIDA";
 
-                // array_push($this->$acciones[$plaza->id],"REGISTRO DE SALIDA");
             }
 
             // EMBARCACION QUE ESTA EN LA PLAZA
@@ -218,6 +208,7 @@ class PlazaController extends Controller {
     }
 
     public function historialPlaza($id){
+
         $plaza = Plaza::with('transito','bases')->find($id);
 
 
@@ -240,17 +231,65 @@ class PlazaController extends Controller {
             $plaza->fechaSalida = $plaza->bases->fechaSalida;
         } else {
 
-            $plaza->tipo = "Tránsito";
+            $plaza->tipo = "Transito";
             $plaza->fechaEntrada = $plaza->transito->fechaEntrada;
             $plaza->fechaSalida = $plaza->transito->fechaSalida;
         }
 
+        // SABIENDO EL TIPO DE PLAZA, AVERIGUAMOS QUE TIPO DE ACCION ES DEL HISTORICO
+
+            // LA FECHA DE HOY **ENTERO Y STRING**
+            $now = new DateTime('now', new DateTimeZone("Europe/Madrid"));
+            $hoyNum = strtotime( $now->format('Y-m-d H:i:s') );
+
+            // Almacenamos en formato entero y string de las fechas de entrada y salida **PLAZA BASE O TRANSITO**
+            if($plaza->tipo == "Transito"){
+
+                $fechaEntradaNum = strtotime( $plaza->transito->fechaEntrada );
+                $fechaSalidaNum = strtotime( $plaza->transito->fechaSalida );
+            }
+            else{
+
+                $fechaEntradaNum = strtotime( $plaza->bases->fechaEntrada );
+                $fechaSalidaNum = strtotime( $plaza->bases->fechaSalida );
+            }
+
+            // Comprobamos la diferencia de dias con la fecha de entrada con la de hoy
+            if($fechaEntradaNum < $hoyNum){
+                $diferenciaDiasEntrada = $hoyNum - $fechaEntradaNum;
+            }
+            else{
+                $diferenciaDiasEntrada = $fechaEntradaNum - $hoyNum;
+            }
+
+            // Comprobamos la diferencia de dias con la fecha de salida con la de hoy
+            if($fechaSalidaNum < $hoyNum){
+                $diferenciaDiasSalida = $hoyNum - $fechaSalidaNum;
+            }
+            else{
+                $diferenciaDiasSalida = $fechaSalidaNum - $hoyNum;
+            }
+
+            // Quien tenga la diferencia de dias mas pequeña, sera la fecha y la accion del historico
+            if($diferenciaDiasEntrada < $diferenciaDiasSalida){
+
+                $accion = "REGISTRO DE ENTRADA";
+            }
+            else{
+
+                $accion = "REGISTRO DE SALIDA";
+            }
+
+            $tripulantes = Tripulante::where('id_plaza',$id)->get();
+
+
         return [
-            // 'accion' => $this->$acciones[$plaza->id],
+            'accionId'=>$accion,
             'plaza'=>$plaza,
             'embarcacion' => $embarcacion[0],
             'cliente' => $cliente,
-            'puerto' => $instalacion
+            'puerto' => $instalacion,
+            'tripulantes'=> $tripulantes
         ];
     }
 
