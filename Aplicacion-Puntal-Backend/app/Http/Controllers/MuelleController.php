@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class MuelleController extends Controller {
 
+    public function __construct() {
+        $this->middleware('auth')->only(['index','show']); 
+        $this->middleware('gerencia')->except(['index','show']);
+    }
+
     public function index() {
         //Necesitamos mostrar únicamente los muelles de las instalaciones en las que esté habilitado en usuario.
 

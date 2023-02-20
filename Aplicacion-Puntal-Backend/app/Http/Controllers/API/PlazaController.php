@@ -65,7 +65,11 @@ class PlazaController extends Controller {
 
         $plaza = Plaza::with('transito', 'bases')->find($id); // Recogemos las plazas con su relación a tránsitos y bases. Queremos mostrar de que tipo són(bases o tránsitos).
 
-        $tripulantes = Tripulante::where('id_plaza',$id)->get();
+        $tripulantes = Tripulante::where('id_plaza',$id)->get(); // Devolvemos una colección con los tripulantes donde su idPlaza sea el mismo que el de nuestra plaza a mostrar.
+
+        $embarcacion = Embarcacione::where('id_plaza',$id)->get(); // Devolvemos una colección pero con un solo elemento. Solo hay una embarcación por plaza.
+
+        $cliente = Cliente::with('embarcaciones','telefonos')->find($embarcacion[0]->id_cliente);
 
         if ($plaza->transito == null && $plaza->bases == null) { // Si los dos campos están en null...
 
@@ -95,6 +99,8 @@ class PlazaController extends Controller {
             "bases" => $plaza->bases,
             "transitos" => $plaza->transito,
             "tripulantes" => $tripulantes,
+            "embarcacion" => $embarcacion[0], // Especificamos la posicion para devolver un único elemento y no toda la colección. Así no jhay que recorrerlo en la vista con un forEach().
+            "cliente" => $cliente
         ];
     }
 
@@ -247,4 +253,99 @@ class PlazaController extends Controller {
             'puerto' => $instalacion
         ];
     }
+
+
+    // LO QUE DEVUELVE LA LLAMADA A LA API DEL SHOW PLAZA( localhost/api/plazas/108 )
+   /*  {      // LA INFORMACIÓN DE LA PLAZA A MOSTRAR.
+        "id": 108,
+        "disponible": 0,
+        "visto": 1,
+        "puertoOrigen": "Norman Wells",
+        "puertoDestino": "Basse Terre",
+        "anyo": "1985",
+        "idMuelle": 108,
+        "tipo": "Transito",
+        "instalacion": {   // LA INSTALACIÓN A LA QUE PERTENECE DICHA PLAZA.
+            "id": 4,
+            "codigo": "KP-96",
+            "nombrePuerto": "Port-au-Prince",
+            "descripcion": "Abierto de 8:00 a 20:00",
+            "estado": "Mantenimiento",
+            "visto": 1,
+            "fechaDisposicion": "2008-07-14 11:10:02"
+        },
+        "bases": null,   // LA INFORMACIÓN DE BASE DE DICHA PLAZA.
+        "transitos": {   // LA INFORMACIÓN DEL TRÁNSITO DE DICHA PLAZA.
+            "idPlaza": 108,
+            "fechaEntrada": "2021-11-16 00:17:04",
+            "fechaSalida": "2022-09-17 14:28:42"
+        },
+        "tripulantes": [  // LOS TRIPULANTES ASIGNADOS A ESTA PLAZA(ÚNICAMENTE EN TRÁNSITOS).
+            {
+                "numDocumento": "documento-54",
+                "nombre": "Virgil",
+                "apellidos": "MacMenamin",
+                "nacionalidad": "China",
+                "fechaNacimiento": "1980-04-25",
+                "lugarNacimiento": "Xiangfu",
+                "paisNacimiento": "Ecuador",
+                "tipoDocumento": "DNI",
+                "fechaExpedicionDocumento": "2016-10-07",
+                "fechaCaducidadDocumento": "2028-01-29",
+                "id_plaza": 108,
+                "id_embarcacion": "matricula-554"
+            },
+            {
+                "numDocumento": "documento-554",
+                "nombre": "Wynnie",
+                "apellidos": "Slopier",
+                "nacionalidad": "China",
+                "fechaNacimiento": "1993-01-27",
+                "lugarNacimiento": "Gulong",
+                "paisNacimiento": "China",
+                "tipoDocumento": "DNI",
+                "fechaExpedicionDocumento": "2015-09-06",
+                "fechaCaducidadDocumento": "2028-05-24",
+                "id_plaza": 108,
+                "id_embarcacion": "matricula-554"
+            }
+        ],
+        "embarcacion": {      // LAS EMBARCACION QUE ESTÁ ASIGNADA EN DICHA PLAZA
+            "matricula": "matricula-554",
+            "nombre": "Hevea",
+            "eslora": "19.48m",
+            "manga": "3.28m",
+            "calado": "13.89m",
+            "propulsion": "Motor",
+            "id_cliente": "documento-554",
+            "id_plaza": 108
+        },
+        "cliente": {           // EL CLIENTE AL QUE PERTENECE DICHA EMBARCACIÓN
+            "numDocumento": "documento-554",
+            "nombre": "Devan",
+            "apellidos": "Duffet",
+            "email": "dduffetfd@cnn.com",
+            "direccion": "73191 Eastwood Center",
+            "tipoDocumento": "NIE",
+            "observaciones": "Llamar para cumplimientos de pagos",
+            "embarcaciones": [     // LAS EMBARCACIONES QUE PERTENECEN A DICHO CLIENTE
+                {
+                    "matricula": "matricula-554",
+                    "nombre": "Hevea",
+                    "eslora": "19.48m",
+                    "manga": "3.28m",
+                    "calado": "13.89m",
+                    "propulsion": "Motor",
+                    "id_cliente": "documento-554",
+                    "id_plaza": 108
+                }
+            ],
+            "telefonos": [
+                {
+                    "numero": "+62-820-713-8058",
+                    "idCliente": "documento-554"
+                }
+            ]
+        }
+    } */
 }

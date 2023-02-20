@@ -5,6 +5,7 @@ import { VistaDetalladaPlazaComponent } from './vista-detallada-plaza/vista-deta
 import { UtilidadesModule } from '../utilidades/utilidades.module';
 import { DataTablesModule } from 'angular-datatables';
 import { RouterModule } from '@angular/router';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 
@@ -17,7 +18,8 @@ import { RouterModule } from '@angular/router';
     CommonModule, 
     UtilidadesModule,
     DataTablesModule,
-    RouterModule
+    RouterModule, 
+    MatTabsModule
   ]
 })
 export class PlazasModule { }
