@@ -6,54 +6,53 @@
     <div class="col-1">
       <app-aside></app-aside>
     </div>
+
+<!-- CONTENIDO MAIN -->
     <div class="col-10">
+
       <div class="row">
-        <!-- <app-navbar></app-navbar> -->
-      </div>
-      <div class="row">
-                        <!-- CONTENIDO DE LA PANTALLA -->
-
-                        <div *ngIf="historicos!=null; else espera">
-                          <div id="espacioTabla">
-                            <div id="resize_wrapper">
-                              <table id="tabla" datatable [dtOptions]="dtOptions" class="table table-striped table-hover">
-                                <thead class="">
-                                  <tr>
-                                    <th scope="col">Accion</th>
-                                    <th scope="col">Fecha</th>
-                                    <th scope="col">Puerto</th>
-                                    <th scope="col">Plaza</th>
-                                    <th scope="col">Cliente</th>
-                                    <th scope="col">Embarcacion</th>
+        <div *ngIf="historicos!=null; else espera">
+          <div id="espacioTabla">
+            <div id="resize_wrapper">
+              <table id="tabla" datatable [dtOptions]="dtOptions" class="table table-striped table-hover">
+                <thead class="">
+                  <tr>
+                    <th scope="col">Accion</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Puerto</th>
+                    <th scope="col">Plaza</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Embarcacion</th>
 
 
-                                    <th scope="col">Acciones</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr *ngFor="let historico of historicos">
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let historico of historicos">
 
-                                    <td>{{historico.accion}}</td>
-                                    <td>{{historico.fecha | date:'dd/MM/yyyy'}}</td>
-                                    <td>{{historico.instalacionId}}</td>
-                                    <td>PL-{{historico.id}}</td>
-                                    <td>{{historico.clienteId}}</td>
-                                    <td>{{historico.embarcacionId}}</td>
+                    <td [style.color]="historico.visto == true ? 'grey' : 'black'">{{historico.accion}}</td>
+                    <td [style.color]="historico.visto == true ? 'grey' : 'black'">{{historico.fecha | date:'dd/MM/yyyy'}}</td>
+                    <td [style.color]="historico.visto == true ? 'grey' : 'black'">{{historico.instalacionId}}</td>
+                    <td [style.color]="historico.visto == true ? 'grey' : 'black'">PL-{{historico.id}}</td>
+                    <td [style.color]="historico.visto == true ? 'grey' : 'black'">{{historico.clienteId}}</td>
+                    <td [style.color]="historico.visto == true ? 'grey' : 'black'">{{historico.embarcacionId}}</td>
 
-                                    <td>
-                                      <a class="btn btn-sm btn-info" data-bs-toggle="tooltip" title="Ver registro PL-{{ historico.id }}"
-                                        [routerLink]="['/vistaDetalleHistorico/',historico.id]"><i class="bi bi-eye"></i></a>
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                        </div>
-                        <ng-template #espera>Esperando datos...</ng-template>
-
+                    <td>
+                      <a class="btn btn-sm btn-info" data-bs-toggle="tooltip" title="Ver registro PL-{{ historico.id }}"
+                        [routerLink]="['/vistaDetalleHistorico/',historico.id]"><i class="bi bi-eye"></i></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <ng-template #espera>Esperando datos...</ng-template>
       </div>
     </div>
+<!-- FIN CONTENIDO MAIN -->
+
     <div id="usersettings" class="col-1 d-flex flex-row-reverse">
       <app-user-settings></app-user-settings>
     </div>

@@ -1,18 +1,22 @@
-#espacioTabla {
-  margin-top: 5vh;
-  margin-right: 5vh;
-  margin-left: 5vh;
-  height: auto;
+* {
+  padding: 0px;
+  margin: 0px;
+  border: solid 0px black;
 }
 
 .btn-info {
   background-color: #007BC4;
   color: white;
   border: none;
+  padding: 4px 8px;
 }
 
+#espacioTabla {
+  margin: 10px 30px 20px;
+}
 
-.lista-instalaciones{
-  list-style: none;
-  display: inline;
+.boton-habilitado{
+  outline: none;
+  border: 0px;
+  cursor: none;
 }

@@ -6,58 +6,66 @@
       <div class="col-1">
           <app-aside></app-aside>
       </div>
+
+<!-- CONTENIDO MAIN -->
       <div class="col-10">
-          <div class="row">
-              <div class="container-fluid d-flex justify-content-center">
-
-                  <div class="col-9">
-
-                      <div id="botones" class="row d-flex justify-content-space-between align-items-center">
-                          <div class="col-1">
-                              <button><i class="far fa-arrow-alt-circle-left mx-1" style='font-size:50px' data-bs-toggle="tooltip"
-                                      title="Volver" [routerLink]="['/lista-usuarios']"></i></button>
-                          </div>
-                          <div class="col-11">
-                              <div id="titulo">Detalle Instalación</div>
-                          </div>
-                      </div>
-
-                      <div id="cabecera" class="row d-flex align-items-center ">
-                          <div class="col" id="cabecera">
-                            Puertos Encargados:
-                              <strong *ngFor="let instalacion of currentUsuario.instalaciones_usuario">
-                                /{{ instalacion.codigo }}-{{ instalacion.nombrePuerto }}/
-                              </strong>
-                          </div>
-                      </div>
-
-                      <div id="cuerpo" class="row container-fluid d-flex">
-                          <div class="col-6">
-                              <div class="row d-flex justify-content-center">
-                                  <div class="texto">Nombre Usuario: <strong>{{ currentUsuario.nombreUsuario }}</strong></div>
-                                  <div class="texto">Nombre Completo: <strong>{{ currentUsuario.nombreCompleto }}</strong></div>
-                                  <div class="texto">Email: <strong>{{ currentUsuario.email }}</strong></div>
-                              </div>
-                          </div>
-                          <div class="col-6">
-                              <div class="row">
-                                  <div class="texto">Habilitado: <strong>{{ currentUsuario.habilitado }}</strong></div>
-                                  <div class="texto">Perfil: <strong> {{ currentUsuario.perfil }}</strong></div>
-                                  <div class="texto">Idioma: <strong> {{ currentUsuario.idioma }}</strong></div>
-
-                              </div>
-                          </div>
-
-                      </div>
-
-                  </div>
-
-              </div>
-
-
+        <div id="cabecera_botones" class="row d-flex justify-content-start align-items-center">
+          <div class="col-6 d-flex row">
+            <div class="texto " id="titulo">
+              <img id="boton_volver" src="/assets/flechaAtras.svg" alt="Volver" [routerLink]="['/lista-clientes']">DETALLE USUARIO
+            </div>
           </div>
+        </div>
+
+        <div id="cabecera" class="row ">
+
+          <div class="row fw-bold ">
+            <div class="col">
+              <div style="font-size: 20px;">Puertos Encargados:</div>
+            </div>
+          </div>
+
+          <div class="row " id="puerto" *ngFor="let instalacion of currentUsuario.instalaciones_usuario">
+            <div class="col-lg">
+              <div>Puerto: <strong>{{ instalacion.nombrePuerto }}</strong></div>
+            </div>
+            <div class="col-lg-2">
+              <div>Codigo: <strong>{{ instalacion.codigo }}</strong></div>
+            </div>
+            <div class="col-lg">
+              <div>Fecha Disposicion: <strong>{{ instalacion.fechaDisposicion | date:'dd/MM/yyyy' }}</strong></div>
+            </div>
+            <div class="col-lg">
+              <div>Descripcion: <strong>{{ instalacion.descripcion }}</strong></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div id="cuerpo" class="row">
+          <div class="col-6">
+            <div class="texto">Nombre Usuario: <strong>{{ currentUsuario.nombreUsuario }}</strong></div>
+            <div class="texto">Nombre Completo: <strong>{{ currentUsuario.nombreCompleto }}</strong></div>
+            <div class="texto">Email: <strong>{{ currentUsuario.email }}</strong></div>
+            <div class="texto">Habilitado:
+              <ng-template *ngIf="currentUsuario.habilitado; then check else cruz"></ng-template>
+
+                    <ng-template #check>
+                      <button class="bi bi-check-square-fill boton-habilitado" style="color: green"></button>
+                    </ng-template>
+
+                      <ng-template #cruz>
+                        <button class="bi bi-x-square-fill boton-habilitado" style="color: red"></button>
+                      </ng-template>
+            </div>
+            <div class="texto">Perfil: <strong> {{ currentUsuario.perfil }}</strong></div>
+            <div class="texto">Idioma: <strong> {{ currentUsuario.idioma }}</strong></div>
+          </div>
+        </div>
       </div>
-      <div class="col-1">
+<!-- FIN CONTENIDO MAIN -->
+
+      <div class="col-1 d-flex justify-content-end">
           <app-user-settings></app-user-settings>
       </div>
   </div>

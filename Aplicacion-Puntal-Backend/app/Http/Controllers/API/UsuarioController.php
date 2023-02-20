@@ -51,21 +51,6 @@ class UsuarioController extends Controller
 
     public function show($id){
 
-        // $usuario = Usuario::find($id);
-        // $instalaciones = Usuario::find($id)->instalacionesUsuario() -> get();
-
-        // return [
-        //     'nombreUsuario' => $usuario->nombreUsuario,
-        //     "password" => $usuario->password,
-        //     "nombreCompleto" => $usuario->nombreCompleto,
-        //     "email" => $usuario->email,
-        //     "habilitado" => $usuario->habilitado,
-        //     "perfil" => $usuario->perfil,
-        //     "idioma" => $usuario->idioma,
-        //     "visto" => $usuario->visto,
-        //     "instalaciones_usuario" => $instalaciones,
-        // ];
-
         $usuario = Usuario::with('instalacionesUsuario')->find($id);
         return $usuario;
     }
