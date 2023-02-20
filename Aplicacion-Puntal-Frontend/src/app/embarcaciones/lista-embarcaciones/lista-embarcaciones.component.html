@@ -1,0 +1,56 @@
+<div id="dashBoard" class="container-fluid">
+  <div class="row">
+    <app-header></app-header>
+  </div>
+  <div id="vistaCentral" class="row">
+    <div class="col-1">
+      <app-aside></app-aside>
+    </div>
+    <div class="col-10">
+      <div class="row">
+      </div>
+      <div class="row">
+        <div *ngIf="embarcaciones!=null; else espera">
+          <div id="espacioTabla">
+            <div id="resize_wrapper">
+              <table id="tabla" datatable [dtOptions]="dtOptions" class="table table-striped table-hover">
+                <thead class="">
+                  <tr>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Matricula</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Eslora</th>
+                    <th scope="col">Manga</th>
+                    <th scope="col">Calado</th>
+                    <th scope="col">Propulsión</th>
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let embarcacione of embarcaciones">
+                    <td>{{embarcacione.id_cliente}}</td>
+                    <td>{{embarcacione.matricula}}</td>
+                    <td>{{embarcacione.nombre}}</td>
+                    <td>{{embarcacione.eslora}}</td>
+                    <td>{{embarcacione.manga}}</td>
+                    <td>{{embarcacione.calado}}</td>
+                    <td>{{embarcacione.propulsion}}</td>
+                    <td>
+                      <a class="btn btn-sm btn-info" data-bs-toggle="tooltip"
+                        title="Ver registro {{ embarcacione.matricula }}"
+                        [routerLink]="['/vistaDetalleEmbarcacione/',embarcacione.matricula]"><i class="bi bi-eye"></i></a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <ng-template #espera>Esperando datos...</ng-template>
+      </div>
+    </div>
+    <div id="usersettings" class="col-1 d-flex flex-row-reverse">
+      <app-user-settings></app-user-settings>
+    </div>
+  </div>
+</div>

@@ -19,6 +19,8 @@ import { InstalacionesModule } from './instalaciones/instalaciones.module';
 import { MuellesModule } from './muelles/muelles.module';
 import { PlazasModule } from './plazas/plazas.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
+import { ClientesModule } from './clientes/clientes.module';
+import { EmbarcacionesModule } from './embarcaciones/embarcaciones.module';
 import { MensajesModule } from './mensajes/mensajes.module';
 import { HistoricosModule } from './historicos/historicos.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -41,6 +43,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MuellesModule,
     PlazasModule,
     UsuariosModule,
+    ClientesModule,
+    EmbarcacionesModule,
     MensajesModule,
     HistoricosModule,
     BrowserAnimationsModule,

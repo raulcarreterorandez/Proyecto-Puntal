@@ -6,6 +6,7 @@ import { ListaClientesComponent } from './lista-clientes/lista-clientes.componen
 import { VistaDetalladaClienteComponent } from './vista-detallada-cliente/vista-detallada-cliente.component';
 import { UtilidadesModule } from '../utilidades/utilidades.module';
 import { TablaEmbarcacionesClienteComponent } from './tabla-embarcaciones-cliente/tabla-embarcaciones-cliente.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { TablaEmbarcacionesClienteComponent } from './tabla-embarcaciones-client
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     UtilidadesModule,
     DataTablesModule,
     RouterModule

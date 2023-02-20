@@ -70,23 +70,15 @@ class ClienteController extends Controller
             }
         }
 
-        return [
-            "tipoDocumento" => $clientesOrdenado->tipoDocumento,
-            "numDocumento" => $clientesOrdenado->numDocumento,
-            "nombre" => $clientesOrdenado->nombre,
-            "apellidos" => $clientesOrdenado->apellidos,
-            "email" => $clientesOrdenado->email,
-            "telefono" => $clientesOrdenado->email,
-            "direccion" => $clientesOrdenado->direccion,
-            "embarcaciones" => $embarcacionesOrdenado,
-        ];
+        return $clientesOrdenado;
     }
 
     public function show($numDocumento)
     {
-        $datos = Cliente::find($numDocumento)->toArray();
+        $cliente = Cliente::find($numDocumento);
         $telefono1 = Telefono::where('idCliente', $numDocumento)->get()->toArray()[0];
-        $cliente = array("numDocumento" => $datos["numDocumento"], "nombre" => $datos["nombre"], "apellidos" => $datos["apellidos"], "email" => $datos["email"], "direccion" => $datos["direccion"], "tipoDocumento" => $datos["tipoDocumento"], "telefono 1" => $telefono1["numero"], "observaciones" => $datos["observaciones"]);
+
+        $embarcaciones = Embarcacione::where('id_cliente', $numDocumento);
 
         return $cliente;
     }

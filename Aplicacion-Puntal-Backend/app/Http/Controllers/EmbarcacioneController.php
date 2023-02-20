@@ -93,8 +93,9 @@ class EmbarcacioneController extends Controller
 
     public function show($matricula)
     {
-        $embarcacione = Embarcacione::where('matricula', $matricula)->get()->toArray()[0];
-        $embarcacione = (object) $embarcacione;
+        // $embarcacione = Embarcacione::where('matricula', $matricula)->get()->toArray()[0];
+        // $embarcacione = (object) $embarcacione;
+        $embarcacione = Embarcacione::find($matricula);
 
         return view('embarcacione.show', compact('embarcacione'));
     }

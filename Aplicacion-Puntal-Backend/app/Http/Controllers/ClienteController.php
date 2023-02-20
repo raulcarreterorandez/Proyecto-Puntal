@@ -81,8 +81,6 @@ class ClienteController extends Controller
                     array_push($embarcacionesOrdenado, $embarcacione);
                 }
             }
-
-            dd($embarcacionesOrdenado);
         }
 
         return view('cliente.index', compact('clientesOrdenado'))->with('i', 0);
@@ -113,6 +111,28 @@ class ClienteController extends Controller
         $telefonos = (object) $telefonos;
 
         return view('cliente.show', compact('cliente', 'telefonos'));
+
+        // $cliente = Cliente::find($numDocumento);
+        // $telefono1 = Telefono::where('idCliente', $numDocumento)->get()->toArray()[0];
+
+        // $embarcaciones = Embarcacione::where('id_cliente', $numDocumento)->get()->toArray()[0];
+
+        // return [
+        //     "tipoDocumento" => $cliente->tipoDocumento,
+        //     "numDocumento" => $cliente->numDocumento,
+        //     "nombre" => $cliente->nombre,
+        //     "apellidos" => $cliente->apellidos,
+        //     "email" => $cliente->email,
+        //     "telefono" => $cliente->email,
+        //     "direccion" => $cliente->direccion,
+        // ];
+
+        // $cliente = Cliente::find($numDocumento)->toArray();
+        // $telefono1 = Telefono::where('idCliente', $numDocumento)->get()->toArray()[0];
+
+        // $embarcaciones = Embarcacione::where('id_cliente', $numDocumento);
+
+        // return $cliente;
     }
 
     public function edit($numDocumento)
