@@ -21,6 +21,8 @@ import { ListaClientesComponent } from './clientes/lista-clientes/lista-clientes
 // EMBARCACIONES
 import { VistaDetalladaEmbarcacioneComponent } from './embarcaciones/vista-detallada-embarcacione/vista-detallada-embarcacione.component';
 import { ListaEmbarcacionesComponent } from './embarcaciones/lista-embarcaciones/lista-embarcaciones.component';
+import { ListaHistoricosComponent } from './historicos/lista-historicos/lista-historicos.component';
+import { VistaDetalladaHistoricoComponent } from './historicos/vista-detallada-historico/vista-detallada-historico.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -50,6 +52,9 @@ const routes: Routes = [
   // RUTAS - EMBARCACIONES
   { path: 'lista-embarcaciones', component: ListaEmbarcacionesComponent },
   { path: 'vistaDetalleEmbarcacione/:id', component: VistaDetalladaEmbarcacioneComponent },
+  // RUTAS - HISTORICOS
+  { path: 'lista-historicos', component: ListaHistoricosComponent },
+  { path: 'vistaDetalleHistorico/:id', component: VistaDetalladaHistoricoComponent },
 ];
 
 @NgModule({

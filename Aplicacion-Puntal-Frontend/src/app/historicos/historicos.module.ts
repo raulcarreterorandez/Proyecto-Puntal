@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { ListaHistoricosComponent } from './lista-historicos/lista-historicos.component';
 import { VistaDetalladaHistoricoComponent } from './vista-detallada-historico/vista-detallada-historico.component';
 import { UtilidadesModule } from '../utilidades/utilidades.module';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { UtilidadesModule } from '../utilidades/utilidades.module';
     DataTablesModule,
     RouterModule,
     UtilidadesModule,
+    MatTabsModule
   ],
   exports:[
     ListaHistoricosComponent,

@@ -12,6 +12,8 @@ import { HomeComponent } from './home/home.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 
 import { DataTablesModule } from "angular-datatables";
+import { MatTabsModule } from '@angular/material/tabs';
+
 import { UtilidadesModule } from './utilidades/utilidades.module';
 import { InstalacionesModule } from './instalaciones/instalaciones.module';
 import { MuellesModule } from './muelles/muelles.module';
@@ -19,6 +21,9 @@ import { PlazasModule } from './plazas/plazas.module';
 import { UsuariosModule } from './usuarios/usuarios.module';
 import { ClientesModule } from './clientes/clientes.module';
 import { EmbarcacionesModule } from './embarcaciones/embarcaciones.module';
+import { MensajesModule } from './mensajes/mensajes.module';
+import { HistoricosModule } from './historicos/historicos.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -39,7 +44,11 @@ import { EmbarcacionesModule } from './embarcaciones/embarcaciones.module';
     PlazasModule,
     UsuariosModule,
     ClientesModule,
-    EmbarcacionesModule
+    EmbarcacionesModule,
+    MensajesModule,
+    HistoricosModule,
+    BrowserAnimationsModule,
+    MatTabsModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

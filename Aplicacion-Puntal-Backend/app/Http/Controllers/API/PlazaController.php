@@ -16,6 +16,13 @@ use DateTimeZone;
 
 class PlazaController extends Controller {
 
+    // private array $acciones;
+
+    public function __construct()
+    {
+        // $this->acciones=[];
+    }
+
     public function index() {
 
         //Necesitamos mostrar únicamente las plazas de los muelles pertenecientes a las instalaciones en las que esté habilitado en usuario.
@@ -55,7 +62,7 @@ class PlazaController extends Controller {
 
     public function show($id) {
 
-        $muelle = Muelle::with('instalacion')->find($id); // Recogemos los muelles con su relación a instalaciones. Queremos mostrar el código y alguna cosa más de ahí. 
+        $muelle = Muelle::with('instalacion')->find($id); // Recogemos los muelles con su relación a instalaciones. Queremos mostrar el código y alguna cosa más de ahí.
 
         $plaza = Plaza::with('transito', 'bases')->find($id); // Recogemos las plazas con su relación a tránsitos y bases. Queremos mostrar de que tipo són(bases o tránsitos).
 
@@ -91,7 +98,7 @@ class PlazaController extends Controller {
             "tripulantes" => $tripulantes,
         ];
     }
-    
+
     public function historialPlazas(){
 
         $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get();
@@ -185,12 +192,17 @@ class PlazaController extends Controller {
                 $plaza->fecha = $fechaEntrada;
                 $plaza->accion = "REGISTRO DE ENTRADA";
 
+                // array_push($this->$acciones[$plaza->id],"REGISTRO DE ENTRADA");
+
             }
             else{
                 $plaza->fecha = $fechaSalida;
                 $plaza->accion = "REGISTRO DE SALIDA";
 
+                // array_push($this->$acciones[$plaza->id],"REGISTRO DE SALIDA");
             }
+
+            $accion = $plaza->accion;
 
             // $plaza->fecha = "fecha"; // ORDENAREMOS LAS CONSULTAS POR ESTE CAMPO
 
@@ -215,11 +227,11 @@ class PlazaController extends Controller {
     }
 
     public function historialPlaza($id){
-        // $plaza = Plaza::with('transito','bases')->where('id',$id)->get();
         $plaza = Plaza::with('transito','bases')->find($id);
 
+
         $embarcacion = Embarcacione::where('id_plaza', $id)->get();
-        $cliente = Cliente::find($embarcacion[0]->id_cliente);
+        $cliente = Cliente::with('embarcaciones','telefonos')->find($embarcacion[0]->id_cliente);
 
         $muelle = Muelle::find($plaza->idMuelle);
         $instalacion = Instalacion::find($muelle->idInstalacion);
@@ -229,9 +241,23 @@ class PlazaController extends Controller {
         $historicoVisto->visto=1;
         $plaza->update($historicoVisto->toArray());
 
+        // CON LA PLAZA QUE TENEMOS -> AVERIGUAMOS SI ES TRANSITO O BASE
+        if ($plaza->transito == null) {
+
+            $plaza->tipo = "Base";
+            $plaza->fechaEntrada = $plaza->bases->fechaEntrada;
+            $plaza->fechaSalida = $plaza->bases->fechaSalida;
+        } else {
+
+            $plaza->tipo = "Tránsito";
+            $plaza->fechaEntrada = $plaza->transito->fechaEntrada;
+            $plaza->fechaSalida = $plaza->transito->fechaSalida;
+        }
+
         return [
+            // 'accion' => $this->$acciones[$plaza->id],
             'plaza'=>$plaza,
-            'embarcacion' => $embarcacion,
+            'embarcacion' => $embarcacion[0],
             'cliente' => $cliente,
             'puerto' => $instalacion
         ];
