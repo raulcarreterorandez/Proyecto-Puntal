@@ -51,19 +51,15 @@ const routes: Routes = [
 
   // RUTAS - CLIENTES
   { path: 'lista-clientes', component: ListaClientesComponent },
-  { path: 'vistaDetalleCliente/:id', component: VistaDetalladaClienteComponent },
+  { path: 'vistaDetalleCliente/:numDocumento', component: VistaDetalladaClienteComponent },
 
   // RUTAS - EMBARCACIONES
   { path: 'lista-embarcaciones', component: ListaEmbarcacionesComponent },
-  { path: 'vistaDetalleEmbarcacione/:id', component: VistaDetalladaEmbarcacioneComponent },
+  { path: 'vistaDetalleEmbarcacione/:matricula', component: VistaDetalladaEmbarcacioneComponent },
 
   // RUTAS - HISTORICOS
   { path: 'lista-historicos', component: ListaHistoricosComponent },
   { path: 'vistaDetalleHistorico/:id', component: VistaDetalladaHistoricoComponent },
-
-  // RUTAS - CLIENTES
-  { path: 'lista-clientes', component: ListaClientesComponent },
-  { path: 'vistaDetalleHistorico/:id', component: VistaDetalladaClienteComponent },
 
   // RUTAS - MENSAJES
   { path: 'lista-mensajes', component: ListaMensajesComponent },
