@@ -48,7 +48,7 @@ export class ListaEmbarcacionesComponent {
       .subscribe({
         next: (data) => {
           this.embarcaciones = data;
-          console.log(data);
+          /* console.log(data); */
         },
         error: (e) => console.error(e)
       });

@@ -55,7 +55,7 @@ export class ListaMensajesComponent implements OnInit{
       .subscribe({
         next: (data) => {
           this.mensajes = data;
-          console.log(data);
+          /* console.log(data); */
         },
         error: (e) => console.error(e)
       });

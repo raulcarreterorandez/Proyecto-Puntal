@@ -43,7 +43,7 @@ export class VistaDetalladaEmbarcacioneComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.currentEmbarcacione = data;
-          console.log(data);
+          /* console.log(data); */
         },
         error: (e) => console.error(e)
       });

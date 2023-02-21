@@ -43,7 +43,7 @@ export class VistaDetalladaClienteComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.currentCliente = data;
-          console.log(data);
+          /* console.log(data); */
         },
         error: (e) => console.error(e)
       });

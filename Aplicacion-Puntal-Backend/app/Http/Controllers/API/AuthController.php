@@ -22,7 +22,11 @@ class AuthController extends Controller
 
             if($user -> habilitado == 1){
                 $success['token'] =  $user->createToken('MyApp')->accessToken;
-                return response()->json(['success' => $success], $this->successStatus);
+                $details = Usuario::where("email",Auth::user()->email)->with('instalacionesUsuario')->get();
+                return response()->json([
+                    'success' => $success,
+                    'details' => $details
+                ], $this->successStatus);
             }
             else{
                 return response()->json(['error' => 'Disabled User'], 401);
@@ -35,12 +39,21 @@ class AuthController extends Controller
 
     public function details()
     {
-        // $user = Auth::user();
-
         // Toda la informacion del usuario con los puertos asociados
         $user = Usuario::where("email",Auth::user()->email)->with('instalacionesUsuario')->get();
 
         return response()->json(['success' => $user], $this->successStatus);
+    }
+
+    public function role()
+    {
+        $user = Auth::user();
+        //dd($user->perfil);
+
+        // Toda la informacion del usuario con los puertos asociados
+        /* $user = Usuario::where("email",Auth::user()->email)->value('perfil'); */
+
+        return response()->json($user->perfil, $this->successStatus);
     }
 
     public function logout(Request $request)

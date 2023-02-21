@@ -56,7 +56,7 @@ export class ListaInstalacionesComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.instalaciones = data;
-          console.log(data);
+          /* console.log(data); */
         },
         error: (e) => console.error(e)
       });

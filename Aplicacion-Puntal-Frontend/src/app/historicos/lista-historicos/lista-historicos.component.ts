@@ -49,7 +49,7 @@ export class ListaHistoricosComponent {
       .subscribe({
         next: (data) => {
           this.historicos = data;
-          console.log(data);
+          /* console.log(data); */
         },
         error: (e) => console.error(e)
       });

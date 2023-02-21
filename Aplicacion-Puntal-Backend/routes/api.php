@@ -35,6 +35,8 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     // DETALLES DEL USUARIO LOGEADO
     Route::get('details', [AuthController::class, 'details']);
+    Route::get('role', [AuthController::class, 'role']);
+
 
     // RUTAS API - MENSAJES
     Route::get('/mensajes', [MensajeController::class, 'index']);

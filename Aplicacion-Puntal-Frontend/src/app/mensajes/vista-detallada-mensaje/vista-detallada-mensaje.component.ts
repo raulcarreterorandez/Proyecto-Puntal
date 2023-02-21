@@ -42,7 +42,7 @@ export class VistaDetalladaMensajeComponent implements OnInit{
         .subscribe({
           next: (data) => {
             this.currentMensaje = data;
-            console.log(data);
+            /* console.log(data); */
           },
           error: (e) => console.error(e)
         });

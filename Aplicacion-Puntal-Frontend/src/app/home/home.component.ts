@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
     this.userService.getPublicContent().subscribe(
       data => {
         this.content = data;
-        // console.log(this.token.getToken());
+        console.log(this.token.getToken());
       },
       err => {
         this.router.navigate(['login']);

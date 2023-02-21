@@ -44,7 +44,7 @@ export class VistaDetalladaPlazaComponent implements OnInit {
         .subscribe({
           next: (data) => {
             this.currentPlaza = data;
-            console.log(data);
+            /* console.log(data); */
           },
           error: (e) => console.error(e)
         });

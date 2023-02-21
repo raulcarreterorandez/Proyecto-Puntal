@@ -48,7 +48,7 @@ export class ListaUsuariosComponent implements OnInit{
       .subscribe({
         next: (data) => {
           this.usuarios = data;
-          console.log(data);
+          /* console.log(data); */
         },
         error: (e) => console.error(e)
       });

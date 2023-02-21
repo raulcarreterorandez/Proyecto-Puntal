@@ -56,7 +56,7 @@ export class ListaMuellesComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.muelles = data;
-          console.log(data);
+          /* console.log(data); */
         },
         error: (e) => console.error(e)
       });

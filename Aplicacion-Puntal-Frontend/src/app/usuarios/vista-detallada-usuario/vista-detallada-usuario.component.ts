@@ -36,7 +36,6 @@ export class VistaDetalladaUsuarioComponent implements OnInit {
     if (!this.viewMode) {
       this.message = '';
       this.getUsuario(this.route.snapshot.params["email"]);
-
     }
   }
 
@@ -45,7 +44,7 @@ export class VistaDetalladaUsuarioComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.currentUsuario = data;
-          console.log(data);
+          /* console.log(data); */
         },
         error: (e) => console.error(e)
       });

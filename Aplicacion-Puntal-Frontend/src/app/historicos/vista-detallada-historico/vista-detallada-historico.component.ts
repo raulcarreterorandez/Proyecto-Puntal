@@ -44,7 +44,7 @@ export class VistaDetalladaHistoricoComponent implements OnInit{
       .subscribe({
         next: (data) => {
           this.currentHistorico = data;
-          console.log(data);
+          /* console.log(data); */
         },
         error: (e) => console.error(e)
       });

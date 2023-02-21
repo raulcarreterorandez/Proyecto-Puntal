@@ -42,7 +42,7 @@ export class VistaDetalladaMuelleComponent implements OnInit{
       .subscribe({
         next: (data) => {
           this.currentMuelle = data;
-          console.log(data);
+          /* console.log(data); */
         },
         error: (e) => console.error(e)
       });

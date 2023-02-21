@@ -46,7 +46,7 @@ export class VistaDetalladaInstalacionComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.currentInstalacion = data;
-          console.log(data);
+          /* console.log(data); */
         },
         error: (e) => console.error(e)
       });

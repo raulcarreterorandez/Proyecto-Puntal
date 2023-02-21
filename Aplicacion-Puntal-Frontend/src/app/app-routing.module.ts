@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
+//GUARD
+import { RestriccionUsuariosGuard } from './guards/restriccion-usuarios.guard';
+
+// HOME Y LOGIN
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 
@@ -31,41 +36,41 @@ import { ListaMensajesComponent } from './mensajes/lista-mensajes/lista-mensajes
 import { VistaDetalladaMensajeComponent } from './mensajes/vista-detallada-mensaje/vista-detallada-mensaje.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
+  { path: 'home', component: HomeComponent, canActivate: [RestriccionUsuariosGuard] },
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 
   // RUTAS - INSTALACIONES
-  { path: 'lista-instalaciones', component: ListaInstalacionesComponent },
-  { path: 'vistaDetalleInst/:id', component: VistaDetalladaInstalacionComponent },
+  { path: 'lista-instalaciones', component: ListaInstalacionesComponent, canActivate: [RestriccionUsuariosGuard] },
+  { path: 'vistaDetalleInst/:id', component: VistaDetalladaInstalacionComponent, canActivate: [RestriccionUsuariosGuard]  },
 
   // RUTAS - MUELLES
-  { path: 'lista-muelles', component: ListaMuellesComponent },
-  { path: 'vistaDetalleMuelle/:id', component: VistaDetalladaMuelleComponent },
+  { path: 'lista-muelles', component: ListaMuellesComponent, canActivate: [RestriccionUsuariosGuard]  },
+  { path: 'vistaDetalleMuelle/:id', component: VistaDetalladaMuelleComponent, canActivate: [RestriccionUsuariosGuard]  },
 
   // RUTAS - PLAZAS
-  { path: 'lista-plazas', component: ListaPlazasComponent },
-  { path: 'vistaDetallePlaza/:id', component: VistaDetalladaPlazaComponent },
+  { path: 'lista-plazas', component: ListaPlazasComponent, canActivate: [RestriccionUsuariosGuard]  },
+  { path: 'vistaDetallePlaza/:id', component: VistaDetalladaPlazaComponent, canActivate: [RestriccionUsuariosGuard]  },
 
   // RUTAS - USUARIOS
-  { path: 'lista-usuarios', component: ListaUsuariosComponent },
-  { path: 'vistaDetalleUsuario/:email', component: VistaDetalladaUsuarioComponent },
+  { path: 'lista-usuarios', component: ListaUsuariosComponent, canActivate: [RestriccionUsuariosGuard]  },
+  { path: 'vistaDetalleUsuario/:email', component: VistaDetalladaUsuarioComponent, canActivate: [RestriccionUsuariosGuard]  },
 
   // RUTAS - CLIENTES
-  { path: 'lista-clientes', component: ListaClientesComponent },
-  { path: 'vistaDetalleCliente/:numDocumento', component: VistaDetalladaClienteComponent },
+  { path: 'lista-clientes', component: ListaClientesComponent, canActivate: [RestriccionUsuariosGuard]  },
+  { path: 'vistaDetalleCliente/:numDocumento', component: VistaDetalladaClienteComponent, canActivate: [RestriccionUsuariosGuard]  },
 
   // RUTAS - EMBARCACIONES
-  { path: 'lista-embarcaciones', component: ListaEmbarcacionesComponent },
-  { path: 'vistaDetalleEmbarcacione/:matricula', component: VistaDetalladaEmbarcacioneComponent },
+  { path: 'lista-embarcaciones', component: ListaEmbarcacionesComponent, canActivate: [RestriccionUsuariosGuard]  },
+  { path: 'vistaDetalleEmbarcacione/:matricula', component: VistaDetalladaEmbarcacioneComponent , canActivate: [RestriccionUsuariosGuard] },
 
   // RUTAS - HISTORICOS
-  { path: 'lista-historicos', component: ListaHistoricosComponent },
-  { path: 'vistaDetalleHistorico/:id', component: VistaDetalladaHistoricoComponent },
+  { path: 'lista-historicos', component: ListaHistoricosComponent, canActivate: [RestriccionUsuariosGuard]  },
+  { path: 'vistaDetalleHistorico/:id', component: VistaDetalladaHistoricoComponent, canActivate: [RestriccionUsuariosGuard]  },
 
   // RUTAS - MENSAJES
-  { path: 'lista-mensajes', component: ListaMensajesComponent },
-  { path: 'vistaDetalleMensaje/:id', component: VistaDetalladaMensajeComponent },
+  { path: 'lista-mensajes', component: ListaMensajesComponent, canActivate: [RestriccionUsuariosGuard]  },
+  { path: 'vistaDetalleMensaje/:id', component: VistaDetalladaMensajeComponent, canActivate: [RestriccionUsuariosGuard]  },
 ];
 
 @NgModule({

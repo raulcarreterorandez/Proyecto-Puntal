@@ -48,7 +48,7 @@ export class ListaClientesComponent {
       .subscribe({
         next: (data) => {
           this.clientes = data;
-          console.log(data);
+          /* console.log(data); */
         },
         error: (e) => console.error(e)
       });
