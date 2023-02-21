@@ -5,14 +5,12 @@ import { RouterModule } from '@angular/router';
 import { ListaClientesComponent } from './lista-clientes/lista-clientes.component';
 import { VistaDetalladaClienteComponent } from './vista-detallada-cliente/vista-detallada-cliente.component';
 import { UtilidadesModule } from '../utilidades/utilidades.module';
-import { TablaEmbarcacionesClienteComponent } from './tabla-embarcaciones-cliente/tabla-embarcaciones-cliente.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     ListaClientesComponent,
     VistaDetalladaClienteComponent,
-    TablaEmbarcacionesClienteComponent
   ],
   imports: [
     CommonModule,

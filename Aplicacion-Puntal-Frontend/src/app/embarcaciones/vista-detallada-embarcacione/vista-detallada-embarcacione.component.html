@@ -12,16 +12,20 @@
           <img id="boton_volver" src="/assets/flechaAtras.svg" alt="Volver" [routerLink]="['/lista-embarcaciones']">
         </div>
       </div>
-
       <div id="cabecera" class="row">
-        <div class="col-6">
-          <div>Puerto: <strong>{{ currentEmbarcacione.nombre }}</strong></div>
+        <div class="col-3">
+          <div>Puerto: <strong>{{ currentEmbarcacione.instalacionNombre }}</strong></div>
         </div>
-        <div class="col-6">
-          <div>Codigo: <strong>{{ currentEmbarcacione.nombre }}</strong></div>
+        <div class="col-2">
+          <div>Codigo: <strong>{{ currentEmbarcacione.instalacionCodigo }}</strong></div>
+        </div>
+        <div class="col-3">
+          <div>Fecha Disposición: <strong>{{ currentEmbarcacione.instalacionFecha }}</strong></div>
+        </div>
+        <div class="col-4">
+          <div>Descripción: <strong>{{ currentEmbarcacione.instalacionDescripcion }}</strong></div>
         </div>
       </div>
-
       <div id="cuerpo" class="row">
         <div class="col-6">
           <div class="texto">Mátricula: <strong> {{ currentEmbarcacione.matricula }}</strong></div>
@@ -33,22 +37,27 @@
           <div class="texto">Propulsión: <strong>{{ currentEmbarcacione.propulsion }}</strong></div>
         </div>
         <div class="col-6">
-          <h5>Tripulantes:</h5>
-          <br>
+          <h2>Tripulantes:</h2>
           <table id="tabla" class="table">
-            <thead class="">
+            <thead class="thead-dark">
               <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">Apellidos</th>
                 <th scope="col">Documento</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Instalación</th>
+                <th scope="col">Acciones</th>
               </tr>
             </thead>
             <tbody>
-              <!-- <tr *ngFor="let embarcacione of currentCliente.embarcaciones">
-                <td>{{embarcacione.matricula}}</td>
-                <td>{{embarcacione.nombre}}</td>
-                <td>{{embarcacione.nombre}}</td>
-              </tr> -->
+              <tr *ngFor="let tripulante of currentEmbarcacione.tripulantes">
+                <td scope="row">{{tripulante.numDocumento}}</td>
+                <td>{{tripulante.nombre}}</td>
+                <td>{{tripulante.instalacion}}</td>
+                <td>
+                  <a class="btn btn-sm btn-info" data-bs-toggle="tooltip"
+                    title="Ver registro {{ tripulante.numDocumento }}"
+                    [routerLink]="['/vistaDetalleTripulante/',tripulante.numDocumento]"><i class="bi bi-eye"></i></a>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
