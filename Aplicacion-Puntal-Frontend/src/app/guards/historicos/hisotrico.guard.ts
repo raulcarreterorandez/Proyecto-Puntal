@@ -1,16 +1,12 @@
 import { Injectable} from '@angular/core';
 import { CanActivate, Router} from '@angular/router';
-import { TokenStorageService } from '../_services/token-storage.service';
-import { UserService } from '../_services/user.service';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';/* '../_services/token-storage.service'; */
+import { UserService } from 'src/app/_services/user.service';/* '../_services/user.service'; */
 
 @Injectable({
   providedIn: 'root'
 })
-
-@Injectable()
-
-export class RestriccionUsuariosGuard implements CanActivate {
-
+export class HisotricoGuard implements CanActivate {
   currentUser: any;
 
   constructor(private authService: UserService, private router: Router, private token: TokenStorageService) { }
@@ -24,13 +20,13 @@ export class RestriccionUsuariosGuard implements CanActivate {
     switch (this.currentUser.details[0].perfil) {
       case 'XUNTA-GALICIA':
         console.log('Soy XUNTA-GALICIA.');
-        acceso = true;
+        acceso = false;
         /* this.router.navigate(['/']); */ //Lo enviamos a la página que queramos
         break;
 
       case 'GERENCIA-PUERTO':
         console.log('Soy GERENCIA-PUERTO');
-        acceso = true;
+        acceso = false;
         break;
 
       case 'CUERPO-SEGURIDAD':
@@ -51,4 +47,3 @@ export class RestriccionUsuariosGuard implements CanActivate {
     return acceso;
   }
 }
-

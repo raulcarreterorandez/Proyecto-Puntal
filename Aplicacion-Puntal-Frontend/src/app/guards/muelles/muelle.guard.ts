@@ -1,16 +1,12 @@
 import { Injectable} from '@angular/core';
 import { CanActivate, Router} from '@angular/router';
-import { TokenStorageService } from '../_services/token-storage.service';
-import { UserService } from '../_services/user.service';
+import { TokenStorageService } from 'src/app/_services/token-storage.service';/* '../_services/token-storage.service'; */
+import { UserService } from 'src/app/_services/user.service';/* '../_services/user.service'; */
 
 @Injectable({
   providedIn: 'root'
 })
-
-@Injectable()
-
-export class RestriccionUsuariosGuard implements CanActivate {
-
+export class MuelleGuard implements CanActivate {
   currentUser: any;
 
   constructor(private authService: UserService, private router: Router, private token: TokenStorageService) { }
@@ -40,7 +36,7 @@ export class RestriccionUsuariosGuard implements CanActivate {
 
       case 'GUARDA-MUELLES':
         console.log('Soy GUARDA-MUELLES.');
-        acceso= false;
+        acceso= true;
         break;
 
       default:
