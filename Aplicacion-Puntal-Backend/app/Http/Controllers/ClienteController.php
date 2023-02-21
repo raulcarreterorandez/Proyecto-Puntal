@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use App\Models\Embarcacione;
+use App\Models\Instalacion;
 use App\Models\Muelle;
 use App\Models\Plaza;
 use App\Models\Telefono;
@@ -14,37 +15,24 @@ class ClienteController extends Controller
 {
     public function index()
     {
-        /////////////////////////////////////////////////////////////////////////////////////////////////
-        /////Necesitamos mostrar únicamente las instalaciones en las que esté habilitado en usuario./////
-        /////////////////////////////////////////////////////////////////////////////////////////////////
-
-        //Obtengo el usuario logeado.
         $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get();
 
-        //Si el usuario tiene acceso a todos los puertos, le pasamos todos los puertos disponibles
         if ($usuarioLogeado[0]->instalacionesUsuario[0]->id == 0) {
             $clientesOrdenado = Cliente::all();
-        } else { //Si no mostramos unicamente los puertos relacionados con el usuario
+        } else {
 
-            //$muelles = $usuarioLogeado[0]->instalacionesUsuario[0]->id;
-
-            //Obtengo el usuario logeado.
             $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get();
 
-            //Obtengo la instalacion a la que pertenece el usuario logeado.
             $instalaciones = $usuarioLogeado[0]->instalacionesUsuario->toArray();
 
-            //Obtengo los muelles a los que pertenece el usuario logeado.
             $muelles = Muelle::where('idInstalacion', $instalaciones)->get()->toArray();
 
-            //Obtengo las plazas a las que pertenece el usuario logeado.
             $plazas = [];
             for ($i = 0; $i < count($muelles); $i++) {
                 $plaza = Plaza::where('idMuelle', $muelles[$i])->get()->toArray();
                 array_push($plazas, $plaza);
             }
 
-            //Obtengo las embarcaciones a las que pertenece el usuario logeado.
             $embarcaciones = [];
             for ($a = 0; $a < count($plazas); $a++) {
                 for ($i = 0; $i < count($plazas[$a]); $i++) {
@@ -55,7 +43,6 @@ class ClienteController extends Controller
                 }
             }
 
-            //Obtengo los clientes a las que pertenece el usuario logeado.
             $clientes = [];
             for ($a = 0; $a < count($embarcaciones); $a++) {
                 for ($i = 0; $i < count($embarcaciones[$a]); $i++) {
@@ -110,29 +97,9 @@ class ClienteController extends Controller
         $telefonos = Telefono::where('idCliente', $numDocumento)->get()->toArray()[0];
         $telefonos = (object) $telefonos;
 
+        $embarcaciones = Embarcacione::where('id_cliente', $numDocumento)->get();
+
         return view('cliente.show', compact('cliente', 'telefonos'));
-
-        // $cliente = Cliente::find($numDocumento);
-        // $telefono1 = Telefono::where('idCliente', $numDocumento)->get()->toArray()[0];
-
-        // $embarcaciones = Embarcacione::where('id_cliente', $numDocumento)->get()->toArray()[0];
-
-        // return [
-        //     "tipoDocumento" => $cliente->tipoDocumento,
-        //     "numDocumento" => $cliente->numDocumento,
-        //     "nombre" => $cliente->nombre,
-        //     "apellidos" => $cliente->apellidos,
-        //     "email" => $cliente->email,
-        //     "telefono" => $cliente->email,
-        //     "direccion" => $cliente->direccion,
-        // ];
-
-        // $cliente = Cliente::find($numDocumento)->toArray();
-        // $telefono1 = Telefono::where('idCliente', $numDocumento)->get()->toArray()[0];
-
-        // $embarcaciones = Embarcacione::where('id_cliente', $numDocumento);
-
-        // return $cliente;
     }
 
     public function edit($numDocumento)

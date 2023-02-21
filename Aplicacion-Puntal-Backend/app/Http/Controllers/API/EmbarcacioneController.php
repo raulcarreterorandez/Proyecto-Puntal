@@ -4,11 +4,12 @@ namespace App\Http\Controllers\API;
 
 use App\Models\Embarcacione;
 use App\Models\Usuario;
-use App\Models\Cliente;
 use App\Models\Muelle;
 use App\Models\Plaza;
 
 use App\Http\Controllers\Controller;
+use App\Models\Instalacion;
+use App\Models\Tripulante;
 
 class EmbarcacioneController extends Controller
 {
@@ -57,11 +58,34 @@ class EmbarcacioneController extends Controller
 
     public function show($matricula)
     {
+        $embarcacione = Embarcacione::find($matricula);
+        $plaza = Plaza::find($embarcacione->id_plaza);
+        $muelle = Muelle::find($plaza->idMuelle);
+        $instalacion = Instalacion::find($muelle->idInstalacion);
 
-        // $embarcacione = Embarcacione::with('cliente')->find($matricula);
-        // $embarcacione = Embarcacione::find($matricula);
-        $embarcacione = Embarcacione::find($matricula)->toArray();
+        $tripulantes = Tripulante::where('id_embarcacion', $matricula)->get();
 
-        return $embarcacione;
+        foreach ($tripulantes as $tripulante) {
+            $plaza = Plaza::find($tripulante->id_plaza);
+            $muelle = Muelle::find($plaza->idMuelle);
+            $instalacion = Instalacion::find($muelle->idInstalacion);
+            $tripulante->instalacion = $instalacion->nombrePuerto;
+        }
+
+        return [
+            "matricula" => $embarcacione->matricula,
+            "nombre" => $embarcacione->nombre,
+            "eslora" => $embarcacione->eslora,
+            "manga" => $embarcacione->manga,
+            "calado" => $embarcacione->calado,
+            "propulsion" => $embarcacione->propulsion,
+            "id_cliente" => $embarcacione->id_cliente,
+            "id_plaza" => $embarcacione->id_plaza,
+            "instalacionCodigo" => $instalacion->codigo,
+            "instalacionNombre" => $instalacion->nombrePuerto,
+            "instalacionDescripcion" => $instalacion->descripcion,
+            "instalacionFecha" => $instalacion->fechaDisposicion,
+            "tripulantes" => $tripulantes
+        ];
     }
 }

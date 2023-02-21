@@ -1,5 +1,4 @@
 export interface Embarcacione {
-
   matricula?: any;
   nombre?: string;
   eslora?: string;
@@ -8,5 +7,9 @@ export interface Embarcacione {
   propulsion?: string;
   id_cliente?: string;
   id_plaza?: string;
-
+  tripulantes?: any;
+  instalacionCodigo?: any;
+  instalacionNombre?: any;
+  instalacionDescripcion?: any;
+  instalacionFecha?: any;
 }

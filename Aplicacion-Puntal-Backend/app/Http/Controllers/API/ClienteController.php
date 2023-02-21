@@ -10,6 +10,8 @@ use App\Models\Muelle;
 use App\Models\Usuario;
 
 use App\Http\Controllers\Controller;
+use App\Models\Instalacion;
+use App\Models\Tripulante;
 
 class ClienteController extends Controller
 {
@@ -78,8 +80,67 @@ class ClienteController extends Controller
         $cliente = Cliente::find($numDocumento);
         $telefono1 = Telefono::where('idCliente', $numDocumento)->get()->toArray()[0];
 
-        $embarcaciones = Embarcacione::where('id_cliente', $numDocumento);
+        $embarcaciones = Embarcacione::where('id_cliente', $numDocumento)->get();
 
-        return $cliente;
+        $plazas = [];
+        for ($i = 0; $i < count($embarcaciones); $i++) {
+            $plaza = Plaza::where('id', $embarcaciones[$i]->id_plaza)->get();
+            array_push($plazas, $plaza);
+        }
+
+        $plazasOrdenado = [];
+        for ($i = 0; $i < count($plazas); $i++) {
+            for ($a = 0; $a < count($plazas[$i]); $a++) {
+                $plaza = $plazas[$i][$a];
+                array_push($plazasOrdenado, $plaza);
+            }
+        }
+
+        $muelles = [];
+        for ($i = 0; $i < count($plazasOrdenado); $i++) {
+            $muelle = Muelle::where('id', $plazasOrdenado[$i]->idMuelle)->get();
+            array_push($muelles, $muelle);
+        }
+
+        $muellesOrdenado = [];
+        for ($i = 0; $i < count($muelles); $i++) {
+            for ($a = 0; $a < count($muelles[$i]); $a++) {
+                $muelle = $muelles[$i][$a];
+                array_push($muellesOrdenado, $muelle);
+            }
+        }
+
+        $instalaciones = [];
+        for ($i = 0; $i < count($muellesOrdenado); $i++) {
+            $instalacion = Instalacion::where('id', $muellesOrdenado[$i]->idInstalacion)->get();
+            array_push($instalaciones, $instalacion);
+        }
+
+        $instalacionesOrdenado = [];
+        for ($i = 0; $i < count($instalaciones); $i++) {
+            for ($a = 0; $a < count($instalaciones[$i]); $a++) {
+                $instalacion = $instalaciones[$i][$a];
+                array_push($instalacionesOrdenado, $instalacion);
+            }
+        }
+
+        foreach ($embarcaciones as $embarcacione) {
+            $plaza = Plaza::find($embarcacione->id_plaza);
+            $muelle = Muelle::find($plaza->idMuelle);
+            $instalacion = Instalacion::find($muelle->idInstalacion);
+            $embarcacione->instalacion = $instalacion->nombrePuerto;
+        }
+
+        return [
+            "tipoDocumento" => $cliente->tipoDocumento,
+            "numDocumento" => $cliente->numDocumento,
+            "nombre" => $cliente->nombre,
+            "apellidos" => $cliente->apellidos,
+            "email" => $cliente->email,
+            "telefono" => $telefono1["numero"],
+            "direccion" => $cliente->direccion,
+            "embarcaciones" => $embarcaciones,
+            "instalaciones" => $instalacionesOrdenado,
+        ];
     }
 }

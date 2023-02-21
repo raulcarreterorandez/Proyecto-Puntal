@@ -12,16 +12,20 @@
           <img id="boton_volver" src="/assets/flechaAtras.svg" alt="Volver" [routerLink]="['/lista-clientes']">
         </div>
       </div>
-
-      <div id="cabecera" class="row">
-        <div class="col-6">
-          <div>Puerto: <strong>{{ currentCliente.numDocumento }}</strong></div>
+      <div *ngFor="let instalacion of currentCliente.instalaciones" id="cabecera" class="row">
+        <div class="col-3">
+          <div>Puerto: <strong>{{ instalacion.nombrePuerto }}</strong></div>
         </div>
-        <div class="col-6">
-          <div>Codigo: <strong>{{ currentCliente.nombre }}</strong></div>
+        <div class="col-2">
+          <div>Codigo: <strong>{{ instalacion.codigo }}</strong></div>
+        </div>
+        <div class="col-3">
+          <div>Fecha Disposición: <strong>{{ instalacion.fechaDisposicion }}</strong></div>
+        </div>
+        <div class="col-4">
+          <div>Descripción: <strong>{{ instalacion.descripcion }}</strong></div>
         </div>
       </div>
-
       <div id="cuerpo" class="row">
         <div class="col-6">
           <div class="texto">Tipo de documento: <strong> {{ currentCliente.tipoDocumento }}</strong></div>
@@ -29,26 +33,25 @@
           <div class="texto">Nombre: <strong> {{ currentCliente.nombre }}</strong></div>
           <div class="texto">Apellidos: <strong>{{ currentCliente.apellidos }}</strong></div>
           <div class="texto">Email: <strong>{{ currentCliente.email }}</strong></div>
-          <div class="texto">Teléfono: <strong>{{ currentCliente.email }}</strong></div>
+          <div class="texto">Teléfono: <strong>{{ currentCliente.telefono }}</strong></div>
           <div class="texto">Dirección: <strong>{{ currentCliente.direccion }}</strong></div>
         </div>
         <div class="col-6">
-          <h5>Embarcaciones:</h5>
-          <br>
+          <h2>Embarcaciones:</h2>
           <table id="tabla" class="table">
-            <thead class="">
+            <thead class="thead-dark">
               <tr>
                 <th scope="col">Matricula</th>
                 <th scope="col">Nombre</th>
-                <th scope="col">Instalacion</th>
+                <th scope="col">Instalación</th>
               </tr>
             </thead>
             <tbody>
-              <!-- <tr *ngFor="let embarcacione of currentCliente.embarcaciones">
-                <td>{{embarcacione.matricula}}</td>
+              <tr *ngFor="let embarcacione of currentCliente.embarcaciones">
+                <td scope="row">{{embarcacione.matricula}}</td>
                 <td>{{embarcacione.nombre}}</td>
-                <td>{{embarcacione.nombre}}</td>
-              </tr> -->
+                <td>{{embarcacione.instalacion}}</td>
+              </tr>
             </tbody>
           </table>
         </div>
