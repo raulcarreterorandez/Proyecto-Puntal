@@ -13,36 +13,43 @@ export class InstalacionGuard implements CanActivate {
 
   canActivate(): boolean {
     this.currentUser = this.token.getUser();
-    console.log(this.currentUser.details[0].perfil);
 
     let acceso: boolean = false;
 
-    switch (this.currentUser.details[0].perfil) {
-      case 'XUNTA-GALICIA':
-        console.log('Soy XUNTA-GALICIA.');
-        acceso = true;
-        /* this.router.navigate(['/']); */ //Lo enviamos a la página que queramos
-        break;
-
-      case 'GERENCIA-PUERTO':
-        console.log('Soy GERENCIA-PUERTO');
-        acceso = true;
-        break;
-
-      case 'CUERPO-SEGURIDAD':
-        console.log('Soy GERENCIA-PUERTO.');
-        acceso = true;
-        break;
-
-      case 'GUARDA-MUELLES':
-        console.log('Soy GUARDA-MUELLES.');
-        acceso= false;
-        break;
-
-      default:
-        console.log('No soy nadie.');        
-        break;
+    if (this.currentUser.perfil == "CUERPO-SEGURIDAD" ||
+        this.currentUser.perfil == "XUNTA-GALICIA" ||
+        this.currentUser.perfil == "GERENCIA-PUERTO" ) {
+      acceso = true;
     }
+    else{
+      this.router.navigate(['/home']);
+    }
+
+    // switch (this.currentUser.perfil) {
+    //   case 'XUNTA-GALICIA':
+    //     console.log('Soy XUNTA-GALICIA.');
+    //     acceso = true;
+    //     break;
+
+    //   case 'GERENCIA-PUERTO':
+    //     console.log('Soy GERENCIA-PUERTO');
+    //     acceso = true;
+    //     break;
+
+    //   case 'CUERPO-SEGURIDAD':
+    //     console.log('Soy GERENCIA-PUERTO.');
+    //     acceso = true;
+    //     break;
+
+    //   case 'GUARDA-MUELLES':
+    //     console.log('Soy GUARDA-MUELLES.');
+    //     acceso= false;
+    //     break;
+
+    //   default:
+    //     console.log('No soy nadie.');
+    //     break;
+    // }
 
     return acceso;
   }

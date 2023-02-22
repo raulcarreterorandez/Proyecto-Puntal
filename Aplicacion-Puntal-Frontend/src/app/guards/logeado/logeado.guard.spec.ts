@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PlazasGuard } from './plazas.guard';
+import { MuelleGuard } from './logeado.guard';
 
-describe('PlazasGuard', () => {
-  let guard: PlazasGuard;
+describe('MuelleGuard', () => {
+  let guard: MuelleGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    guard = TestBed.inject(PlazasGuard);
+    guard = TestBed.inject(MuelleGuard);
   });
 
   it('should be created', () => {
