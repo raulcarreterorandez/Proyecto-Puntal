@@ -1,4 +1,39 @@
 <div id="dashBoard" class="container-fluid">
+  <div class="row">
+    <app-header></app-header>
+  </div>
+  <div id="vistaCentral" class="row">
+    <div class="col-1">
+      <app-aside></app-aside>
+    </div>
+    <div class="col-10">
+      <div id="cabecera_botones" class="col-12 row d-flex justify-content-start align-items-center">
+        <div class="col-6 d-flex row">
+          <img id="boton_volver" src="/assets/flechaAtras.svg" alt="Volver" [routerLink]="['/lista-instalaciones']">
+        </div>
+      </div>
+      <div id="cabecera" class="row">
+        <div class="col-3">
+          <div>Puerto: <strong>{{ currentInstalacion.nombrePuerto }}</strong></div>
+        </div>
+      </div>
+      <div id="cuerpo" class="row">
+        <div class="col-6">
+          <div class="texto">Código: <strong> {{ currentInstalacion.codigo }}</strong></div>
+          <div class="texto">Estado: <strong>{{ currentInstalacion.estado }}</strong></div>
+          <div class="texto">Descripción: <strong> {{ currentInstalacion.descripcion }}</strong></div>
+          <div class="texto">Instalación: <strong>{{ currentInstalacion.nombrePuerto }}</strong></div>
+          <div class="texto">Fecha De Disposición: <strong>{{ currentInstalacion.fechaDisposicion }}</strong></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-1 d-flex flex-row-reverse">
+      <app-user-settings></app-user-settings>
+    </div>
+  </div>
+</div>
+
+<!-- <div id="dashBoard" class="container-fluid">
     <div class="row">
         <app-header></app-header>
     </div>
@@ -50,11 +85,11 @@
 
             </div>
         </div>
-        <div class="col-1">
-            <app-user-settings></app-user-settings>
+        <div id="usersettings" class="col-1 d-flex flex-row-reverse">
+          <app-user-settings></app-user-settings>
         </div>
     </div>
-</div>
+</div> -->
 
 
 

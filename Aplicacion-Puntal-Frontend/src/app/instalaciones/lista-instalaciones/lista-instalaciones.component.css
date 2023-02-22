@@ -1,3 +1,8 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
 #espacioTabla {
   margin-top: 5vh;
   margin-right: 5vh;
@@ -27,4 +32,5 @@
   background-color: #007BC4;
   color: white;
   border: none;
+  padding: 4px 8px;
 }

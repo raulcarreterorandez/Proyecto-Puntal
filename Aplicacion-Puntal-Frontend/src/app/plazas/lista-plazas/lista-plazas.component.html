@@ -12,7 +12,7 @@
         </div>
         <div class="row">
           <!-- CONTENIDO DE LA PANTALLA -->
-  
+
           <div *ngIf="plazas!=null; else espera">
             <div id="espacioTabla">
               <div id="resize_wrapper">
@@ -21,7 +21,6 @@
                     <tr>
                       <th scope="col">Id</th>
                       <th scope="col">Disponible</th>
-                      <th scope="col">Visto</th>
                       <th scope="col">Puerto Origen</th>
                       <th scope="col">Puerto Destino</th>
                       <th scope="col">Año</th>
@@ -33,11 +32,10 @@
                     <tr *ngFor="let plaza of plazas">
                       <td>{{plaza.id}}</td>
                       <td>{{plaza.disponible}}</td>
-                      <td>{{plaza.visto}}</td>                    
                       <td>{{plaza.puertoOrigen}}</td>
                       <td>{{plaza.puertoDestino}}</td>
                       <td>{{plaza.anyo}}</td>
-                      <td>{{plaza.idMuelle}}</td>                   
+                      <td>{{plaza.idMuelle}}</td>
                       <td>
                         <a class="btn btn-sm btn-info" data-bs-toggle="tooltip" title="Ver registro {{ plaza.id }}"
                           [routerLink]="['/vistaDetallePlaza/',plaza.id]"><i class="bi bi-eye"></i></a>
@@ -49,7 +47,7 @@
             </div>
           </div>
           <ng-template #espera>Esperando datos...</ng-template>
-  
+
         </div>
       </div>
       <div id="usersettings" class="col-1 d-flex flex-row-reverse">

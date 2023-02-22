@@ -1,15 +1,20 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
 #espacioTabla {
-    margin-top: 5vh;
-    margin-right: 5vh;
-    margin-left: 5vh;
-    height: auto;
-    /* overflow: scroll; */
-    /* height: 5%!important; */
-  }
-  
-  .btn-info {
-    background-color: #007BC4;
-    color: white;
-    border: none;
-  }
-  
+  margin-top: 5vh;
+  margin-right: 5vh;
+  margin-left: 5vh;
+  height: auto;
+  /* overflow: scroll; */
+  /* height: 5%!important; */
+}
+
+.btn-info {
+  background-color: #007BC4;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+}

@@ -1,50 +1,64 @@
-#botones{
-    margin-top: 8vh;
-    margin-bottom: 1vh;
-}
-button{
-    background-color: white;
-    border: none;
+* {
+  margin: 0px;
+  padding: 0px;
+  border: 0px solid black;
 }
 
-i{
-    color: #007BC4;
-    /* width: 100%; */
-}
-#titulo{
-    font-size: 45px;
-    font-weight: bolder;
-    color: #007BC4;
+#titulo {
+  font-size: 25px;
+  font-weight: bolder;
+  color: #007BC4;
 }
 
-#cabecera{
-    width: 100%;
-    height: 7vh;
-    background-color: #C1D1E3;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    font-size: 25px;
+#boton_volver {
+  width: 40px;
+  cursor: pointer;
 }
 
-
-#cuerpo{
-    width: 100%;
-    height: 55vh;
-    background-color: #D9EBFF;
-    border: 1px solid;
-    border-color: #007BC4;
-    border-radius: 5px;
+#cabecera {
+  background-color: #C1D1E3;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 5px;
 }
 
-.texto{
-    /* margin: 5%; */
-    margin-top: 30px;
-    font-size: 20px;
+#cuerpoCliente {
+  background-color: #D9EBFF;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 5px;
 }
 
-table, th, td {
+#cuerpoEmbarcacion {
+  background-color: #D9EBFF;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}
 
-    margin-top: 50px;
-    border: 1px solid black;
-    border-collapse: collapse;
-  }
+#cuerpoPlaza {
+  background-color: #D9EBFF;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.texto:first-child {
+  margin-top: 0px;
+}
+
+.texto {
+  margin-top: 20px;
+}
+
+tr {
+  border: 1px solid black;
+}
+
+td {
+  border: 1px solid black;
+}
+
+th {
+  border: 1px solid black;
+}

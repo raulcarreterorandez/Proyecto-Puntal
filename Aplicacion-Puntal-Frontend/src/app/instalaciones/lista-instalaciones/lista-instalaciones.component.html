@@ -24,7 +24,6 @@
                                     <th scope="col">Nombre Puerto</th>
                                     <th scope="col">Descripcion</th>
                                     <th scope="col">Estado</th>
-                                    <th scope="col">Visto</th>
                                     <th scope="col">Fecha Disposición</th>
                                     <th scope="col">Acciones</th>
                                   </tr>
@@ -36,7 +35,6 @@
                                     <td>{{inst.nombrePuerto}}</td>
                                     <td>{{inst.descripcion}}</td>
                                     <td>{{inst.estado}}</td>
-                                    <td>{{inst.visto}}</td>
                                     <td>{{inst.fechaDisposicion | date:'dd/MM/yyyy'}}</td>
                                     <td>
                                       <a class="btn btn-sm btn-info" data-bs-toggle="tooltip" title="Ver registro {{ inst.id }}"
@@ -49,7 +47,7 @@
                           </div>
                         </div>
                         <ng-template #espera>Esperando datos...</ng-template>
-                        
+
       </div>
     </div>
     <div id="usersettings" class="col-1 d-flex flex-row-reverse">

@@ -22,7 +22,6 @@
                     <th scope="col">Id</th>
                     <th scope="col">Id Instalacion</th>
                     <th scope="col">Nombre Instalación</th>
-                    <th scope="col">Visto</th>
                     <th scope="col">Plazas Totales</th>
                     <th scope="col">Acciones</th>
                   </tr>
@@ -32,14 +31,12 @@
                     <td>{{muelle.id}}</td>
                     <td>{{muelle.idInstalacion}}</td>
                     <td>{{muelle.instalacion.nombrePuerto}}</td>
-                    <!-- Mirar como traemos la info. en API/MuelleController del backend. -->
-                    <td>{{muelle.visto}}</td>
                     <!-- <td>{{muelle.plazas[0].id}}</td> -->
                     <td>
                       {{muelle.plazas.length}}
 
                 <!--  <li *ngFor="let plaza of muelle.plazas; let indice=index">
-                        {{indice+1}} --- {{plaza.id}}                                                                   
+                        {{indice+1}} --- {{plaza.id}}
                       </li> -->
                     </td>
                     <td>
@@ -53,7 +50,6 @@
           </div>
         </div>
         <ng-template #espera>Esperando datos...</ng-template>
-
       </div>
     </div>
     <div id="usersettings" class="col-1 d-flex flex-row-reverse">

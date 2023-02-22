@@ -40,8 +40,7 @@
                             <div class="row d-flex justify-content-center">
                                 <div class="col-6">
                                     <div class="texto">Id Muelle:<strong> {{ currentMuelle.id }}</strong></div>
-                                    <div class="texto">Visto: <strong>{{ currentMuelle.visto }}</strong></div>
-                                </div>                            
+                                </div>
                                 <div class="col-6">
                                     <div class="texto">Nº Plazas Total: <strong>{{ currentMuelle.plazasTotales }}</strong></div>
                                     <div class="texto">Nº Plazas Disponibles: <strong>{{ currentMuelle.plazasDisponibles }}</strong></div>
@@ -60,7 +59,7 @@
                                       <tr *ngFor="let plaza of currentMuelle.plazas">
                                         <td>{{plaza.id}}</td>
                                         <td [style.color]="plaza.disponible == 1 ? 'green': 'red'"><p *ngIf="plaza.disponible==1">Disponible</p><p *ngIf="plaza.disponible==0">Ocupado</p></td>
-                                        <td>{{plaza.tipo}}</td>                                       
+                                        <td>{{plaza.tipo}}</td>
                                       </tr>
                                     </tbody>
                                   </table>
@@ -74,8 +73,8 @@
 
             </div>
         </div>
-        <div class="col-1">
-            <app-user-settings></app-user-settings>
+        <div id="usersettings" class="col-1 d-flex flex-row-reverse">
+          <app-user-settings></app-user-settings>
         </div>
     </div>
 </div>
