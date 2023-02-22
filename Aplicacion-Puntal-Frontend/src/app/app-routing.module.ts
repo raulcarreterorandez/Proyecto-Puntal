@@ -46,7 +46,7 @@ import { ListaMensajesComponent } from './mensajes/lista-mensajes/lista-mensajes
 import { VistaDetalladaMensajeComponent } from './mensajes/vista-detallada-mensaje/vista-detallada-mensaje.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent, canActivate: [RestriccionUsuariosGuard] },
+  { path: 'home', component: HomeComponent  },//canActivate: [RestriccionUsuariosGuard]
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 
