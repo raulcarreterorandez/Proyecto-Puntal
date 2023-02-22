@@ -15,8 +15,7 @@ class UsuarioController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth'); // SE PUEDE QUITAR
-        $this->middleware('policia')->only(['index','show']);
+        $this->middleware('gerencia')->only(['index','show']);
         $this->middleware('xunta')->except(['index','show']);
     }
 

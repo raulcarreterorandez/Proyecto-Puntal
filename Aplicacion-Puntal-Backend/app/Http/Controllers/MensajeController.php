@@ -16,8 +16,13 @@ use Illuminate\Support\Facades\DB;
  */
 class MensajeController extends Controller
 {
-    public function index()
-    {
+    public function __construct() { // Copia Instalación.
+            
+        $this->middleware('guarda-muelle'); // Desde Guarda-muelles hacia arriba, pasando por Gerencia y Xunta acceden a todo. 
+    }
+    
+    public function index() {
+
         $user = Auth::user();
 
         // Ordenados de mas nuevo a mas viejo
@@ -28,8 +33,8 @@ class MensajeController extends Controller
 
     }
 
-    public function create()
-    {
+    public function create() {
+
         $mensaje = new Mensaje();
         $user = Auth::user()->email;
         $usuarios = Usuario::all()->except(auth()->user()->email)->pluck('email','email');
@@ -37,8 +42,8 @@ class MensajeController extends Controller
         return view('mensaje.create', compact('mensaje','user','usuarios'));
     }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
+
         // dd($request);
         $request->validate([
             'texto' => 'required|max:530',
@@ -63,8 +68,8 @@ class MensajeController extends Controller
             ->with('success', 'Mensaje created successfully.');
     }
 
-    public function show($id)
-    {
+    public function show($id) {
+
         $mensaje = Mensaje::find($id);
 
         // Dejamos el mensaje como visto y lo actualizamos en la base de datos
@@ -75,8 +80,8 @@ class MensajeController extends Controller
         return view('mensaje.show', compact('mensaje'));
     }
 
-    public function update(Request $request, Mensaje $mensaje)
-    {
+    public function update(Request $request, Mensaje $mensaje) {
+
         request()->validate(Mensaje::$rules);
 
         $mensaje->update($request->all());
@@ -85,15 +90,16 @@ class MensajeController extends Controller
             ->with('success', 'Mensaje updated successfully');
     }
 
-    public function destroy($id)
-    {
+    public function destroy($id) {
+        
         Mensaje::find($id)->delete();
 
         return redirect()->route('mensajes.index')
             ->with('success', 'Mensaje deleted successfully');
     }
 
-    public function responder($id){
+    public function responder($id) {
+
         // dd($id);
         $mensaje = new Mensaje();
         $user = Auth::user()->email;

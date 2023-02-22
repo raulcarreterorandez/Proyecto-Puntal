@@ -4,8 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
-{
+class HomeController extends Controller {
+    
+    public function __construct() { // Copia Instalación.
+            
+        $this->middleware('guarda-muelle'); // Desde Guarda-muelles hacia arriba, pasando por Gerencia y Xunta acceden a todo. 
+    }
+    
     public function index()
     {
         switch ( auth()->user()->perfil ) {
@@ -21,13 +26,6 @@ class HomeController extends Controller
                 return redirect()->route('usuarios.index');
             break;
 
-            case 'CUERPO-SEGURIDAD':
-                return redirect()->route('info');
-            break;
-
-            default:
-                # code...
-                break;
         }
 
         return view('/home');

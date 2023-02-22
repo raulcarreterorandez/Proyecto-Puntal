@@ -8,25 +8,21 @@ use App\Models\Usuario;
 use App\Models\Instalacion;
 use App\Models\Muelle;
 use App\Models\Plaza;
+use Illuminate\Support\Facades\Auth;
 
 class PlazaController extends Controller {
+
     // Para proteger las rutas tienes 2 opciones:
      //  - except: para indicar a que métodos no se les aplicará el middleware.
      //  - only: para indicar los métodos a los que se les aplicaría el middleware.
 
-/*     public function __construct() { // Copia Instalación.
-        $this->middleware('auth'); // SE PUEDE QUITAR
-        $this->middleware('policia')->only(['index','show']); //Acceden a todo pero solo acceden a show e index
-        $this->middleware('xunta')->except(['index','show']); 
-    } */
-
-    public function __construct() { // Copia Muelle.  
-        $this->middleware('auth')->only(['index','show']); 
-        $this->middleware('gerencia')->except(['index','show']);
+     public function __construct() { // Copia Instalación.
+            
+        $this->middleware('guarda-muelle'); // Desde Guarda-muelles hacia arriba, pasando por Gerencia y Xunta acceden a todo. 
     }
 
     public function index() {
-
+        // dd(Auth::user());
         //Necesitamos mostrar únicamente las plazas de los muelles pertenecientes a las instalaciones en las que esté habilitado en usuario.
 
         // $plazas = Plaza::where('id',1)->with('muelle')->get();

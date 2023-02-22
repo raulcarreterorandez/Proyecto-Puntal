@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usuario;
-use App\Models\Instalacion;
-use App\Models\Muelle;
 use App\Models\Plaza;
 use App\Models\Transito;
 use Illuminate\Http\Request;
@@ -12,6 +10,11 @@ use Illuminate\Http\Request;
 
 class TransitoController extends Controller {
 
+    public function __construct() { // Copia Instalación.
+            
+        $this->middleware('guarda-muelle'); // Desde Guarda-muelles hacia arriba, pasando por Gerencia y Xunta acceden a todo. 
+    }
+    
     public function index() {
         //Necesitamos mostrar únicamente los tránsitos(plazas) de los muelles pertenecientes a las instalaciones en las que esté habilitado en usuario.
 
@@ -58,11 +61,7 @@ class TransitoController extends Controller {
         //Cuando creamos el tránsito necesitamos que la plaza asociada deje de estar disponible.
         request()->validate(Transito::$rules);
 
-        $transito = Transito::create($request->all());
-
-        /* $plazas = Plaza::find($transito["idPlaza"]); //Buscamos la plaza asociadda a esa base.
-        $plazas->disponible = 0; //cambiamos el valor de disponible de la plaza.
-        $plazas->update(); //Actualizamos la plaza para hacer permanentes los cambios. */
+        Transito::create($request->all());
 
         return redirect()->route('transitos.index')
             ->with('success', 'Transito created successfully.');

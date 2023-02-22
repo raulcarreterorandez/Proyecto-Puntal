@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class BasesController extends Controller {
 
+    public function __construct() { // Copia Instalación.
+
+        $this->middleware('guarda-muelle');
+    }
+
     public function index() {
         //Necesitamos mostrar únicamente las bases(plazas) de los muelles pertenecientes a las instalaciones en las que esté habilitado en usuario.
 
