@@ -45,42 +45,50 @@ import { HisotricoGuard } from './guards/historicos/hisotrico.guard';
 import { ListaMensajesComponent } from './mensajes/lista-mensajes/lista-mensajes.component';
 import { VistaDetalladaMensajeComponent } from './mensajes/vista-detallada-mensaje/vista-detallada-mensaje.component';
 
+//TRIPULANTES
+import { VistaDetalladaTripulantesComponent } from './tripulantes/vista-detallada-tripulantes/vista-detallada-tripulantes.component';
+
+// TRIPULANTES
+
 const routes: Routes = [
-  { path: 'home', component: HomeComponent  },//canActivate: [RestriccionUsuariosGuard]
+  { path: 'home', component: HomeComponent },//canActivate: [RestriccionUsuariosGuard]
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 
   // RUTAS - INSTALACIONES
   { path: 'lista-instalaciones', component: ListaInstalacionesComponent, canActivate: [RestriccionUsuariosGuard, InstalacionGuard] },
-  { path: 'vistaDetalleInst/:id', component: VistaDetalladaInstalacionComponent, canActivate: [RestriccionUsuariosGuard, InstalacionGuard]  },
+  { path: 'vistaDetalleInst/:id', component: VistaDetalladaInstalacionComponent, canActivate: [RestriccionUsuariosGuard, InstalacionGuard] },
 
   // RUTAS - MUELLES
-  { path: 'lista-muelles', component: ListaMuellesComponent, canActivate: [RestriccionUsuariosGuard]  },
-  { path: 'vistaDetalleMuelle/:id', component: VistaDetalladaMuelleComponent, canActivate: [RestriccionUsuariosGuard, MuelleGuard]  },
+  { path: 'lista-muelles', component: ListaMuellesComponent, canActivate: [RestriccionUsuariosGuard] },
+  { path: 'vistaDetalleMuelle/:id', component: VistaDetalladaMuelleComponent, canActivate: [RestriccionUsuariosGuard, MuelleGuard] },
 
   // RUTAS - PLAZAS
-  { path: 'lista-plazas', component: ListaPlazasComponent, canActivate: [RestriccionUsuariosGuard, PlazasGuard]  },
-  { path: 'vistaDetallePlaza/:id', component: VistaDetalladaPlazaComponent, canActivate: [RestriccionUsuariosGuard, PlazasGuard]  },
+  { path: 'lista-plazas', component: ListaPlazasComponent, canActivate: [RestriccionUsuariosGuard, PlazasGuard] },
+  { path: 'vistaDetallePlaza/:id', component: VistaDetalladaPlazaComponent, canActivate: [RestriccionUsuariosGuard, PlazasGuard] },
 
   // RUTAS - USUARIOS
-  { path: 'lista-usuarios', component: ListaUsuariosComponent, canActivate: [RestriccionUsuariosGuard]  },
-  { path: 'vistaDetalleUsuario/:email', component: VistaDetalladaUsuarioComponent, canActivate: [RestriccionUsuariosGuard]  },
+  { path: 'lista-usuarios', component: ListaUsuariosComponent, canActivate: [RestriccionUsuariosGuard] },
+  { path: 'vistaDetalleUsuario/:email', component: VistaDetalladaUsuarioComponent, canActivate: [RestriccionUsuariosGuard] },
 
   // RUTAS - CLIENTES
-  { path: 'lista-clientes', component: ListaClientesComponent, canActivate: [RestriccionUsuariosGuard]  },
-  { path: 'vistaDetalleCliente/:numDocumento', component: VistaDetalladaClienteComponent, canActivate: [RestriccionUsuariosGuard]  },
+  { path: 'lista-clientes', component: ListaClientesComponent, canActivate: [RestriccionUsuariosGuard] },
+  { path: 'vistaDetalleCliente/:numDocumento', component: VistaDetalladaClienteComponent, canActivate: [RestriccionUsuariosGuard] },
 
   // RUTAS - EMBARCACIONES
-  { path: 'lista-embarcaciones', component: ListaEmbarcacionesComponent, canActivate: [RestriccionUsuariosGuard]  },
-  { path: 'vistaDetalleEmbarcacione/:matricula', component: VistaDetalladaEmbarcacioneComponent , canActivate: [RestriccionUsuariosGuard] },
+  { path: 'lista-embarcaciones', component: ListaEmbarcacionesComponent, canActivate: [RestriccionUsuariosGuard] },
+  { path: 'vistaDetalleEmbarcacione/:matricula', component: VistaDetalladaEmbarcacioneComponent, canActivate: [RestriccionUsuariosGuard] },
+
+  // RUTAS - TRIPULANTES
+  { path: 'vistaDetalleTripulante/:numDocumento', component: VistaDetalladaTripulantesComponent, canActivate: [RestriccionUsuariosGuard] },
 
   // RUTAS - HISTORICOS
-  { path: 'lista-historicos', component: ListaHistoricosComponent, canActivate: [RestriccionUsuariosGuard, HisotricoGuard]  },
-  { path: 'vistaDetalleHistorico/:id', component: VistaDetalladaHistoricoComponent, canActivate: [RestriccionUsuariosGuard, HisotricoGuard]  },
+  { path: 'lista-historicos', component: ListaHistoricosComponent, canActivate: [RestriccionUsuariosGuard, HisotricoGuard] },
+  { path: 'vistaDetalleHistorico/:id', component: VistaDetalladaHistoricoComponent, canActivate: [RestriccionUsuariosGuard, HisotricoGuard] },
 
   // RUTAS - MENSAJES
-  { path: 'lista-mensajes', component: ListaMensajesComponent, canActivate: [RestriccionUsuariosGuard]  },
-  { path: 'vistaDetalleMensaje/:id', component: VistaDetalladaMensajeComponent, canActivate: [RestriccionUsuariosGuard]  },
+  { path: 'lista-mensajes', component: ListaMensajesComponent, canActivate: [RestriccionUsuariosGuard] },
+  { path: 'vistaDetalleMensaje/:id', component: VistaDetalladaMensajeComponent, canActivate: [RestriccionUsuariosGuard] },
 ];
 
 @NgModule({

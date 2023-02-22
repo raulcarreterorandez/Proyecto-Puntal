@@ -6,13 +6,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { DataTablesModule } from 'angular-datatables';
 import { RouterModule } from '@angular/router';
 import { UtilidadesModule } from '../utilidades/utilidades.module';
+import { VistaDetalladaTripulantesComponent } from '../tripulantes/vista-detallada-tripulantes/vista-detallada-tripulantes.component';
 
 
 
 @NgModule({
   declarations: [
     ListaEmbarcacionesComponent,
-    VistaDetalladaEmbarcacioneComponent
+    VistaDetalladaEmbarcacioneComponent,
+    VistaDetalladaTripulantesComponent,
   ],
   imports: [
     CommonModule,

@@ -11,9 +11,7 @@ export class EmbarcacioneService {
   public url: string;
 
   constructor(private http: HttpClient) {
-
     this.url = "http://localhost/api/embarcaciones";
-
   }
 
   retornar(): Observable<Embarcacione[]> {

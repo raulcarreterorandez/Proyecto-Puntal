@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\API;
 
 use App\Models\Tripulante;
-use App\Models\Cliente;
 use App\Models\Usuario;
 use App\Models\Muelle;
 use App\Models\Plaza;
 use App\Models\Transito;
 
 use App\Http\Controllers\Controller;
+use App\Models\Embarcacione;
+use App\Models\Instalacion;
 
 class TripulanteController extends Controller
 {
@@ -18,7 +19,7 @@ class TripulanteController extends Controller
         $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get();
 
         if ($usuarioLogeado[0]->instalacionesUsuario[0]->id == 0) {
-            $clientes = Cliente::all();
+            $tripulantesOrdenado = Tripulante::all();
         } else {
             $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get();
 
@@ -49,11 +50,12 @@ class TripulanteController extends Controller
                     }
                 }
             }
-        }
-        $tripulantesOrdenado = [];
-        for ($a = 0; $a < count($tripulantes); $a++) {
-            for ($i = 0; $i < count($tripulantes[$a]); $i++) {
-                array_push($tripulantesOrdenado, $tripulantes[$a][$i]);
+
+            $tripulantesOrdenado = [];
+            for ($a = 0; $a < count($tripulantes); $a++) {
+                for ($i = 0; $i < count($tripulantes[$a]); $i++) {
+                    array_push($tripulantesOrdenado, $tripulantes[$a][$i]);
+                }
             }
         }
 
@@ -62,8 +64,17 @@ class TripulanteController extends Controller
 
     public function show($numDocumento)
     {
-
         $tripulante = Tripulante::find($numDocumento);
+        $plaza = Plaza::find($tripulante->id_plaza);
+        $muelle = Muelle::find($plaza->idMuelle);
+        $instalacion = Instalacion::find($muelle->idInstalacion);
+        $tripulante->nombreInstalacion = $instalacion->nombrePuerto;
+        $tripulante->descripcionInstalacion = $instalacion->descripcion;
+        $tripulante->codigoInstalacion = $instalacion->codigo;
+        $tripulante->fechaDisposicionInstalacion = $instalacion->fechaDisposicion;
+        $embarcacion = Embarcacione::find($tripulante->id_embarcacion);
+        $tripulante->nombreEmbarcacion = $embarcacion->nombre;
+        $tripulante->propulsionEmbarcacion = $embarcacion->propulsion;
 
         return $tripulante;
     }
