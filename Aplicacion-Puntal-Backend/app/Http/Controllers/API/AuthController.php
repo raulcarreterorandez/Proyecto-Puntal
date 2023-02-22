@@ -20,7 +20,7 @@ class AuthController extends Controller
 
             if($user -> habilitado == 1){
                 $success['token'] =  $user->createToken('MyApp')->accessToken;
-                $details = Usuario::where("email",Auth::user()->email)->with('instalacionesUsuario')->get();
+                $details = Usuario::with('instalacionesUsuario')->find($user->email);
                 return response()->json([
                     'success' => $success,
                     'details' => $details
