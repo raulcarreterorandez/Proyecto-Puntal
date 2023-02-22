@@ -8,12 +8,10 @@ import { TokenStorageService } from 'src/app/_services/token-storage.service';
 export class AsideComponent implements OnInit{
 
   usuario?:any;
-  
+
   constructor( private token: TokenStorageService) { }
 
   ngOnInit(): void {
     this.usuario = this.token.getUser();
-
-
-}
+  }
 }

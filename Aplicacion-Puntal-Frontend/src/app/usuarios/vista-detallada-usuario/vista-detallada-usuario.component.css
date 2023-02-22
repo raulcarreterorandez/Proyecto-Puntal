@@ -68,3 +68,7 @@ th {
 #puerto{
   margin-top: 10px;
 }
+
+#contenido-user{
+  float: right;
+}

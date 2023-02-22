@@ -3,7 +3,7 @@
     <app-header></app-header>
   </div>
   <div id="vistaCentral" class="row">
-    <div class="col-1">
+    <div class="d-none d-lg-block col-1" id="espacio-aside">
       <app-aside></app-aside>
     </div>
 
@@ -66,8 +66,8 @@
 
     <!-- FIN CONTENIDO MAIN -->
 
-    <div class="col-1 d-flex justify-content-end">
-      <app-user-settings></app-user-settings>
+    <div class="d-none d-lg-block col-1" id="espacio-user">
+      <app-user-settings id="contenido-user"></app-user-settings>
     </div>
   </div>
 </div>

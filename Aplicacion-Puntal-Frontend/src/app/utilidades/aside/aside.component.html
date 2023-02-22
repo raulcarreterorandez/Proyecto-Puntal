@@ -1,36 +1,47 @@
 <!-- RESPONSIVE: col-sm-2 col-md-1 -->
-<div id="aside" class="d-flex justify-content-around flex-column">
+<div id="aside" class="d-flex justify-content-start flex-column">
   <!-- {{usuario.perfil}} -->
 
   <ng-template *ngIf="usuario.perfil == 'CUERPO-SEGURIDAD'; then mostrarHistorico" ></ng-template>
   <ng-template #mostrarHistorico>
-    <button id="icon" class="icon w-100" [routerLink]="['/lista-historicos']"><img src="/assets/historial.svg"></button>
-    <h6 class="texticon text-center w-100">Historial</h6>
+    <div class="col-auto">
+      <button id="icon" class="icon w-100" [routerLink]="['/lista-historicos']"><img src="/assets/historial.svg"></button>
+      <h6 class="texticon text-center w-100">Historial</h6>
+    </div>
   </ng-template>
 
   <ng-template *ngIf="usuario.perfil != 'GUARDA-MUELLES'; then mostrarPuertoUsuario" ></ng-template>
-
   <ng-template #mostrarPuertoUsuario>
-    <button id="icon" class="icon w-100" [routerLink]="['/lista-usuarios']"><img src="/assets/usuarios.svg"></button>
-    <h6 class="texticon text-center w-100">Usuarios</h6>
+    <div class="col-auto">
+      <button id="icon" class="icon w-100" [routerLink]="['/lista-usuarios']"><img src="/assets/usuarios.svg"></button>
+      <h6 class="texticon text-center w-100">Usuarios</h6>
+    </div>
 
-    <button id="icon" class="icon w-100" [routerLink]="['/lista-instalaciones']"><img src="/assets/puertos.svg"></button>
-    <h6 class="texticon text-center w-100">Puertos</h6>
+    <div class="col-auto">
+      <button id="icon" class="icon w-100" [routerLink]="['/lista-instalaciones']"><img src="/assets/puertos.svg"></button>
+      <h6 class="texticon text-center w-100">Puertos</h6>
+    </div>
   </ng-template>
 
-
+<div class="col-auto">
   <button id="icon" class="icon w-100" [routerLink]="['/lista-muelles']"><img src="/assets/muelles.svg"></button>
   <h6 class="texticon text-center w-100">Muelles</h6>
+</div>
 
+<div class="col-auto">
   <button id="icon" class="icon w-100" [routerLink]="['/lista-plazas']"><img src="/assets/plazas.svg"></button>
   <h6 class="texticon text-center w-100">Plazas Base y <br> Tránsito</h6>
+</div>
 
-  <button id="icon" class="icon w-100" [routerLink]="['/lista-embarcaciones']"><img src="/assets/embarcaciones.svg"></button>
-  <h6 class="texticon text-center w-100">Embarcaciones</h6>
+  <div class="col-auto">
+    <button id="icon" class="icon w-100" [routerLink]="['/lista-embarcaciones']"><img src="/assets/embarcaciones.svg"></button>
+    <h6 class="texticon text-center w-100">Embarcaciones</h6>
+  </div>
 
-  <button id="icon" class="icon w-100" [routerLink]="['/lista-clientes']"><img src="/assets/clientes.svg"></button>
-  <h6 class="texticon text-center w-100">Clientes</h6>
-
+  <div class="col-auto">
+    <button id="icon" class="icon w-100" [routerLink]="['/lista-clientes']"><img src="/assets/clientes.svg"></button>
+    <h6 class="texticon text-center w-100">Clientes</h6>
+  </div>
 
 </div>
 

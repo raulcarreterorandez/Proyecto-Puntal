@@ -67,3 +67,7 @@ th {
   padding: 10px;
   margin: 20px;
 }
+
+#contenido-user{
+  float: right;
+}

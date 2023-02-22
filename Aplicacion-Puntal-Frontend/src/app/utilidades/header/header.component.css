@@ -1,5 +1,9 @@
+*{
+  border: 1px solid black;
+}
+
 #cabecera {
-  height: 10vh;
+  /* height: 10vh; */
   background: #007BC4;
 }
 
@@ -26,7 +30,7 @@
 #usuario {
   font-family: 'Open Sans';
   font-weight: 500;
-  font-size: 2.0rem;
+  font-size: 1.5rem;
   line-height: 25px;
   color: #F2F9FB;
 }

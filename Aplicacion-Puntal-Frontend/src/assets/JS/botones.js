@@ -4,8 +4,8 @@ $(function() {
   var visible=true;
   var pantalla_grande=true;
 
-  $("body").on('click','#boton-aside', function(){
-
+  $("body").on('click','#boton-aside, #boton-user', function(){
+    // alert( $(this).attr('id') );
     let alto=$(document).height();
     let ancho=$(document).width();
 
@@ -30,46 +30,12 @@ $(function() {
       pantalla_grande=false;
     }
 
-    menuAside(visible, pantalla_grande);
-
-    if (visible == true) {
-      visible = false;
-    }
-    else if(visible == false){
-      visible = true;
-    }
-
-  });
-
-
-  $("body").on('click','#boton-user', function(){
-
-    let alto=$(document).height();
-    let ancho=$(document).width();
-
-    if (primer_click == true) { // la primera vez que clickamos
-
-      alert("primer click");
-      primer_click = false;
-
-      if (ancho >= 992) {
-        visible=true;
-        pantalla_grande=true;
-      }
-      else{
-        visible=false;
-        pantalla_grande=false;
-      }
-    }
-
-    if (ancho >= 992) {
-      pantalla_grande=true;
+    if($(this).attr('id') == 'boton-aside'){
+      menuAside(visible, pantalla_grande);
     }
     else{
-      pantalla_grande=false;
+      menuUser(visible, pantalla_grande);
     }
-
-    menuUser(visible, pantalla_grande);
 
     if (visible == true) {
       visible = false;
@@ -79,11 +45,12 @@ $(function() {
     }
 
   });
+
+
 });
 
 
 function menuAside(visible, pantalla_grande){
-  // alert("has pulsado aside "+visible);
   let espacio_aside = $("#espacio-aside");
 
   if (visible==true) { // VAMOS A OCULTAR EL MENU
@@ -97,9 +64,6 @@ function menuAside(visible, pantalla_grande){
       espacio_aside.addClass("d-none");
 
     }
-
-    // alert(espacio_aside.html());
-    // espacio_aside.hide();
   }
   else{ // VAMOS A MOSTRAR EL MENU
 
@@ -115,11 +79,9 @@ function menuAside(visible, pantalla_grande){
 
     }
   }
-
 }
 
 function menuUser(visible, pantalla_grande){
-  // alert("has pulsado aside "+visible);
   let espacio_user = $("#espacio-user");
 
   if (visible==true) { // VAMOS A OCULTAR EL MENU
@@ -133,9 +95,6 @@ function menuUser(visible, pantalla_grande){
       espacio_user.addClass("d-none");
 
     }
-
-    // alert(espacio_aside.html());
-    // espacio_aside.hide();
   }
   else{ // VAMOS A MOSTRAR EL MENU
 
@@ -147,10 +106,7 @@ function menuUser(visible, pantalla_grande){
     else{
       // MOSTRAR  EL MENU CUANDO LA PANTALLA NO ES GRANDE
       espacio_user.removeClass("d-none");
-      // espacio_aside.addClass("col-sm-1");
-
     }
   }
-
 }
 

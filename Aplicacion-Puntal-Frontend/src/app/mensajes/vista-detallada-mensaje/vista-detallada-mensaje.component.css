@@ -66,3 +66,7 @@ th {
   font-weight: bolder;
   color: #007BC4;
 }
+
+#contenido-user{
+  float: right;
+}
