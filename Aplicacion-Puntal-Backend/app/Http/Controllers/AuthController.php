@@ -21,7 +21,7 @@ class AuthController extends Controller
          if (auth()->attempt($credentials)) {  //comprobación de autenticación
 
             //Comprobar si esta habilitado o no el usuario
-            if(auth()->user()->habilitado == 1){
+            if(auth()->user()->habilitado == 1 && auth()->user()->perfil != "CUERPO-SEGURIDAD"){
                 // dd("usuario habilitado");
                 return redirect()->route('home');  //nos redirije a la ruta 'admin'
 

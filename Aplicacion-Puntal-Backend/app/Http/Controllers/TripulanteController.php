@@ -7,17 +7,19 @@ use Illuminate\Http\Request;
 use App\Models\Transito;
 use App\Models\Embarcacione;
 use App\Models\Usuario;
-use App\Models\Cliente;
 use App\Models\Muelle;
 use App\Models\Plaza;
 
-class TripulanteController extends Controller
-{
-    public function index()
-    {
-        /////////////////////////////////////////////////////////////////////////////////////////////////
-        /////Necesitamos mostrar únicamente las instalaciones en las que esté habilitado en usuario./////
-        /////////////////////////////////////////////////////////////////////////////////////////////////
+class TripulanteController extends Controller{
+    
+    public function __construct() { // Copia Instalación.
+            
+        $this->middleware('guarda-muelle'); // Desde Guarda-muelles hacia arriba, pasando por Gerencia y Xunta acceden a todo. 
+    }
+
+    public function index() {
+        
+        ///Necesitamos mostrar únicamente las instalaciones en las que esté habilitado en usuario.
 
         //Obtengo el usuario logeado.
         $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get();
@@ -75,20 +77,17 @@ class TripulanteController extends Controller
             }
         } // fin del else
 
-
         return view('tripulante.index', compact('tripulantesOrdenado'))->with('i', 0);
     }
 
-    public function create()
-    {
+    public function create() {
         $tripulante = new Tripulante();
         $embarcaciones = Embarcacione::all()->pluck('matricula', 'matricula');
 
         return view('tripulante.create', compact('tripulante', 'embarcaciones',));
     }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         $plaza = Embarcacione::where('matricula', $request->id_embarcacion)->get()->toArray()[0];
         $plaza = $plaza['id_plaza'];
 
@@ -101,16 +100,16 @@ class TripulanteController extends Controller
             ->with('correcto', 'Tripulante creado con éxito.');
     }
 
-    public function show($numDocumento)
-    {
+    public function show($numDocumento) {
+
         $tripulante = Tripulante::where("numDocumento", $numDocumento)->get()->toArray()[0];
         $tripulante = (object) $tripulante;
 
         return view('tripulante.show', compact('tripulante'));
     }
 
-    public function edit($numDocumento)
-    {
+    public function edit($numDocumento) {
+
         $tripulante = Tripulante::where("numDocumento", $numDocumento)->get()->toArray()[0];
         $tripulante = (object) $tripulante;
         $plazas = Transito::all()->pluck('idPlaza', 'idPlaza');
@@ -119,8 +118,7 @@ class TripulanteController extends Controller
         return view('tripulante.edit', compact('tripulante', 'plazas', 'embarcaciones'));
     }
 
-    public function update(Request $request, Tripulante $tripulante)
-    {
+    public function update(Request $request, Tripulante $tripulante) {
         $plaza = Embarcacione::where('matricula', $request->id_embarcacion)->get()->toArray()[0];
         $plaza = $plaza['id_plaza'];
         $request->merge(['id_plaza' => $plaza]);
@@ -132,8 +130,8 @@ class TripulanteController extends Controller
             ->with('correcto', 'Tripulante actualizado con éxito');
     }
 
-    public function destroy($numDocumento)
-    {
+    public function destroy($numDocumento) {
+
         Tripulante::where("numDocumento", $numDocumento)->delete();
 
         return redirect()->route('tripulantes.index')

@@ -6,25 +6,30 @@ use App\Models\Telefono;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 
-class TelefonoController extends Controller
-{
-    public function index()
-    {
+class TelefonoController extends Controller {
+    
+    public function __construct() { // Copia Instalación.
+            
+        $this->middleware('guarda-muelle'); // Desde Guarda-muelles hacia arriba, pasando por Gerencia y Xunta acceden a todo. 
+    }
+    
+    public function index() {
+
         $telefonos = Telefono::paginate();
 
         return view('telefono.index', compact('telefonos'))
             ->with('i', (request()->input('page', 1) - 1) * $telefonos->perPage());
     }
 
-    public function create()
-    {
+    public function create() {
+
         $clientes = Cliente::all()->pluck('numDocumento', 'numDocumento');
         $telefono = new Telefono();
         return view('telefono.create', compact('telefono', 'clientes'));
     }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
+
         request()->validate(Telefono::$rules);
 
         $telefono = Telefono::create($request->all());
@@ -33,16 +38,15 @@ class TelefonoController extends Controller
             ->with('correcto', 'Teléfono creado con éxito.');
     }
 
-    public function show($numero)
-    {
+    public function show($numero) {
+
         $telefono = Telefono::where('numero', $numero)->get()->toArray()[0];
         $telefono = (object) $telefono;
 
         return view('telefono.show', compact('telefono'));
     }
 
-    public function edit($numero)
-    {
+    public function edit($numero) {
 
         $telefono = Telefono::where('numero', $numero)->get()->toArray()[0];
         $telefono = (object) $telefono;
@@ -51,8 +55,8 @@ class TelefonoController extends Controller
         return view('telefono.edit', compact('telefono', 'clientes'));
     }
 
-    public function update(Request $request, Telefono $telefono)
-    {
+    public function update(Request $request, Telefono $telefono) {
+
         request()->validate(Telefono::$rules);
 
         $telefono->update($request->all());
@@ -61,8 +65,8 @@ class TelefonoController extends Controller
             ->with('correcto', 'Teléfono actualizado con éxito');
     }
 
-    public function destroy($numero)
-    {
+    public function destroy($numero) {
+
         $telefono = Telefono::where('numero', $numero)->delete();
 
         return redirect()->route('telefonos.index')

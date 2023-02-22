@@ -10,10 +10,14 @@ use Illuminate\Http\Request;
 
 class MuelleController extends Controller {
 
-    public function __construct() {
-        $this->middleware('auth')->only(['index','show']); 
-        $this->middleware('gerencia')->except(['index','show']);
-    }
+     // Para proteger las rutas tienes 2 opciones:
+     //  - except: para indicar a que métodos no se les aplicará el middleware.
+     //  - only: para indicar los métodos a los que se les aplicaría el middleware.
+     public function __construct() { // Copia Instalación.
+        
+        $this->middleware('gerencia')->except(['index','show']); // Desde Gerencia hacia arriba, es decir Xunta se encargan de todo. 
+        $this->middleware('guarda-muelle')->only(['index','show']); // Desde Guarda-muelles, pasando por Policía hasta Gerencia solo acceden a show e index.
+    } 
 
     public function index() {
         //Necesitamos mostrar únicamente los muelles de las instalaciones en las que esté habilitado en usuario.
@@ -26,7 +30,7 @@ class MuelleController extends Controller {
         if ($usuarioLogeado[0]->instalacionesUsuario[0]->id == 0) { // Si el usuario tiene acceso a todos los puertos lo tiene a los muelles creados en dichas instalaciones. 
             $muelles = Muelle::all(); // Recogemos todos los muelles disponibles.
 
-        } else { //Si no mostramos unicamente los muelles pertenecientes a las instalaciones relacionadas con el usuario.
+        } else { //Si no, mostramos unicamente los muelles pertenecientes a las instalaciones relacionadas con el usuario.
                 // Es decir, las instalaciones donde esté habilitado el usuario logeado.
 
             $muelles = Muelle::where(function ($query) use ($usuarioLogeado) {

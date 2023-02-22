@@ -19,53 +19,26 @@ use App\Models\Usuario;
 Route::view('/login', 'login')->name('login');
 Route::post('/login-usuario', [AuthController::class, 'login'])->name('logear');
 
-// TODO EL MUNDO PUEDE ACCEDER, SOLO NECESITA ESTAR LOGEADO (GUARDA-MUELLES Y SUPERIORES)
-Route::group(['middleware' => 'auth'], function () {
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-    Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::resource('instalaciones', InstalacionController::class);
+Route::resource('muelles', MuelleController::class);
+Route::resource('plazas', PlazaController::class);
+Route::resource('transitos', TransitoController::class);
+Route::resource('bases', BasesController::class);
+Route::resource('mensajes', MensajeController::class);
+Route::get("mensajes/{id}/responder", [MensajeController::class, 'responder'])->name('mensajes.responder');
+Route::resource('tripulantes', TripulanteController::class);
+Route::resource('embarcaciones', EmbarcacioneController::class);
+Route::resource('clientes', ClienteController::class);
+Route::resource('telefonos', TelefonoController::class);
 
-    Route::resource('instalaciones', InstalacionController::class);
-    Route::resource('muelles', MuelleController::class);
-    Route::resource('plazas', PlazaController::class);
-    Route::resource('transitos', TransitoController::class);
-    Route::resource('bases', BasesController::class);
-    Route::resource('mensajes', MensajeController::class);
-    Route::get("mensajes/{id}/responder", [MensajeController::class, 'responder'])->name('mensajes.responder');
-    Route::resource('tripulantes', TripulanteController::class);
-    Route::resource('embarcaciones', EmbarcacioneController::class);
-    Route::resource('clientes', ClienteController::class);
-    Route::resource('telefonos', TelefonoController::class);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/user', [AuthController::class, 'infoUser'])->name('info');
 
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-    Route::get('/user', [AuthController::class, 'infoUser'])->name('info');
-});
-
-// SOLO PUEDE ACCEDER LOS USUARIOS CON ROLE CUERPO-SEGURIDAD Y SUPERIORES
-Route::group(['middleware' => 'policia'], function () {
-
-});
-
-// SOLO PUEDE ACCEDER LOS USUARIOS CON ROLE GERENCIA Y SUPERIORES
-Route::group(['middleware' => 'gerencia'], function () {
-
-    // Route::resource('usuarios', UsuarioController::class)->only([
-    //     'index','show'
-    // ]); -- DA PROBLEMAS
-
-
-});
-
-// SOLO PUEDE ACCEDER LOS USUARIOS CON ROLE XUNTA
-Route::group(['middleware' => 'xunta'], function () {
-
-    // Route::resource('usuarios', UsuarioController::class)->except([
-    //     'index','show'
-    // ]); -- DA PROBLEMAS
-
-    Route::get('/usuarios/{id}/confirm', [UsuarioController::class, 'confirm'])->name('usuarios.confirm');
-});
 
 
 
 // LOS PERMISOS DE ACCESO (MIDDLEWARE) ESTAN EN EL CONSTRUCTOR DEL CONTROLLER
 Route::resource('usuarios', UsuarioController::class);
+Route::get('/usuarios/{id}/confirm', [UsuarioController::class, 'confirm'])->name('usuarios.confirm');
