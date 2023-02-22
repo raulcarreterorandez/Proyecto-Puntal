@@ -1,5 +1,14 @@
-<div id="usersettings" class="d-flex justify-content-around flex-column"> <!-- RESPONSIVE: col-sm-2 col-md-1 -->
-  <button id="notification" class="w-100" [routerLink]="['/lista-mensajes']"><img src="/assets/campana.svg"></button>
-  <button id="confuser" class="w-100" [routerLink]="['/infoUser']"><img src="/assets/ajustesPerfilUsuario.svg"></button>
-  <button id="logout" class="w-100" (click)="logout()"><img src="/assets/logOut.svg"></button>
+<div id="usersettings" class="row d-flex justify-content-start flex-column"> <!-- RESPONSIVE: col-sm-2 col-md-1 -->
+  <div class="col-auto">
+    <button id="notification" class="w-100" [routerLink]="['/lista-mensajes']"><img src="/assets/campana.svg"></button>
+  </div>
+
+  <div class="col-auto">
+    <button id="confuser" class="w-100" [routerLink]="['/infoUser']"><img src="/assets/ajustesPerfilUsuario.svg"></button>
+  </div>
+
+  <div class="col-auto">
+    <button id="logout" class="w-100" (click)="logout()"><img src="/assets/logOut.svg"></button>
+  </div>
+
 </div>

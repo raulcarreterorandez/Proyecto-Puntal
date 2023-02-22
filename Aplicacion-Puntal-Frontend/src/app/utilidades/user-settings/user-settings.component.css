@@ -1,13 +1,30 @@
-#usersettings {
-  height: 25vh;
-  width: 6vw;
-  background-color: #0E72AD;
+*{
+  border: 0px solid black;
   margin: 0px;
   padding: 0px;
+}
+
+#usersettings {
+  /* max-width: 190px; */
+  min-width: 60px;
+  height:auto;
+  background-color: #0E72AD;
+
+  /* margin: 0px;
+  padding: 0px; */
+}
+
+.col-auto{
+  margin:6px 3px 6px 3px;
 }
 
 button {
   background: none;
   border: none;
-  padding-top: 20%;
+
+}
+.col-auto:hover{
+  -webkit-box-shadow:0 0px 4px #777, 0 0 20px #CCC inset;
+  -moz-box-shadow:0 0px 4px #777, 0 0 20px #CCC inset;
+  box-shadow:0 0px 4px #777, 0 0 20px #CCC inset;
 }

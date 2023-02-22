@@ -1,17 +1,29 @@
 *{
-  border: 1px solid black;
+  border: 0px solid black;
+  margin: 0px;
+  padding: 0px;
 }
 
 #aside {
-  height: 90vh;
+  min-width:70px ;
+  max-width: 100px;
+  height: 92.5vh;
   background-color: #0E72AD;
-}
 
+}
+.col-auto{
+  margin-top: 10px;
+}
 button {
-  margin-top: 7px;
   background: none;
   border: none;
 }
+.col-auto:hover{
+  -webkit-box-shadow:0 0px 4px #777, 0 0 20px #CCC inset;
+  -moz-box-shadow:0 0px 4px #777, 0 0 20px #CCC inset;
+  box-shadow:0 0px 4px #777, 0 0 20px #CCC inset;
+}
+
 
 .texticon {
   width: 100%;
