@@ -7,9 +7,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule, Routes } from '@angular/router';
 // import { FormularioAltaInstalacionComponent } from '../instalaciones/formulario-alta-instalacion/formulario-alta-instalacion.component';
 
-const routes: Routes = [
-  // { path: 'añadirInst', component: FormularioAltaInstalacionComponent },
-];
+// const routes: Routes = [
+//   { path: 'añadirInst', component: FormularioAltaInstalacionComponent },
+// ];
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
   ],
   exports: [
     HeaderComponent,

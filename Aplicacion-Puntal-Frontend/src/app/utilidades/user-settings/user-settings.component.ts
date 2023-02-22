@@ -11,9 +11,9 @@ export class UserSettingsComponent {
   constructor(private tokenStorageService: TokenStorageService, private router:Router) { }
 
   logout(): void {
+
     this.tokenStorageService.signOut();
     this.router.navigate(['login']);
-
-    // window.location.reload();
   }
+
 }
