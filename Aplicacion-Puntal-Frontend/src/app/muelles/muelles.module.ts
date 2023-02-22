@@ -18,6 +18,9 @@ import { RouterModule } from '@angular/router';
     UtilidadesModule,
     DataTablesModule,
     RouterModule
+  ],
+  exports:[
+    ListaMuellesComponent,
   ]
 })
 export class MuellesModule { }
