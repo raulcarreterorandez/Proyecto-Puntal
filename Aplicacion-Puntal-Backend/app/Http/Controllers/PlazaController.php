@@ -14,11 +14,11 @@ class PlazaController extends Controller {
      //  - except: para indicar a que métodos no se les aplicará el middleware.
      //  - only: para indicar los métodos a los que se les aplicaría el middleware.
 
-/*     public function __construct() { // Copia Instalación.
+    public function __construct() { // Copia Instalación.
         $this->middleware('auth'); // SE PUEDE QUITAR
         $this->middleware('policia')->only(['index','show']); //Acceden a todo pero solo acceden a show e index
         $this->middleware('xunta')->except(['index','show']); 
-    } */
+    }
 
     public function __construct() { // Copia Muelle.  
         $this->middleware('auth')->only(['index','show']); 

@@ -7,8 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Usuario;
 
-
-
 class AuthController extends Controller
 {
     public $successStatus = 200;
@@ -47,12 +45,12 @@ class AuthController extends Controller
 
     public function role()
     {
-        $user = Auth::user();
-        //dd($user->perfil);
-
+        $user = Auth::user(); //Ya es usuario autentificado. No es necesario la linea de abajo.
         // Toda la informacion del usuario con los puertos asociados
         /* $user = Usuario::where("email",Auth::user()->email)->value('perfil'); */
-
+        
+        //dd($user->perfil);
+        
         return response()->json($user->perfil, $this->successStatus);
     }
 
