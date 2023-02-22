@@ -24,6 +24,7 @@ import { EmbarcacionesModule } from './embarcaciones/embarcaciones.module';
 import { MensajesModule } from './mensajes/mensajes.module';
 import { HistoricosModule } from './historicos/historicos.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InfoUserComponent } from './info-user/info-user.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     LoginComponent,
     HomeComponent,
+    InfoUserComponent,
   ],
   imports: [
     BrowserModule,

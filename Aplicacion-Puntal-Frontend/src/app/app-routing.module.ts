@@ -45,8 +45,7 @@ import { VistaDetalladaMensajeComponent } from './mensajes/vista-detallada-mensa
 
 //TRIPULANTES
 import { VistaDetalladaTripulantesComponent } from './tripulantes/vista-detallada-tripulantes/vista-detallada-tripulantes.component';
-
-// TRIPULANTES
+import { InfoUserComponent } from './info-user/info-user.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -68,6 +67,7 @@ const routes: Routes = [
   // RUTAS - USUARIOS
   { path: 'lista-usuarios', component: ListaUsuariosComponent, canActivate: [LogeadoGuard] },
   { path: 'vistaDetalleUsuario/:email', component: VistaDetalladaUsuarioComponent, canActivate: [LogeadoGuard] },
+  { path: 'infoUser', component: InfoUserComponent, canActivate: [LogeadoGuard] },
 
   // RUTAS - CLIENTES
   { path: 'lista-clientes', component: ListaClientesComponent, canActivate: [LogeadoGuard] },

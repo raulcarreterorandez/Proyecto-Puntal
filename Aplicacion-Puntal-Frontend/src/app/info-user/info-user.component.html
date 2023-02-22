@@ -1,0 +1,64 @@
+<div id="dashBoard" class="container-fluid">
+  <div class="row">
+      <app-header></app-header>
+  </div>
+  <div id="vistaCentral" class="row">
+      <div class="d-none d-lg-block col-1" id="espacio-aside">
+          <app-aside></app-aside>
+      </div>
+
+      <!-- CONTENIDO MAIN -->
+
+      <div class="col">
+        <div id="cabecera_botones" class="row d-flex justify-content-start align-items-center">
+          <div class="col-lg-6 d-flex row">
+            <div class="texto " id="titulo">
+              <img id="boton_volver" src="/assets/flechaAtras.svg" alt="Volver" [routerLink]="['/home']">AJUSTES DE USUARIO
+            </div>
+          </div>
+        </div>
+
+        <div id="cabecera" class="row ">
+
+          <div class="row">
+            <div class="col-lg-6" >
+             <!-- COLOCAR IMAGEN -->
+             <i class="bi bi-person-circle" id="foto-perfil"></i>
+            </div>
+          </div>
+          <div class="row" >
+            <div class="col-lg-6">
+              <button id="pie-foto" type="button" class="btn btn-primary btn-sm" disabled>CAMBIAR</button>
+
+            </div>
+          </div>
+
+        </div>
+
+        <div id="cuerpo" class="row">
+          <div class="col-lg-6">
+            <div class="texto">Nombre Usuario: <strong> {{ usuario.nombreUsuario }}</strong></div>
+            <div class="texto">Nombre: <strong>{{ usuario.nombreCompleto }}</strong></div>
+            <div class="texto">Email: <strong>{{ usuario.email }}</strong></div>
+            <div class="texto">Idioma: <strong>{{ usuario.idioma }}</strong></div>
+            <div class="texto">Instalaciones Encargadas:
+              <strong *ngFor="let instalacion of usuario.instalaciones_usuario">
+                <br>{{ instalacion.nombrePuerto }}
+              </strong>
+            </div>
+            <div class="texto">Perfil Asignado: <strong>{{ usuario.perfil }}</strong></div>
+
+          </div>
+          <div class="col-lg-6">
+
+          </div>
+        </div>
+      </div>
+
+      <!-- FIN CONTENIDO MAIN -->
+
+      <div class="d-none d-lg-block col-1" id="espacio-user">
+          <app-user-settings id="contenido-user"></app-user-settings>
+      </div>
+  </div>
+</div>
