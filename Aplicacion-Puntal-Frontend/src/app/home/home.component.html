@@ -1,2 +1,26 @@
-<!-- DEPENDIENDO DEL ROL DEL USUARIO LOGEADO, IREMOS A UNA PANTALLA U OTRA -->
-<app-lista-instalaciones></app-lista-instalaciones>
+
+<!-- <app-lista-instalaciones></app-lista-instalaciones> -->
+<!-- ACCEDER AL CONTENIDO - {{content.success[0].nombreCompleto}}
+  <br>
+  PERFIL - {{perfil}} -->
+
+
+  <!-- DEPENDIENDO DEL ROL DEL USUARIO LOGEADO, IREMOS A UNA PANTALLA U OTRA -->
+
+  <div [ngSwitch]="perfil">
+  <div *ngSwitchCase="'XUNTA-GALICIA'">
+    <app-lista-instalaciones></app-lista-instalaciones>
+  </div>
+
+  <div *ngSwitchCase="'CUERPO-SEGURIDAD'">
+    <app-lista-historicos></app-lista-historicos>
+  </div>
+
+  <div *ngSwitchCase="'GERENCIA-PUERTO'">
+    <app-lista-usuarios></app-lista-usuarios>
+  </div>
+
+  <div *ngSwitchCase="'GUARDA-MUELLES'">
+    <app-lista-muelles></app-lista-muelles>
+  </div>
+</div>

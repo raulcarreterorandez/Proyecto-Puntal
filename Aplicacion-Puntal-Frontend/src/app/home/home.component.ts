@@ -9,19 +9,21 @@ import { TokenStorageService } from '../_services/token-storage.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  content?: string;
+  content?: any;
+  perfil?:string;
 
   constructor(private userService: UserService, private router:Router, private token:TokenStorageService) { }
 
-  ngOnInit(): void {
-    this.userService.getPublicContent().subscribe(
-      data => {
-        this.content = data;
-        console.log(this.token.getToken());
-      },
-      err => {
-        this.router.navigate(['login']);
-        // this.content = JSON.parse(err.error).message;
+    ngOnInit(): void {
+      this.userService.getPublicContent().subscribe({
+        next: data => {
+          this.content = JSON.parse(data);
+          this.perfil=this.content.success[0].perfil;
+          console.log(this.token.getUser());
+        },
+        error: err => {
+          this.router.navigate(['login']);
+        }
       }
     );
   }
