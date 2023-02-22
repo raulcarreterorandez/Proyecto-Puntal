@@ -43,42 +43,50 @@ import { VistaDetalladaHistoricoComponent } from './historicos/vista-detallada-h
 import { ListaMensajesComponent } from './mensajes/lista-mensajes/lista-mensajes.component';
 import { VistaDetalladaMensajeComponent } from './mensajes/vista-detallada-mensaje/vista-detallada-mensaje.component';
 
+//TRIPULANTES
+import { VistaDetalladaTripulantesComponent } from './tripulantes/vista-detallada-tripulantes/vista-detallada-tripulantes.component';
+
+// TRIPULANTES
+
 const routes: Routes = [
-  { path: 'home', component: HomeComponent  },
+  { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 
   // RUTAS - INSTALACIONES
   { path: 'lista-instalaciones', component: ListaInstalacionesComponent, canActivate: [InstalacionGuard] },
-  { path: 'vistaDetalleInst/:id', component: VistaDetalladaInstalacionComponent, canActivate: [InstalacionGuard]  },
+  { path: 'vistaDetalleInst/:id', component: VistaDetalladaInstalacionComponent, canActivate: [InstalacionGuard] },
 
   // RUTAS - MUELLES
-  { path: 'lista-muelles', component: ListaMuellesComponent,canActivate: [LogeadoGuard]},
-  { path: 'vistaDetalleMuelle/:id', component: VistaDetalladaMuelleComponent,canActivate: [LogeadoGuard]},
+  { path: 'lista-muelles', component: ListaMuellesComponent, canActivate: [LogeadoGuard] },
+  { path: 'vistaDetalleMuelle/:id', component: VistaDetalladaMuelleComponent, canActivate: [LogeadoGuard] },
 
   // RUTAS - PLAZAS
-  { path: 'lista-plazas', component: ListaPlazasComponent ,canActivate: [LogeadoGuard]},
-  { path: 'vistaDetallePlaza/:id', component: VistaDetalladaPlazaComponent ,canActivate: [LogeadoGuard]},
+  { path: 'lista-plazas', component: ListaPlazasComponent, canActivate: [LogeadoGuard] },
+  { path: 'vistaDetallePlaza/:id', component: VistaDetalladaPlazaComponent, canActivate: [LogeadoGuard] },
 
   // RUTAS - USUARIOS
-  { path: 'lista-usuarios', component: ListaUsuariosComponent, canActivate: [InstalacionGuard]  },
-  { path: 'vistaDetalleUsuario/:email', component: VistaDetalladaUsuarioComponent, canActivate: [InstalacionGuard]  },
+  { path: 'lista-usuarios', component: ListaUsuariosComponent, canActivate: [LogeadoGuard] },
+  { path: 'vistaDetalleUsuario/:email', component: VistaDetalladaUsuarioComponent, canActivate: [LogeadoGuard] },
 
   // RUTAS - CLIENTES
-  { path: 'lista-clientes', component: ListaClientesComponent,canActivate: [LogeadoGuard] },
-  { path: 'vistaDetalleCliente/:numDocumento', component: VistaDetalladaClienteComponent ,canActivate: [LogeadoGuard]},
+  { path: 'lista-clientes', component: ListaClientesComponent, canActivate: [LogeadoGuard] },
+  { path: 'vistaDetalleCliente/:numDocumento', component: VistaDetalladaClienteComponent, canActivate: [LogeadoGuard] },
 
   // RUTAS - EMBARCACIONES
-  { path: 'lista-embarcaciones', component: ListaEmbarcacionesComponent ,canActivate: [LogeadoGuard]},
-  { path: 'vistaDetalleEmbarcacione/:matricula', component: VistaDetalladaEmbarcacioneComponent ,canActivate: [LogeadoGuard]},
+  { path: 'lista-embarcaciones', component: ListaEmbarcacionesComponent, canActivate: [LogeadoGuard] },
+  { path: 'vistaDetalleEmbarcacione/:matricula', component: VistaDetalladaEmbarcacioneComponent, canActivate: [LogeadoGuard] },
 
   // RUTAS - HISTORICOS
-  { path: 'lista-historicos', component: ListaHistoricosComponent, canActivate: [HisotricoGuard]  },
-  { path: 'vistaDetalleHistorico/:id', component: VistaDetalladaHistoricoComponent, canActivate: [HisotricoGuard]  },
+  { path: 'lista-historicos', component: ListaHistoricosComponent, canActivate: [HisotricoGuard] },
+  { path: 'vistaDetalleHistorico/:id', component: VistaDetalladaHistoricoComponent, canActivate: [HisotricoGuard] },
 
   // RUTAS - MENSAJES
-  { path: 'lista-mensajes', component: ListaMensajesComponent},
-  { path: 'vistaDetalleMensaje/:id', component: VistaDetalladaMensajeComponent},
+  { path: 'lista-mensajes', component: ListaMensajesComponent, canActivate: [LogeadoGuard] },
+  { path: 'vistaDetalleMensaje/:id', component: VistaDetalladaMensajeComponent, canActivate: [LogeadoGuard] },
+
+  // RUTAS - TRIPULANTES
+  { path: 'vistaDetalleTripulante/:numDocumento', component: VistaDetalladaTripulantesComponent, canActivate: [LogeadoGuard] },
 ];
 
 @NgModule({

@@ -1,0 +1,57 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  border: solid 0px black;
+}
+
+#boton_volver {
+  width: 40px;
+  cursor: pointer;
+}
+
+#cabecera_botones {
+  padding: 10px;
+  margin: 20px;
+  border-radius: 5px;
+}
+
+#cabecera {
+  background-color: #C1D1E3;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 5px;
+}
+
+#cuerpo {
+  background-color: #D9EBFF;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.texto:first-child {
+  margin-top: 0px;
+}
+
+.texto {
+  margin-top: 20px;
+}
+
+tr {
+  border: 1px solid black;
+}
+
+td {
+  border: 1px solid black;
+}
+
+th {
+  border: 1px solid black;
+}
+
+.btn-info {
+  background-color: #007BC4;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+}
