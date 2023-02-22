@@ -30,66 +30,26 @@
         </div>
       </div>
       <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
-        <mat-tab label="Cliente">
-          <div id="cuerpoCliente">
-            <div class="col-10">
-              <div class="row">
-                <div class="texto">Tipo Documento: <strong>{{ currentPlaza.cliente.tipoDocumento }}</strong></div>
-                <div class="texto">Numero Documentacion: <strong>{{ currentPlaza.cliente.tipoDocumento }}</strong>
-                </div>
-                <div class="texto">Nombre: <strong>{{ currentPlaza.cliente.nombre }}</strong></div>
-                <div class="texto">Apellidos: <strong>{{ currentPlaza.cliente.apellidos }}</strong></div>
-                <div class="texto">Email: <strong>{{ currentPlaza.cliente.email }}</strong></div>
-                <div class="texto">Direccion: <strong>{{ currentPlaza.cliente.direccion }}</strong></div>
-                <div class="texto">Telefonos:
-                  <strong *ngFor="let telefono of currentPlaza.cliente.telefonos">
-                    <br>{{ telefono.numero }}
-                  </strong>
-                </div>
-              </div>
-            </div>
-            <div class="col-10">
-              <div>
-                <table id="tabla" class="table">
-                  <thead class="">
-                    <tr>
-                      <th scope="col">Matricula</th>
-                      <th scope="col">Nombre</th>
-                      <th scope="col">Propulsión</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let embarcacion of currentPlaza.cliente.embarcaciones">
-                      <td>{{embarcacion.matricula}}</td>
-                      <td>{{embarcacion.nombre}}</td>
-                      <td>{{embarcacion.propulsion}}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </mat-tab>
-        <mat-tab label="Embarcacion">
-          <div id="cuerpoEmbarcacion">
-            <div class="col-10">
-              <div>
-                <div class="texto">Matricula: <strong>{{ currentPlaza.embarcacion.matricula }}</strong></div>
-                <div class="texto">Nombre: <strong>{{ currentPlaza.embarcacion.nombre }}</strong></div>
-                <div class="texto">Eslora: <strong>{{ currentPlaza.embarcacion.eslora }}</strong></div>
-                <div class="texto">Manga: <strong>{{ currentPlaza.embarcacion.manga }}</strong></div>
-                <div class="texto">Calado: <strong>{{ currentPlaza.embarcacion.calado }}</strong></div>
-                <div class="texto">Propulsion: <strong>{{ currentPlaza.embarcacion.propulsion }}</strong></div>
-              </div>
-            </div>
-          </div>
-        </mat-tab>
+        
         <mat-tab label="Plaza">
           <div id="cuerpoPlaza">
             <div class="col-10">
               <div>
                 <div class="texto">Id Plaza:<strong> {{ currentPlaza.id }}</strong></div>
-                <div class="texto">Disponible: <strong>{{ currentPlaza.disponible }}</strong></div>
+
+                <div class="texto">Disponible:<ng-template *ngIf="currentPlaza.disponible; then check else cruz"></ng-template>
+                  <!-- <strong>{{ currentPlaza.disponible }}</strong> -->
+                  <ng-template #check>
+                    <button class="bi bi-check-square-fill boton-habilitado" style="color: green"></button>
+                    <a style="visibility: hidden">0</a>
+                  </ng-template>
+
+                    <ng-template #cruz>
+                      <button class="bi bi-x-square-fill boton-habilitado" style="color: red"></button>
+                      <a style="visibility: hidden">1</a>
+                    </ng-template>
+                </div>
+                
                 <div class="texto">Fecha Entrada:<strong>
                     <p *ngIf="currentPlaza.tipo=='Base'">{{ currentPlaza.bases.fechaEntrada }}</p>
                     <p *ngIf="currentPlaza.tipo=='Transito'">{{currentPlaza.transitos.fechaEntrada }}</p>
@@ -127,6 +87,62 @@
                     </tbody>
                   </table>
                 </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Embarcacion">
+          <div id="cuerpoEmbarcacion">
+            <div class="col-10">
+              <div>
+                <div class="texto">Matricula: <strong>{{ currentPlaza.embarcacion.matricula }}</strong></div>
+                <div class="texto">Nombre: <strong>{{ currentPlaza.embarcacion.nombre }}</strong></div>
+                <div class="texto">Eslora: <strong>{{ currentPlaza.embarcacion.eslora }}</strong></div>
+                <div class="texto">Manga: <strong>{{ currentPlaza.embarcacion.manga }}</strong></div>
+                <div class="texto">Calado: <strong>{{ currentPlaza.embarcacion.calado }}</strong></div>
+                <div class="texto">Propulsion: <strong>{{ currentPlaza.embarcacion.propulsion }}</strong></div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Cliente">
+          <div id="cuerpoCliente">
+            <div class="col-10">
+              <div class="row">
+                <div class="texto">Tipo Documento: <strong>{{ currentPlaza.cliente.tipoDocumento }}</strong></div>
+                <div class="texto">Numero Documentacion: <strong>{{ currentPlaza.cliente.tipoDocumento }}</strong>
+                </div>
+                <div class="texto">Nombre: <strong>{{ currentPlaza.cliente.nombre }}</strong></div>
+                <div class="texto">Apellidos: <strong>{{ currentPlaza.cliente.apellidos }}</strong></div>
+                <div class="texto">Email: <strong>{{ currentPlaza.cliente.email }}</strong></div>
+                <div class="texto">Direccion: <strong>{{ currentPlaza.cliente.direccion }}</strong></div>
+                <div class="texto">Telefonos:
+                  <strong *ngFor="let telefono of currentPlaza.cliente.telefonos">
+                    <br>{{ telefono.numero }}
+                  </strong>
+                </div>
+              </div>
+            </div>
+            <div class="col-10">
+              <div>
+                <table id="tabla" class="table">
+                  <thead class="">
+                    <tr>
+                      <th scope="col">Matricula</th>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Propulsión</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let embarcacion of currentPlaza.cliente.embarcaciones">
+                      <td>{{embarcacion.matricula}}</td>
+                      <td>{{embarcacion.nombre}}</td>
+                      <td>{{embarcacion.propulsion}}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
