@@ -36,12 +36,12 @@
                         <ng-template *ngIf="plaza.disponible; then check else cruz"></ng-template>
     
                         <ng-template #check>
-                          <button class="bi bi-check-square-fill boton-habilitado" style="color: green"></button>
+                          <button id="icono" class="bi bi-check-square-fill boton-habilitado" style="color: green"></button>
                           <a style="visibility: hidden">0</a>
                         </ng-template>
     
                           <ng-template #cruz>
-                            <button class="bi bi-x-square-fill boton-habilitado" style="color: red"></button>
+                            <button id="icono" class="bi bi-x-square-fill boton-habilitado" style="color: red"></button>
                             <a style="visibility: hidden">1</a>
                           </ng-template>
                         </td>

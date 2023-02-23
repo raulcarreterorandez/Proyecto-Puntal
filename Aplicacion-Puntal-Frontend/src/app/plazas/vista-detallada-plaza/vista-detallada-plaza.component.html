@@ -29,27 +29,29 @@
           <div>ID Muelle:<strong> {{ currentPlaza.idMuelle }}</strong></div>
         </div>
       </div>
-      <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
-        
-        <mat-tab label="Plaza">
-          <div id="cuerpoPlaza">
-            <div class="col-10">
-              <div>
-                <div class="texto">Id Plaza:<strong> {{ currentPlaza.id }}</strong></div>
 
-                <div class="texto">Disponible:<ng-template *ngIf="currentPlaza.disponible; then check else cruz"></ng-template>
+      <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+
+        <mat-tab label="Plaza">
+          <div id="cuerpoPlaza" class="row d-flex align-items-center">
+            <div class="col-6">
+
+              <div id="colIzq">
+                <div class="texto">Id Plaza:<strong> {{ currentPlaza.id }}</strong></div>
+                <div class="texto">Disponible:<ng-template
+                    *ngIf="currentPlaza.disponible; then check else cruz"></ng-template>
                   <!-- <strong>{{ currentPlaza.disponible }}</strong> -->
                   <ng-template #check>
                     <button class="bi bi-check-square-fill boton-habilitado" style="color: green"></button>
                     <a style="visibility: hidden">0</a>
                   </ng-template>
 
-                    <ng-template #cruz>
-                      <button class="bi bi-x-square-fill boton-habilitado" style="color: red"></button>
-                      <a style="visibility: hidden">1</a>
-                    </ng-template>
+                  <ng-template #cruz>
+                    <button class="bi bi-x-square-fill boton-habilitado" style="color: red"></button>
+                    <a style="visibility: hidden">1</a>
+                  </ng-template>
                 </div>
-                
+
                 <div class="texto">Fecha Entrada:<strong>
                     <p *ngIf="currentPlaza.tipo=='Base'">{{ currentPlaza.bases.fechaEntrada }}</p>
                     <p *ngIf="currentPlaza.tipo=='Transito'">{{currentPlaza.transitos.fechaEntrada }}</p>
@@ -58,42 +60,48 @@
                     <p *ngIf="currentPlaza.tipo=='Base'">{{ currentPlaza.bases.fechaSalida }}</p>
                     <p *ngIf="currentPlaza.tipo=='Transito'">{{ currentPlaza.transitos.fechaSalida }}</p>
                   </strong></div>
+
+                <div class="texto">Tipo: <strong>{{ currentPlaza.tipo}}</strong></div>
+                <div class="texto">Año: <strong>{{ currentPlaza.anyo}}</strong></div>
+                <!-- <div class="texto">Visto: <strong>{{ currentPlaza.visto }}</strong></div> -->
               </div>
-              <div class="texto">Tipo: <strong>{{ currentPlaza.tipo}}</strong></div>
-              <div class="texto">Año: <strong>{{ currentPlaza.anyo}}</strong></div>
-              <div class="texto">Visto: <strong>{{ currentPlaza.visto }}</strong></div>
             </div>
+
             <div class="col-6">
-              <div class="row">
-                <div class="texto">Puerto Origen: <strong>{{currentPlaza.puertoOrigen}}</strong></div>
-                <div class="texto">Puerto Destino: <strong>{{currentPlaza.puertoDestino}}</strong></div>
+
+              <div id="colDer">
                 <div class="row">
-                  <table id="tabla" class="table">
-                    <thead class="">
-                      <tr>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Apellidos</th>
-                        <th scope="col">Nº Documento</th>
-                        <!--  <th scope="col">Id Embarcación</th> -->
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let tripulante of currentPlaza.tripulantes">
-                        <td>{{tripulante.nombre}}</td>
-                        <td>{{tripulante.apellidos}}</td>
-                        <td>{{tripulante.numDocumento}}</td>
-                        <!--  <td>{{tripulante.id_embarcacion}}</td> -->
-                      </tr>
-                    </tbody>
-                  </table>
+                  <div class="texto">Puerto Origen: <strong>{{currentPlaza.puertoOrigen}}</strong></div>
+                  <div class="texto">Puerto Destino: <strong>{{currentPlaza.puertoDestino}}</strong></div>
+                  <div class="row">
+                    <table id="tabla" class="table">
+                      <thead class="">
+                        <tr>
+                          <th scope="col">Nombre</th>
+                          <th scope="col">Apellidos</th>
+                          <th scope="col">Nº Documento</th>
+                          <!--  <th scope="col">Id Embarcación</th> -->
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let tripulante of currentPlaza.tripulantes">
+                          <td>{{tripulante.nombre}}</td>
+                          <td>{{tripulante.apellidos}}</td>
+                          <td>{{tripulante.numDocumento}}</td>
+                          <!--  <td>{{tripulante.id_embarcacion}}</td> -->
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>
+
           </div>
         </mat-tab>
 
         <mat-tab label="Embarcacion">
-          <div id="cuerpoEmbarcacion">
+          <div id="cuerpoEmbarcacion" class="row d-flex align-items-center">
             <div class="col-10">
               <div>
                 <div class="texto">Matricula: <strong>{{ currentPlaza.embarcacion.matricula }}</strong></div>
@@ -108,25 +116,24 @@
         </mat-tab>
 
         <mat-tab label="Cliente">
-          <div id="cuerpoCliente">
-            <div class="col-10">
-              <div class="row">
+          <div id="cuerpoCliente" class="row d-flex align-items-center">
+            <div class="col-6">
+              <div id="colIzq">
                 <div class="texto">Tipo Documento: <strong>{{ currentPlaza.cliente.tipoDocumento }}</strong></div>
-                <div class="texto">Numero Documentacion: <strong>{{ currentPlaza.cliente.tipoDocumento }}</strong>
-                </div>
+                <div class="texto">Numero Documentacion: <strong>{{ currentPlaza.cliente.tipoDocumento }}</strong></div>
                 <div class="texto">Nombre: <strong>{{ currentPlaza.cliente.nombre }}</strong></div>
                 <div class="texto">Apellidos: <strong>{{ currentPlaza.cliente.apellidos }}</strong></div>
                 <div class="texto">Email: <strong>{{ currentPlaza.cliente.email }}</strong></div>
                 <div class="texto">Direccion: <strong>{{ currentPlaza.cliente.direccion }}</strong></div>
-                <div class="texto">Telefonos:
-                  <strong *ngFor="let telefono of currentPlaza.cliente.telefonos">
-                    <br>{{ telefono.numero }}
-                  </strong>
-                </div>
               </div>
             </div>
-            <div class="col-10">
-              <div>
+
+            <div class="col-6">
+              <div id="colDer">
+                <div class="texto">Telefonos:
+                  <strong *ngFor="let telefono of currentPlaza.cliente.telefonos">{{ telefono.numero }}
+                  </strong>
+                </div>
                 <table id="tabla" class="table">
                   <thead class="">
                     <tr>
@@ -147,7 +154,9 @@
             </div>
           </div>
         </mat-tab>
+
       </mat-tab-group>
+
     </div>
     <div id="usersettings" class="col-1 d-flex flex-row-reverse">
       <app-user-settings></app-user-settings>

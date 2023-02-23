@@ -5,8 +5,16 @@
 }
 
 #boton_volver {
+  margin-top: 50px;
   width: 40px;
   cursor: pointer;
+}
+
+#titulo {
+  margin-top: 50px;
+  font-size: 40px;
+  font-weight: bolder;
+  color: #007BC4;
 }
 
 #cabecera_botones {
@@ -16,10 +24,12 @@
 }
 
 #cabecera {
-  background-color: #C1D1E3;
+  background-color: #C1D1E3;  
   padding: 10px;
   margin: 20px;
   border-radius: 5px;
+  font-size: 20px;
+  padding-left: 30px;
 }
 
 #cuerpo {
@@ -27,14 +37,18 @@
   margin: 20px;
   padding: 10px;
   border-radius: 5px;
+  height: 40vh;
 }
 
-.texto:first-child {
-  margin-top: 0px;
-}
+
+/* .texto:first-child {
+  margin-top: 20px;
+} */
 
 .texto {
-  margin-top: 20px;
+  margin-left: 20px;
+  margin-top: 40px;
+  font-size: 20px;
 }
 
 tr {

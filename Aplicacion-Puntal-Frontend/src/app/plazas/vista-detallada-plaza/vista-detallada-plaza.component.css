@@ -5,12 +5,15 @@
 }
 
 #titulo {
-  font-size: 25px;
+  margin-top: 100px;
+  font-size: 40px;
   font-weight: bolder;
   color: #007BC4;
 }
 
 #boton_volver {
+  margin-top: 100px;
+  margin-left: 30px;
   width: 40px;
   cursor: pointer;
 }
@@ -24,6 +27,7 @@
 
 #cuerpoCliente {
   background-color: #D9EBFF;
+  height: 40vh;
   margin: 20px;
   padding: 10px;
   border-radius: 5px;
@@ -31,6 +35,7 @@
 
 #cuerpoEmbarcacion {
   background-color: #D9EBFF;
+  height: 30vh;
   margin: 20px;
   padding: 10px;
   border-radius: 5px;
@@ -38,6 +43,7 @@
 
 #cuerpoPlaza {
   background-color: #D9EBFF;
+  height: 35vh;
   margin: 20px;
   padding: 10px;
   border-radius: 5px;
@@ -48,6 +54,11 @@
 }
 
 .texto {
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+#tabla{
   margin-top: 20px;
 }
 
@@ -61,4 +72,21 @@ td {
 
 th {
   border: 1px solid black;
+}
+
+.boton-habilitado{
+  
+  margin-left: 10px;
+  outline: none;
+  border: 0px;
+  cursor: none;
+}
+
+.bi{
+  font-size:30px;  
+}
+
+#colIzq{
+  margin-left: 20px;
+
 }
