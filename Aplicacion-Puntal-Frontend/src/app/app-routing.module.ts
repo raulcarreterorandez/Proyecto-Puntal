@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 
 //GUARD
 import { InstalacionGuard } from './guards/instalaciones/instalacion.guard';
@@ -11,7 +13,6 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 
 // INSTALACIONES
-/* import { FormularioAltaInstalacionComponent } from './instalaciones/formulario-alta-instalacion/formulario-alta-instalacion.component'; */
 import { ListaInstalacionesComponent } from './instalaciones/lista-instalaciones/lista-instalaciones.component';
 import { VistaDetalladaInstalacionComponent } from './instalaciones/vista-detallada-instalacion/vista-detallada-instalacion.component';
 
@@ -47,9 +48,11 @@ import { VistaDetalladaMensajeComponent } from './mensajes/vista-detallada-mensa
 import { VistaDetalladaTripulantesComponent } from './tripulantes/vista-detallada-tripulantes/vista-detallada-tripulantes.component';
 import { InfoUserComponent } from './info-user/info-user.component';
 
+
+
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'home', component: HomeComponent , data: { animation: 'homePage' }},
+  { path: 'login', component: LoginComponent ,data: { animation: 'loginPage' }},
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 
   // RUTAS - INSTALACIONES
@@ -65,8 +68,8 @@ const routes: Routes = [
   { path: 'vistaDetallePlaza/:id', component: VistaDetalladaPlazaComponent, canActivate: [LogeadoGuard] },
 
   // RUTAS - USUARIOS
-  { path: 'lista-usuarios', component: ListaUsuariosComponent, canActivate: [LogeadoGuard] },
-  { path: 'vistaDetalleUsuario/:email', component: VistaDetalladaUsuarioComponent, canActivate: [LogeadoGuard] },
+  { path: 'lista-usuarios', component: ListaUsuariosComponent, canActivate: [LogeadoGuard] ,data: { animation: 'listPage' }},
+  { path: 'vistaDetalleUsuario/:email', component: VistaDetalladaUsuarioComponent, canActivate: [LogeadoGuard],data: { animation: 'showPage' } },
   { path: 'infoUser', component: InfoUserComponent, canActivate: [LogeadoGuard] },
 
   // RUTAS - CLIENTES
@@ -90,7 +93,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
