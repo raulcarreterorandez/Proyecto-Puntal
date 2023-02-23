@@ -3,7 +3,7 @@
 }
 
 #cabecera {
-  /* height: 10vh; */
+  height: 10vh;
   background: #007BC4;
 }
 
@@ -17,7 +17,7 @@
 
 #hamburger button {
   background-color: #007BC4;
-  margin-left: 20px;
+  margin-left: 10px;
   color: #F2F9FB;
   border: none;
 }
@@ -43,5 +43,5 @@
 
 #usuario p {
   margin-top: 12px;
-  margin-right: 20px;
+  margin-right: 0px;
 }

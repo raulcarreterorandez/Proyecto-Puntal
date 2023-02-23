@@ -1,86 +1,144 @@
 <div id="dashBoard" class="container-fluid">
-    <div class="row">
-        <app-header></app-header>
+  <div class="row">
+    <app-header></app-header>
+  </div>
+  <div id="vistaCentral" class="row">
+    <div class="col-1">
+      <app-aside></app-aside>
     </div>
-    <div id="vistaCentral" class="row">
-        <div class="col-1">
-            <app-aside></app-aside>
+    <div class="col-10">
+      <div id="cabecera_botones" class="col-12 row d-flex justify-content-start align-items-center">
+        <div class="col-6 d-flex row">
+          <img id="boton_volver" src="/assets/flechaAtras.svg" alt="Volver" [routerLink]="['/lista-muelles']">
         </div>
-        <div class="col-10">
-            <div class="row">
-                <div class="container-fluid d-flex justify-content-center">
+      </div>
+      <div id="cabecera" class="row d-flex align-items-center ">
+        <div class="col-2">
+          <div>ID Instalación.: <strong>{{ currentMuelle.idInstalacion }}</strong></div>
+        </div>
+        <div class="col-4">
+          <div>Código Instalación.: <strong>{{ currentMuelle.instalacion.codigo }}</strong></div>
+        </div>
+        <div class="col-6">
+          <div>Nombre Instalación.: <strong>{{ currentMuelle.instalacion.nombrePuerto }}</strong>
+          </div>
+        </div>
+      </div>
+      <div id="cuerpo" class="row">
+        <div class="col-6">
+          <div class="texto">ID Muelle: <strong> {{ currentMuelle.id }}</strong></div>
+          <div class="texto">Nº Plazas Totales: <strong>{{ currentMuelle.plazasTotales }}</strong></div>
+          <div class="texto">Nº Plazas Disponibles: <strong> {{ currentMuelle.plazasDisponibles }}</strong></div>
+        </div>
+        <table id="tabla" class="table">
+          <thead class="">
+            <tr>
+              <th scope="col">ID Plaza</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Tipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let plaza of currentMuelle.plazas">
+              <td>{{plaza.id}}</td>
+              <td [style.color]="plaza.disponible == 1 ? 'green': 'red'">
+                <p *ngIf="plaza.disponible==1">Disponible</p>
+                <p *ngIf="plaza.disponible==0">Ocupado</p>
+              </td>
+              <td>{{plaza.tipo}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-1 d-flex flex-row-reverse">
+      <app-user-settings></app-user-settings>
+    </div>
+  </div>
+</div>
+<!--
+<div id="dashBoard" class="container-fluid">
+  <div class="row">
+    <app-header></app-header>
+  </div>
+  <div id="vistaCentral" class="row">
+    <div class="col-1">
+      <app-aside></app-aside>
+    </div>
+    <div class="col-10">
+      <div class="row">
+        <div class="container-fluid d-flex justify-content-center">
 
-                    <div class="col-8">
+          <div class="col-8">
 
-                        <div id="botones" class="row d-flex justify-content-space-between align-items-center">
-                            <div class="col-1">
-                                <button><i class="far fa-arrow-alt-circle-left mx-1" style='font-size:50px'
-                                        data-bs-toggle="tooltip" title="Volver"
-                                        [routerLink]="['/lista-muelles']"></i></button>
-                            </div>
-                            <div class="col-11">
-                                <div id="titulo">Detalle Muelle</div>
-                            </div>
-                        </div>
+            <div id="botones" class="row d-flex justify-content-space-between align-items-center">
+              <div class="col-1">
+                <button><i class="far fa-arrow-alt-circle-left mx-1" style='font-size:50px' data-bs-toggle="tooltip"
+                    title="Volver" [routerLink]="['/lista-muelles']"></i></button>
+              </div>
+              <div class="col-11">
+                <div id="titulo">Detalle Muelle</div>
+              </div>
+            </div>
 
-                        <div id="cabecera" class="row d-flex align-items-center ">
-                            <div class="col-2">
-                                <div>Id Inst.: <strong>{{ currentMuelle.idInstalacion }}</strong></div>
-                            </div>
-                            <div class="col-4">
-                                <div>Código Inst.: <strong>{{ currentMuelle.instalacion.codigo }}</strong></div>
-                            </div>
-                            <div class="col-6">
-                                <div>Nombre Inst.: <strong>{{ currentMuelle.instalacion.nombrePuerto }}</strong>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div id="cuerpo" class="row container-fluid d-flex">
-                            <div class="row d-flex justify-content-center">
-                                <div class="col-6">
-                                    <div class="texto">Id Muelle:<strong> {{ currentMuelle.id }}</strong></div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="texto">Nº Plazas Total: <strong>{{ currentMuelle.plazasTotales }}</strong></div>
-                                    <div class="texto">Nº Plazas Disponibles: <strong>{{ currentMuelle.plazasDisponibles }}</strong></div>
-                                </div>
-                            </div>
-                            <div class="row d-flex justify-content-center">
-                                <table id="tabla" class="table">
-                                    <thead class="">
-                                      <tr>
-                                        <th scope="col">Id Plaza</th>
-                                        <th scope="col">Estado</th>
-                                        <th scope="col">Tipo</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr *ngFor="let plaza of currentMuelle.plazas">
-                                        <td>{{plaza.id}}</td>
-                                        <td [style.color]="plaza.disponible == 1 ? 'green': 'red'"><p *ngIf="plaza.disponible==1">Disponible</p><p *ngIf="plaza.disponible==0">Ocupado</p></td>
-                                        <td>{{plaza.tipo}}</td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                            </div>
-
-                        </div>
-
-                    </div>
-
+            <div id="cabecera" class="row d-flex align-items-center ">
+              <div class="col-2">
+                <div>Id Inst.: <strong>{{ currentMuelle.idInstalacion }}</strong></div>
+              </div>
+              <div class="col-4">
+                <div>Código Inst.: <strong>{{ currentMuelle.instalacion.codigo }}</strong></div>
+              </div>
+              <div class="col-6">
+                <div>Nombre Inst.: <strong>{{ currentMuelle.instalacion.nombrePuerto }}</strong>
                 </div>
+              </div>
+            </div>
+
+            <div id="cuerpo" class="row container-fluid d-flex">
+              <div class="row d-flex justify-content-center">
+                <div class="col-6">
+                  <div class="texto">Id Muelle:<strong> {{ currentMuelle.id }}</strong></div>
+                </div>
+                <div class="col-6">
+                  <div class="texto">Nº Plazas Total: <strong>{{ currentMuelle.plazasTotales }}</strong></div>
+                  <div class="texto">Nº Plazas Disponibles: <strong>{{ currentMuelle.plazasDisponibles }}</strong></div>
+                </div>
+              </div>
+              <div class="row d-flex justify-content-center">
+                <table id="tabla" class="table">
+                  <thead class="">
+                    <tr>
+                      <th scope="col">Id Plaza</th>
+                      <th scope="col">Estado</th>
+                      <th scope="col">Tipo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let plaza of currentMuelle.plazas">
+                      <td>{{plaza.id}}</td>
+                      <td [style.color]="plaza.disponible == 1 ? 'green': 'red'">
+                        <p *ngIf="plaza.disponible==1">Disponible</p>
+                        <p *ngIf="plaza.disponible==0">Ocupado</p>
+                      </td>
+                      <td>{{plaza.tipo}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
 
             </div>
+
+          </div>
+
         </div>
-        <div id="usersettings" class="col-1 d-flex flex-row-reverse">
-          <app-user-settings></app-user-settings>
-        </div>
+
+      </div>
     </div>
-</div>
-
-
-
+    <div id="usersettings" class="col-1 d-flex flex-row-reverse">
+      <app-user-settings></app-user-settings>
+    </div>
+  </div>
+</div> -->
 
 <!-- <div id="dashBoard" class="container-fluid">
     <div class="row">
