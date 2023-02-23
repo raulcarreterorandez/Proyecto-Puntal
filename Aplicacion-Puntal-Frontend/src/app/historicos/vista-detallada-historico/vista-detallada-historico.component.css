@@ -71,3 +71,10 @@ th {
 #contenido-user{
   float: right;
 }
+
+.btn-info {
+  background-color: #007BC4;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+}
