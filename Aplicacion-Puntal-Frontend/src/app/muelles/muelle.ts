@@ -7,6 +7,7 @@ export interface Muelle {
     plazas?:any; //Traeremos una colección con las propiedades de las plazas. Mirar como traemos la info. en el Index() de API/MuelleController del backend. 
     plazasTotales?:any; //Traeremos un count() de plazas. Mirar como traemos la info. en el Show() de API/MuelleController del backend. 
     plazasDisponibles?:any; //Traeremos un count() de las plazas disponibles. Mirar como traemos la info. en el Show() de API/MuelleController del backend. 
+    plazasOcupadas?:any; //Traeremos un count() de las plazas disponibles. Mirar como traemos la info. en el Show() de API/MuelleController del backend. 
 }
 
 
@@ -15,7 +16,6 @@ export interface Muelle {
 return $muelles->with('instalacion','plazas')->get(); // Pasamos la relación con Instalaciones y con Plazas para poder hacer uso de sus propiedades 
     // en el frontend de Angular. En este caso queremos visualizar datos de las Instalaciones o las Plazas en las vistas de Muelles. Lo devuelve en formato colección. 
 */
-
 
 // RETURN DEL SHOW DEL BACKEND(API/MuelleController).
 /* 

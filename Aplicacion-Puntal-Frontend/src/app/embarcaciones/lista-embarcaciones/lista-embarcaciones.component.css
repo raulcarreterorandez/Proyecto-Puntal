@@ -10,6 +10,16 @@
   padding: 4px 8px;
 }
 
-#espacioTabla {
+/* #espacioTabla {
   margin: 20px 30px 0px 20px;
+} */
+
+#espacioTabla {
+  margin-top: 10vh;
+  margin-right: 5vh;
+  margin-left: 5vh;
+  height: auto;
+  /* overflow: scroll; */
+  /* height: 5%!important; */
+
 }

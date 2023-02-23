@@ -22,6 +22,23 @@
   border-radius: 5px;
 }
 
+#titulo {
+  margin-top: 80px;
+  font-size: 40px;
+  font-weight: bolder;
+  color: #007BC4;
+}
+
+#boton_volver {
+  margin-top: 80px;
+  
+}
+
+.textoCabecera {  
+  font-size: 20px;
+  margin-left: 20px;
+}
+
 #cuerpo {
   background-color: #D9EBFF;
   margin: 20px;
@@ -30,7 +47,9 @@
 }
 
 #tabla {
-  margin-top: 20px;
+  margin-top: 10px;
+  border-collapse: collapse;
+  width: 80%;
 }
 
 .texto:first-child {
@@ -38,17 +57,29 @@
 }
 
 .texto {
+  font-size: 20px;
   margin-top: 20px;
+  margin-left: 20px;
 }
+
 
 tr {
   border: 1px solid black;
 }
 
-td {
+/* td {
   border: 1px solid black;
 }
 
 th {
   border: 1px solid black;
+} */
+
+.boton-habilitado{
+  outline: none;
+  border: none;  
+}
+
+.bi{
+  font-size: 20px;
 }
