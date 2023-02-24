@@ -14,6 +14,7 @@
         <div class="col-11">
           <div id="titulo">Detalle Muelle</div>
         </div>
+      
       </div>
    
       <div id="cabecera" class="row d-flex align-items-center ">
@@ -33,12 +34,12 @@
           <div class="texto">Nº Muelle: <strong> {{ currentMuelle.id }}</strong></div>
           <div class="texto">Nº Plazas Totales: <strong>{{ currentMuelle.plazasTotales }}</strong></div>
           <div class="texto">Nº Plazas Disponibles: <strong> {{ currentMuelle.plazasDisponibles }}</strong></div>
-          <div class="texto">Nº Plazas Ocupadas: <strong> {{ currentMuelle.plazasOcupadas}}</strong></div>
+          <div class="texto">Nº Plazas Ocupadas: <strong> {{ currentMuelle.plazasOcupadas }}</strong></div>
         </div>
-
-        <div id="espacioTabla" class="col-6">          
-          <table id="tabla" class="table">
-            <thead>
+        <div class="col-6">
+          
+          <table id="tabla" class="table table-hover">
+            <thead class="">
               <tr>
                 <th scope="col">Estado</th>
                 <th scope="col">Nº Plaza</th>
@@ -47,23 +48,20 @@
             </thead>
             <tbody>
               <tr *ngFor="let plaza of currentMuelle.plazas">
-  
                 <ng-template *ngIf="plaza.disponible; then check else cruz"></ng-template>
   
-                <ng-template #check>
-                  <button class="bi bi-check-square-fill boton-habilitado" style="color: green"></button>
-                  <a style="visibility: hidden">0</a>
-                </ng-template>
+                      <ng-template #check>
+                        <button class="bi bi-check-square-fill boton-habilitado" style="color: green" disabled> -> Disponible</button>                                         
+                      </ng-template>
   
-                  <ng-template #cruz>
-                    <button class="bi bi-x-square-fill boton-habilitado" style="color: red"></button>
-                    <a style="visibility: hidden">1</a>
-                  </ng-template>
-              <!--   <td [style.color]="plaza.disponible == 1 ? 'green': 'red'">
+                        <ng-template #cruz>
+                          <button class="bi bi-x-square-fill boton-habilitado" style="color: red" disabled> -> Ocupado</button>                                            
+                        </ng-template>
+                <td>{{plaza.id}}</td>
+  <!--               <td [style.color]="plaza.disponible == 1 ? 'green': 'red'">
                   <p *ngIf="plaza.disponible==1">Disponible</p>
                   <p *ngIf="plaza.disponible==0">Ocupado</p>
                 </td> -->
-                <td>{{plaza.id}}</td>
                 <td>{{plaza.tipo}}</td>
               </tr>
             </tbody>

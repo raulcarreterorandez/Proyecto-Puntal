@@ -64,13 +64,13 @@
 
                 <div class="col-lg-6">
                     <div class="texto">Embarcaciones: </div>
-                    <table id="tabla" class="table">
+                    <table id="tabla" class="table table-hover">
                       <thead>
                         <tr>
                           <th scope="col">Matricula</th>
                           <th scope="col">Nombre</th>
                           <th scope="col">Propulsion</th>
-                          <th scope="col">Acciones</th>
+                          <th scope="col"></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -117,15 +117,16 @@
 
                 <div class="col-lg-6">
                   <div class="texto">Tripulantes: </div>
-                  <table id="tabla" class="table">
+                  <table id="tabla" class="table table-hover">
                     <thead class="">
                       <tr>
                         <th scope="col">Nombre Completo</th>
                         <th scope="col">Numero Documento</th>
-                        <th scope="col">Acciones</th>
+                        <th scope="col"></th>
                       </tr>
                     </thead>
                     <tbody>
+
                       <tr *ngFor="let tripulante of currentHistorico.tripulantes">
                         <td>{{tripulante.nombre}} {{tripulante.apellidos}}</td>
                         <td>{{tripulante.numDocumento}}</td>
@@ -135,6 +136,7 @@
                         </td>
 
                       </tr>
+
                     </tbody>
                   </table>
                 </div>

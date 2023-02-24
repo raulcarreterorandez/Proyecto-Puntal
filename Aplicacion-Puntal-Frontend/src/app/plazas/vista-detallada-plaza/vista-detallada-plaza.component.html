@@ -16,17 +16,17 @@
         </div>
       </div>
       <div id="cabecera" class="row d-flex align-items-center ">
-        <div class="col-3">
+      <!--   <div class="col-3">
           <div>ID Instalación: <strong>{{ currentPlaza.instalacion.id }}</strong></div>
+        </div> -->
+        <div class="col-4">
+          <div class="textoTitulo">Nombre Instalación: <strong>{{ currentPlaza.instalacion.nombrePuerto }}</strong></div>
         </div>
-        <div class="col-3">
-          <div>Nombre Instalación: <strong>{{ currentPlaza.instalacion.nombrePuerto }}</strong></div>
+        <div class="col-4">
+          <div class="textoTitulo">Código Instalación: <strong>{{ currentPlaza.instalacion.codigo }}</strong></div>
         </div>
-        <div class="col-3">
-          <div>Código Instalación: <strong>{{ currentPlaza.instalacion.codigo }}</strong></div>
-        </div>
-        <div class="col-3">
-          <div>ID Muelle:<strong> {{ currentPlaza.idMuelle }}</strong></div>
+        <div class="col-4">
+          <div class="textoTitulo">Nº Muelle:<strong> {{ currentPlaza.idMuelle }}</strong></div>
         </div>
       </div>
 
@@ -37,7 +37,7 @@
             <div class="col-6">
 
               <div id="colIzq">
-                <div class="texto">Id Plaza:<strong> {{ currentPlaza.id }}</strong></div>
+                <div class="texto">Nº Plaza:<strong> {{ currentPlaza.id }}</strong></div>
                 <div class="texto">Disponible:<ng-template
                     *ngIf="currentPlaza.disponible; then check else cruz"></ng-template>
                   <!-- <strong>{{ currentPlaza.disponible }}</strong> -->
@@ -134,7 +134,7 @@
                   <strong *ngFor="let telefono of currentPlaza.cliente.telefonos">{{ telefono.numero }}
                   </strong>
                 </div>
-                <table id="tabla" class="table">
+                <table id="tabla" class="table table-hover">
                   <thead class="">
                     <tr>
                       <th scope="col">Matricula</th>

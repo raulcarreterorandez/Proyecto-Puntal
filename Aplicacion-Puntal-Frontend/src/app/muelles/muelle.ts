@@ -17,7 +17,6 @@ return $muelles->with('instalacion','plazas')->get(); // Pasamos la relación co
     // en el frontend de Angular. En este caso queremos visualizar datos de las Instalaciones o las Plazas en las vistas de Muelles. Lo devuelve en formato colección. 
 */
 
-
 // RETURN DEL SHOW DEL BACKEND(API/MuelleController).
 /* 
 return [ //Especificamos la forma en la que recibimos los datos.

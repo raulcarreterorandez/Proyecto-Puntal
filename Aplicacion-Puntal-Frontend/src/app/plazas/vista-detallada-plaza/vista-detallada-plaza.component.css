@@ -49,6 +49,10 @@
   border-radius: 5px;
 }
 
+.textoTitulo { 
+  font-size: 25px;
+}
+
 .texto:first-child {
   margin-top: 0px;
 }
@@ -60,19 +64,21 @@
 
 #tabla{
   margin-top: 20px;
+  border-collapse: collapse;
+  width: 70%;
 }
 
 tr {
   border: 1px solid black;
 }
 
-td {
+/* td {
   border: 1px solid black;
 }
 
 th {
   border: 1px solid black;
-}
+} */
 
 .boton-habilitado{
   
