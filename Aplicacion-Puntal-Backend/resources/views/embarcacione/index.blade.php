@@ -68,6 +68,20 @@
                                                     href="{{ route('embarcaciones.destroy', $embarcacione['matricula']) }}"><i
                                                         class="bi bi-trash3-fill"></i>
                                                 </a>
+                                                <form
+                                                    action="{{ route('embarcaciones.destroy', $embarcacione['matricula']) }}"
+                                                    method="POST">
+                                                    <a class="btn btn-sm btn-primary "
+                                                        href="{{ route('embarcaciones.show', $embarcacione['matricula']) }}"><i
+                                                            class="bi bi-eye"></i></a>
+                                                    <a class="btn btn-sm btn-success"
+                                                        href="{{ route('embarcaciones.edit', $embarcacione['matricula']) }}"><i
+                                                            class="bi bi-pencil"></i></a>
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i
+                                                            class="bi bi-trash3-fill"></i></button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach

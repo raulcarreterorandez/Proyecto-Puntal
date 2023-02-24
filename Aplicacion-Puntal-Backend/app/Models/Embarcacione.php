@@ -21,11 +21,21 @@ class Embarcacione extends Model
         'calado' => 'required',
         'propulsion' => 'required',
         'id_cliente' => 'required',
+        'id_plaza' => 'required',
     ];
 
     protected $perPage = 20;
 
-    protected $fillable = ['matricula', 'nombre', 'eslora', 'manga', 'calado', 'propulsion', 'id_cliente', 'id_plaza'];
+    protected $fillable = [
+        'matricula',
+        'nombre',
+        'eslora',
+        'manga',
+        'calado',
+        'propulsion',
+        'id_cliente',
+        'id_plaza'
+    ];
 
     public function cliente()
     {

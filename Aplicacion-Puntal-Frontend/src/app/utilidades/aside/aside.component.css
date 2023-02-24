@@ -18,10 +18,10 @@ button {
   background: none;
   border: none;
 }
-.col-auto:hover{
-  -webkit-box-shadow:0 0px 4px #777, 0 0 20px #CCC inset;
-  -moz-box-shadow:0 0px 4px #777, 0 0 20px #CCC inset;
-  box-shadow:0 0px 4px #777, 0 0 20px #CCC inset;
+#aside div:hover{
+  -webkit-box-shadow:0 0px 4px #3893c8, 0 0 20px #3893c8 inset;
+  -moz-box-shadow:0 0px 4px #3893c8, 0 0 20px #3893c8 inset;
+  box-shadow:0 0px 4px #3893c8, 0 0 20px #3893c8 inset;
 }
 
 .texticon {
@@ -29,6 +29,10 @@ button {
   font-size: 12px;
   margin-top: 10px;
   color: white;
+}
+
+#icon{
+  scale: 80%;
 }
 
 

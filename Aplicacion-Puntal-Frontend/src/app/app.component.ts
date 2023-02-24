@@ -18,8 +18,8 @@ import { difuminado, deslizamiento } from './animations';
 
   // ANIMACION
   animations: [
-    // difuminado,
-    deslizamiento,
+    difuminado,
+    //deslizamiento,
   ]
 
   })
