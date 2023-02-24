@@ -11,7 +11,7 @@ export class ListaInstalacionesComponent implements OnInit {
 
 
   instalaciones?: Instalacion[];
-  currentInstalacion: Instalacion = {}; 
+  currentInstalacion: Instalacion = {};
 
   dtOptions: DataTables.Settings = {};
 
@@ -30,7 +30,7 @@ export class ListaInstalacionesComponent implements OnInit {
     this.dtOptions = {
       pagingType: 'full_numbers',
       scrollY: '600px',
-      scrollCollapse:true,      
+      scrollCollapse: true,
       language: {
         processing: "Procesando...",
         lengthMenu: "Mostrar _MENU_ registros",

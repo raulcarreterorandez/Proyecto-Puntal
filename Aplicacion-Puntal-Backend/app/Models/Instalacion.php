@@ -10,7 +10,6 @@ class Instalacion extends Model {
     protected $table = 'instalaciones';
    /*  protected $primaryKey = 'codigo'; */
 
-
     static $rules = [
         'codigo' => 'required',
         'nombrePuerto' => 'required',
@@ -26,7 +25,6 @@ class Instalacion extends Model {
     public function instalacionesUsuarios() {
         return $this->hasMany('App\Models\InstalacionesUsuario', 'idInstalacion', 'id');
         // return $this->belongsToMany(Usuario::class, 'instalacionesUsuarios',"idUsuario", "idInstalacion");
-
     }
 
     public function muelles() {
