@@ -7,6 +7,7 @@ export interface Muelle {
     plazas?:any; //Traeremos una colección con las propiedades de las plazas. Mirar como traemos la info. en el Index() de API/MuelleController del backend. 
     plazasTotales?:any; //Traeremos un count() de plazas. Mirar como traemos la info. en el Show() de API/MuelleController del backend. 
     plazasDisponibles?:any; //Traeremos un count() de las plazas disponibles. Mirar como traemos la info. en el Show() de API/MuelleController del backend. 
+    plazasOcupadas?:any; //Traeremos un count() de las plazas ocupados. Mirar como traemos la info. en el Show() de API/MuelleController del backend. 
 }
 
 

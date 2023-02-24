@@ -13,6 +13,10 @@
   padding: 10px;
   margin: 20px;
   border-radius: 5px;
+  margin-top: 100px;
+  font-size: 40px;
+  font-weight: bolder;
+  color: #007BC4;
 }
 
 #cabecera {
@@ -27,28 +31,42 @@
   margin: 20px;
   padding: 10px;
   border-radius: 5px;
+  height: 25vh;
 }
 
-#tabla {
-  margin-top: 20px;
-}
+/* #espacioTabla {
+  margin-top: 0px;
+  
+} */
 
 .texto:first-child {
   margin-top: 0px;
 }
 
 .texto {
-  margin-top: 20px;
+  margin-left: 20px;
+  margin-top: 30px;
+  font-size: 20px;
 }
 
 tr {
-  border: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
-td {
+/* td {
   border: 1px solid black;
 }
 
 th {
   border: 1px solid black;
+} */
+
+.boton-habilitado{
+  outline: none;
+  border: 0px;
+  cursor: none;
+}
+
+.bi{
+  
 }

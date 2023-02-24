@@ -7,48 +7,68 @@
       <app-aside></app-aside>
     </div>
     <div class="col-10">
-      <div id="cabecera_botones" class="col-12 row d-flex justify-content-start align-items-center">
-        <div class="col-6 d-flex row">
-          <img id="boton_volver" src="/assets/flechaAtras.svg" alt="Volver" [routerLink]="['/lista-muelles']">
+      <div id="cabecera_botones" class="row d-flex justify-content-space-between align-items-center">
+        <div class="col-1">
+          <img id="boton_volver" src="/assets/flechaAtras.svg" alt="Volver" [routerLink]="['/lista-plazas']">
+        </div>
+        <div class="col-11">
+          <div id="titulo">Detalle Muelle</div>
         </div>
       </div>
+   
       <div id="cabecera" class="row d-flex align-items-center ">
-        <div class="col-2">
+       <!--  <div class="col-2">
           <div>ID Instalación.: <strong>{{ currentMuelle.idInstalacion }}</strong></div>
-        </div>
-        <div class="col-4">
-          <div>Código Instalación.: <strong>{{ currentMuelle.instalacion.codigo }}</strong></div>
+        </div> -->
+        <div class="col-6">
+          <div class="texto">Código Instalación.: <strong>{{ currentMuelle.instalacion.codigo }}</strong></div>
         </div>
         <div class="col-6">
-          <div>Nombre Instalación.: <strong>{{ currentMuelle.instalacion.nombrePuerto }}</strong>
+          <div class="texto">Nombre Instalación.: <strong>{{ currentMuelle.instalacion.nombrePuerto }}</strong>
           </div>
         </div>
       </div>
-      <div id="cuerpo" class="row">
+      <div id="cuerpo" class="row d-flex  align-items-center">
         <div class="col-6">
-          <div class="texto">ID Muelle: <strong> {{ currentMuelle.id }}</strong></div>
+          <div class="texto">Nº Muelle: <strong> {{ currentMuelle.id }}</strong></div>
           <div class="texto">Nº Plazas Totales: <strong>{{ currentMuelle.plazasTotales }}</strong></div>
           <div class="texto">Nº Plazas Disponibles: <strong> {{ currentMuelle.plazasDisponibles }}</strong></div>
+          <div class="texto">Nº Plazas Ocupadas: <strong> {{ currentMuelle.plazasOcupadas}}</strong></div>
         </div>
-        <table id="tabla" class="table">
-          <thead class="">
-            <tr>
-              <th scope="col">ID Plaza</th>
-              <th scope="col">Estado</th>
-              <th scope="col">Tipo</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let plaza of currentMuelle.plazas">
-              <td>{{plaza.id}}</td>
-              <td [style.color]="plaza.disponible == 1 ? 'green': 'red'">
-                <p *ngIf="plaza.disponible==1">Disponible</p>
-                <p *ngIf="plaza.disponible==0">Ocupado</p>
-              </td>
-              <td>{{plaza.tipo}}</td>
-            </tr>
-          </tbody>
-        </table>
+
+        <div id="espacioTabla" class="col-6">          
+          <table id="tabla" class="table">
+            <thead>
+              <tr>
+                <th scope="col">Estado</th>
+                <th scope="col">Nº Plaza</th>
+                <th scope="col">Tipo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let plaza of currentMuelle.plazas">
+  
+                <ng-template *ngIf="plaza.disponible; then check else cruz"></ng-template>
+  
+                <ng-template #check>
+                  <button class="bi bi-check-square-fill boton-habilitado" style="color: green"></button>
+                  <a style="visibility: hidden">0</a>
+                </ng-template>
+  
+                  <ng-template #cruz>
+                    <button class="bi bi-x-square-fill boton-habilitado" style="color: red"></button>
+                    <a style="visibility: hidden">1</a>
+                  </ng-template>
+              <!--   <td [style.color]="plaza.disponible == 1 ? 'green': 'red'">
+                  <p *ngIf="plaza.disponible==1">Disponible</p>
+                  <p *ngIf="plaza.disponible==0">Ocupado</p>
+                </td> -->
+                <td>{{plaza.id}}</td>
+                <td>{{plaza.tipo}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
     <div class="col-1 d-flex flex-row-reverse">
