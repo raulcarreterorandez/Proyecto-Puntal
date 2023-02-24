@@ -4,12 +4,10 @@
 }
 
 #espacioTabla {
-  margin-top: 10vh;
+  margin-top: 5vh;
   margin-right: 5vh;
   margin-left: 5vh;
   height: auto;
-  /* overflow: scroll; */
-  /* height: 5%!important; */
 }
 
 .btn-info {
@@ -19,12 +17,19 @@
   padding: 4px 8px;
 }
 
-.boton-habilitado{
+.boton-habilitado {
   outline: none;
   border: 0px;
   cursor: none;
 }
 
-#icono{
-  font-size:20px;  
+#icono {
+  font-size: 20px;
+}
+
+#titulo {
+  margin-top: 30px;
+  font-size: 40px;
+  font-weight: bolder;
+  color: #007BC4;
 }

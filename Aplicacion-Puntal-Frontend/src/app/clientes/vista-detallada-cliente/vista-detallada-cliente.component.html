@@ -7,12 +7,12 @@
       <app-aside></app-aside>
     </div>
     <div class="col-10">
-      <div id="cabecera_botones" class="col-12 row d-flex justify-content-start align-items-center"> 
+      <div id="cabecera_botones" class="col-12 row d-flex justify-content-start align-items-center">
         <div class="col-1">
           <img id="boton_volver" src="/assets/flechaAtras.svg" alt="Volver" [routerLink]="['/lista-clientes']">
         </div>
         <div class="col-10 d-flex justify-content-center">
-          <div id="titulo">Detalle Clientes</div>
+          <div id="titulo">Detalles del cliente {{currentCliente.numDocumento}}</div>
         </div>
 
       </div>

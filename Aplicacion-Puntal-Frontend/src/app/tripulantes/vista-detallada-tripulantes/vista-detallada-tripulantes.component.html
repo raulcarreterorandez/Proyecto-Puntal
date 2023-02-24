@@ -8,8 +8,12 @@
     </div>
     <div class="col-10">
       <div id="cabecera_botones" class="col-12 row d-flex justify-content-start align-items-center">
-        <div class="col-6 d-flex row">
-          <img id="boton_volver" src="/assets/flechaAtras.svg" alt="Volver" [routerLink]="['/vistaDetalleEmbarcacione/',currentTripulante.id_embarcacion]">
+        <div class="col-1">
+          <img id="boton_volver" src="/assets/flechaAtras.svg" alt="Volver"
+            [routerLink]="['/vistaDetalleEmbarcacione/', currentTripulante.id_embarcacion]">
+        </div>
+        <div class="col-9 d-flex justify-content-center">
+          <div id="titulo">Detalles del tripulante {{currentTripulante.numDocumento }}</div>
         </div>
       </div>
       <div id="cabecera" class="row">
@@ -41,8 +45,10 @@
         <div class="col-6">
           <div class="texto">Documento: <strong> {{ currentTripulante.numDocumento }}</strong></div>
           <div class="texto">Tipo De Documento: <strong>{{ currentTripulante.tipoDocumento }}</strong></div>
-          <div class="texto">Fecha De Expedicion De Documento: <strong> {{ currentTripulante.fechaExpedicionDocumento }}</strong></div>
-          <div class="texto">Fecha De Caducidad De Documento: <strong>{{ currentTripulante.fechaCaducidadDocumento }}</strong></div>
+          <div class="texto">Fecha De Expedicion De Documento: <strong> {{ currentTripulante.fechaExpedicionDocumento
+              }}</strong></div>
+          <div class="texto">Fecha De Caducidad De Documento: <strong>{{ currentTripulante.fechaCaducidadDocumento
+              }}</strong></div>
           <div class="texto">Nombre: <strong> {{ currentTripulante.nombre }}</strong></div>
           <div class="texto">Apellidos: <strong>{{ currentTripulante.apellidos }}</strong></div>
           <div class="texto">Nacionalidad: <strong> {{ currentTripulante.nacionalidad }}</strong></div>

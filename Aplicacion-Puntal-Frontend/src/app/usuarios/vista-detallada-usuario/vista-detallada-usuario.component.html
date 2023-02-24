@@ -14,18 +14,15 @@
           <img id="boton_volver" src="/assets/flechaAtras.svg" alt="Volver" [routerLink]="['/lista-usuarios']">
         </div>
         <div class="col-10 d-flex justify-content-center">
-          <div id="titulo">Detalle Usuario</div>
+          <div id="titulo">Detalles de {{ currentUsuario.nombreUsuario }}ƒ</div>
         </div>
       </div>
-
       <div id="cabecera" class="row ">
-
         <div class="row fw-bold ">
           <div class="col">
             <div style="font-size: 20px;">Puertos Encargados:</div>
           </div>
         </div>
-
         <div class="row " id="puerto" *ngFor="let instalacion of currentUsuario.instalaciones_usuario">
           <div class="col-lg">
             <div>Puerto: <strong>{{ instalacion.nombrePuerto }}</strong></div>
@@ -40,9 +37,7 @@
             <div>Descripcion: <strong>{{ instalacion.descripcion }}</strong></div>
           </div>
         </div>
-
       </div>
-
       <div id="cuerpo" class="row">
         <div class="col-6">
           <div class="texto">Nombre Usuario: <strong>{{ currentUsuario.nombreUsuario }}</strong></div>
@@ -50,11 +45,9 @@
           <div class="texto">Email: <strong>{{ currentUsuario.email }}</strong></div>
           <div class="texto">Habilitado:
             <ng-template *ngIf="currentUsuario.habilitado; then check else cruz"></ng-template>
-
             <ng-template #check>
               <button class="bi bi-check-square-fill boton-habilitado" style="color: green"></button>
             </ng-template>
-
             <ng-template #cruz>
               <button class="bi bi-x-square-fill boton-habilitado" style="color: red"></button>
             </ng-template>
@@ -64,9 +57,7 @@
         </div>
       </div>
     </div>
-
     <!-- FIN CONTENIDO MAIN -->
-
     <div class="d-none d-lg-block col-1" id="espacio-user">
       <app-user-settings id="contenido-user"></app-user-settings>
     </div>

@@ -7,14 +7,17 @@
       <app-aside></app-aside>
     </div>
 
-<!-- CONTENIDO MAIN -->
+    <!-- CONTENIDO MAIN -->
     <div class="col-10">
 
       <div id="cabecera_botones" class="row d-flex justify-content-start align-items-center">
-        <div class="col-6 d-flex row">
+        <div class="col-1 d-flex row">
           <div class="texto " id="titulo">
-            <img id="boton_volver" src="/assets/flechaAtras.svg" alt="Volver" [routerLink]="['/home']">NOTIFICACIONES
+            <img id="boton_volver" src="/assets/flechaAtras.svg" alt="Volver" [routerLink]="['/home']">
           </div>
+        </div>
+        <div class="col-10 d-flex justify-content-center">
+          <div id="titulo">Mensajes</div>
         </div>
       </div>
 
@@ -32,7 +35,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let mensaje of mensajes" >
+                  <tr *ngFor="let mensaje of mensajes">
 
                     <td [style.color]="mensaje.leido == true ? 'grey' : 'black'">{{mensaje.fecha_hora}}</td>
                     <td [style.color]="mensaje.leido == true ? 'grey' : 'black'">{{mensaje.texto}}</td>
@@ -53,7 +56,7 @@
       </div>
 
     </div>
-<!-- FIN CONTENIDO MAIN -->
+    <!-- FIN CONTENIDO MAIN -->
 
     <div id="usersettings" class="col-1 d-flex flex-row-reverse">
       <app-user-settings></app-user-settings>

@@ -5,13 +5,13 @@
 }
 
 #boton_volver {
-  margin-top: 50px;
+  margin-top: 20px;
   width: 40px;
   cursor: pointer;
 }
 
 #titulo {
-  margin-top: 50px;
+  margin-top: 20px;
   font-size: 40px;
   font-weight: bolder;
   color: #007BC4;
@@ -24,7 +24,7 @@
 }
 
 #cabecera {
-  background-color: #C1D1E3;  
+  background-color: #C1D1E3;
   padding: 10px;
   margin: 20px;
   border-radius: 5px;

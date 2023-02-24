@@ -4,7 +4,7 @@
 }
 
 #espacioTabla {
-  margin-top: 10vh;
+  margin-top: 5vh;
   margin-right: 5vh;
   margin-left: 5vh;
   height: auto;
@@ -17,4 +17,11 @@
   color: white;
   border: none;
   padding: 4px 8px;
+}
+
+#titulo {
+  margin-top: 30px;
+  font-size: 40px;
+  font-weight: bolder;
+  color: #007BC4;
 }
