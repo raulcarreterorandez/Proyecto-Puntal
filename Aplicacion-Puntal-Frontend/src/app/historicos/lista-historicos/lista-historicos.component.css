@@ -12,5 +12,11 @@
 }
 
 #espacioTabla {
-  margin: 10px 30px 20px;
+  margin-top: 10vh;
+  margin-right: 5vh;
+  margin-left: 5vh;
+  height: auto;
+  /* overflow: scroll; */
+  /* height: 5%!important; */
+
 }

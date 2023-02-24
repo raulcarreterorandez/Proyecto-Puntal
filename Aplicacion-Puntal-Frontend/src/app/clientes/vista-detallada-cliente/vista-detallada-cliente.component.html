@@ -7,10 +7,14 @@
       <app-aside></app-aside>
     </div>
     <div class="col-10">
-      <div id="cabecera_botones" class="col-12 row d-flex justify-content-start align-items-center">
-        <div class="col-6 d-flex row">
+      <div id="cabecera_botones" class="col-12 row d-flex justify-content-start align-items-center"> 
+        <div class="col-1">
           <img id="boton_volver" src="/assets/flechaAtras.svg" alt="Volver" [routerLink]="['/lista-clientes']">
         </div>
+        <div class="col-10 d-flex justify-content-center">
+          <div id="titulo">Detalle Clientes</div>
+        </div>
+
       </div>
       <div *ngFor="let instalacion of currentCliente.instalaciones" id="cabecera" class="row">
         <div class="col-3">

@@ -40,6 +40,11 @@
   height: 40vh;
 }
 
+#titulo{
+  font-size: 40px;
+  font-weight: bolder;
+  color: #007BC4;
+}
 
 /* .texto:first-child {
   margin-top: 20px;

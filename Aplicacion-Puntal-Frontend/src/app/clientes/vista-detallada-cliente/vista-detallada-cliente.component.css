@@ -29,6 +29,12 @@
   border-radius: 5px;
 }
 
+#titulo{
+  font-size: 40px;
+  font-weight: bolder;
+  color: #007BC4;
+}
+
 .texto:first-child {
   margin-top: 0px;
 }

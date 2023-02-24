@@ -5,14 +5,14 @@
 }
 
 #titulo {
-  margin-top: 100px;
+  margin-top: 20px;
   font-size: 40px;
   font-weight: bolder;
   color: #007BC4;
 }
 
 #boton_volver {
-  margin-top: 100px;
+  margin-top: 20px;
   margin-left: 30px;
   width: 40px;
   cursor: pointer;
