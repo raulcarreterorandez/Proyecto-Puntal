@@ -68,8 +68,8 @@ class MuelleController extends Controller {
             "instalacion" => $muelle->instalacion, // Colección con la info de la instalación a la que pertenece el muelle.
             "plazas" => $plazas, // Colección con info de bases y transitos. Con el nuevo campo(tipo) creado.
             "plazasTotales" => count($plazas), // Nº total de plazas del muelle.
-            "plazasDisponibles" => count($plazasDisponibles), // Solo el num de plazas disponibles del muelle.
-            "plazasOcupadas" => count($plazasOcupadas), // Solo el num de plazas ocupadas del muelle.
+            "plazasDisponibles" => count($plazasDisponibles), // Solo el num. de plazas disponibles del muelle.
+            "plazasOcupadas" => count($plazasOcupadas) // Solo el num. de plazas ocupadas del muelle.
         ];
     }
 }
