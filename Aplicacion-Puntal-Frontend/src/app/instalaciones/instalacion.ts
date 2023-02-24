@@ -6,8 +6,7 @@ export interface Instalacion {
   descripcion?: string;
   estado?: string;
   visto?: boolean;
-  fechaDisposicion?: any;
-  
+  fechaDisposicion?: any;  
 
   //CAMBIAR A CAMPOS DE INSTALACIÓN CUANDO LA API SEA FUNCIONAL    
   /*   userId?: any;

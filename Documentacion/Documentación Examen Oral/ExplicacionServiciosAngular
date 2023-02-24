@@ -1,0 +1,75 @@
+1º. Creamos el Interface del objeto con el tipo de datos que vamos a recibir de la Api.
+
+export interface Instalacion {
+
+  id?: any;
+  codigo?: string;
+  nombrePuerto?: string;
+  descripcion?: string;
+  estado?: string;
+  visto?: boolean;
+  fechaDisposicion?: any; 
+}
+
+2º. Creamos el Service. Donde especificaremos la URL de la API y los métodos.
+
+export class InstalacionesService {
+
+  public url: string;
+
+  constructor(private http: HttpClient) {
+
+    this.url = "http://localhost/api/instalaciones";    
+  }
+
+  retornar(): Observable<Instalacion[]> { /* Observable<any>  */
+    return this.http.get<Instalacion[]>(this.url);
+  }  
+
+  retornarUno(id: any): Observable<Instalacion> { //Utilizamos este en el objeto.
+    return this.http.get(`${this.url}/${id}`);
+  }
+}
+
+3º Vamos al Component.ts. Allí importamos el servicio creado y lo pasamos en el constructor, además de otros imports(ActivatedRoute, Router). También crearemos los métodos que utilizarán el Service.
+
+export class VistaDetalladaInstalacionComponent implements OnInit {
+
+  instalacion: any;
+  message = '';
+
+  constructor(
+    private instalacionesService: InstalacionesService,
+    private route: ActivatedRoute,
+    private router: Router) { }
+
+  @Input() viewMode = false;
+
+  @Input() currentInstalacion: Instalacion = {//Aquí creamos un Objeto como el del Interface vacío.
+
+    id: '',
+    codigo: '',
+    nombrePuerto: '',
+    descripcion: '',
+    estado: '',
+    visto: false,    
+    fechaDisposicion: ''
+  };
+
+  ngOnInit(): void {
+    if (!this.viewMode) {
+      this.message = '';
+      this.getInstalacion(this.route.snapshot.params["id"]);      
+    }
+  }
+
+  getInstalacion(id: string): void { //Función que hace uso de los métodos del Service.
+    this.instalacionesService.retornarUno(id) 
+      .subscribe({ //Hacemos la petición con el Subscribe.
+        next: (data) => {
+          this.currentInstalacion = data; //Guardamos los datos recibidos en el objeto creado.
+        },
+        error: (e) => console.error(e)
+      });
+  }
+}

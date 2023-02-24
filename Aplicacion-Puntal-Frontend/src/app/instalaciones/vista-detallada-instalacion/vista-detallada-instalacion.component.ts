@@ -10,7 +10,6 @@ import { Instalacion } from '../instalacion';
 })
 export class VistaDetalladaInstalacionComponent implements OnInit {
 
-  /* id: string; */
   instalacion: any;
   message = '';
 
@@ -18,7 +17,6 @@ export class VistaDetalladaInstalacionComponent implements OnInit {
     private instalacionesService: InstalacionesService,
     private route: ActivatedRoute,
     private router: Router) { }
-
 
   @Input() viewMode = false;
 
@@ -36,8 +34,7 @@ export class VistaDetalladaInstalacionComponent implements OnInit {
   ngOnInit(): void {
     if (!this.viewMode) {
       this.message = '';
-      this.getInstalacion(this.route.snapshot.params["id"]);
-      
+      this.getInstalacion(this.route.snapshot.params["id"]);      
     }
   }
 
