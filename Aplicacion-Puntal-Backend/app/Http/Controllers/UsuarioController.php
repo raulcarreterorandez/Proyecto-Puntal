@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Instalacion;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+
 
 
 /**
@@ -123,15 +125,29 @@ class UsuarioController extends Controller
 
 
         $nuevoUsuario = $request->validate([
-            'nombreUsuario' => 'required|max:50',
+            // 'nombreUsuario' => 'required|max:50',
+            'nombreUsuario' => [
+                'required',
+                'max:50',
+                Rule::unique('usuarios')->ignore($usuario->nombreUsuario,'nombreUsuario')
+            ],
+
             "password" => 'required|min:6|max:100',
             'nombreCompleto' => 'required|max:100',
-            'email' => 'required|email|max:100',
+            // 'email' => 'required|email|max:100',
+            'email' => [
+                'required',
+                'max:100',
+                'email',
+                Rule::unique('usuarios')->ignore($usuario->email,'email')
+            ],
             'habilitado' => 'required',
             'perfil' => 'required',
             'idioma' => 'required',
             'visto' => 'required',
         ]);
+        //Rule:.unique... sirve para mantener el funcionamiento de unique pero si le mandamos el mismo valor que ya teniamos almacenado, no devolvera error
+        
         // dd($request);
 
 

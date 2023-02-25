@@ -39,6 +39,129 @@
                         <a class="nav-item active nav-link text-white" href="{{ route('plazas.index') }}">Plazas</a>
                     </li>
 
+                    <li class="nav-item">
+                        <a class="nav-item active nav-link text-white" href="{{ route('bases.index') }}">Bases</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-item active nav-link text-white" href="{{ route('transitos.index') }}">Tránsitos</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-item active nav-link text-white" href="{{ route('clientes.index') }}">Clientes</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-item active nav-link text-white" href="{{ route('embarcaciones.index') }}">Embarcaciones</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-item active nav-link text-white" href="{{ route('tripulantes.index') }}">Tripulantes</a>
+                    </li>
+
+                    </ul>
+
+                    <a class="text-white btn btn-md btn-primary" href="{{ route('info') }}"><strong>{{auth()->user()->email}}</strong></a>
+
+                    <a class="btn btn-md btn-danger" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bi bi-power"></i> Logout </a>
+                </div>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+
+            </div>
+          </nav>
+          <main>
+            @yield('content')
+        </main>
+</body>
+</html>
+
+{{-- MENU CON TODAS LAS OPCIONES VISIBLES --}}
+{{--
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-item active nav-link text-white" href="{{ route('usuarios.index') }}">Usuarios</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-item active nav-link text-white" href="{{ route('mensajes.index') }}">Mensajes</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-item active nav-link text-white" href="{{ route('instalaciones.index') }}">Instalaciones</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-item active nav-link text-white" href="{{ route('muelles.index') }}">Muelles</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-item active nav-link text-white" href="{{ route('plazas.index') }}">Plazas</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-item active nav-link text-white" href="{{ route('bases.index') }}">Bases</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-item active nav-link text-white" href="{{ route('transitos.index') }}">Tránsitos</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-item active nav-link text-white" href="{{ route('clientes.index') }}">Clientes</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-item active nav-link text-white" href="{{ route('embarcaciones.index') }}">Embarcaciones</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-item active nav-link text-white" href="{{ route('tripulantes.index') }}">Tripulantes</a>
+        </li>
+
+        </ul>
+
+        <a class="text-white btn btn-md btn-primary" href="{{ route('info') }}"><strong>{{auth()->user()->email}}</strong></a>
+
+        <a class="btn btn-md btn-danger" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bi bi-power"></i> Logout </a>
+    </div>
+    --}}
+
+
+
+
+    {{-- MENU CON LAS OPCIONES RESTRINGIDAS --}}
+{{--
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    @if (auth()->user()->perfil != "GUARDA-MUELLES")
+
+                        <li class="nav-item">
+                            <a class="nav-item active nav-link text-white" href="{{ route('usuarios.index') }}">Usuarios</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-item active nav-link text-white" href="{{ route('instalaciones.index') }}">Instalaciones</a>
+                        </li>
+
+                    @endif
+
+
+                    <li class="nav-item">
+                        <a class="nav-item active nav-link text-white" href="{{ route('mensajes.index') }}">Mensajes</a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-item active nav-link text-white" href="{{ route('muelles.index') }}">Muelles</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-item active nav-link text-white" href="{{ route('plazas.index') }}">Plazas</a>
+                    </li>
+
                       <li class="nav-item">
                         <a class="nav-item active nav-link text-white" href="{{ route('bases.index') }}">Bases</a>
                     </li>
@@ -59,26 +182,10 @@
                         <a class="nav-item active nav-link text-white" href="{{ route('tripulantes.index') }}">Tripulantes</a>
                     </li>
 
-                    {{--**************** AÑADIR AQUI LAS RUTAS A LOS INDEX DE LOS CONTROLADORES **********************--}}
-                    {{-- <li class="nav-item">
-                        <a class="nav-item active nav-link text-white" href="{{ route('mensajes.index') }}">Mensajes</a>
-                    </li> --}}
+                </ul>
 
-                    </ul>
+                <a class="text-white btn btn-md btn-primary" href="{{ route('info') }}"><strong>{{auth()->user()->email}}</strong></a>
 
-                    {{--**************** DESCOMENTAR CUANDO ESTE INSTALADO EL LOGIN DE LARAVEL ****************--}}
-                    <a class="text-white btn btn-md btn-primary" href="{{ route('info') }}"><strong>{{auth()->user()->email}}</strong></a>
-
-                    <a class="btn btn-md btn-danger" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bi bi-power"></i> Logout </a>
-                </div>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-
+                <a class="btn btn-md btn-danger" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bi bi-power"></i> Logout </a>
             </div>
-          </nav>
-          <main>
-            @yield('content')
-        </main>
-</body>
-</html>
+    --}}
