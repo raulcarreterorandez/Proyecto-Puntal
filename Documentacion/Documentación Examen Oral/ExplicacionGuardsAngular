@@ -1,0 +1,90 @@
+Explicación de los Guards de Angular.
+Los Guards es como ponerle una cerradura a la puerta de una habitación y despues darle la llave solo a las personas que queramos puedan acceder. 
+Por ejemplo:
+ - Tenemos varios roles de los cuales hay uno, GuardaMuelles, que está en el escalón más bajo de la jerarquía establecida. Dicho rol no queremos que pueda acceder a la vista de las Instalaciones, dado que el estará asignado en el Muelle de una sola Instalación.
+ 
+ 1º. Creamos el Guard:
+ 
+ export class InstalacionGuard implements CanActivate {
+  currentUser: any;
+
+//Importamos el tokenStorageService y declaramos un objeto token en el constructor .
+  constructor(private router: Router, private token: TokenStorageService) { }
+
+  canActivate(): boolean {
+    this.currentUser = this.token.getUser(); // Accedemos al usuario logeado a través de un método del token(TokenStorageService).
+
+    let acceso: boolean = false;
+    
+//Accedemos al perfil del usuario logeado.
+    if (this.currentUser.perfil == "CUERPO-SEGURIDAD" ||  // Si es cualquier de estos roles le damos la llave.
+        this.currentUser.perfil == "XUNTA-GALICIA" ||
+        this.currentUser.perfil == "GERENCIA-PUERTO" ) {
+      acceso = true;
+    }
+    else{
+      this.router.navigate(['/home']); // Si no redirigimos a donde nos interese.
+    }
+
+    return acceso; 
+  }
+}
+
+De aquí viene el método getUser():
+
+export class TokenStorageService {
+  constructor() { }
+
+  signOut(): void {
+    window.sessionStorage.clear();
+  }
+
+  public saveToken(token: string): void {
+    window.sessionStorage.removeItem(TOKEN_KEY);
+    window.sessionStorage.setItem(TOKEN_KEY, token);
+  }
+
+  public getToken(): string | null {
+    return window.sessionStorage.getItem(TOKEN_KEY);
+  }
+
+  public saveUser(user: any): void {
+    window.sessionStorage.removeItem(USER_KEY);
+    window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+  }
+
+  public getUser(): any {
+    const user = window.sessionStorage.getItem(USER_KEY);
+    if (user) {
+      return JSON.parse(user);
+    }
+
+    return {};
+  }
+}
+
+2º. Vas al app-routing.module importamos los Guard creados y ponemos la cerradura(Guard).
+
+//GUARD
+import { InstalacionGuard } from './guards/instalaciones/instalacion.guard'; //Importamos Guard
+
+const routes: Routes = [
+  { path: 'home', component: HomeComponent , data: { animation: 'homePage' }},
+  { path: 'login', component: LoginComponent ,data: { animation: 'loginPage' }},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+
+  // RUTAS - INSTALACIONES
+  { path: 'lista-instalaciones', component: ListaInstalacionesComponent, canActivate: [InstalacionGuard] }, //Añadimos la cerradura a la puerta(Guard).
+  { path: 'vistaDetalleInst/:id', component: VistaDetalladaInstalacionComponent, canActivate: [InstalacionGuard] },
+
+];
+
+
+
+
+
+
+
+
+
+
