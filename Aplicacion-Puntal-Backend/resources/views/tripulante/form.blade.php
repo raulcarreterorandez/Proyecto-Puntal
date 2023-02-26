@@ -1,11 +1,3 @@
-{{-- -- @if ($errors->any())
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $errors }}</li>
-        @endforeach
-    </ul>
-    <br />
-@endif -- --}}
 <div class="box box-info padding-1">
     <div class="box-body">
         <div class="form-group">
@@ -52,8 +44,8 @@
         <br>
         <label for="tipoDocumento">Tipo de documento</label>
         <select name="tipoDocumento" class="form-select">
-            <option value="" disabled selected>Elige un tipo de documento</option>
-            <option value="DNI">DNI</option>
+            <option value="" disabled>Elige un tipo de documento</option>
+            <option value="DNI" selected>DNI</option>
             <option value="NIE">NIE</option>
             <option value="Pasaporte">Pasaporte</option>
         </select>
@@ -80,5 +72,6 @@
     <br>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary">Guardar</button>
+        <a class="btn btn-primary btn-danger" href="{{ route('tripulantes.index') }}">Cancelar</a>
     </div>
 </div>

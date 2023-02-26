@@ -33,8 +33,8 @@
         <label for="propulsion">Tipo de propulsión</label>
         <br>
         <select name="propulsion" class="form-select">
-            <option value="" disabled selected>Elige un tipo de propulsión</option>
-            <option value="Motor">Motor</option>
+            <option value="" disabled>Elige un tipo de propulsión</option>
+            <option value="Motor" selected>Motor</option>
             <option value="Vela">Vela</option>
         </select>
         <br>
@@ -45,7 +45,7 @@
         </div>
         <br>
         <div>
-            {{ Form::label('Plazas disponibles') }}
+            {{ Form::label('Plaza') }}
             {{ Form::select('id_plaza', $plazas, $embarcacione->id_plaza, ['class' => 'form-select' . ($errors->has('id_plaza') ? ' is-invalid' : ''), 'placeholder' => 'Plazas disponibles']) }}
             {!! $errors->first('id_plaza', '<div class="invalid-feedback">:message</div>') !!}
         </div>
@@ -53,5 +53,6 @@
     <div class="box-footer mt20">
         <br>
         <button type="submit" class="btn btn-primary">Guardar</button>
+        <a class="btn btn-primary btn-danger" href="{{ route('embarcaciones.index') }}">Cancelar</a>
     </div>
 </div>

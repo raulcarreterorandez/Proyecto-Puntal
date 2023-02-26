@@ -54,18 +54,20 @@
                                             <td>{{ $cliente['tipoDocumento'] }}</td>
                                             <td>{{ $cliente['observaciones'] }}</td>
                                             <td>
-                                                <a class="btn btn-sm btn-primary "
-                                                    href="{{ route('clientes.show', $cliente["numDocumento"]) }}"
-                                                    data-bs-toggle="tooltip"> <i class="bi bi-eye"></i>
-                                                </a>
-                                                <a class="btn btn-sm btn-success"
-                                                    href="{{ route('clientes.edit', $cliente["numDocumento"]) }}"><i
-                                                        class="bi bi-pencil"></i>
-                                                </a>
-                                                <a class="btn btn-sm btn-danger "
-                                                    href="{{ route('clientes.destroy', $cliente["numDocumento"]) }}"><i
-                                                        class="bi bi-trash3-fill"></i>
-                                                </a>
+                                                <form
+                                                    action="{{ route('clientes.destroy', $cliente['numDocumento']) }}"
+                                                    method="POST">
+                                                    <a class="btn btn-sm btn-primary "
+                                                        href="{{ route('clientes.show', $cliente['numDocumento']) }}"><i
+                                                            class="bi bi-eye"></i></a>
+                                                    <a class="btn btn-sm btn-success"
+                                                        href="{{ route('clientes.edit', $cliente['numDocumento']) }}"><i
+                                                            class="bi bi-pencil"></i></a>
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i
+                                                            class="bi bi-trash3-fill"></i></button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
