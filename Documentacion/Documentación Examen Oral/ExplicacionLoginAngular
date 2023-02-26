@@ -1,0 +1,182 @@
+Explicación de la autenticación JWT.
+
+- Concepto:
+Un JSON Web Token (JWT) es básicamente un objeto que se utiliza para transmitir información de usuario. Cuando un usuario inicia sesión en cualquier página web con su nombre de usuario y contraseña, el servidor de autenticación generalmente crea y envía un JWT. Este JWT se pasa junto con las subsiguientes llamadas de API al servidor. El JWT sigue siendo válido a menos que caduque o el usuario cierre sesión en la aplicación.
+
+- Diferencias con las cookies:
+Usaremos almacenamiento local para almacenar tokens. El almacenamiento local es un medio por el cual los datos se almacenan localmente y solo se pueden eliminar a través de JavaScript o borrando la memoria caché en el navegador. Los datos almacenados en el almacenamiento local pueden persistir durante mucho tiempo. Las cookies, por otro lado, son mensajes que se envían desde el servidor al navegador y ofrecen un almacenamiento limitado.
+
+
+- Montaje:
+
+1º. Creamos los servicios necesarios dentro una carpeta que llamaremos _services:
+
+ng g s _services/auth
+ng g s _services/token-storage
+ng g s _services/user
+
+2º Creamos el Interceptor(auth.interceptor.ts) dentro una carpeta que llamaremos _helpers:
+
+ng g interceptor _helpers/auth .
+
+3º. Importamos los módulos necesarios en app.module.ts(FormsModule& HttpClientModule). También debemos agregar en providers authInterceptorProviders. 
+
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './profile/profile.component';
+import { BoardAdminComponent } from './board-admin/board-admin.component';
+import { BoardModeratorComponent } from './board-moderator/board-moderator.component';
+import { BoardUserComponent } from './board-user/board-user.component';
+
+import { authInterceptorProviders } from './_helpers/auth.interceptor';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
+    ProfileComponent,
+    BoardAdminComponent,
+    BoardModeratorComponent,
+    BoardUserComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
+  ],
+  providers: [authInterceptorProviders], //Importante agregar el Interceptor
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+
+4º. Montamos el servicio de autentificación(_services/auth.service.ts).
+
+const AUTH_API = 'http://localhost:8080/api/auth/';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthService {
+  constructor(private http: HttpClient) { }
+
+  login(username: string, password: string): Observable<any> {
+    return this.http.post(AUTH_API + 'signin', {
+      username,
+      password
+    }, httpOptions);
+  }
+
+}
+
+5º. Montamos el servicio de almacenamiento de tokens(_services/token-storage.service.ts).
+
+const TOKEN_KEY = 'auth-token';
+const USER_KEY = 'auth-user';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class TokenStorageService {
+  constructor() { }
+
+  signOut(): void {
+    window.sessionStorage.clear();
+  }
+
+  public saveToken(token: string): void {
+    window.sessionStorage.removeItem(TOKEN_KEY);
+    window.sessionStorage.setItem(TOKEN_KEY, token);
+  }
+
+  public getToken(): string | null {
+    return window.sessionStorage.getItem(TOKEN_KEY);
+  }
+
+  public saveUser(user: any): void {
+    window.sessionStorage.removeItem(USER_KEY);
+    window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+  }
+
+  public getUser(): any {
+    const user = window.sessionStorage.getItem(USER_KEY);
+    if (user) {
+      return JSON.parse(user);
+    }
+
+    return {};
+  }
+}
+
+6º. Montamos el servicio de datos(_services/user.service.ts).
+
+
+const API_URL = 'http://localhost:8080/api/test/';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+  constructor(private http: HttpClient) { }
+
+  getPublicContent(): Observable<any> {
+    return this.http.get(API_URL + 'all', { responseType: 'text' });
+  }
+
+  getUserBoard(): Observable<any> {
+    return this.http.get(API_URL + 'user', { responseType: 'text' });
+  }
+
+  getModeratorBoard(): Observable<any> {
+    return this.http.get(API_URL + 'mod', { responseType: 'text' });
+  }
+
+  getAdminBoard(): Observable<any> {
+    return this.http.get(API_URL + 'admin', { responseType: 'text' });
+  }
+}
+
+7º. Montamos el Interceptor Http(_helpers/auth.interceptor.ts). HttpInterceptor tiene intercept() un método para inspeccionar y transformar solicitudes HTTP antes de enviarlas al servidor.
+
+import { HTTP_INTERCEPTORS, HttpEvent } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
+
+import { TokenStorageService } from '../_services/token-storage.service';
+import { Observable } from 'rxjs';
+
+const TOKEN_HEADER_KEY = 'Authorization';  
+
+@Injectable()
+export class AuthInterceptor implements HttpInterceptor {
+  constructor(private token: TokenStorageService) { }
+
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    let authReq = req;
+    const token = this.token.getToken();
+    if (token != null) {
+      authReq = req.clone({ headers: req.headers.set(TOKEN_HEADER_KEY, 'Bearer ' + token) });
+    }
+    return next.handle(authReq);
+  }
+}
+
+export const authInterceptorProviders = [
+  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+];
+
