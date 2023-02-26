@@ -1,0 +1,47 @@
+
+LUIS
+
+A continuación vamos a presentar Puntal, que es la réplica de una aplicación real para la gestión portuaria encargada por la Xunta de Galícia.
+
+
+
+Para desarrollar el proyecto lo hemos dividido en 5 partes:
+- Análisis de Diseño.
+- La Base de Datos.
+- Backend.
+- APi.
+- Frontend.
+
+
+
+Las herramientas utilizadas para el proyecto han sido principalmente:
+- Figma.
+- Jira(Método ágil).
+- Visual Studio Code.
+- Laravel(Php).
+- Angular(TypeScript).
+- SQL/PhpMyAdmin.
+- PostMan.
+
+
+
+En base a las necesidades transmitidas por el cliente hemos realizado un análisis de diseño y un prototipo funcional, aprobados por nuestro equipo docente, los cuales se han desarrollado con Figma.
+Hemos creado una versión tanto para PC como para Tablet y Móvil.
+
+Para la guía de estilos, sobre todo para la gama cromática utilizada, nos hemos basado en los distintos azules y blancos del mar y en alguna página web del sector. Además creemos que los colores azules son perfectos para no cansar la vista con las horas de uso de la aplicación.
+
+
+
+JUAN
+
+En la Base de Datos hemos establecido 4 roles marcados jerárquicamente:
+1 - Xunta. La xunta accede a todo. Es quien da acceso a la empresa que gestiona.
+
+2 - Gerencia. La empresa gestionadora tendría acceso a todo lo respectivo a sus instalaciones. En este caso como solo hay una le hemos dado acceso a todas. Le da acceso a los GuardaMuelles.
+
+3 - GuardaMuelles. GuardaMuelles únicamente podrá visualizar los datos respectivos a los muelles en los que este habilitado y solo podrá modificar datos en la gestión de las plazas.
+
+4 - Cuerpos Seguridad del Estado. Los cuerpos acceden únicamente a la parte del Frontend, dado que solo podrán ver datos.
+
+
+
