@@ -21,7 +21,7 @@
                 <div class="card-body">
 
                     <div class="form-group">
-                        <strong>Idplaza:</strong>
+                        <strong>Nº Plaza:</strong>
                         {{ $transito->idPlaza }}
                     </div>
                     <div class="form-group">
@@ -33,12 +33,12 @@
                         {{ $transito->fechaSalida }}
                     </div>
                     <div class="form-group">
-                        <strong>Idmuelle:</strong>
+                        <strong>Nº Muelle:</strong>
                         {{ $transito->plaza->idMuelle }}
                     </div>
                     <div class="form-group">
-                        <strong>IdInstalación:</strong>
-                        {{ $transito->plaza->muelle->instalacion->id }}
+                        <strong>Código Instalación:</strong>
+                        {{ $transito->plaza->muelle->instalacion->codigo }}
                     </div>
                     <div class="form-group">
                         <strong>Nombre Instalación:</strong>

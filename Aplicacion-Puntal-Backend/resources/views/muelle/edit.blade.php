@@ -14,7 +14,7 @@
                 <div class="card card-default">
                     <div class="card-header">
                         <span class="card-title">Update Muelle</span>
-                        <a class="btn btn-info btn-sm float-right m-3" href="{{ route('plazas.index') }}"> Back</a>
+                        <a class="btn btn-info btn-sm float-right m-3" href="{{ route('muelles.index') }}"> Back</a>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('muelles.update', $muelle->id) }}"  role="form" enctype="multipart/form-data">

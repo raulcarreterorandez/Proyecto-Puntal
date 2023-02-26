@@ -2,8 +2,8 @@
     <div class="box-body">
         
         <div class="form-group">
-            {{ Form::label('idPlaza') }}
-            {{ Form::select('idPlaza', $plazas, $transito->idPlaza, ['class' => 'form-control' . ($errors->has('idPlaza') ? ' is-invalid' : ''), 'placeholder' => 'Idplaza']) }}
+            {{ Form::label('Nº Plaza') }}
+            {{ Form::select('idPlaza', $plazas, $transito->idPlaza, ['class' => 'form-control' . ($errors->has('idPlaza') ? ' is-invalid' : ''), 'placeholder' => 'Nº Plaza']) }}
             {!! $errors->first('idPlaza', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

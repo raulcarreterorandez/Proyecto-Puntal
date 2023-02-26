@@ -38,10 +38,11 @@
                                     <tr>
                                         <th>No</th>
 
-                                        <th>Idplaza</th>
+                                        <th>Nº Plaza</th>
                                         <th>Fechaentrada</th>
                                         <th>Fechasalida</th>
-                                        <th>IdMuelle</th>
+                                        <th>Nº Muelle</th>
+                                        <th>Código Instalación</th>
                                         <th>Nombre Instalación</th>
 
                                         <th></th>
@@ -56,6 +57,7 @@
                                             <td>{{ $base->fechaEntrada }}</td>
                                             <td>{{ $base->fechaSalida }}</td>
                                             <td>{{ $base->plaza->idMuelle }}</td>
+                                            <td>{{ $base->plaza->muelle->instalacion->codigo }}</td>
                                             <td>{{ $base->plaza->muelle->instalacion->nombrePuerto }}</td>
 
                                             <td>

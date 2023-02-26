@@ -20,7 +20,7 @@ Muelle
                             <a href="{{ route('muelles.create') }}" class="btn btn-secondary btn-sm float-right" data-placement="left">
                                 {{ __('Create New') }}
                             </a>
-                            {{-- <a class="btn btn-primary btn-sm float-right" href="{{ route('plazas.index') }}"> Visualiza Plazas</a> --}}
+                            {{-- <a class="btn btn-primary btn-sm float-right" href="{{ route('plazas.index') }}"> Visualiza Plazas</a> 
                             {{-- <a class="btn btn-info btn-sm float-right" href="{{ route('instalacionIndex') }}"> Back</a> --}}
                         </div>
                     </div>
@@ -38,9 +38,9 @@ Muelle
                                 <tr>
                                     <th>No</th>
 
-                                    <th>IdMuelle</th>
-                                    <th>Visto</th>
-                                    <th>Id Instalación</th>
+                                    <th>Nº Muelle</th>
+                                    <!-- <th>Visto</th> -->
+                                    <th>Código Instalación</th>
                                     <th>Nombre Instalación</th>
                                     <th>Acciones</th>
                                     
@@ -52,8 +52,8 @@ Muelle
                                     <td>{{ ++$i }}</td>
 
                                     <td>{{ $muelle->id }}</td>
-                                    <td>{{ $muelle->visto }}</td>
-                                    <td>{{ $muelle->instalacion->id }}</td>
+                                    <!-- <td>{{ $muelle->visto }}</td> -->
+                                    <td>{{ $muelle->instalacion->codigo }}</td>
                                     <td>{{ $muelle->instalacion->nombrePuerto }}</td>
 
                                     <td>

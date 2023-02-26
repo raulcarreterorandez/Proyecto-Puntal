@@ -37,10 +37,11 @@ Transito
                                 <tr>
                                     <th>No</th>
 
-                                    <th>Idplaza</th>
+                                    <th>Nº Plaza</th>
                                     <th>Fechaentrada</th>
                                     <th>Fechasalida</th>
-                                    <th>IdMuelle</th>
+                                    <th>Nº Muelle</th>
+                                    <th>Código Instalación</th>
                                     <th>Nombre Instalación</th>
 
                                     <th></th>
@@ -55,6 +56,7 @@ Transito
                                     <td>{{ $transito->fechaEntrada }}</td>
                                     <td>{{ $transito->fechaSalida }}</td>
                                     <td>{{ $transito->plaza->idMuelle }}</td>
+                                    <td>{{ $transito->plaza->muelle->instalacion->codigo }}</td>
                                     <td>{{ $transito->plaza->muelle->instalacion->nombrePuerto }}</td>
 
                                     <td>

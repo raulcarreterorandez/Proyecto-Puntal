@@ -20,12 +20,12 @@
 
                     <div class="card-body">
                        <div class="form-group">
-                            <strong>Id Muelle:</strong>
+                            <strong>Nº Muelle:</strong>
                             {{ $muelle->id }}
                         </div>
                         <div class="form-group">
-                            <strong>IdInstalación:</strong>
-                            {{ $muelle->idInstalacion }}
+                            <strong>Código Instalación:</strong>
+                            {{ $muelle->instalacion->codigo }}
                         </div>
                         <div class="form-group">
                             <strong>Nombre Instalación:</strong>

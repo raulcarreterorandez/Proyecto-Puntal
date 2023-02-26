@@ -20,7 +20,7 @@ Plaza
                             <a href="{{ route('plazas.create') }}" class="btn btn-secondary btn-sm float-right" data-placement="left">
                                 {{ __('Create New') }}
                             </a>
-                {{--             <a class="btn btn-primary btn-sm float-right" href="{{ route('transito.index') }}"> Visualizar Tránsitos</a>
+                            {{-- <a class="btn btn-primary btn-sm float-right" href="{{ route('transito.index') }}"> Visualizar Tránsitos</a>
                             <a class="btn btn-primary btn-sm float-right" href="{{ route('base.index') }}"> Visualizar Bases</a>
                             <a class="btn btn-info btn-sm float-right" href="{{ route('muelle.index') }}"> Back</a> --}}
                         </div>
@@ -38,13 +38,14 @@ Plaza
                             <thead class="thead">
                                 <tr>
                                     <th>No</th>
-                                    <th>IdPlaza</th>
+                                    <th>Nº Plaza</th>
                                     <th>Disponible</th>
-                                    <th>Visto</th>
+                                    <!-- <th>Visto</th> -->
                                     <th>PuertoOrigen</th>
                                     <th>PuertoDestino</th>
                                     <th>Año</th>
-                                    <th>IdMuelle</th>
+                                    <th>Nº Muelle</th>
+                                    <th>Código Instalación</th>
                                     <th>Nombre Instalación</th>
 
                                     <th></th>
@@ -55,12 +56,22 @@ Plaza
                                 <tr>
                                     <td>{{ ++$i }}</td>
                                     <td>{{ $plaza->id }}</td>
-                                    <td>{{ $plaza->disponible }}</td>
-                                    <td>{{ $plaza->visto }}</td>
+                                    <td>
+                                        @if ($plaza->disponible == 1)
+                                        <button class="bi bi-check-square-fill boton-habilitado" style="color: green"></button>
+                                        <a style="visibility: hidden">1</a>
+                                        @else
+                                        <button class="bi bi-x-square-fill boton-habilitado" style="color: red"></button>
+                                        <a style="visibility: hidden">0</a>
+                                        @endif
+                                    </td>
+                                    <!-- <td>{{ $plaza->disponible }}</td> -->
+                                    <!-- <td>{{ $plaza->visto }}</td> -->
                                     <td>{{ $plaza->puertoOrigen }}</td>
                                     <td>{{ $plaza->puertoDestino }}</td>
                                     <td>{{ $plaza->anyo }}</td>
                                     <td>{{ $plaza->idMuelle }}</td>
+                                    <td>{{ $plaza->muelle->instalacion->codigo }}</td>
                                     <td>{{ $plaza->muelle->instalacion->nombrePuerto }}</td>
 
                                     <td>
@@ -84,3 +95,11 @@ Plaza
     </div>
 </div>
 @endsection
+
+<style>
+    .bi {
+        outline: none;
+        border: none;
+        font-size: 20px;
+    }
+</style>

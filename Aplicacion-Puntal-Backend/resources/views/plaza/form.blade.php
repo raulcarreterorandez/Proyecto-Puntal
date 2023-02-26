@@ -6,11 +6,12 @@
             {{ Form::text('disponible', $plaza->disponible, ['class' => 'form-control' . ($errors->has('disponible') ? ' is-invalid' : ''), 'placeholder' => 'Disponible']) }}
             {!! $errors->first('disponible', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
+        <input type="hidden" name="visto" value="0"></input>
+<!--         <div class="form-group">
             {{ Form::label('visto') }}
             {{ Form::text('visto', $plaza->visto, ['class' => 'form-control' . ($errors->has('visto') ? ' is-invalid' : ''), 'placeholder' => 'Visto']) }}
             {!! $errors->first('visto', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
+        </div> -->
         <div class="form-group">
             {{ Form::label('puertoOrigen') }}
             {{ Form::text('puertoOrigen', $plaza->puertoOrigen, ['class' => 'form-control' . ($errors->has('puertoOrigen') ? ' is-invalid' : ''), 'placeholder' => 'Puertoorigen']) }}
@@ -27,7 +28,7 @@
             {!! $errors->first('anyo', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('idMuelle') }}
+            {{ Form::label('Nº Muelle') }}
             {{ Form::select('idMuelle',$muelles, $plaza->idMuelle, ['class' => 'form-control' . ($errors->has('idMuelle') ? ' is-invalid' : ''), 'placeholder' => 'Idmuelle']) }}
             {!! $errors->first('idMuelle', '<div class="invalid-feedback">:message</div>') !!}
         </div>

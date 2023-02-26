@@ -21,11 +21,13 @@
             {{ Form::text('estado', $instalacion->estado, ['class' => 'form-control' . ($errors->has('estado') ? ' is-invalid' : ''), 'placeholder' => 'Estado']) }}
             {!! $errors->first('estado', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group">
+    <!--     <div class="form-group">
             {{ Form::label('visto') }}
             {{ Form::text('visto', $instalacion->visto, ['class' => 'form-control' . ($errors->has('visto') ? ' is-invalid' : ''), 'placeholder' => 'Visto']) }}
             {!! $errors->first('visto', '<div class="invalid-feedback">:message</div>') !!}
-        </div>
+        </div> -->
+        <input type="hidden" name="visto" value="0"></input>
+
         <div class="form-group">
             {{ Form::label('fechaDisposicion') }}
             {{ Form::date('fechaDisposicion', $instalacion->fechaDisposicion, ['class' => 'form-control' . ($errors->has('fechaDisposicion') ? ' is-invalid' : ''), 'placeholder' => 'Fechadisposicion']) }}

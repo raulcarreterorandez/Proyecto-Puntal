@@ -22,12 +22,20 @@
 
                     <div class="form-group">
                         <strong>Disponible:</strong>
-                        {{ $plaza->disponible }}
+
+                        @if ($plaza->disponible == 1)
+                        <button class="bi bi-check-square-fill boton-habilitado" style="color: green"></button>
+                        <a style="visibility: hidden">1</a>
+                        @else
+                        <button class="bi bi-x-square-fill boton-habilitado" style="color: red"></button>
+                        <a style="visibility: hidden">0</a>
+                        @endif
+
                     </div>
-                    <div class="form-group">
+                    <!--    <div class="form-group">
                         <strong>Visto:</strong>
                         {{ $plaza->visto }}
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <strong>Puertoorigen:</strong>
                         {{ $plaza->puertoOrigen }}
@@ -41,12 +49,12 @@
                         {{ $plaza->anyo }}
                     </div>
                     <div class="form-group">
-                        <strong>Idmuelle:</strong>
+                        <strong>Nº muelle:</strong>
                         {{ $plaza->idMuelle }}
                     </div>
                     <div class="form-group">
-                        <strong>IdInstalación:</strong>
-                        {{ $plaza->muelle->instalacion->id }}
+                        <strong>Código Instalación:</strong>
+                        {{ $plaza->muelle->instalacion->codigo }}
                     </div>
                     <div class="form-group">
                         <strong>Nombre Instalación:</strong>
@@ -59,3 +67,10 @@
     </div>
 </section>
 @endsection
+<style>
+    .bi {
+        outline: none;
+        border: none;
+        font-size: 20px;
+    }
+</style>
