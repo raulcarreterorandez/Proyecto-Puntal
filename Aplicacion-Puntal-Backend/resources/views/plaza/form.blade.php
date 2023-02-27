@@ -7,11 +7,11 @@
             {!! $errors->first('disponible', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <input type="hidden" name="visto" value="0"></input>
-<!--         <div class="form-group">
+        {{--  <div class="form-group">
             {{ Form::label('visto') }}
             {{ Form::text('visto', $plaza->visto, ['class' => 'form-control' . ($errors->has('visto') ? ' is-invalid' : ''), 'placeholder' => 'Visto']) }}
             {!! $errors->first('visto', '<div class="invalid-feedback">:message</div>') !!}
-        </div> -->
+        </div> --}}
         <div class="form-group  col-lg-7 col-md-10">
             {{ Form::label('puertoOrigen') }}
             {{ Form::text('puertoOrigen', $plaza->puertoOrigen, ['class' => 'form-control' . ($errors->has('puertoOrigen') ? ' is-invalid' : ''), 'placeholder' => 'Puertoorigen']) }}
