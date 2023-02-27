@@ -65,8 +65,9 @@ class UsuarioController extends Controller
         $instalacionesChecked = [0];
         $usuario->perfil =0;
         $usuario->idioma =0;
+        $editar = false;
 
-        return view('usuario.create', compact('usuario', 'instalaciones', 'instalacionesChecked'));
+        return view('usuario.create', compact('usuario', 'instalaciones', 'instalacionesChecked','editar'));
     }
 
     public function store(Request $request)
@@ -77,7 +78,7 @@ class UsuarioController extends Controller
         // CREAMOS AL USUARIO
         $usuario = $request->validate([
             'nombreUsuario' => 'required|max:50|unique:usuarios,nombreUsuario',
-            "password" => 'required|min:6|max:50',
+            // "password" => 'required|max:50',
             'nombreCompleto' => 'required|max:100',
             'email' => 'required|email|max:100|unique:usuarios,email',
             'habilitado' => 'required',
@@ -85,7 +86,7 @@ class UsuarioController extends Controller
             'idioma' => 'required',
             'visto' => 'required',
         ]);
-        $usuario['password'] = bcrypt($request->password); // Encriptamos la contraseña
+        $usuario['password'] = bcrypt($request->nombreUsuario); // Encriptamos la contraseña (por defecto es el nombre de usuario)
 
         // dd($usuario);
 
@@ -114,8 +115,9 @@ class UsuarioController extends Controller
         $usuario = Usuario::find($id);
         $instalacionesChecked = Usuario::find($id)->instalacionesUsuario() -> get() -> pluck('id');
         $instalaciones = Instalacion::all();
+        $editar = true;
 
-        return view('usuario.edit', compact('usuario','instalaciones','instalacionesChecked'));
+        return view('usuario.edit', compact('usuario','instalaciones','instalacionesChecked','editar'));
     }
 
     public function update(Request $request, Usuario $usuario)
@@ -147,7 +149,7 @@ class UsuarioController extends Controller
             'visto' => 'required',
         ]);
         //Rule:.unique... sirve para mantener el funcionamiento de unique pero si le mandamos el mismo valor que ya teniamos almacenado, no devolvera error
-        
+
         // dd($request);
 
 
