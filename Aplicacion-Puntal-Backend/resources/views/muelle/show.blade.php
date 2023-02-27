@@ -31,10 +31,10 @@
                             <strong>Nombre Instalación:</strong>
                             {{ $muelle->instalacion->nombrePuerto }}
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <strong>Visto:</strong>
                             {{ $muelle->visto }}
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
