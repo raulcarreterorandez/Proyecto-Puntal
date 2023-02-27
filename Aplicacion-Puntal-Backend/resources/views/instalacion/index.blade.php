@@ -40,7 +40,7 @@ Instalacion
                                     <th>Nombrepuerto</th>
                                     <th>Descripcion</th>
                                     <th>Estado</th>
-                                    <th>Visto</th>
+                                    {{-- <th>Visto</th> --}}
                                     <th>Fechadisposicion</th>
                                     <th>Acciones</th>
                                 </tr>
@@ -49,12 +49,12 @@ Instalacion
                                 @foreach ($instalaciones as $instalacione)
                                 <tr>
                                     <td>{{ ++$i }}</td>
-                                    <!-- <td>{{ $instalacione->id }}</td> -->
+                                    {{-- <td>{{ $instalacione->id }}</td>  --}}
                                     <td>{{ $instalacione->codigo }}</td>
                                     <td>{{ $instalacione->nombrePuerto }}</td>
                                     <td>{{ $instalacione->descripcion }}</td>
                                     <td>{{ $instalacione->estado }}</td>
-                                    <td>{{ $instalacione->visto }}</td>
+                                    {{-- <td>{{ $instalacione->visto }}</td> --}}
                                     <td>{{ $instalacione->fechaDisposicion }}</td>
 
                                     <td>
