@@ -12,12 +12,22 @@ Usaremos almacenamiento local para almacenar tokens. El almacenamiento local es 
 1º. Creamos los servicios necesarios dentro una carpeta que llamaremos _services:
 
 ng g s _services/auth
+Enviamos solicitudes HTTP POST de inicio de sesion y registro al backend
+
 ng g s _services/token-storage
+Administramos la informacion del token y el usuario que se ha logeado **dentro del almacenamiento de la sesion del navegador**
+Para cerrar sesion solo nos haria falta eliminar esa informacion del almacenamiento de la sesion
+
 ng g s _services/user
+Proporciona los metodos que tenemos en el backen para obtener la informacion del usuario (dependiendo de los metodos que tengamos en el back)
+
 
 2º Creamos el Interceptor(auth.interceptor.ts) dentro una carpeta que llamaremos _helpers:
-
+ 
 ng g interceptor _helpers/auth .
+
+Interceptor se encarga de almacenar en una constante el token que tenemos en la sesion del navegador (previamente almacenada con TokenStorageService) y modifica las peticiones http que le mandamos al back añadiendole "bearer" y el token ( con el metodo intercept() ) para asi recibir la informacion de la api.
+En caso de hacer una llamada al back, modificaria la peticion añadiendole el token y asi poder tener acceso a la informacion que devuelve la api.
 
 3º. Importamos los módulos necesarios en app.module.ts(FormsModule& HttpClientModule). También debemos agregar en providers authInterceptorProviders. 
 
