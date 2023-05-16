@@ -32,20 +32,20 @@
                         @endif
 
                     </div>
-                    <!--    <div class="form-group">
+                        {{-- <div class="form-group">
                         <strong>Visto:</strong>
                         {{ $plaza->visto }}
-                    </div> -->
+                    </div>  --}}
                     <div class="form-group">
-                        <strong>Puertoorigen:</strong>
+                        <strong>Puerto Origen:</strong>
                         {{ $plaza->puertoOrigen }}
                     </div>
                     <div class="form-group">
-                        <strong>Puertodestino:</strong>
+                        <strong>Puerto Destino:</strong>
                         {{ $plaza->puertoDestino }}
                     </div>
                     <div class="form-group">
-                        <strong>anyo:</strong>
+                        <strong>Año:</strong>
                         {{ $plaza->anyo }}
                     </div>
                     <div class="form-group">

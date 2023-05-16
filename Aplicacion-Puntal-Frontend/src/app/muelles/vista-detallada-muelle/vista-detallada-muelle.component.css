@@ -35,10 +35,10 @@
 
 #boton_volver {
   /* margin-top: 20px; */
-  
+
 }
 
-.textoCabecera {  
+.textoCabecera {
   font-size: 20px;
   margin-left: 20px;
 }
@@ -48,7 +48,7 @@
   margin: 20px;
   padding: 10px;
   border-radius: 5px;
-  height: 25vh;
+  height: 30vh;
 }
 
 #tabla {
@@ -82,7 +82,7 @@ th {
 
 .boton-habilitado{
   outline: none;
-  border: none;  
+  border: none;
 }
 
 .bi{

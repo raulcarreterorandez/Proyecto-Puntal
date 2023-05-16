@@ -21,27 +21,27 @@
                 <div class="card-body">
 
                     <div class="form-group">
-                        <strong>Codigo:</strong>
+                        <strong>Código:</strong>
                         {{ $instalacion->codigo }}
                     </div>
                     <div class="form-group">
-                        <strong>Nombrepuerto:</strong>
+                        <strong>Nombre Puerto:</strong>
                         {{ $instalacion->nombrePuerto }}
                     </div>
                     <div class="form-group">
-                        <strong>Descripcion:</strong>
+                        <strong>Descripción:</strong>
                         {{ $instalacion->descripcion }}
                     </div>
                     <div class="form-group">
                         <strong>Estado:</strong>
                         {{ $instalacion->estado }}
                     </div>
-                    <!--   <div class="form-group">
+                    {{-- <div class="form-group">
                             <strong>Visto:</strong>
                             {{ $instalacion->visto }}
-                        </div> -->
+                        </div> --}}
                     <div class="form-group">
-                        <strong>Fechadisposicion:</strong>
+                        <strong>Fecha Disposición:</strong>
                         {{ $instalacion->fechaDisposicion }}
                     </div>
 

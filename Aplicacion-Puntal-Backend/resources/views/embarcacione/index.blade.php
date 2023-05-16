@@ -56,18 +56,6 @@
                                             <td>{{ $embarcacione['id_cliente'] }}</td>
                                             <td>{{ $embarcacione['id_plaza'] }}</td>
                                             <td>
-                                                <a class="btn btn-sm btn-primary "
-                                                    href="{{ route('embarcaciones.show', $embarcacione['matricula']) }}"
-                                                    data-bs-toggle="tooltip"> <i class="bi bi-eye"></i>
-                                                </a>
-                                                <a class="btn btn-sm btn-success"
-                                                    href="{{ route('embarcaciones.edit', $embarcacione['matricula']) }}"><i
-                                                        class="bi bi-pencil"></i>
-                                                </a>
-                                                <a class="btn btn-sm btn-danger "
-                                                    href="{{ route('embarcaciones.destroy', $embarcacione['matricula']) }}"><i
-                                                        class="bi bi-trash3-fill"></i>
-                                                </a>
                                                 <form
                                                     action="{{ route('embarcaciones.destroy', $embarcacione['matricula']) }}"
                                                     method="POST">

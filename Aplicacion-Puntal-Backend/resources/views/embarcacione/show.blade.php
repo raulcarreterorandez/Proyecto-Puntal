@@ -40,11 +40,11 @@
                             {{ $embarcacione->propulsion }}
                         </div>
                         <div class="form-group">
-                            <strong>Id Cliente:</strong>
+                            <strong>Cliente:</strong>
                             {{ $embarcacione->id_cliente }}
                         </div>
                         <div class="form-group">
-                            <strong>Id Plaza:</strong>
+                            <strong>Plaza:</strong>
                             {{ $embarcacione->id_plaza }}
                         </div>
                         {{-- <div class="form-group">

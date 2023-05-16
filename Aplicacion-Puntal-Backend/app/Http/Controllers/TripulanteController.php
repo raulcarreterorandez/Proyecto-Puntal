@@ -11,14 +11,14 @@ use App\Models\Muelle;
 use App\Models\Plaza;
 
 class TripulanteController extends Controller{
-    
+
     public function __construct() { // Copia Instalación.
-            
-        $this->middleware('guarda-muelle'); // Desde Guarda-muelles hacia arriba, pasando por Gerencia y Xunta acceden a todo. 
+
+        $this->middleware('guarda-muelle'); // Desde Guarda-muelles hacia arriba, pasando por Gerencia y Xunta acceden a todo.
     }
 
     public function index() {
-        
+
         ///Necesitamos mostrar únicamente las instalaciones en las que esté habilitado en usuario.
 
         //Obtengo el usuario logeado.
@@ -82,9 +82,10 @@ class TripulanteController extends Controller{
 
     public function create() {
         $tripulante = new Tripulante();
+        $plazas = Transito::all()->pluck('idPlaza', 'idPlaza');
         $embarcaciones = Embarcacione::all()->pluck('matricula', 'matricula');
 
-        return view('tripulante.create', compact('tripulante', 'embarcaciones',));
+        return view('tripulante.create', compact('tripulante', 'embarcaciones', 'plazas'));
     }
 
     public function store(Request $request) {

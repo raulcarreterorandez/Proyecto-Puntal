@@ -16,12 +16,15 @@
             {{ Form::text('nombreUsuario', $usuario->nombreUsuario, ['class' => 'form-control' . ($errors->has('nombreUsuario') ? ' is-invalid' : ''), 'placeholder' => 'Nombre Usuario']) }}
             {!! $errors->first('nombreUsuario', '<div class="invalid-feedback">:message</div>') !!}
         </div>
-        <div class="form-group col-lg-7 col-md-10">
-            <label class="form-label" for="validationCustom03">Password</label>
-            <input type="password" class='form-control{{($errors->has('password') ? ' is-invalid' : '')}}' name="password" value="{{$usuario->password}}" id="validationCustom03">
-            {!! $errors->first('password', '<div class="invalid-feedback">:message</div>') !!}
-            <small style="color: grey">Min:6 caracteres</small>
-        </div>
+
+        @if ($editar == true)
+            <div class="form-group col-lg-7 col-md-10">
+                <label class="form-label" for="validationCustom03">Password</label>
+                <input type="password" class='form-control{{($errors->has('password') ? ' is-invalid' : '')}}' name="password" value="{{$usuario->password}}" id="validationCustom03">
+                {!! $errors->first('password', '<div class="invalid-feedback">:message</div>') !!}
+                <small style="color: grey">Min:6 caracteres</small>
+            </div>
+        @endif
         <div class="form-group col-lg-7 col-md-10">
             {{ Form::label('Nombre Completo') }}
             {{ Form::text('nombreCompleto', $usuario->nombreCompleto, ['class' => 'form-control' . ($errors->has('nombreCompleto') ? ' is-invalid' : ''), 'placeholder' => 'Nombre Completo']) }}
@@ -29,7 +32,6 @@
         </div>
         <div class="form-group col-lg-7 col-md-10">
             {{ Form::label('Email') }}
-            {{-- ********** DESCOMENTAR CUANDO HAYA LOGIN LARAVEL ************* --}}
             @if (auth()->user()->email == $usuario->email)
                 {{ Form::text('email', $usuario->email, ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'placeholder' => 'Email', 'disabled']) }}
                 <input type="hidden" name="email" value="{{$usuario->email}}">
@@ -38,9 +40,6 @@
                 {!! $errors->first('email', '<div class="invalid-feedback">:message</div>') !!}
             @endif
 
-            {{-- COMENTAR LINEAS CUANDO SE DESCOMENTE LO DE ARRIBA --}}
-            {{-- {{ Form::text('email', $usuario->email, ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'placeholder' => 'Email']) }}
-            {!! $errors->first('email', '<div class="invalid-feedback">:message</div>') !!} --}}
         </div>
 
         <div class="row">
