@@ -59,6 +59,11 @@
                         <a class="nav-item active nav-link text-white" href="{{ route('tripulantes.index') }}">Tripulantes</a>
                     </li>
 
+
+                    <li class="nav-item">
+                        <a class="nav-item active nav-link text-white" href="{{ route('servicios.index') }}">Servicios</a>
+                    </li>
+
                     </ul>
 
                     <a class="text-white btn btn-md btn-primary" href="{{ route('info') }}"><strong>{{auth()->user()->email}}</strong></a>

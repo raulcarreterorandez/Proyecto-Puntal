@@ -14,6 +14,7 @@ use App\Http\Controllers\TripulanteController;
 use App\Http\Controllers\EmbarcacioneController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\TelefonoController;
+use App\Http\Controllers\ServicioController;
 use App\Models\Usuario;
 
 Route::view('/login', 'login')->name('login');
@@ -32,6 +33,7 @@ Route::resource('tripulantes', TripulanteController::class);
 Route::resource('embarcaciones', EmbarcacioneController::class);
 Route::resource('clientes', ClienteController::class);
 Route::resource('telefonos', TelefonoController::class);
+Route::resource('servicios', ServicioController::class);
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/user', [AuthController::class, 'infoUser'])->name('info');

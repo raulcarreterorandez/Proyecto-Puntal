@@ -37,18 +37,19 @@ class Embarcacione extends Model
         'id_plaza'
     ];
 
-    public function cliente()
-    {
+    public function cliente() {
         return $this->hasOne('App\Models\Cliente', 'numDocumento', 'id_cliente');
     }
 
-    public function plaza()
-    {
+    public function plaza() {
         return $this->hasOne('App\Models\Plaza', 'id', 'id_plaza');
     }
 
-    public function tripulantes()
-    {
+    public function tripulantes() {
         return $this->hasMany('App\Models\Tripulante', 'id_embarcacion', 'matricula');
+    }
+
+    public function servicios() {
+        return $this->hasMany('App\Models\Servicio', 'matriculaEmbarcacion', 'matricula');
     }
 }

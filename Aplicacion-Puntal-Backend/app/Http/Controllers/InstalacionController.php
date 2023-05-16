@@ -26,11 +26,11 @@ class InstalacionController extends Controller {
         $usuarioLogeado = Usuario::with('instalacionesUsuario')->where('email', '=', auth()->user()->email)->get();
         // Where() devuelve siempre una colección de tipo Array. Aunque solo devuelva un elemento.
 
-        // Si el usuario tiene acceso a todos los puertos, le pasamos todos los puertos disponibles
+        // Si el usuario tiene acceso a todos los puertos, le pasamos todos los puertos disponibles.
         if ($usuarioLogeado[0]->instalacionesUsuario[0]->id == 0) {
-           $instalaciones = Instalacion::all();
+            $instalaciones = Instalacion::all();
         }
-        else{ //Si no mostramos unicamente los puertos relacionados con el usuario
+        else{ //Si no mostramos unicamente los puertos relacionados con el usuario.
 
             $instalaciones = Instalacion::where(function ($query){
 
