@@ -48,7 +48,9 @@ import { VistaDetalladaMensajeComponent } from './mensajes/vista-detallada-mensa
 import { VistaDetalladaTripulantesComponent } from './tripulantes/vista-detallada-tripulantes/vista-detallada-tripulantes.component';
 import { InfoUserComponent } from './info-user/info-user.component';
 
-
+// SERVICIOS
+import { ListaServiciosComponent } from './servicios/lista-servicios/lista-servicios.component';
+import { VistaDetalladaServicioComponent } from './servicios/vista-detallada-servicio/vista-detallada-servicio.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent , data: { animation: 'homePage' }},
@@ -90,6 +92,10 @@ const routes: Routes = [
 
   // RUTAS - TRIPULANTES
   { path: 'vistaDetalleTripulante/:numDocumento', component: VistaDetalladaTripulantesComponent, canActivate: [LogeadoGuard] },
+
+  // RUTAS - SERVICIOS
+  { path: 'lista-servicios', component: ListaServiciosComponent, canActivate: [LogeadoGuard] },
+  { path: 'vistaDetalleServicio/:id', component: VistaDetalladaServicioComponent, canActivate: [LogeadoGuard] },
 ];
 
 @NgModule({

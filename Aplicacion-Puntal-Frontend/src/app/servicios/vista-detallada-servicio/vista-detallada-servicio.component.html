@@ -1,0 +1,279 @@
+<div id="dashBoard" class="container-fluid">
+  <div class="row">
+    <app-header></app-header>
+  </div>
+  <div id="vistaCentral" class="row">
+    <div class="col-1">
+      <app-aside></app-aside>
+    </div>
+    <div class="col-10">
+      <div id="cabecera_botones" class="row d-flex justify-content-space-between align-items-center">
+        <div class="col-1">
+          <img id="boton_volver" src="/assets/flechaAtras.svg" alt="Volver" [routerLink]="['/lista-servicios']">
+        </div>
+        <div class="col-10 d-flex justify-content-center">
+          <div id="titulo">Detalles del servicio {{currentServicio.id }}</div>
+        </div>
+      </div>
+      <div id="cabecera" class="row d-flex align-items-center ">
+        <div class="col-6">
+          <div class="texto">Código servicio: <strong>{{ currentServicio.id }}</strong></div>
+        </div>
+        <div class="col-6">
+          <div class="texto">Tipo servicio: <strong>{{ currentServicio.tipoServicio }}</strong></div>
+        </div>
+      </div>
+      <div id="cuerpo" class="row d-flex  align-items-center">
+        <div class="col-6">
+          <!-- <div class="texto">Nº servicio: <strong> {{ currentServicio.id }}</strong></div> -->
+          <!--  <div class="texto">Tipo servicio: <strong>{{ currentServicio.tipoServicio }}</strong></div> -->
+          <div class="texto">Nº horas presupuestadas: <strong> {{ currentServicio.numHoras }}</strong></div>
+          <div class="texto">Precio hora: <strong> {{ currentServicio.precioHora }}</strong></div>
+          <div class="texto">Fecha solicitud: <strong> {{ currentServicio.fechaSolicitud }}</strong></div>
+          <table id="tabla" class="table table-hover">
+            <thead class="">
+              <tr>
+                <!-- <th scope="col">Abonado</th> -->
+                <!-- <th scope="col">Finalizado</th> -->
+                <th scope="col"><div style="font-weight:normal" class="mx-2 texto">Abonado</div></th>
+                <th scope="col"><div style="font-weight:normal" class="texto">Finalizado</div></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <ng-template *ngIf="currentServicio.abonado; then check else cruz"></ng-template>
+
+                  <ng-template #check>
+                    <button class="bi bi-check-square-fill boton-habilitado" style="color: green" disabled> ->
+                      Abonado</button>
+                  </ng-template>
+
+                  <ng-template #cruz>
+                    <button class="bi bi-x-square-fill boton-habilitado" style="color: red" disabled> ->
+                      No abonado</button>
+                  </ng-template>
+                </td>
+                <td>
+                  <ng-template *ngIf="currentServicio.finalizado; then check1 else cruz1"></ng-template>
+
+                  <ng-template #check1>
+                    <button class="bi bi-check-square-fill boton-habilitado" style="color: green" disabled> ->
+                      Finalizado</button>
+                  </ng-template>
+
+                  <ng-template #cruz1>
+                    <button class="bi bi-x-square-fill boton-habilitado" style="color: red" disabled> ->
+                      No finalizado</button>
+                  </ng-template>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-6">
+          <div class="texto">Info. embarcacion:</div> 
+          <table id="tabla" class="mx-5 table table-hover">          
+            <tbody>
+              <tr>               
+                <td>Matrícula embarcación:</td>
+                <td><strong>{{ currentServicio.matriculaEmbarcacion }}</strong></td>               
+              </tr>
+              <tr>               
+                <td>Nombre embarcación:</td>
+                <td><strong>{{ currentServicio.embarcacion.nombre }}</strong></td>               
+              </tr>
+              <tr>               
+                <td>Nº plaza:</td>
+                <td><strong>{{ currentServicio.embarcacion.id_plaza }}</strong></td>               
+              </tr>
+              <tr>               
+                <td>Id. cliente:</td>
+                <td><strong>{{ currentServicio.embarcacion.id_cliente }}</strong></td>               
+              </tr>
+            </tbody>
+          </table>
+          <!-- <table id="tabla" class="table table-hover">
+            <thead class="">
+              <tr>
+                <th scope="col">Estado</th>
+                <th scope="col">Nº Plaza</th>
+                <th scope="col">Tipo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let plaza of currentMuelle.plazas">
+                <ng-template *ngIf="plaza.disponible; then check else cruz"></ng-template>
+
+                <ng-template #check>
+                  <button class="bi bi-check-square-fill boton-habilitado" style="color: green" disabled> ->
+                    Disponible</button>
+                </ng-template>
+
+                <ng-template #cruz>
+                  <button class="bi bi-x-square-fill boton-habilitado" style="color: red" disabled> -> Ocupado</button>
+                </ng-template>
+                <td>{{plaza.id}}</td>               
+                <td>{{plaza.tipo}}</td>
+              </tr>
+            </tbody>
+          </table> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-1 d-flex flex-row-reverse">
+      <app-user-settings></app-user-settings>
+    </div>
+  </div>
+</div>
+<!--
+<div id="dashBoard" class="container-fluid">
+  <div class="row">
+    <app-header></app-header>
+  </div>
+  <div id="vistaCentral" class="row">
+    <div class="col-1">
+      <app-aside></app-aside>
+    </div>
+    <div class="col-10">
+      <div class="row">
+        <div class="container-fluid d-flex justify-content-center">
+
+          <div class="col-8">
+
+            <div id="botones" class="row d-flex justify-content-space-between align-items-center">
+              <div class="col-1">
+                <button><i class="far fa-arrow-alt-circle-left mx-1" style='font-size:50px' data-bs-toggle="tooltip"
+                    title="Volver" [routerLink]="['/lista-muelles']"></i></button>
+              </div>
+              <div class="col-11">
+                <div id="titulo">Detalle Muelle</div>
+              </div>
+            </div>
+
+            <div id="cabecera" class="row d-flex align-items-center ">
+              <div class="col-2">
+                <div>Id Inst.: <strong>{{ currentMuelle.idInstalacion }}</strong></div>
+              </div>
+              <div class="col-4">
+                <div>Código Inst.: <strong>{{ currentMuelle.instalacion.codigo }}</strong></div>
+              </div>
+              <div class="col-6">
+                <div>Nombre Inst.: <strong>{{ currentMuelle.instalacion.nombrePuerto }}</strong>
+                </div>
+              </div>
+            </div>
+
+            <div id="cuerpo" class="row container-fluid d-flex">
+              <div class="row d-flex justify-content-center">
+                <div class="col-6">
+                  <div class="texto">Id Muelle:<strong> {{ currentMuelle.id }}</strong></div>
+                </div>
+                <div class="col-6">
+                  <div class="texto">Nº Plazas Total: <strong>{{ currentMuelle.plazasTotales }}</strong></div>
+                  <div class="texto">Nº Plazas Disponibles: <strong>{{ currentMuelle.plazasDisponibles }}</strong></div>
+                </div>
+              </div>
+              <div class="row d-flex justify-content-center">
+                <table id="tabla" class="table">
+                  <thead class="">
+                    <tr>
+                      <th scope="col">Id Plaza</th>
+                      <th scope="col">Estado</th>
+                      <th scope="col">Tipo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let plaza of currentMuelle.plazas">
+                      <td>{{plaza.id}}</td>
+                      <td [style.color]="plaza.disponible == 1 ? 'green': 'red'">
+                        <p *ngIf="plaza.disponible==1">Disponible</p>
+                        <p *ngIf="plaza.disponible==0">Ocupado</p>
+                      </td>
+                      <td>{{plaza.tipo}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <div id="usersettings" class="col-1 d-flex flex-row-reverse">
+      <app-user-settings></app-user-settings>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div id="dashBoard" class="container-fluid">
+    <div class="row">
+        <app-header></app-header>
+    </div>
+    <div id="vistaCentral" class="row">
+        <div class="col-1">
+            <app-aside></app-aside>
+        </div>
+        <div class="col-10">
+            <div class="row">
+                <div class="container-fluid d-flex justify-content-center">
+
+                    <div class="col-8">
+
+                        <div id="botones" class="row d-flex justify-content-space-between align-items-center">
+                            <div class="col-1">
+                                <button><i class="far fa-arrow-alt-circle-left mx-1" style='font-size:50px'
+                                        data-bs-toggle="tooltip" title="Volver"
+                                        [routerLink]="['/lista-muelles']"></i></button>
+                            </div>
+                            <div class="col-11">
+                                <div id="titulo">Detalle Muelle</div>
+                            </div>
+                        </div>
+
+                        <div id="cabecera" class="row d-flex align-items-center ">
+                            <div class="col-4">
+                                <div>Id Instalacion: <strong>{{ currentMuelle.idInstalacion }}</strong></div>
+                            </div>
+                            <div class="col-4">
+                                <div>Código Instalacion: <strong>{{ currentMuelle.instalacion.codigo }}</strong></div>
+                            </div>
+                            <div class="col-4">
+                                <div>Nombre Instalación: <strong>{{ currentMuelle.instalacion.nombrePuerto }}</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="cuerpo" class="row container-fluid d-flex">
+                            <div class="col-6">
+                                <div class="row d-flex justify-content-center">
+                                    <div class="texto">Id Muelle:<strong> {{ currentMuelle.id }}</strong></div>
+                                    <div class="texto">Visto: <strong>{{ currentMuelle.visto }}</strong></div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="texto">Nº Plazas Total: <strong>{{
+                                            currentMuelle.plazasTotales}}</strong></div>
+                                    <div class="texto">Nº Plazas Dsiponibles: <strong>{{ currentMuelle.plazasDisponibles
+                                            }}</strong></div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="col-1">
+            <app-user-settings></app-user-settings>
+        </div>
+    </div>
+</div> -->

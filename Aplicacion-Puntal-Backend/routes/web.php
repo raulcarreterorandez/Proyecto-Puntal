@@ -1,11 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InstalacionController;
 use App\Http\Controllers\MuelleController;
 use App\Http\Controllers\PlazaController;
 use App\Http\Controllers\TransitoController;
 use App\Http\Controllers\BasesController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
@@ -15,10 +15,15 @@ use App\Http\Controllers\EmbarcacioneController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\TelefonoController;
 use App\Http\Controllers\ServicioController;
-use App\Models\Usuario;
+use App\Http\Mail\EnviaMailable;
+use App\Mail\EnviaMailable as MailEnviaMailable;
+use Illuminate\Support\Facades\Mail; 
+/* use App\Models\Usuario; */
 
 Route::view('/login', 'login')->name('login');
 Route::post('/login-usuario', [AuthController::class, 'login'])->name('logear');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/user', [AuthController::class, 'infoUser'])->name('info');
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -35,11 +40,18 @@ Route::resource('clientes', ClienteController::class);
 Route::resource('telefonos', TelefonoController::class);
 Route::resource('servicios', ServicioController::class);
 
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('/user', [AuthController::class, 'infoUser'])->name('info');
+
+/* Route::get('email', function(){
+    $correo = new MailEnviaMailable;
+    Mail::to('luiscorberan@gmail.com')->send($correo);    
+}); */
 
 
+//PDF
+Route::get('/servicio-PDF', [ServicioController::class, 'servicioPDF']);
+Route::get('/servicios/PDF/{servicio}', [ServicioController::class, 'servicioPDF'])->name('servicios.servicioPDF');
 
+// TIPO/RUTANAVEGADOR/CONTROLADOR/
 
 // LOS PERMISOS DE ACCESO (MIDDLEWARE) ESTAN EN EL CONSTRUCTOR DEL CONTROLLER
 Route::resource('usuarios', UsuarioController::class);

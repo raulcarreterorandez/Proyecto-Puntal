@@ -194,6 +194,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
         // LINKS NUEVOS PARA EL PROYECTO
         Yajra\DataTables\DataTablesServiceProvider::class,
@@ -210,13 +211,12 @@ return [
     | is started. However, feel free to register as many as you wish as
     | the aliases are "lazy" loaded so they don't hinder performance.
     |
-    */
+    */    
 
-    'aliases' => Facade::defaultAliases()->merge([
-        // 'ExampleClass' => App\Example\ExampleClass::class,
-
-        // LINKS NUEVOS PARA EL PROYECTO
+    'aliases' => Facade::defaultAliases()->merge([      
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+        /* 'PDF' => Barryvdh\DomPDF\Facade\Pdf::class, */
     ])->toArray(),
 
 ];

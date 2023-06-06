@@ -25,6 +25,8 @@ import { MensajesModule } from './mensajes/mensajes.module';
 import { HistoricosModule } from './historicos/historicos.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InfoUserComponent } from './info-user/info-user.component';
+import { ServiciosModule } from './servicios/servicios.module';
+/* import { ServiciosModule } from './servicios/servicios.module'; */
 
 
 @NgModule({
@@ -50,7 +52,8 @@ import { InfoUserComponent } from './info-user/info-user.component';
     MensajesModule,
     HistoricosModule,
     BrowserAnimationsModule,
-    MatTabsModule
+    MatTabsModule,
+    ServiciosModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

@@ -189,7 +189,7 @@ class PlazaController extends Controller {
 
             // EMBARCACION QUE ESTA EN LA PLAZA
             $embarcacion = Embarcacione::orWhere('id_plaza',$plaza->id)->get();
-            $plaza->embarcacionId = $embarcacion[0]->matricula;
+            $plaza-> embarcacionId = $embarcacion[0]->matricula;
 
             // CLIENTE QUE ESTA EN LA PLAZA
             $cliente = Cliente::find($embarcacion[0]->id_cliente);

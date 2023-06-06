@@ -44,7 +44,6 @@ class EmbarcacioneController extends Controller
             }
 
             $embarcacionesOrdenado = [];
-
             for ($i = 0; $i < count($embarcaciones); $i++) {
                 for ($a = 0; $a < count($embarcaciones[$i]); $a++) {
                     $embarcacione = $embarcaciones[$i][$a];

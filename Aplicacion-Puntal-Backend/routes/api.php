@@ -13,6 +13,8 @@ use App\Http\Controllers\API\ClienteController;
 use App\Http\Controllers\API\EmbarcacioneController;
 use App\Http\Controllers\API\TransitoController;
 use App\Http\Controllers\API\TripulanteController;
+use App\Http\Controllers\API\ServicioController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -79,6 +81,10 @@ Route::group(['middleware' => 'auth:api'], function () {
     // RUTAS API - TRIPULANTES
     Route::get('/tripulantes', [TripulanteController::class, 'index']);
     Route::get('/tripulantes/{id}', [TripulanteController::class, 'show']);
+
+    // RUTAS API - SERVICIOS
+    Route::get('/servicios', [ServicioController::class, 'index']);
+    Route::get('/servicios/{id}', [ServicioController::class, 'show']);
 
     // *** PONER LAS RUTAS API ***
 

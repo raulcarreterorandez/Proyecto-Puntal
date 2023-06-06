@@ -1,0 +1,123 @@
+<div id="dashBoard" class="container-fluid">
+  <div class="row">
+    <app-header></app-header>
+  </div>
+  <div id="vistaCentral" class="row">
+    <div class="col-1">
+      <app-aside></app-aside>
+    </div>
+    <div class="col-10">
+      <div class="row">
+        <!-- <app-navbar></app-navbar> -->
+      </div>
+      <div class="row">
+        <!-- CONTENIDO DE LA PANTALLA -->
+        <div class="col-12 d-flex justify-content-center">
+          <div id="titulo">Servicios</div>
+        </div>
+        <div *ngIf="servicios!=null; else espera">
+          <div id="espacioTabla">
+            <div id="resize_wrapper">
+              <table id="tabla" datatable [dtOptions]="dtOptions" class="table table-striped table-hover">
+                <thead class="">
+                  <tr>
+                    <th scope="col">
+                      <div class=" d-flex justify-content-center align-items-center">Nº Servicio</div>
+                    </th>
+                    <th scope="col">
+                      <div class=" d-flex justify-content-center align-items-center">Matricula embarcación</div>
+                    </th>
+                    <th scope="col">
+                      <div class=" d-flex justify-content-center align-items-center">Tipo servicio</div>
+                    </th>
+                    <th scope="col">
+                      <div class=" d-flex justify-content-center align-items-center">Precio hora</div>
+                    </th>
+                    <th scope="col">
+                      <div class=" d-flex justify-content-center align-items-center">Núm. horas</div>
+                    </th>
+                    <th scope="col">
+                      <div class=" d-flex justify-content-center align-items-center">Abonado</div>
+                    </th>
+                    <th scope="col">
+                      <div class=" d-flex justify-content-center align-items-center">Finalizado</div>
+                    </th>
+                    <th scope="col">
+                      <div class=" d-flex justify-content-center align-items-center">Fecha solicitud</div>
+                    </th>
+                    <th scope="col">
+                      <div class=" d-flex justify-content-center align-items-center">Acciones</div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let servicio of servicios">
+                    <td>
+                      <div class=" d-flex justify-content-center align-items-center">{{servicio.id}}</div>
+                    </td>
+                    <td>
+                      <div class=" d-flex justify-content-center align-items-center">{{servicio.matriculaEmbarcacion}}
+                      </div>
+                    </td>
+                    <td>
+                      <div class=" d-flex justify-content-center align-items-center">{{servicio.tipoServicio}}</div>
+                    </td>
+                    <td>
+                      <div class=" d-flex justify-content-center align-items-center">{{servicio.precioHora}}</div>
+                    </td>
+                    <td>
+                      <div class=" d-flex justify-content-center align-items-center">{{servicio.numHoras}}</div>
+                    </td>
+                    <!-- <td>{{servicio.abonado}}</td> -->
+                    <td>
+                      <div class=" d-flex justify-content-center align-items-center">
+                        <ng-template *ngIf="servicio.abonado; then check else cruz"></ng-template>
+
+                        <ng-template #check>
+                          <button class="bi bi-check-square-fill boton-habilitado" style="color: green"
+                            disabled></button>
+                        </ng-template>
+
+                        <ng-template #cruz>
+                          <button class="bi bi-x-square-fill boton-habilitado" style="color: red" disabled></button>
+                        </ng-template>
+                      </div>
+                    </td>
+                    <!-- <td>{{servicio.finalizado}}</td> -->
+                    <td>
+                      <div class=" d-flex justify-content-center align-items-center">
+                        <ng-template *ngIf="servicio.finalizado; then check1 else cruz1"></ng-template>
+
+                        <ng-template #check1>
+                          <button class="bi bi-check-square-fill boton-habilitado" style="color: green"
+                            disabled></button>
+                        </ng-template>
+
+                        <ng-template #cruz1>
+                          <button class="bi bi-x-square-fill boton-habilitado" style="color: red" disabled></button>
+                        </ng-template>
+                      </div>
+                    </td>
+
+                    <td>
+                      <div class=" d-flex justify-content-center align-items-center">{{servicio.fechaSolicitud}}</div>
+                    </td>
+                    <td>
+                      <div class=" d-flex justify-content-center align-items-center"><a class="btn btn-sm btn-info"
+                          data-bs-toggle="tooltip" title="Ver registro {{ servicio.id }}"
+                          [routerLink]="['/vistaDetalleServicio/',servicio.id]"><i class="bi bi-eye"></i></a></div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <ng-template #espera>Esperando datos...</ng-template>
+      </div>
+    </div>
+    <div id="usersettings" class="col-1 d-flex flex-row-reverse">
+      <app-user-settings></app-user-settings>
+    </div>
+  </div>
+</div>

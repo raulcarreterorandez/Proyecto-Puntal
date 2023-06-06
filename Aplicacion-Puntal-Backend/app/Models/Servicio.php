@@ -13,10 +13,13 @@ class Servicio extends Model {
         'matriculaEmbarcacion' => 'required',
         'tipoServicio' => 'required',
         'precioHora' => 'required',
-        'timeStampInicio' => 'required',
-        'timeStampFinal' => 'required',
         'abonado' => 'required',
+        'finalizado' => 'required',
+        'numHoras' => 'required|numeric|min:1',
+        /* 'numHoras' => 'required', */
+        'fechaSolicitud' => 'required',
     ];
+    
 
     protected $perPage = 20; //No recuerdo para que era
 
@@ -24,9 +27,11 @@ class Servicio extends Model {
         'matriculaEmbarcacion', 
         'tipoServicio', 
         'precioHora', 
-        'timeStampInicio', 
-        'timeStampFinal', 
-        'abonado'];
+        'abonado',
+        'finalizado',
+        'numHoras', 
+        'fechaSolicitud'
+    ];
 
     public function embarcacion() {
 

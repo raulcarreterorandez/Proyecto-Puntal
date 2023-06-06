@@ -31,10 +31,26 @@
                         <strong>Nombre Embarcación:</strong>
                         {{ $servicio->embarcacion->nombre }}
                     </div>
-                  <!--   <div class="form-group">
-                        <strong>Visto:</strong>
-                        {{ $servicio->visto }}
-                    </div> -->
+                    <div class="form-group">
+                        <strong>Tipo:</strong>
+                        {{ $servicio->tipoServicio }}
+                    </div>
+                    <div class="form-group">
+                        <strong>Num. Horas:</strong>
+                        {{ $servicio->numHoras }}
+                    </div>
+                    <div class="form-group">
+                        <strong>Fecha Solicitud:</strong>
+                        {{ $servicio->fechaSolicitud }}
+                    </div>
+                    <div class="form-group">
+                        <strong>Abonado:</strong>
+                        {{ $servicio->abonado }}
+                    </div>
+                    <div class="form-group">
+                        <strong>Finalizado:</strong>
+                        {{ $servicio->finalizado }}
+                    </div>
                 </div>
             </div>
         </div>
